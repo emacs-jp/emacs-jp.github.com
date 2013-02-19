@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: 
-
-Sitemap: http://emacs-jp.github.com/sitemap.xml 
