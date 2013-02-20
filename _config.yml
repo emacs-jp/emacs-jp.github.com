@@ -1,7 +1,7 @@
 title: Emacs User JP
 url: emacs-jp.github.com
 
-exclude: [Gemfile, Gemfile.lock]
+exclude: [Gemfile, Gemfile.lock, Rakefile]
 
 # github jekill config
 safe: true
