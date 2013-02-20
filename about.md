@@ -18,3 +18,8 @@ emacs はどこでも使えるだけでなく非常に高機能です。今で�
 ### emacs-jp.github.com の目的
 
 私達 emacs-jp.github.com は、このようなどこでも使えて多機能な emacs の活用と開発をサポートするために、ユーザと (emacs) 開発者の橋渡しを担うべく誕生しました。日本の emacs ユーザ&開発者 が emacs を通じてより活躍できるようサポートし、また皆さまからのご協力(情報提供や不具合報告)をいただけるよう活動してまいります。
+
+### その他
+
+emacs-jp.github.com は サイト構築、issueトラッカーに [github](https://github.com)を使用しています。
+<img src="http://emacs-jp.github.com/images/emacs-jp.png" alt="emacs-jp logo">
