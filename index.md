@@ -4,13 +4,13 @@ title: emacs-jp.github.com
 ---
 Emacsについて,
 
-* aわからないことがある
-* aおすすめの拡張は ?
+* わからないことがある
+* おすすめの拡張は ?
 * elisp書いたんで, 読んでみて欲しい.
-* aこんな拡張はないの ?
-* aこの拡張の設定がわからない.
+* こんな拡張はないの ?
+* この拡張の設定がわからない.
 * Vim, Sublime Textにあるあの機能を Emacsで実現するには ?
-* aこんな Color Themeが欲しい.
+* こんな Color Themeが欲しい.
 
 なんでも構いませんので, 何かございましたら [issues](https://github.com/emacs-jp/emacs-jp.github.com/issues)に登録してください. 頑張って回答します.
 
