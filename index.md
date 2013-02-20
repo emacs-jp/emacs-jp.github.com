@@ -16,11 +16,12 @@ Emacsについて,
 
 サイト作成を行いたい等で, push権限が欲しい方は [@syohex](https://twitter.com/syohex/)までお願いします.
 
-## なにか書く
-### なにか書いてください
+## このサイトについて
+emacs-jp.github.com は Emacs と日本語に関わるあらゆるリソースを集約することを目的としたコミュニティサイトです。
+Emacs と emacs-jp.github.com についての詳細は [こちら](./about.html) をごらんください。
 
 ## blogっぽいもの
-### 書いて
+
 <ul>
 {% for post in site.posts %}
   <li>
@@ -29,8 +30,8 @@ Emacsについて,
 {% endfor %}
 </ul>
 
-## りんくとか
-### hoge
-* piyo
-* foo
-* bar
+## 読み物
+
+* helm とは
+* いろいろな日本語入力環境
+* Linuxでのbuild方法
