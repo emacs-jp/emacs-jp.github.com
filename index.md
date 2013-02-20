@@ -20,15 +20,11 @@ Emacsについて,
 emacs-jp.github.com は Emacs と日本語に関わるあらゆるリソースを集約することを目的としたコミュニティサイトです。
 Emacs と emacs-jp.github.com についての詳細は [こちら](./about.html) をごらんください。
 
-## blogっぽいもの
+## お知らせ
 
-<ul>
 {% for post in site.posts %}
-  <li>
-    <a href="{{ post.url }}">{{ post.date | date_to_long_string }} : {{ post.title }}</a>
-  </li>
+* [{{ post.date | date: "%Y-%m-%d" }} {{ post.title }}]({{ post.url }})
 {% endfor %}
-</ul>
 
 ## 読み物
 
