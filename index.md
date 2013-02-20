@@ -4,13 +4,13 @@ title: emacs-jp.github.com
 ---
 Emacsについて,
 
-* わからないことがある
-* おすすめの拡張は ?
+* aわからないことがある
+* aおすすめの拡張は ?
 * elisp書いたんで, 読んでみて欲しい.
-* こんな拡張はないの ?
-* この拡張の設定がわからない.
+* aこんな拡張はないの ?
+* aこの拡張の設定がわからない.
 * Vim, Sublime Textにあるあの機能を Emacsで実現するには ?
-* こんな Color Themeが欲しい.
+* aこんな Color Themeが欲しい.
 
 なんでも構いませんので, 何かございましたら [issues](https://github.com/emacs-jp/emacs-jp.github.com/issues)に登録してください. 頑張って回答します.
 
@@ -19,8 +19,15 @@ Emacsについて,
 ## なにか書く
 ### なにか書いてください
 
-## まだまだ書く
+## blogっぽいもの
 ### 書いて
+<ul>
+{% for post in site.posts %}
+  <li>
+    <a href="{{ post.url }}">{{ post.date | date_to_long_string }} : {{ post.title }}</a>
+  </li>
+{% endfor %}
+</ul>
 
 ## りんくとか
 ### hoge
