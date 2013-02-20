@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
   <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-  <title>emacs-jp.github.com - {{ page.title }}</title>
+  <title>{{ site.title }}{% if page.title %} - {{ page.title }}{% endif %}</title>
   <link rel="stylesheet" href="/css/style.css" type="text/css">
   <link rel="alternate" type="application/atom+xml" title="Atom" href="/atom.xml">
 </head>
@@ -28,7 +28,9 @@
 </body>
 
 <footer>
-  <p>Emacs-jp - <a href="http://emacs-jp.github.com/">hoge</a></p>
+  <p>
+    {{ site.title }} - <a href="{{ site.url }}">{{ site.url}}</a>
+  </p>
 </footer>
 
 </html>

@@ -1,3 +1,8 @@
 title: Emacs User JP
 url: emacs-jp.github.com
+
+# github jekill config
+safe: true
+lsi: false
+pygments: true
 markdown: redcarpet
