@@ -13,9 +13,9 @@ markdown: redcarpet
 title : emacs-jp.github.com
 tagline: Site Tagline
 author :
-  name : Name Lastname
+  name : emacs-jp
   email : blah@email.test
-  github : username
+  github : emacs-jp
   twitter : username
   feedburner : feedname
 
