@@ -1,7 +1,9 @@
 ---
-layout: layout
-title: emacs-jp.github.comについて
+layout: page
+title: emacs-jp.github.com
+tagline: Supporting tagline
 ---
+{% include JB/setup %}
 
 ## emacs-jp.github.comについて
 
