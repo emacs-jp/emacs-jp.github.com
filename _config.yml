@@ -13,10 +13,10 @@ markdown: redcarpet
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : emacs-jp.github.com
-tagline: Site Tagline
+title : Emacs JP
+tagline: 日本の Emacs ユーザのためのハブサイト
 author :
-  name : emacs-jp
+  name : Emacs JP
   email : blah@email.test
   github : emacs-jp
   twitter : username

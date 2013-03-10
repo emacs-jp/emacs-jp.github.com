@@ -1,7 +1,7 @@
 ---
 layout: page
-title: emacs-jp.github.com
-tagline: Supporting tagline
+title: Emacs JP
+tagline: 日本の Emacs ユーザのためのハブサイト
 ---
 {% include JB/setup %}
 
@@ -20,8 +20,8 @@ Emacsについて,
 サイト作成を行いたい等で, push権限が欲しい方は [@syohex](https://twitter.com/syohex/)までお願いします.
 
 ## このサイトについて
-emacs-jp.github.com は Emacs と日本語に関わるあらゆるリソースを集約することを目的としたコミュニティサイトです。
-Emacs と emacs-jp.github.com についての詳細は [こちら](./about.html) をごらんください。
+{{ site.title }} は Emacs と日本語に関わるあらゆるリソースを集約することを目的としたコミュニティサイトです。
+Emacs と {{ site.title }} についての詳細は [こちら](./about.html) をごらんください。
 
 ## お知らせ
 
