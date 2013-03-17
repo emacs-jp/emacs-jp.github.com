@@ -30,4 +30,5 @@ PLATFORMS
 DEPENDENCIES
   jekyll (= 0.12.0)
   liquid (= 2.4.1)
+  pygments.rb
   redcarpet (= 2.1.1)

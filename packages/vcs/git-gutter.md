@@ -52,19 +52,19 @@ git管理下のファイルについてすべて `git-gutter-mode`を有効に�
 
 グローバルマイナーモードを有効にするには, 設定ファイルに以下を追加します.
 
-````
+```common-lisp
 (global-git-gutter-mode t)
-````
+```
 
 ### minor-mode
 
 あまりないと思いますが, 特定のモードで `git-gutter`を有効にしたい場合は,
 該当するモードの hookに `git-gutter-mode`を追加してください.
 
-````
+```common-lisp
 (add-hook 'ruby-mode-hook 'git-gutter-mode)
 (add-hook 'python-mode-hook 'git-gutter-mode)
-````
+```
 
 ## 更新のタイミング
 
@@ -95,9 +95,9 @@ git管理下のファイルについてすべて `git-gutter-mode`を有効に�
 追加してください. 表示されるものが意図したものと違う場合は手動で `M-x git-gutter`を
 実行してみてください
 
-````
+```common-lisp
 (setq git-gutter:update-hooks '(after-save-hook after-revert-hook))
-````
+```
 
 `git-gutter:update-hooks`には好きな hookが登録できるので, さらに
 除去することや別途追加することも可能です.
@@ -159,14 +159,14 @@ undoを利用することで取り消せます.
 
 以下はその設定例となります. 文字数に特に制限はありません.
 
-````
+```common-lisp
 (setq git-gutter:added-sign "++")
 (setq git-gutter:deleted-sign-sign "--")
 (setq git-gutter:modified-sign "  ") ;; 空白 2つ
 (set-face-foreground 'git-gutter:added  "green")
 (set-face-foreground 'git-gutter:deleted  "yellow")
 (set-face-background 'git-gutter:modified "magenta")
-````
+```
 
 
 ### 全角幅文字の設定
@@ -176,12 +176,12 @@ undoを利用することで取り消せます.
 計算を誤ってしまうためです. 全角幅文字を signとして指定する例を以下に示します.
 
 
-````
+```common-lisp
 (setq git-gutter:window-width 2)
 (setq git-gutter:modified-sign "⇔")
 (setq git-gutter:added-sign "⇒")
 (setq git-gutter:deleted-sign "⇐")
-````
+```
 
 そのときのスクリーンショットは以下のようになります.
 
