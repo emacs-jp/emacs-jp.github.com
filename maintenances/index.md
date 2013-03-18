@@ -27,4 +27,4 @@ fork されて独自に修正されていることもありますが、修正が
 
 ## {{ site.title }}で管理して欲しいパッケージの登録方法
 
-[Issuse](https://github.com/emacs-jp/issues/issues) に登録してください。
+[Issues](https://github.com/emacs-jp/issues/issues) に登録してください。
