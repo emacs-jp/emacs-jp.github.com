@@ -35,7 +35,7 @@ MacOSXユーザの方であれば, homebrewで The Silver Searcherをインス�
 
 #### helm-ag
 
-カレントディレクトリ以下
+カレントディレクトリ以下を検索する
 
 #### helm-ag-this-file
 
