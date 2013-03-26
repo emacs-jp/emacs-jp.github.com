@@ -1,15 +1,15 @@
 ---
 layout: page
 title: "helm-ag"
-description: "the silver seacherの helmインタフェース"
+description: "The Silver Seacherの helmインタフェース"
 ---
 {% include JB/setup %}
 
 ## 概要
 
-`helm-ag.el`は the [silver searcher](https://github.com/ggreer/the_silver_searcher)の [helm](https://github.com/emacs-helm/helm)インタフェースです.
+`helm-ag.el`は [The Silver Searcher](https://github.com/ggreer/the_silver_searcher)の [helm](https://github.com/emacs-helm/helm)インタフェースです.
 
-the silver searcherは ack likeな grepツールで, ackよりも高速に検索を行うことができます.
+The Silver Searcherは ack likeな grepツールで, ackよりも高速に検索を行うことができます.
 
 
 ## スクリーンショット
@@ -25,9 +25,9 @@ helm-agは MELPAに登録されているので, package.elを使ってインス�
 ## 必要要件
 
 * Emacs 23以降
-* the silver searcher
+* The Silver Searcher
 
-MacOSXユーザの方であれば, homebrewで the silver searcherをインストールすることが可能です.
+MacOSXユーザの方であれば, homebrewで The Silver Searcherをインストールすることが可能です.
 その他の環境の方については, ソースコードを入手し, ビルド, インストールを行なってください.
 
 
