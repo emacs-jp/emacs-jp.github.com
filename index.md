@@ -34,8 +34,7 @@ Emacs と {{ site.title }} についての詳細は [こちら](./about.html) �
 ## コンテンツ
 
 * [{{ site.title }} で管理しているパッケージ](/maintenances/)
-* [おすすめ拡張 - git-gutter.el](/packages/vcs/git-gutter.html)
-* [おすすめ拡張 - helm-gtags.el](/packages/helm/helm-gtags.html)
+* [おすすめパッケージ紹介](/packages/)
 * helm とは
 * いろいろな日本語入力環境
 * Linuxでのbuild方法
