@@ -2,6 +2,9 @@
 layout: page
 title: "helm-ag"
 description: "The Silver Seacherの helmインタフェース"
+package: true
+category: "helm"
+tags: ["helm"]
 ---
 {% include JB/setup %}
 

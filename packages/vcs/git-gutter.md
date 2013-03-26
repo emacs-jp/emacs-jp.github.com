@@ -2,6 +2,9 @@
 layout: page
 title: "git-gutter.el"
 description: "GitGutterの Emacs版"
+package: true
+category: "vcs"
+tags: ["vcs"]
 ---
 {% include JB/setup %}
 
