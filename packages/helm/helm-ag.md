@@ -74,10 +74,10 @@ MacOSXユーザの方であれば, homebrewで The Silver Searcherをインス�
 
 ## 設定例
 
-````common-lisp
+```common-lisp
 (require 'helm-config)
 (require 'helm-ag)
 
 (setq helm-ag-base-command "ag --nocolor --nogroup --ignore-case")
 (setq helm-ag-thing-at-point 'symbol)
-````
+```

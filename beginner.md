@@ -38,15 +38,15 @@ RedHat、Fedora、CentOS、Ubuntu、Debian など、大抵のOSではパッケ�
 
 #### RedHat, CentOS, Fedora
 
-````
+```
 sudo yum install emacs
-````
+```
 
 ####  Ubuntu, Debian
 
-````
+```
 sudo apt-get install emacs
-````
+```
 
 独自ビルドする場合は、ソースコードの中の INSTALL ファイルを参照してください。
 
