@@ -5,12 +5,9 @@ description: "Package Management"
 ---
 {% include JB/setup %}
 
-## auto-install
-* 以前から使われているパッケージインストーラ(非公式)
-* URLがあればインストールを自動化
-* パッケージの管理機能(更新,削除,状態管理)は無い
 
-## package.el
+## パッケージマネージャ
+### package.el
 * Emacs24から標準添付
 * ELPA(本家, marmalade, MELPA)にあるパッケージしか基本インストールできない(ただし不可能ではない)
 * UIから比較的簡単に操作できる
@@ -20,7 +17,7 @@ description: "Package Management"
 * バージョン指定でインストールはできない
 * 外部ツールはインストールできない(同じリポジトリのファイルなら可能)
 
-## el-get
+### el-get
 * ELPAを含むあらゆるソースを管理できる
 * 標準添付ではない
 * package.elよりは管理(記述)が複雑
@@ -32,13 +29,22 @@ description: "Package Management"
 * 外部ツールもインストールできる
 * その他様々な機能あり
 
-## carton
+### auto-install
+* 以前から使われているパッケージインストーラ(非公式)
+* URLがあればインストールを自動化
+* パッケージの管理機能(更新,削除,状態管理)は無い
+* 現在はpackage.elやel-getの利用が推奨される
+
+## ラッパーパッケージ
+### carton
 * package.elのラッパー
 * パッケージ間の依存関係を記述可能
 * 状態管理できる(むしろそれが主目的?)
 
-## bundle.el
+### bundle.el
 * el-getのラッパー
 * el-getの記述をシンプルにしたもの
 * 状態管理も容易
 
+## 参考リンク
+* [Issue #31](https://github.com/emacs-jp/emacs-jp.github.com/issues/31)
