@@ -43,7 +43,7 @@ description: "Package Management"
 * パッケージ間の依存関係を記述可能
 * 状態管理できる(むしろそれが主目的?)
 
-### [bundle.el](https://github.com/kozo2/emacs-bundle)
+### [bundle.el](https://github.com/tarao/bundle-el)
 * el-getのラッパー
 * el-getの記述をシンプルにしたもの
 * 状態管理も容易
