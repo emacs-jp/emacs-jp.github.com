@@ -38,3 +38,5 @@ Emacs と {{ site.title }} についての詳細は [こちら](./about.html) �
 * helm とは
 * いろいろな日本語入力環境
 * Linuxでのbuild方法
+* [Macでの\\(バックスラッシュ)入力について](/osx_backslash.html)
+
