@@ -1,10 +1,10 @@
 ---
 layout: page
 title: "elisp-slime-nav"
-description: "????"
+description: "Slime-style navigation for Emacs Lisp"
 package: true
 category: "elisp"
-tags: ["helm"]
+tags: ["programming","elisp"]
 ---
 {% include JB/setup %}
 
