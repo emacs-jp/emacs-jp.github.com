@@ -47,7 +47,7 @@ helm-descbindsは MELPAに登録されているので, package.elを使ってイ
 
 ## 設定
 
-helm-descbinds-modeを実行することで, `describe-bindings`のキーバインドである `C-x b`が上書きされ, `helm-descbinds`になります.
+helm-descbinds-modeを実行することで, `describe-bindings`のキーバインドである `C-h b`が上書きされ, `helm-descbinds`になります.
 
 ```common-lisp
 (require 'helm-descbinds)
