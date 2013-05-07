@@ -154,11 +154,16 @@ undoを利用することで取り消せます.
 
 ### 表示する文字, 色の変更
 
-| 概要   | 記号                                  | face                   |
-|:------:|:-------------------------------------:|:----------------------:|
-|  追加  | git-gutter:added-sign(Default '+')    | git-gutter:added       |
-|  削除  | git-gutter:deleted-sign(Default '-')  | git-gutter:deletedline |
-|  変更  | git-gutter:modified-sign(Default '=') | git-gutter:modified    |
+<table class="table-striped table-bordered table-condensed">
+<thead>
+<tr><th>概要</th><th>記号</th><th>face</th></tr>
+</thead>
+<tbody>
+<tr><td>追加</td><td>git-gutter:added-sign(Default '+')   </td><td>git-gutter:added      </td></tr>
+<tr><td>削除</td><td>git-gutter:deleted-sign(Default '-') </td><td>git-gutter:deletedline</td></tr>
+<tr><td>変更</td><td>git-gutter:modified-sign(Default '=')</td><td>git-gutter:modified   </td></tr>
+</tbody>
+</table>
 
 以下はその設定例となります. 文字数に特に制限はありません.
 
