@@ -10,7 +10,7 @@ tags: ["helm"]
 
 ## 概要
 
-`helm-descbinds.el`は `describe-bindings`の helmインタフェースです.
+[helm-descbinds.el](https://github.com/emacs-helm/helm-descbinds)は `describe-bindings`の helmインタフェースです.
 Emacsはデフォルトでも膨大なキーバインドが存在するため, `describe-bindings`を使っても
 目的のコマンドを見つけ出すのはなかなか大変ですが, helmインタフェースを利用することで
 コマンドの検索が比較的容易になります.
