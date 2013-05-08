@@ -10,7 +10,7 @@ tags: ["programming","elisp"]
 
 ## 概要
 
-`elisp-slime-nav`は [slime](http://common-lisp.net/project/slime/)風に関数の定義元へ
+[elisp-slime-nav](https://github.com/purcell/elisp-slime-nav)は [slime](http://common-lisp.net/project/slime/)風に関数の定義元へ
 ジャンプ, (定義元から)元の場所に戻る, ドキュメントの閲覧, を行うことができます.
 関数の定義元へのジャンプは elispを書く際に重宝しますので, slimeに慣れていない人, 使った
 ことない人でも Emacs Lispを書く人にはおすすめの拡張です.
