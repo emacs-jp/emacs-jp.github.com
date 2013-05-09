@@ -10,7 +10,7 @@ tags: ["helm","tagjump"]
 
 ## 概要
 
-`helm-gtags.el`は GNU globalの [helm](https://github.com/emacs-helm/helm)インタフェースです.
+[helm-gtags.el](https://github.com/syohex/emacs-helm-gtags)は GNU globalの [helm](https://github.com/emacs-helm/helm)インタフェースです.
 
 `helm-gtags.el`は `anything-gtags.el`と互換性はありませんが, より高速に動作するように設計されています.
 
