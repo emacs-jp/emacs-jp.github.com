@@ -10,7 +10,7 @@ tags: ["helm"]
 
 ## 概要
 
-`helm-ag.el`は [The Silver Searcher](https://github.com/ggreer/the_silver_searcher)の [helm](https://github.com/emacs-helm/helm)インタフェースです.
+[helm-ag.el](https://github.com/syohex/emacs-helm-ag)は [The Silver Searcher](https://github.com/ggreer/the_silver_searcher)の [helm](https://github.com/emacs-helm/helm)インタフェースです.
 
 The Silver Searcherは ack likeな grepツールで, ackよりも高速に検索を行うことができます.
 
