@@ -81,8 +81,8 @@ Commentaryセクションはパッケージの説明, 簡単な利用方法, 設
 ### `lexical-binding`を定義する場合
 
 `lexical-binding`は現在のところ, 1行目に定義しなければ意味がありません.
-そのため `lexical-binding`を設定する場合は, 1行目のパッケージの説明の後に
-書くようにしてください. 以下は `flycheck.el`の例です.
+そのため `lexical-binding`を設定する場合は, 1行目のパッケージの説明に続けて書くように
+してください. 以下は `flycheck.el`の例です.
 
 ```common-lisp
 ;;; flycheck.el --- On-the-fly syntax checking (Flymake done right) -*- lexical-binding: t; -*-
