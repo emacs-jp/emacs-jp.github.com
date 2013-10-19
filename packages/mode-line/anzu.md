@@ -53,6 +53,14 @@ Emacs23では, 動作しません.
 特定のモードで利用したいというような場合は, 各種モードの hookでこの関数を
 実行するようにしてください.
 
+### anzu-query-replace
+
+モードラインに置換対象の文字列とのマッチ数を表示する `query-replace`コマンド
+
+### anzu-query-replace-regexp
+
+モードラインに置換対象の正規表現とのマッチ数を表示する `query-replace-regexp`コマンド
+
 
 ## migemo対応
 デフォルトでは migemo対応は無効化されていますので, migemoを利用している
