@@ -61,6 +61,10 @@ Emacs23では, 動作しません.
 
 モードラインに置換対象の正規表現とのマッチ数を表示する `query-replace-regexp`コマンド
 
+### anzu-query-replace-at-cursor
+
+`anzu-query-replace`と同じことを行うが, 置換元文字列をカーソル下のシンボルとする
+
 
 ## migemo対応
 デフォルトでは migemo対応は無効化されていますので, migemoを利用している
