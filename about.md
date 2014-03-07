@@ -2,6 +2,7 @@
 layout: page
 title: About
 tagline: このサイトについて
+group: navigation
 ---
 
 ## {{ site.title }}について
