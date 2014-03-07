@@ -16,7 +16,7 @@ redcarpet:
 # so be sure to set them if your theme uses them.
 #
 title : Emacs JP
-tagline: 日本の Emacs ユーザのためのハブサイト
+tagline: 日本の Emacs ユーザーのためのハブサイト
 author :
   name : Emacs JP
   email : blah@email.test
