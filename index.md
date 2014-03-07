@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Emacs JP
-tagline: 日本の Emacs ユーザのためのハブサイト
+tagline: 日本の Emacs ユーザーのためのハブサイト
 ---
 {% include JB/setup %}
 

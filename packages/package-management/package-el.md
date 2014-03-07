@@ -17,7 +17,7 @@ tags: ["package"]
 Emacs 24では標準添付されているので, Emacs 24以降を使用している場合は,
 インストールは不要である.
 
-### Emacs 23ユーザの方
+### Emacs 23ユーザーの方
 
 [http://bit.ly/pkg-el23](http://bit.ly/pkg-el23)から Emacs23向けの package.elをダウンロードし,
 load-pathの通ったディレクトリに配置してください.

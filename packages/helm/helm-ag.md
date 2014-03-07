@@ -30,7 +30,7 @@ helm-agは MELPAに登録されているので, package.elを使ってインス�
 * Emacs 23以降
 * The Silver Searcher
 
-MacOSXユーザの方であれば, homebrewで The Silver Searcherをインストールすることが可能です.
+MacOSXユーザーの方であれば, homebrewで The Silver Searcherをインストールすることが可能です.
 その他の環境の方については, ソースコードを入手し, ビルド, インストールを行なってください.
 
 
