@@ -3,10 +3,10 @@
 permalink: /:categories/:year/:month/:day/:title 
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md",
-"Gemfile", "Gemfile.lock"]
+"Gemfile"]
 safe: true
 lsi: false
-auto: true
+encoding: utf-8
 pygments: true
 markdown: redcarpet
 redcarpet:
