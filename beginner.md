@@ -114,6 +114,10 @@ Emacsに標準で付属しているInfoが公式な一次情報です。
 * ハッシュタグ #emacs, #emacsjp
 * [今すぐフォローすべき Emacs界のスーパーエンジニア(2011年版)](http://d.hatena.ne.jp/syohex/20111012/1318429372)
 
+### GitHub
+
+- [emacs-jp](https://github.com/emacs-jp)
+
 ### [ELIPS](http://www.jpl.org/elips/ELIPS-ML.html)
 
 Emacsに関する何でもありのMLです。最近は流量が少ないです。
@@ -138,7 +142,6 @@ Emacsに関する話題いろいろ
 * help-gnu-emacs(一般的質問など)
 * emacs-devel(Emacsの開発の中心)
 * bug-gnu-emacs(バグ報告など)
-
 
 ## 地域コミュニティ
 

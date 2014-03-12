@@ -27,6 +27,7 @@ emacs はどこでも使えるだけでなく非常に高機能です。今で�
 ### その他
 
 {{ site.title }} は サイト構築、issueトラッカーに [github](https://github.com)を使用しています。
+本サイトのリポジトリは[こちら](https://github.com/emacs-jp/emacs-jp.github.com)。
 
 ![emacs-jp logo](http://emacs-jp.github.io/images/emacs-jp.png)
 
