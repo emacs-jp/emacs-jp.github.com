@@ -5,4 +5,4 @@ tags : [intro, tutorial]
 ---
 {% include JB/setup %}
 
-Emacs User JP はじめます。
+Emacs JP はじめます。
