@@ -38,7 +38,7 @@ description: "Package Management"
 * 現在はpackage.elやel-getの利用が推奨される
 
 ## ラッパーパッケージ
-### [carton](https://github.com/rejeep/carton)
+### [Cask](https://github.com/cask/cask)
 * package.elのラッパー
 * パッケージ間の依存関係を記述可能
 * 状態管理できる(むしろそれが主目的?)
