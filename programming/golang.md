@@ -15,7 +15,7 @@ Emacsでの Go言語をプログラミングする際の環境構築について
 コード補完のために `gocode`, 定義元へのジャンプのために `godef`をインストールしておく
 
 ```
- % go get -u go get -u github.com/nsf/gocode
+ % go get -u github.com/nsf/gocode
  % go get -u code.google.com/p/rog-go/exp/cmd/godef
 ```
 
