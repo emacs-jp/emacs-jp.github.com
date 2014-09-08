@@ -7,7 +7,7 @@ exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md",
 safe: true
 lsi: false
 encoding: utf-8
-pygments: true
+highlighter: pygments
 markdown: redcarpet
 redcarpet:
   extensions: [tables]
