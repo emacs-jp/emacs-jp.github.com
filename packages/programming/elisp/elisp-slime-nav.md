@@ -21,15 +21,13 @@ tags: ["programming","elisp"]
 `elisp-slime-nav` MELPAに登録されているので, package.elを使ってインストールすることができます.
 
 
-## 設定
-
-`elisp-slime-nav.el`をロードすることで, `emacs-lisp-mode-hook`, `ielm-mode-hook`に
-`elisp-slime-nav-mode`関数が登録されるので, 基本的には設定は不要です.
-`lisp-interaction-mode-hook`等でも使いたい場合は下記を設定ファイルに追加してください.
-
+## 設定例
 
 ```common-lisp
-(add-hook 'lisp-interaction-mode-hook 'elisp-slime-nav-mode)
+(dolist (hook '(emacs-lisp-mode-hook
+                lisp-interaction-mode-hook
+                ielm-mode-hook))
+  (add-hook hook 'elisp-slime-nav-mode))
 ```
 
 
