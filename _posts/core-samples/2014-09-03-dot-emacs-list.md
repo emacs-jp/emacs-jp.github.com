@@ -67,6 +67,11 @@ tags: [init.el, dot-emacs]
 - org-babel? org-modeを駆使して独自のビルド環境を作ってる
 - 参考リンク : [Configurations for GNU Emacs - PASTELWIKI](http://pastelwill.jp/wiki/doku.php?id=emacs:init.el)
 
+[sakito / dot.emacs.d / wiki / Home — Bitbucket](https://bitbucket.org/sakito/dot.emacs.d/)
+
+- init-*.el を require していく方式
+- 参考リンク : [紹介マニアMoinMoin:dot.emacs.d](http://sakito.jp/moin/moin.cgi/dot.emacs.d)
+
 [ogatomo/emacs ? GitHub](https://github.com/ogatomo/emacs)
 
 - el-get
@@ -109,11 +114,6 @@ tags: [init.el, dot-emacs]
     - setup.el はいったいどこに?
 - 遅延読み込みをして、init.elの読み込みを早くしているみたい
 
-[sakito / dot.emacs.d / wiki / Home — Bitbucket](https://bitbucket.org/sakito/dot.emacs.d/)
-
-- init-*.el を require していく方式
-- 参考リンク : [紹介マニアMoinMoin:dot.emacs.d](http://sakito.jp/moin/moin.cgi/dot.emacs.d)
-
 [masutaka/.emacs ? Gists](https://gist.github.com/masutaka/8177244)
 
 - package.el 
@@ -133,6 +133,12 @@ tags: [init.el, dot-emacs]
 
 - el-get + マクロ用いて設定を読み込んでいる
 - evilはemacs-stateを全く使わないというコンセプトで設定をしているらしい
+
+[dotfiles/share/dot.emacs.d at master · fjyuu/dotfiles](https://github.com/fjyuu/dotfiles/tree/master/share/dot.emacs.d)
+
+- package.el + el-get
+- 動作環境はLinux or OS X
+- 基本的にはpackage.elで管理して、リポジトリにないものをel-getで管理している
 
 <br>
 init.el勉強会の参考になればと思います。
