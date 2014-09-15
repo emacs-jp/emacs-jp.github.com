@@ -117,7 +117,21 @@ JB :
   # Set 'provider' to false to turn sharing off globally.
   #
   sharing :
-    provider : false
+    provider : all
+    twitter :
+      size : medium
+      via :
+      count : horizontal
+    facebook :
+      layout : button_count
+      faces : false
+      width : 90
+    googleplus :
+      size : medium
+      width : 250
+      annotation : bubble
+    hatena :
+      hatena-layout : standard-baloon
 
   # Settings for all other include helpers can be defined by creating
   # a hash with key named for the given helper. ex:

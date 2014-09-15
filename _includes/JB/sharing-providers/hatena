@@ -1,0 +1,2 @@
+<!-- はてなブックマーク -->
+<div class="hatena-button"><a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="{{ site.JB.sharing.hatena.hatena-layout }}" data-hatena-bookmark-lang="ja" title="{{ page.title }}"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></div>
