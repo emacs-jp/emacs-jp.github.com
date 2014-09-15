@@ -122,6 +122,7 @@ JB :
       size : medium
       via :
       count : horizontal
+      hashtag: emacsjp
     facebook :
       layout : button_count
       faces : false
