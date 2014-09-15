@@ -26,7 +26,7 @@
   </head>
 
   <body>
-
+    <div id="fb-root"></div>
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
@@ -56,5 +56,33 @@
     </div> <!-- /container -->
 
     {% include JB/analytics %}
+    <script>
+
+     (function(doc, script) {
+
+       // Async Social Buttons
+       var js,
+       fjs = doc.getElementsByTagName(script)[0],
+       add = function(url, id) {
+         if (doc.getElementById(id)) {return;}
+         js = doc.createElement(script);
+         js.src = url;
+         id && (js.id = id);
+         fjs.parentNode.insertBefore(js, fjs);
+       };
+
+       // Twitter SDK
+       add('//platform.twitter.com/widgets.js', 'twitter-wjs');
+
+       // Google+ button
+       add('https://apis.google.com/js/plusone.js');
+
+       // Facebook SDK
+
+       add('//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.0', 'facebook-jssdk');
+
+     }(document, 'script'));
+    </script>
+    <script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   </body>
 </html>

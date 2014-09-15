@@ -1,0 +1,2 @@
+<!-- Twitter -->
+<div class="tweet-button"><a href="https://twitter.com/share" class="twitter-share-button" data-text="{{ page.title }}" data-related="{{ site.author.twitter }}" data-hashtags="{{ site.JB.sharing.twitter.hashtag }}" data-count="{{ site.JB.sharing.twitter.count }}" data-size="{{ site.JB.sharing.twitter.size }}">Tweet</a></div>

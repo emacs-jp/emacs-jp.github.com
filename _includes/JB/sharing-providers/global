@@ -1,0 +1,4 @@
+{% include JB/sharing-providers/facebook %}
+{% include JB/sharing-providers/plusone %}
+{% include JB/sharing-providers/hatena %}
+{% include JB/sharing-providers/twitter %}

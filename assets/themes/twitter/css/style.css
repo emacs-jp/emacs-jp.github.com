@@ -25,6 +25,10 @@ html, body {
           box-shadow: 0 1px 2px rgba(0,0,0,.15);
 }
 
+.content-article {
+    display: inline-block;
+}
+
 p, li{
   line-height: 160%;
 }
@@ -40,6 +44,19 @@ p, li{
   border: 0;
 }
 
+.post-share {
+    margin: 0px 0px 0px 20px;
+}
+
+.post-share-article {
+    margin: 0px 0px 0px 0px;
+    display: inline-block;
+}
+
+.tweet-button, .hatena-button, .github-button, .fb-like, g-plusone {
+    float: left;
+    margin-right: 5px;
+}
 
 /* tag_box ======================================================== */
 
