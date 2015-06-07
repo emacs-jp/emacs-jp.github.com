@@ -116,7 +116,7 @@ tags: [init.el, dot-emacs]
 
 [masutaka/.emacs ? Gists](https://gist.github.com/masutaka/8177244)
 
-- package.el 
+- el-get
 - 単一ファイルで見やすい
 
 [.emacs.d/init.el at master ? yoshitia/.emacs.d ? GitHub](https://github.com/yoshitia/.emacs.d/blob/master/init.el)
