@@ -147,7 +147,7 @@ init.el勉強会の参考になればと思います。
 
 - package.el、el-get、Cask、逐次読み込み、org-babel、自作の関数での読み込み、多種多様なinit.elが出来上がってる。
 - init-loaderがかなり使われている
-- だれも[Plelude](https://github.com/bbatsov/prelude)とか、[Emacs-live](https://github.com/overtone/emacs-live)、[Emacs24 Starter Kit](https://github.com/eschulte/emacs24-starter-kit)、[Oh-My-Emacs](https://github.com/xiaohanyu/oh-my-emacs)などのスターターキットを使っていないというのがわかった。
-あそこら辺は便利そうなのでいつか使ってみたいと思っている。Emacs初心者の人に対してきっとおすすめできるはずなんだけれど使用者がいないからどうしたものか。
-ちなみに↓に良さげなStarter Kit一覧があります。
+- だれも[Plelude](https://github.com/bbatsov/prelude)とか、[Emacs-live](https://github.com/overtone/emacs-live)、[Emacs24 Starter Kit](https://github.com/eschulte/emacs24-starter-kit)、[Oh-My-Emacs](https://github.com/xiaohanyu/oh-my-emacs)などのスターターキットを使っていないというのがわかった。  
+あそこら辺は便利そうなのでいつか使ってみたいと思っている。Emacs初心者の人に対してきっとおすすめできるはずなんだけれど使用者がいないからどうしたものか。  
+ちなみに↓に良さげなStarter Kit一覧があります。  
 [Starter Kit - emacs-tw/awesome-emacs](https://github.com/emacs-tw/awesome-emacs#starter-kit)
