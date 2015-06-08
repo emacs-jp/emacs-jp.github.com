@@ -51,7 +51,7 @@ tags: [init.el, dot-emacs]
     - パッケージのインストール((el-get 'sync 'package-name)相当のこと)と同じところにそのパッケージの設定を書ける
 -  「[typesterさんの記事](http://unknownplace.org/memo/2013/01/21/1/)にあるようにemacs -q -l init.elで誰でもこの設定を試せる(既存の設定は汚さない)」 とのこと
     - 実際便利っぼい
-    
+
 [gongo/elfactory ? GitHub](https://github.com/gongo/elfactory)
 
 - Cask + init-loader
@@ -116,7 +116,7 @@ tags: [init.el, dot-emacs]
 
 [masutaka/.emacs ? Gists](https://gist.github.com/masutaka/8177244)
 
-- package.el 
+- el-get
 - 単一ファイルで見やすい
 
 [.emacs.d/init.el at master ? yoshitia/.emacs.d ? GitHub](https://github.com/yoshitia/.emacs.d/blob/master/init.el)
