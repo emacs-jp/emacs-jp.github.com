@@ -36,12 +36,20 @@ load-pathの通ったディレクトリに配置してください.
 MELPAにも登録されているパッケージの場合, 安定版のパッケージを Marmaladeにアップロードすると
 いう使われ方が多い.
 
-### [MELPA](http://melpa.milkbox.net/packages/)
+### [MELPA](http://melpa.org/)
 
 非公式のリポジトリ. [githubのリポジトリ](https://github.com/milkypostman/melpa)に pull requestを
 送ることで, パッケージを登録することができる. リポジトリに変更がある度に更新されるので, 登録されて
 いるパッケージの最新版をインストールすることができる(stable版もインストールできるようにする流れが
 あるが 2013年 9月 24日時点で未実装).
+
+### [MELPA-stable](http://stable.melpa.org/)
+
+安定版 MELPA. 最新のリビジョンでなく, 最新のタグのバージョンが取得できる.
+
+### [Org](http://orgmode.org/elpa.html)
+
+最新版 Org modeのリポジトリ.
 
 
 ## リポジトリの登録
@@ -56,10 +64,16 @@ MELPAにも登録されているパッケージの場合, 安定版のパッケ�
 (require 'package)
 
 ;; MELPAを追加
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+
+;; MELPA-stableを追加
+(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 
 ;; Marmaladeを追加
-(add-to-list 'package-archives  '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives  '("marmalade" . "http://marmalade-repo.org/packages/") t)
+
+;; Orgを追加
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t))
 
 ;; 初期化
 (package-initialize)
@@ -131,7 +145,7 @@ package.elを使ったパッケージ管理方法について示す.
 ```common-lisp
 (require 'package)
 ;; MELPAのみ追加
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
 
 ;; パッケージ情報の更新
