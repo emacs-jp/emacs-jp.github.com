@@ -147,13 +147,18 @@ Emacsに関する話題いろいろ
 
 お近くのコミュニティへ是非ご参加ください。
 
-### 東京 Emacs勉強会
+### 関東Emacs
+* [(kantou-emacs #x01) #関東Emacs](https://atnd.org/events/54734)
+* [(kantou-emacs #x02) #関東Emacs](https://atnd.org/events/63979)
+
+### 東京Emacs勉強会
 * 2012/08/24 [Emacs勉強会](http://shibuya.doorkeeper.jp/events/1615)
 
-### 関西 Emacs
+### 関西Emacs
 * [関西Emacs勉強会 まとめ](http://peccu.sytes.net/ke/)
 * 半年おきに定期的に開催
 
-### 福岡 Emacs
+### 福岡Emacs
 * 2011/09/23 [fukuoka_emacs #0x03](http://atnd.org/events/19653)
 * 2012/08/25 [Emacs温泉](http://d.hatena.ne.jp/kiwanami/20120827/1346092543)
+* 2015/06/05 [福岡Emacs 0x04](http://fukuoka-emacs.connpass.com/event/15117/)
