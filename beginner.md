@@ -111,7 +111,7 @@ Emacsに標準で付属しているInfoが公式な一次情報です。
 
 ### twitter
 
-* ハッシュタグ #emacs, #emacsjp
+* ハッシュタグ [#emacs](https://twitter.com/hashtag/emacs?src=hash), [#emacsjp](https://twitter.com/hashtag/emacsjp?src=hash)
 * [今すぐフォローすべき Emacs界のスーパーエンジニア(2011年版)](http://d.hatena.ne.jp/syohex/20111012/1318429372)
 
 ### GitHub
