@@ -21,16 +21,11 @@ Emacsでの Go言語をプログラミングする際の環境構築について
 
 ## 推奨パッケージ
 
-* [go-mode](https://code.google.com/p/go/)
-* [go-autocomplete](https://github.com/nsf/gocode)
+* [go-mode](https://github.com/dominikh/go-mode.el)
+* [go-autocomplete or company-go](https://github.com/nsf/gocode)
 * [go-eldoc](https://github.com/syohex/emacs-go-eldoc)
 
-これらのパッケージはすべて [MELPA](http://melpa.milkbox.net/packages/)からインストールできる
-
-
-### NOTE
-
-* [改良版 go-mode](https://github.com/dominikh/go-mode.el)
+これらのパッケージはすべて [MELPA](http://melpa.org/)からインストールできる
 
 
 ## go-modeの各種コマンド(利用頻度が高いもの)
@@ -68,11 +63,26 @@ hookに登録すればよい.
 
 ## [go-autocomplete](https://github.com/nsf/gocode)
 
-gocodeを利用した. [autocomplete](https://github.com/auto-complete/auto-complete)の Go拡張. 高速であり,
+gocodeを利用した [autocomplete](https://github.com/auto-complete/auto-complete)の Go拡張. 高速であり,
 精度の高い補完能力を持つ.
 
 ![go-autocomplete-screenshot](http://farm4.staticflickr.com/3797/9001480371_d3a0ef1da4_o.png)
 
+
+## [company-go](https://github.com/nsf/gocode)
+
+gocodeの company backend
+
+
+## 引数スニペットの挿入
+
+`go-autocomplete`, `company-go`共にデフォルトで関数名を補完した際, 引数のスニペットが挿入される. 無効にする場合は, auto-completeでは `ac-go-expand-arguments-into-snippets`, company-modeでは `company-go-insert-arguments`を無効にする.
+
+```common-lisp
+(custom-set-variables
+ '(ac-go-expand-arguments-into-snippets nil) ; auto-complete
+ '(company-go-insert-arguments nil))         ; company-mode
+```
 
 
 ## [go-eldoc](https://github.com/syohex/emacs-go-eldoc)
@@ -138,14 +148,19 @@ Go用 flymake
 ## 設定例
 
 ```common-lisp
-(eval-after-load "go-mode"
-  '(progn
-     (require 'go-autocomplete)
-     (add-hook 'go-mode-hook 'go-eldoc-setup)
+(with-eval-after-load 'go-mode
+  ;; auto-complete
+  (require 'go-autocomplete)
 
-     ;; key bindings
-     (define-key go-mode-map (kbd "M-.") 'godef-jump)
-     (define-key go-mode-map (kbd "M-,") 'pop-tag-mark)))
+  ;; company-mode
+  (add-to-list 'company-backends 'company-go)
+
+  ;; eldoc
+  (add-hook 'go-mode-hook 'go-eldoc-setup)
+
+  ;; key bindings
+  (define-key go-mode-map (kbd "M-.") 'godef-jump)
+  (define-key go-mode-map (kbd "M-,") 'pop-tag-mark))
 ```
 
 
