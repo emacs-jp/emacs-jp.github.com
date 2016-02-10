@@ -16,7 +16,7 @@ Emacsでの Go言語をプログラミングする際の環境構築について
 
 ```
  % go get -u github.com/nsf/gocode
- % go get -u code.google.com/p/rog-go/exp/cmd/godef
+ % go get -u github.com/rogpeppe/godef
 ```
 
 ## 推奨パッケージ
