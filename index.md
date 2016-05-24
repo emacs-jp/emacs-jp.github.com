@@ -24,6 +24,12 @@ Emacsについて,
 {{ site.title }} は Emacs と日本語に関わるあらゆるリソースを集約することを目的としたコミュニティサイトです。
 Emacs と {{ site.title }} についての詳細は [こちら](./about.html) をごらんください。
 
+## Slack
+
+[https://emacs-jp.slack.com](https://emacs-jp.slack.com)
+
+参加したい方は [https://slack-emacs-jp.herokuapp.com/](https://slack-emacs-jp.herokuapp.com/) からどうぞ.
+
 ## お知らせ
 
 <ul class="posts">
