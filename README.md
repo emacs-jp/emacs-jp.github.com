@@ -5,6 +5,12 @@ Emacs JP は Emacs と日本語に関わるあらゆるリソースを集約す�
 
 <http://emacs-jp.github.io/>
 
+## Slack
+
+<https://emacs-jp.slack.com>
+
+参加したい方は https://slack-emacs-jp.herokuapp.com/ からどうぞ.
+
 ## ページ作成者向け情報
 
 ### 準備
