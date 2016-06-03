@@ -150,6 +150,7 @@ Emacsに関する話題いろいろ
 ### 関東Emacs
 * [(kantou-emacs #x01) #関東Emacs](https://atnd.org/events/54734)
 * [(kantou-emacs #x02) #関東Emacs](https://atnd.org/events/63979)
+* [(kantou-emacs #x03) 第3回関東Emacs勉強会](https://kantou-emacs.doorkeeper.jp/events/42422)
 
 ### 東京Emacs勉強会
 * 2012/08/24 [Emacs勉強会](http://shibuya.doorkeeper.jp/events/1615)
