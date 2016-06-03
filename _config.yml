@@ -8,7 +8,7 @@ safe: true
 lsi: false
 encoding: utf-8
 highlighter: pygments
-markdown: redcarpet
+markdown: kramdown
 redcarpet:
   extensions: [tables]
 
