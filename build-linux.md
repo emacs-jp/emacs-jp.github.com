@@ -13,11 +13,11 @@ Ubuntu 14.04 LTSでのemacs25のビルド方法を説明します。
 Terminalアプリを開き、以下を実行します。
 
 ```shell
-apt install wget make gcc libncurses-dev git texinfo
+apt install wget make gcc libncurses-dev git autoconf automake texinfo
 git clone git://git.savannah.gnu.org/emacs.git
 ```
 
-GUI版などの拡張が必要な場合は下記を実行します。
+GUI版など機能の拡張が必要な場合は下記を実行します。
 
 ```shell
 apt-get build-dep emacs24
