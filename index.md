@@ -45,4 +45,4 @@ Emacs と {{ site.title }} についての詳細は [こちら](./about.html) �
 * [Emacsビギナーのためのページ](/beginner.html)
 * helm とは
 * いろいろな日本語入力環境
-* Linuxでのbuild方法
+* [Linuxでのbuild方法](/build-linux.html)
