@@ -6,7 +6,7 @@ description: "Linuxでのビルド方法"
 {% include JB/setup %}
 
 ## Ubuntu, Debian の場合
-Ubuntu 14.04 LTSを使った場合のemacs25のビルド方法を説明します。
+Ubuntu 14.04 LTSでのemacs25のビルド方法を説明します。
 
 ### 必要なパッケージのインストールとソースコードの取得
 
@@ -36,7 +36,7 @@ make
 make install
 ```
 
-### インストール後の拡張機能の確認方法
+### 拡張機能の確認方法
 
 ```shell
 emacs -Q --batch --eval '(message "%s" system-configuration-features)'
