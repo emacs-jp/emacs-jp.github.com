@@ -1,18 +1,15 @@
 # Linuxでのビルド方法
 
 # Ubuntu, Debian の場合
-Ubuntu 14.04 LTSを使った場合のビルド方法を説明します。
+Ubuntu 14.04 LTSを使った場合のemacs25のビルド方法を説明します。
 
-「14.04のemacs24パッケージではmagitを使えないので自分でビルドする必要がある」
-そんな方をターゲットとしています。
 ## 必要なパッケージのインストールとソースコードの取得
 
 Terminalアプリを開き、以下を実行します。
 
 ```shell
-apt install wget make gcc libncurses-dev
-wget http://ftp.jaist.ac.jp/pub/GNU/emacs/emacs-24.5.tar.gz
-tar xf emacs-24.5.tar.gz
+apt install wget make gcc libncurses-dev git texinfo
+git clone git://git.savannah.gnu.org/emacs.git
 ```
 
 GUI版などの拡張が必要な場合は下記を実行します。
@@ -24,8 +21,7 @@ apt-get build-dep emacs24
 ## コンパイル
 
 ```shell
-cd emacs-24.5
-./configure
+cd emacs
 make
 ```
 
@@ -35,9 +31,10 @@ make
 make install
 ```
 
-## インストール後の拡張機能の確認について
+## インストール後の拡張機能の確認方法
 
-```system-configuration-options```の値が --without で始まっていなければ基本的に有効と考えて良いようです
-
+```shell
+emacs -Q --batch --eval '(message "%s" system-configuration-features)'
+```
 
 # Arch の場合
