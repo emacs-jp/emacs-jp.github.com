@@ -16,5 +16,5 @@ tags: ["evil"]
 
 
 ## 参考
-* [Official Page](https://gitorious.org/evil/pages/Home)
+* [Official Page](https://bitbucket.org/lyro/evil/wiki/Home)
 * [Emacs Wikiのページ](http://www.emacswiki.org/emacs/Evil)

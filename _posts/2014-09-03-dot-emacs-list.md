@@ -119,7 +119,7 @@ tags: [init.el, dot-emacs]
 - el-get
 - 単一ファイルで見やすい
 
-[.emacs.d/init.el at master ? yoshitia/.emacs.d ? GitHub](https://github.com/yoshitia/.emacs.d/blob/master/init.el)
+[dotfiles/init.el at master ? yoshitia/dotfiles ? GitHub](https://github.com/yoshitia/dotfiles/tree/master/.emacs.d)
 
 - auto-install + package.el
 - 最近Emacsにデビューしたニューカマー

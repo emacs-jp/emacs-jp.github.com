@@ -62,10 +62,8 @@ sudo apt-get install emacs
 
 まったくEmacs初めての人向けの情報。じっくり取り組むには書籍がいいかもしれません。
 
-* [Emacsビギナー](http://www.emacswiki.org/emacs/Emacs%E3%83%93%E3%82%AE%E3%83%8A%E3%83%BC) (@EmacsWiki)
 * [Emacs 初心者のための最低限のコマンド表](http://chalow.net/2007-01-11-1.html)
 * [Emacs チュートリアルのすすめ](http://at-aka.blogspot.jp/2007/01/emacs_19.html)
-* [Emacsのチートシート](http://d.hatena.ne.jp/desumasu/20080826/1219736924)
 
 ### 書籍
 
@@ -156,7 +154,7 @@ Emacsに関する話題いろいろ
 * 2012/08/24 [Emacs勉強会](http://shibuya.doorkeeper.jp/events/1615)
 
 ### 関西Emacs
-* [関西Emacs勉強会 まとめ](http://peccu.sytes.net/ke/)
+* 関西Emacs勉強会 まとめ(http://peccu.sytes.net/ke/)
 * 半年おきに定期的に開催
 
 ### 福岡Emacs

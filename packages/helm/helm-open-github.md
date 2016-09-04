@@ -27,7 +27,7 @@ MELPAから package.elを使ってインストールすることができます.
 
 * Emacs 24以降
 * [helm](https://github.com/emacs-helm/helm) 1.0以降
-* [gh](https://github.com/sigma/gh) 1.0移行
+* [gh.el](https://github.com/sigma/gh.el) 1.0移行
 
 
 

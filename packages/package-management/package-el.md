@@ -19,7 +19,7 @@ Emacs 24では標準添付されているので, Emacs 24以降を使用して�
 
 ### Emacs 23ユーザーの方
 
-[http://bit.ly/pkg-el23](http://bit.ly/pkg-el23)から Emacs23向けの package.elをダウンロードし,
+[http://bit.ly/pkg-el23](http://bit.ly/17aWZEw)から Emacs23向けの package.elをダウンロードし,
 load-pathの通ったディレクトリに配置してください.
 
 ## 各リポジトリについて
