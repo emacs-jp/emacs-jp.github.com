@@ -22,7 +22,7 @@ Emacsについて,
 
 ## このサイトについて
 {{ site.title }} は Emacs と日本語に関わるあらゆるリソースを集約することを目的としたコミュニティサイトです。
-Emacs と {{ site.title }} についての詳細は [こちら](./about.html) をごらんください。
+Emacs と {{ site.title }} についての詳細は [こちら](/about/)をごらんください。
 
 ## Slack
 
@@ -42,7 +42,7 @@ Emacs と {{ site.title }} についての詳細は [こちら](./about.html) �
 
 * [{{ site.title }} で管理しているパッケージ](/maintenances/)
 * [おすすめパッケージ紹介](/packages/)
-* [Emacsビギナーのためのページ](/beginner.html)
+* [Emacsビギナーのためのページ](/beginner/)
 * helm とは
 * いろいろな日本語入力環境
-* [Linuxでのbuild方法](/build-linux.html)
+* [Linuxでのbuild方法](/build-linux/)
