@@ -30,20 +30,20 @@ load-pathの通ったディレクトリに配置してください.
 登録に手間がかかるためか, 登録されているパッケージ数は少なめであるが, 他の
 リポジトリに比べると登録されているパッケージの信頼度は高い.
 
-### [Marmalade](http://marmalade-repo.org/packages/)
+### [Marmalade](https://marmalade-repo.org/packages/)
 
 非公式のリポジトリ. アカウントを作れば誰でもパッケージを登録することが可能.
 MELPAにも登録されているパッケージの場合, 安定版のパッケージを Marmaladeにアップロードすると
 いう使われ方が多い.
 
-### [MELPA](http://melpa.org/)
+### [MELPA](https://melpa.org/)
 
-非公式のリポジトリ. [githubのリポジトリ](https://github.com/milkypostman/melpa)に pull requestを
+非公式のリポジトリ. [githubのリポジトリ](https://github.com/melpa/melpa)に pull requestを
 送ることで, パッケージを登録することができる. リポジトリに変更がある度に更新されるので, 登録されて
 いるパッケージの最新版をインストールすることができる(stable版もインストールできるようにする流れが
 あるが 2013年 9月 24日時点で未実装).
 
-### [MELPA-stable](http://stable.melpa.org/)
+### [MELPA-stable](https://stable.melpa.org/)
 
 安定版 MELPA. 最新のリビジョンでなく, 最新のタグのバージョンが取得できる.
 
@@ -64,10 +64,10 @@ MELPAにも登録されているパッケージの場合, 安定版のパッケ�
 (require 'package)
 
 ;; MELPAを追加
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
 ;; MELPA-stableを追加
-(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
 ;; Marmaladeを追加
 (add-to-list 'package-archives  '("marmalade" . "http://marmalade-repo.org/packages/") t)
@@ -145,7 +145,7 @@ package.elを使ったパッケージ管理方法について示す.
 ```common-lisp
 (require 'package)
 ;; MELPAのみ追加
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
 ;; パッケージ情報の更新
