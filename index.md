@@ -46,3 +46,5 @@ Emacs と {{ site.title }} についての詳細は [こちら](./about.html) �
 * helm とは
 * いろいろな日本語入力環境
 * [Linuxでのbuild方法](/build-linux.html)
+* [EmacsとVimの機能対応表](https://docs.google.com/spreadsheets/d/184i0Cmnfd0CdmPw2AVMMvmmnl7Gz5ryPqTaxnpIyqRE/edit?usp=sharing)
+
