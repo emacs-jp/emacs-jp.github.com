@@ -3,6 +3,7 @@
 permalink: /:categories/:year/:month/:day/:title
 
 exclude:
+  - ".editorconfig"
   - ".rvmrc"
   - ".rbenv-version"
   - "README.md"
