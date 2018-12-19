@@ -2,8 +2,17 @@
 # For more see: https://help.github.com/articles/configuring-jekyll/
 permalink: /:categories/:year/:month/:day/:title
 
-exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md",
-"Gemfile", "vendor"]
+exclude:
+  - ".rvmrc"
+  - ".rbenv-version"
+  - "README.md"
+  - "Rakefile"
+  - "changelog.md"
+  - "Gemfile"
+  - "vendor"
+include:
+  - "robots.txt"
+
 encoding: UTF-8
 highlighter: rouge
 incremental: false
