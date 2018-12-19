@@ -27,6 +27,7 @@ kramdown:
   syntax_highlighter: rouge
 gist:
   noscript: false
+timezone: Asia/Tokyo
 
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
