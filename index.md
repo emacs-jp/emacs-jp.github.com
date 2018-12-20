@@ -8,7 +8,7 @@ tagline: 日本のEmacsユーザーのためのハブサイト
 {{ site.title }}はEmacsと日本語に関わるあらゆるリソースを集約することを目的としたコミュニティサイトです。  
 Emacsと{{ site.title }}についての詳細は[このサイトについて](/about.html)をごらんください。
 
-## Slack - [emacs-jp.slack.com](https://emacs-jp.slack.com/)
+## Slack <small>- [emacs-jp.slack.com](https://emacs-jp.slack.com/)</small>
 
 Emacs JPのSlack teamには常時多くのEmacsユーザーが常駐しています。  
 どなたでも <https://slack-emacs-jp.herokuapp.com/> からサインアップして参加できます。

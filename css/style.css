@@ -1,7 +1,11 @@
 @charset "UTF-8";
 
 header {
-    margin-bottom: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+h1, h2, h3 {
+    margin: 1.5rem 0;
 }
 
 footer {
