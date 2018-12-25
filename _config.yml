@@ -27,6 +27,7 @@ kramdown:
   syntax_highlighter: rouge
 gist:
   noscript: false
+timezone: Asia/Tokyo
 
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
@@ -118,37 +119,37 @@ JB :
   # Set 'provider' to the analytics provider you want to use.
   # Set 'provider' to false to turn analytics off globally.
   #
-  analytics :
-    provider : google
-    google :
-        tracking_id : 'UA-123-12'
-    getclicky :
-      site_id :
-    mixpanel :
-        token : '_MIXPANEL_TOKEN_'
+  # analytics :
+  #   provider : google
+  #   google :
+  #       tracking_id : 'UA-123-12'
+  #   getclicky :
+  #     site_id :
+  #   mixpanel :
+  #       token : '_MIXPANEL_TOKEN_'
 
   # Settings for sharing helper.
   # Sharing is for things like tweet, plusone, like, reddit buttons etc.
   # Set 'provider' to the sharing provider you want to use.
   # Set 'provider' to false to turn sharing off globally.
   #
-  sharing :
-    provider : all
-    twitter :
-      size : medium
-      via :
-      count : horizontal
-      hashtag: emacsjp
-    facebook :
-      layout : button_count
-      faces : false
-      width : 90
-    googleplus :
-      size : medium
-      width : 250
-      annotation : bubble
-    hatena :
-      hatena-layout : standard-baloon
+  # sharing :
+  #   provider : all
+  #   twitter :
+  #     size : medium
+  #     via :
+  #     count : horizontal
+  #     hashtag: emacsjp
+  #   facebook :
+  #     layout : button_count
+  #     faces : false
+  #     width : 90
+  #   googleplus :
+  #     size : medium
+  #     width : 250
+  #     annotation : bubble
+  #   hatena :
+  #     hatena-layout : standard-baloon
 
   # Settings for all other include helpers can be defined by creating
   # a hash with key named for the given helper. ex:

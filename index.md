@@ -1,34 +1,28 @@
 ---
 layout: page
-title: Emacs JP
-tagline: 日本の Emacs ユーザーのためのハブサイト
+title: 日本のEmacsユーザーのためのハブサイト
 ---
 {% include JB/setup %}
 
-Emacsについて,
+**{{ site.title }}**はEmacsと日本語に関わるあらゆるリソースを集約することを目的としたコミュニティサイトです。  
+Emacsと{{ site.title }}についての詳細は[このサイトについて](/about.html)をごらんください。
+
+## Slack <small>- [emacs-jp.slack.com](https://emacs-jp.slack.com/)</small>
+
+Emacs JPのSlack teamには常時多くのEmacsユーザーが常駐しています。  
+どなたでも <https://slack-emacs-jp.herokuapp.com/> からサインアップして参加できます。
+
+Emacsについて、
 
 * わからないことがある
-* おすすめの拡張は ?
-* elisp書いたんで, 読んでみて欲しい.
-* こんな拡張はないの ?
-* この拡張の設定がわからない.
-* Vim, Sublime Textにあるあの機能を Emacsで実現するには ?
-* こんな Color Themeが欲しい.
+* おすすめの拡張は？
+* Emacs Lispを書いたので、読んでみて欲しい
+* こんな拡張はないの？
+* この拡張の設定がわからない
+* ほかのIDEやエディタの機能をEmacsで実現するには？
+* こんなカラーテーマが欲しい
 
-なんでも構いませんので, 何かございましたら [issues](https://github.com/emacs-jp/issues/issues)に登録してください. 頑張って回答します.
-
-本サイトのリポジトリは[こちら](https://github.com/emacs-jp/emacs-jp.github.com)です。
-サイト作成を行いたい等で, push権限が欲しい方は [@syohex](https://twitter.com/syohex/)までお願いします.
-
-## このサイトについて
-{{ site.title }} は Emacs と日本語に関わるあらゆるリソースを集約することを目的としたコミュニティサイトです。
-Emacs と {{ site.title }} についての詳細は [こちら](./about.html) をごらんください。
-
-## Slack
-
-[https://emacs-jp.slack.com](https://emacs-jp.slack.com)
-
-参加したい方は [https://slack-emacs-jp.herokuapp.com/](https://slack-emacs-jp.herokuapp.com/) からどうぞ.
+……など、Slackで質問すれば解決できるかもしれません。
 
 ## お知らせ
 
