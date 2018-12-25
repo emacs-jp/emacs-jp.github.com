@@ -23,3 +23,15 @@ footer {
 .page-header {
     padding: 0.4rem 0;
 }
+
+.pagination {
+    width: 100%;
+}
+
+.pagination > li:first-child {
+    margin-left: auto;
+}
+
+.pagination > li:last-child {
+    margin-right: auto;
+}
