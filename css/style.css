@@ -1,11 +1,15 @@
 @charset "UTF-8";
 
-header {
-    margin-bottom: 0.5rem;
-}
-
 h1, h2, h3 {
     margin: 1.5rem 0;
+}
+
+h1 {
+    font-size: 2.0rem;
+}
+
+h2 {
+    font-size: 1.8rem;
 }
 
 footer {
@@ -14,4 +18,8 @@ footer {
     padding: 2.5rem 0;
     color: #e9ecef;
     background-color: #343a40;
+}
+
+.page-header {
+    padding: 0.4rem 0;
 }
