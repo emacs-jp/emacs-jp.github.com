@@ -1,11 +1,10 @@
 ---
 layout: page
-title: Emacs JP
-tagline: 日本のEmacsユーザーのためのハブサイト
+title: 日本のEmacsユーザーのためのハブサイト
 ---
 {% include JB/setup %}
 
-{{ site.title }}はEmacsと日本語に関わるあらゆるリソースを集約することを目的としたコミュニティサイトです。  
+**{{ site.title }}**はEmacsと日本語に関わるあらゆるリソースを集約することを目的としたコミュニティサイトです。  
 Emacsと{{ site.title }}についての詳細は[このサイトについて](/about.html)をごらんください。
 
 ## Slack <small>- [emacs-jp.slack.com](https://emacs-jp.slack.com/)</small>
