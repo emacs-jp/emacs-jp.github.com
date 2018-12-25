@@ -9,7 +9,7 @@ Emacsと{{ site.title }}についての詳細は[このサイトについて](/a
 
 ## Slack <small>- [emacs-jp.slack.com](https://emacs-jp.slack.com/)</small>
 
-Emacs JPのSlack teamには常時多くのEmacsユーザーが常駐しています。  
+Emacs JPのSlack teamには多くのEmacsユーザーが常駐しています。  
 どなたでも <https://slack-emacs-jp.herokuapp.com/> からサインアップして参加できます。
 
 Emacsについて、
@@ -34,11 +34,10 @@ Emacsについて、
 
 ## コンテンツ
 
-* [{{ site.title }} で管理しているパッケージ](/maintenances/)
+* [**{{ site.title }}**で管理しているパッケージ](/maintenances/)
 * [おすすめパッケージ紹介](/packages/)
 * [Emacsビギナーのためのページ](/beginner.html)
 * helm とは
 * いろいろな日本語入力環境
 * [Linuxでのbuild方法](/build-linux.html)
 * [EmacsとVimの機能対応表](https://docs.google.com/spreadsheets/d/184i0Cmnfd0CdmPw2AVMMvmmnl7Gz5ryPqTaxnpIyqRE/edit?usp=sharing)
-
