@@ -65,7 +65,7 @@ tags: [init.el, dot-emacs]
 [emacs.d/init.el at master ? takaxp/emacs.d ? GitHub](https://github.com/takaxp/emacs.d/blob/master/init.el)
 
 - org-babel? org-modeを駆使して独自のビルド環境を作ってる
-- 参考リンク : [Configurations for GNU Emacs - PASTELWIKI](http://pastelwill.jp/wiki/doku.php?id=emacs:init.el)
+- 参考リンク : [Configurations for GNU Emacs](https://takaxp.github.io/init.html)
 
 [sakito / dot.emacs.d / wiki / Home — Bitbucket](https://bitbucket.org/sakito/dot.emacs.d/)
 
