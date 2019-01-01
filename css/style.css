@@ -20,6 +20,10 @@ footer {
     background-color: #343a40;
 }
 
+img {
+    max-width: 100%;
+}
+
 .page-header {
     padding: 0.4rem 0;
 }
