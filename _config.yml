@@ -19,7 +19,7 @@ highlighter: rouge
 incremental: false
 lsi: false
 markdown: kramdown
-safe: true
+safe: false
 kramdown:
   input: GFM
   hard_wrap: false
@@ -28,18 +28,26 @@ kramdown:
 gist:
   noscript: false
 timezone: Asia/Tokyo
+plugins: # https://help.github.com/articles/configuring-jekyll-plugins/#optional-plugins
+ - jekyll-feed
+ - jekyll-redirect-from
+ - jekyll-seo-tag
+ - jekyll-sitemap
+ - jekyll-avatar
+ - jemoji
+ - jekyll-mentions
 
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
 #
 title : Emacs JP
-tagline: 日本の Emacs ユーザーのためのハブサイト
+tagline: 日本のEmacsユーザーのためのハブサイト
 author :
   name : Emacs JP
-  email : blah@email.test
+  #email : blah@email.test
   github : emacs-jp
-  twitter : username
-  feedburner : feedname
+  #twitter : username
+  #feedburner : feedname
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt
