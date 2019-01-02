@@ -47,8 +47,11 @@ author :
   name : Emacs JP
   #email : blah@email.test
   github : emacs-jp
-  #twitter : username
+  twitter : emacs_jp
   #feedburner : feedname
+twitter:
+  username: emacs_jp
+  card: summary
 
 defaults:
   - scope:
