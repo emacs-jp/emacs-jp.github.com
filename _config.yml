@@ -41,6 +41,7 @@ plugins: # https://help.github.com/articles/configuring-jekyll-plugins/#optional
 # so be sure to set them if your theme uses them.
 #
 title : Emacs JP
+description: 日本のEmacsユーザーのためのハブサイト
 tagline: 日本のEmacsユーザーのためのハブサイト
 author :
   name : Emacs JP
@@ -48,6 +49,12 @@ author :
   github : emacs-jp
   #twitter : username
   #feedburner : feedname
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /images/emacs-jp.png
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt
