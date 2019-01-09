@@ -26,7 +26,7 @@ Usage:
     {%- endfor -%}
   {%- else -%}
     {%- for tag in tags_list -%}
-      <li><a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag[0] }}-ref" class="badge badge-info">{{ tag[0] }} <span>{{ tag[1].size }}</span></a></li>
+      <li><a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag[0] }}-ref" class="badge badge-success">{{ tag[0] }} <span>{{ tag[1].size }}</span></a></li>
     {%- endfor -%}
   {%- endif -%}
 {%- endif -%}

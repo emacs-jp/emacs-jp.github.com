@@ -39,6 +39,10 @@ img {
     margin-top: 0;
 }
 
+.sidebar address {
+    margin-bottom: 0;
+}
+
 .page-header {
     padding: 0.4rem 0;
 }
@@ -59,6 +63,11 @@ ul.tag_box {
     padding-left: 0;
 }
 
-ul.tag_box li {
+ul.tag_box > li {
     display: inline;
+    margin: 0.2rem;
+}
+
+ul.tag_box > li:first-child {
+    margin-left: 0;
 }
