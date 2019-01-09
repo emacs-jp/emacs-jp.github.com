@@ -6,10 +6,14 @@ h1, h2, h3 {
 
 h1 {
     font-size: 2.0rem;
+    border-bottom: solid 3px;
+    padding: 0 0.1rem 1rem 0.1rem;
 }
 
 h2 {
     font-size: 1.8rem;
+    border-bottom: solid 2px;
+    padding: 0.7rem 0.1rem;
 }
 
 footer {
@@ -22,6 +26,17 @@ footer {
 
 img {
     max-width: 100%;
+}
+
+.sidebar.list-group {
+    padding-left: 15px;
+}
+
+.sidebar h4 {
+}
+
+.sidebar h4:first-child {
+    margin-top: 0;
 }
 
 .page-header {
@@ -38,4 +53,12 @@ img {
 
 .pagination > li:last-child {
     margin-right: auto;
+}
+
+ul.tag_box {
+    padding-left: 0;
+}
+
+ul.tag_box li {
+    display: inline;
 }
