@@ -35,6 +35,7 @@ Emacsについて、
 ## コンテンツ
 
 * [**{{ site.title }}**で管理しているパッケージ](/maintenances/)
+* [Emacsのバージョン](/tips/versions.html)
 * [おすすめパッケージ紹介](/packages/)
 * [Emacsビギナーのためのページ](/beginner.html)
 * helm とは

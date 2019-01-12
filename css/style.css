@@ -71,3 +71,7 @@ ul.tag_box > li {
 ul.tag_box > li:first-child {
     margin-left: 0;
 }
+
+.table a {
+    word-break: break-word;
+}
