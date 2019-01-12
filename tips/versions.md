@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Emacsのバージョン"
-description: "環境変数の設定"
+description: "歴史的には多様なEmacsがありますが、今日においてEmacsと呼ばれるGNU Emacsのバージョン表記とリリースの種類、過去の更新履歴についてまとめます。"
 ---
 {% include JB/setup %}
 
