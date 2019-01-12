@@ -93,6 +93,7 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
 
 以下の表は2011年(Emacs 23.3)以降のGNU Emacsのリリースカレンダーです。
 
+<div style="width: 100%; overflow-y: scroll;">
 <table class="table table-hover" style="text-align:center">
 <thead><tr><th>年／月</th>
 <th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th><th scope="col">5</th><th scope="col">6</th><th scope="col">7</th><th scope="col">8</th><th scope="col">9</th><th scope="col">10</th><th scope="col">11</th><th scope="col">12</th></tr></thead>
@@ -224,6 +225,7 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
   <td></td>
 </tr>
 </tbody></table>
+</div>
 
 公式サイトの[GNU Emacs Release History]には安定版のリリース履歴がリストアップされています。
 
