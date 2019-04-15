@@ -9,9 +9,7 @@ description: "今日にEmacsと呼ばれるGNU Emacsのバージョン表記と�
 
 歴史的には多様なEmacsがありますが、今日においてEmacsと呼ばれるのは、もっぱら**[GNU Emacs]**です。
 
-2019年1月現在、**GNU Emacs**の最新安定版は**`26.1`**(2018年5月28日リリース)です。
-
-現在、次期バージョンの**`26.1.91`**がプレテスト中です。次の安定版は**`26.2`**が2019年前半にリリースされる見込みです。
+<ins datetime="2019-04-16T02:00:00+0900">**GNU Emacs**の最新安定版は **`26.2`** (<time datetime="2019-04-12T18:14:22+0200">2019年4月12日</time>リリース)です。<br>2019年4月現在でプレテスト中のバージョンはありませんが、masterブランチでは次期メジャーバージョンとなる **`27.0`** 系統の開発が進行しています。</ins>
 
 [GNU Emacs]: https://ja.wikipedia.org/wiki/GNU_Emacs
 
@@ -214,7 +212,7 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
   <td><span class="badge badge-pill badge-secondary">26.1.91</span></td>
   <td></td>
   <td></td>
-  <td></td>
+  <td><span class="badge badge-pill badge-primary">26.2</span></td>
   <td></td>
   <td></td>
   <td></td>
@@ -233,6 +231,7 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
 
 <table class="table"><thead><tr><th scope="col">バージョン</th><th scope="col">リリース日</th></tr></thead>
 <tbody>
+<tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2019-04/msg00503.html">Emacs 26.2</a></th><td><time datetime="2019-04-12">2019年4月12日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2018-05/msg00765.html">Emacs 26.1</a></th><td><time datetime="2018-05-28">2018年5月28日</time></td></tr>
 <tr><th scope="row"><a href="http://lists.gnu.org/archive/html/info-gnu/2017-09/msg00006.html">Emacs 25.3</a></th><td><time datetime="2017-09-11">2017年9月11日</time></td></tr>
 <tr><th scope="row"><a href="http://lists.gnu.org/archive/html/info-gnu-emacs/2017-04/msg00000.html">Emacs 25.2</a></th><td><time datetime="2017-04-21">2017年4月21日</time></td></tr>

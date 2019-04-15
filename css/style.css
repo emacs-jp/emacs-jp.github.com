@@ -28,6 +28,13 @@ img {
     max-width: 100%;
 }
 
+ins {
+    display: inline-block;
+    padding: 0.8rem;
+    text-decoration: none;
+    border: solid #AAA 1px;
+}
+
 .sidebar.list-group {
     padding-left: 15px;
 }
