@@ -9,9 +9,10 @@ description: "今日にEmacsと呼ばれるGNU Emacsのバージョン表記と�
 
 歴史的には多様なEmacsがありますが、今日においてEmacsと呼ばれるのは、もっぱら**[GNU Emacs]**です。
 
-<ins datetime="2019-04-16T02:00:00+0900">**GNU Emacs**の最新安定版は **`26.2`** (<time datetime="2019-04-12T18:14:22+0200">2019年4月12日</time>リリース)です。<br>2019年4月現在でプレテスト中のバージョンはありませんが、masterブランチでは次期メジャーバージョンとなる **`27.0`** 系統の開発が進行しています。</ins>
+<ins datetime="2019-06-14T10:00:00+0900">**GNU Emacs**の最新安定版は **`26.2`** (<time datetime="2019-04-12T18:14:22+0200">2019年4月12日</time>リリース)です。<br><time datetime="2019-06-12T22:09:42+0200">2019年6月14日</time>に<dfn title="一般のソフトウェアのβ版に相当する開発バージョンです">プレテスト版</dfn>として [**`26.2.90`** がリリースされました][26.2.90]。次期安定板は **`26.3`** になる見込みです。<br>masterブランチでは次期メジャーバージョンとなる **`27.0`** 系統の開発が進行しています。</ins>
 
 [GNU Emacs]: https://ja.wikipedia.org/wiki/GNU_Emacs
+[26.2.90]: https://lists.gnu.org/archive/html/emacs-devel/2019-06/msg00273.html
 
 ## バージョン表記
 
@@ -214,7 +215,7 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
   <td></td>
   <td><span class="badge badge-pill badge-primary">26.2</span></td>
   <td></td>
-  <td></td>
+  <td><span class="badge badge-pill badge-secondary">26.2.90</span></td>
   <td></td>
   <td></td>
   <td></td>
