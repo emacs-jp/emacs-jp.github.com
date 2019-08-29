@@ -9,7 +9,8 @@ description: "今日にEmacsと呼ばれるGNU Emacsのバージョン表記と�
 
 歴史的には多様なEmacsがありますが、今日においてEmacsと呼ばれるのは、もっぱら**[GNU Emacs]**です。
 
-<ins datetime="2019-06-14T10:00:00+0900">**GNU Emacs**の最新安定版は **`26.2`** (<time datetime="2019-04-12T18:14:22+0200">2019年4月12日</time>リリース)です。<br><time datetime="2019-08-23T00:28:22+0200">2019年8月23日</time>に<dfn title="正式リリース前の動作確認用のバージョンです">RC(リリース候補)版</dfn>として [**`26.3-rc1`** がリリースされました][26.3-rc1]。次期安定版は **`26.3`** が<time datetime="2019-08-28">2019年8月28日</time>頃にリリースされる見込みです。<br>masterブランチでは次期メジャーバージョンとなる **`27.0`** 系統の開発が進行しています。</ins>
+<ins datetime="2019-08-29T15:15:00+0900">**GNU Emacs**の最新安定版は **`26.3`** (<time datetime="2019-08-28T23:35:18+0200">2019年8月28日</time>リリース)です。<br>
+masterブランチでは次期メジャーバージョンとなる **`27.0`** 系統の開発が進行しています。</ins>
 
 [GNU Emacs]: https://ja.wikipedia.org/wiki/GNU_Emacs
 [26.3-rc1]: https://lists.gnu.org/archive/html/emacs-devel/2019-08/msg00416.html
@@ -217,7 +218,7 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
   <td></td>
   <td><span class="badge badge-pill badge-secondary">26.2.90</span></td>
   <td></td>
-  <td></td>
+  <td><span class="badge badge-pill badge-primary">26.3</span></td>
   <td></td>
   <td></td>
   <td></td>
@@ -232,6 +233,7 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
 
 <table class="table"><thead><tr><th scope="col">バージョン</th><th scope="col">リリース日</th></tr></thead>
 <tbody>
+<tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2019-08/msg00577.html">Emacs 26.3</a></th><td><time datetime="2019-04-12">2019年8月28日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2019-04/msg00503.html">Emacs 26.2</a></th><td><time datetime="2019-04-12">2019年4月12日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2018-05/msg00765.html">Emacs 26.1</a></th><td><time datetime="2018-05-28">2018年5月28日</time></td></tr>
 <tr><th scope="row"><a href="http://lists.gnu.org/archive/html/info-gnu/2017-09/msg00006.html">Emacs 25.3</a></th><td><time datetime="2017-09-11">2017年9月11日</time></td></tr>
