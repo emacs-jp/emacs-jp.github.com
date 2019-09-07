@@ -1,27 +1,24 @@
 # Emacs JP
 
 ## このサイトについて
-Emacs JP は Emacs と日本語に関わるあらゆるリソースを集約することを目的としたコミュニティサイトです。
+
+**Emacs JP**は[GNU Emacs]と日本語に関わるあらゆるリソースを集約することを目的としたコミュニティサイトです。
 
 <http://emacs-jp.github.io/>
 
-## Slack
+[GNU Emacs]: https://www.gnu.org/software/emacs/
 
-<https://emacs-jp.slack.com>
+## Slack - <https://emacs-jp.slack.com>
 
-参加したい方は https://slack-emacs-jp.herokuapp.com/ からどうぞ.
+参加したい方は https://slack-emacs-jp.herokuapp.com/ からサインアップできます。
 
 ## ページ作成者向け情報
 
 ### 準備
 
-#### Python関連
+RubyおよびBundlerが必要です。詳細は[Using Jekyll as a static site generator with GitHub Pages - GitHub Help]をお読みください。
 
-```
-% pip install pygments
-```
-
-#### Ruby関連
+[Using Jekyll as a static site generator with GitHub Pages - GitHub Help]: https://help.github.com/en/articles/using-jekyll-as-a-static-site-generator-with-github-pages
 
 ```
 % git clone git@github.com:emacs-jp/emacs-jp.github.com.git
@@ -29,18 +26,11 @@ Emacs JP は Emacs と日本語に関わるあらゆるリソースを集約す�
 % bundle install
 ```
 
-#### Python3を利用する場合
-
-pygments.rbに含まれる `mentos.py`が Python3に対応していないので,
-`python`コマンドが python3である場合, 正しくページを生成できない.
-そのため Python2を使うよう切り替えるか, `mentos.py`の shebangを
-書き換える必要がある.
-
-
 ### 動作確認
-サーバーを起動し, [http://localhost:4000](http://localhost:4000)で確認.
-ポート番号を変える場合 `--port`オプションのあとにポート番号を指定する
+
+サーバーを起動し、 <http://localhost:4000> で確認。
+ポート番号を変える場合 `--port` オプションのあとにポート番号を指定してください。
 
 ```
-% jekyll serve --watch
+% bundle exec jekyll serve
 ```
