@@ -1,8 +1,13 @@
 ---
-layout: page
+layout: default
 title: 日本のEmacsユーザーのためのハブサイト
 ---
 {% include JB/setup %}
+
+<div align="center">
+  <img src="/images/emacs-jp.png" height="150" />
+  <h1>{{ page.title }}</h1>
+</div>
 
 **{{ site.title }}**はEmacsと日本語に関わるあらゆるリソースを集約することを目的としたコミュニティサイトです。  
 Emacsと{{ site.title }}についての詳細は[このサイトについて](/about.html)をごらんください。

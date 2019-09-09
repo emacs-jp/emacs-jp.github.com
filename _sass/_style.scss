@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import "base";
 
 h1, h2, h3 {
     margin: 1.5rem 0;
@@ -6,14 +7,20 @@ h1, h2, h3 {
 
 h1 {
     font-size: 2.0rem;
-    border-bottom: solid 3px;
-    padding: 0 0.1rem 1rem 0.1rem;
+    background-color: $fsf-brand-color;
+    color: white;
+    padding: 1rem 0.1rem 1rem 1rem;
 }
 
 h2 {
     font-size: 1.8rem;
-    border-bottom: solid 2px;
+    border-bottom: solid 2px $fsf-brand-color;
     padding: 0.7rem 0.1rem;
+}
+
+h3 {
+    padding-left: .8rem;
+    border-left: 4px solid $fsf-brand-color;
 }
 
 footer {
