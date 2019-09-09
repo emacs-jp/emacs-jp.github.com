@@ -1,0 +1,82 @@
+// _timeline.scss
+// タイムラインのコンポーネント
+
+@import "_base";
+@import "_mixins";
+
+$timeline-color: lighten(black, 91%);
+$component-background: white;
+
+.#{$emacs-jp-prefix}-timeline {
+    @include reset-component();
+
+    &-item {
+        position: relative;
+        padding: 0 0 20px;
+        list-style: none;
+        margin: 0;
+        font-size: $font-size-base;
+
+        &-tail {
+            position: absolute;
+            left: 4px;
+            top: 0.75em;
+            height: 100%;
+            border-left: 2px solid $timeline-color;
+        }
+
+        &-pending &-head {
+            font-size: $font-size-sm;
+        }
+
+        &-pending &-tail {
+            display: none;
+        }
+
+        &-head {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: $component-background;
+            border-radius: 100px;
+            border: 2px solid transparent;
+
+            &-blue {
+                border-color: $primary-color;
+                color: $primary-color;
+            }
+            &-red {
+                border-color: $error-color;
+                color: $error-color;
+            }
+            &-green {
+                border-color: $success-color;
+                color: $success-color;
+            }
+        }
+
+        &-content {
+            padding: 0 0 0 18px;
+            position: relative;
+            top: -($font-size-base * $line-height-base - $font-size-base) + 1px;
+            &-date {
+                font-size: $font-size-sm;
+                color: $text-disabled-color;
+            }
+        }
+
+        &:last-child {
+            .#{$emacs-jp-prefix}-timeline-item-tail {
+                border-left: 2px dotted $timeline-color;
+                display: none;
+            }
+            .#{$emacs-jp-prefix}-timeline-item-content {
+                min-height: 48px;
+            }
+        }
+    }
+
+    &-item:last-child &-item-tail {
+        display: block;
+    }
+}

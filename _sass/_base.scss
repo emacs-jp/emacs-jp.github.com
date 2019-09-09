@@ -1,0 +1,21 @@
+// _base.scss
+// 共通のスタイル
+
+$emacs-jp-prefix: "emacs-jp";
+
+// 基調カラー
+$text-color: #333;
+$text-disabled-color: lighten($text-color, 40%);
+
+// 修飾カラー
+$primary-color: #00BFFF;
+$error-color: #ea222d;
+$success-color: #9AC846;
+$emacs-brand-color: #7F5AB6;
+$fsf-brand-color: maroon;
+
+// フォント & 行
+$font-size-base: 14px;
+$font-size-lg: $font-size-base + 2px;
+$font-size-sm: $font-size-base - 2px;
+$line-height-base: 1.5;

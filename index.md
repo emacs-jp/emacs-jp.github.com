@@ -26,9 +26,16 @@ Emacsについて、
 
 ## お知らせ
 
-<ul class="posts">
+<ul class="posts emacs-jp-timeline">
   {% for post in site.posts %}
-    <li><span>{{ post.date | date: "%Y-%m-%d" }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
+    <li class="emacs-jp-timeline-item">
+      <div class="emacs-jp-timeline-item-tail"></div>
+      <div class="emacs-jp-timeline-item-head emacs-jp-timeline-item-head-red"></div>
+      <div class="emacs-jp-timeline-item-content">
+        <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a><br/>
+        <div class="emacs-jp-timeline-item-content-date">{{ post.date | date_to_string }}</div>
+      </div>
+    </li>
   {% endfor %}
 </ul>
 

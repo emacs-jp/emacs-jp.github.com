@@ -1,0 +1,13 @@
+// _mixins.scss
+// mixin
+
+@import "_base";
+
+@mixin reset-component() {
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
