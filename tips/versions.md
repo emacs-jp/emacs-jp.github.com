@@ -9,8 +9,9 @@ description: "今日にEmacsと呼ばれるGNU Emacsのバージョン表記と�
 
 歴史的には多様なEmacsがありますが、今日においてEmacsと呼ばれるのは、もっぱら**[GNU Emacs]**です。
 
-<ins datetime="2019-08-29T15:15:00+0900">**GNU Emacs**の最新安定版は **`26.3`** (<time datetime="2019-08-28T23:35:18+0200">2019年8月28日</time>リリース)です。<br>
-masterブランチでは次期メジャーバージョンとなる **`27.0`** 系統の開発が進行しています。</ins>
+<ins datetime="2020-03-04T22:30:00+0900">**GNU Emacs**の最新安定版は **`26.3`** (<time datetime="2019-08-28T23:35:18+0200">2019年8月28日</time>リリース)です。<br>
+次期安定版のプレテスト版として<time datetime="2020-03-03T13:09:29+0100">2020年3月3日</time>に**`27.0.90`**がリリースされました。<br>
+masterブランチでは次期メジャーバージョンとなる **`28.0`** 系統の開発が進行しています。</ins>
 
 [GNU Emacs]: https://ja.wikipedia.org/wiki/GNU_Emacs
 [26.3-rc1]: https://lists.gnu.org/archive/html/emacs-devel/2019-08/msg00416.html
@@ -219,6 +220,20 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
   <td><span class="badge badge-pill badge-secondary">26.2.90</span></td>
   <td></td>
   <td><span class="badge badge-pill badge-primary">26.3</span></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr><th scope="row">2020</th>
+  <td></td>
+  <td></td>
+  <td><span class="badge badge-pill badge-secondary">27.0.90</span></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
   <td></td>
   <td></td>
   <td></td>
