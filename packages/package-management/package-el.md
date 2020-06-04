@@ -30,22 +30,17 @@ load-pathの通ったディレクトリに配置してください.
 登録に手間がかかるためか, 登録されているパッケージ数は少なめであるが, 他の
 リポジトリに比べると登録されているパッケージの信頼度は高い.
 
-### [Marmalade](https://marmalade-repo.org/packages/)
-
-非公式のリポジトリ. アカウントを作れば誰でもパッケージを登録することが可能.
-MELPAにも登録されているパッケージの場合, 安定版のパッケージを Marmaladeにアップロードすると
-いう使われ方が多い.
-
 ### [MELPA](https://melpa.org/)
 
-非公式のリポジトリ. [githubのリポジトリ](https://github.com/melpa/melpa)に pull requestを
-送ることで, パッケージを登録することができる. リポジトリに変更がある度に更新されるので, 登録されて
-いるパッケージの最新版をインストールすることができる(stable版もインストールできるようにする流れが
-あるが 2013年 9月 24日時点で未実装).
+非公式のリポジトリ. [githubのリポジトリ](https://github.com/melpa/melpa)に pull request
+を送ることで, パッケージを登録することができる. リポジトリに変更がある度に更新されるので,
+登録されているパッケージの最新版をインストールすることができる.
 
 ### [MELPA-stable](https://stable.melpa.org/)
 
 安定版 MELPA. 最新のリビジョンでなく, 最新のタグのバージョンが取得できる.
+
+推奨されていない. (参考: [melpa/melpa - MELPA Stable](https://github.com/melpa/melpa#melpa-stable))
 
 ### [Org](http://orgmode.org/elpa.html)
 
