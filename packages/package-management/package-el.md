@@ -30,22 +30,17 @@ load-pathの通ったディレクトリに配置してください.
 登録に手間がかかるためか, 登録されているパッケージ数は少なめであるが, 他の
 リポジトリに比べると登録されているパッケージの信頼度は高い.
 
-### [Marmalade](https://marmalade-repo.org/packages/)
-
-非公式のリポジトリ. アカウントを作れば誰でもパッケージを登録することが可能.
-MELPAにも登録されているパッケージの場合, 安定版のパッケージを Marmaladeにアップロードすると
-いう使われ方が多い.
-
 ### [MELPA](https://melpa.org/)
 
-非公式のリポジトリ. [githubのリポジトリ](https://github.com/melpa/melpa)に pull requestを
-送ることで, パッケージを登録することができる. リポジトリに変更がある度に更新されるので, 登録されて
-いるパッケージの最新版をインストールすることができる(stable版もインストールできるようにする流れが
-あるが 2013年 9月 24日時点で未実装).
+非公式のリポジトリ. [githubのリポジトリ](https://github.com/melpa/melpa)に pull request
+を送ることで, パッケージを登録することができる. リポジトリに変更がある度に更新されるので,
+登録されているパッケージの最新版をインストールすることができる.
 
 ### [MELPA-stable](https://stable.melpa.org/)
 
 安定版 MELPA. 最新のリビジョンでなく, 最新のタグのバージョンが取得できる.
+
+推奨されていない. (参考: [melpa/melpa - MELPA Stable](https://github.com/melpa/melpa#melpa-stable))
 
 ### [Org](http://orgmode.org/elpa.html)
 
@@ -55,7 +50,7 @@ MELPAにも登録されているパッケージの場合, 安定版のパッケ�
 ## リポジトリの登録
 
 `package-archives`変数(連想リスト)にリポジトリ情報が格納されている.
-新規に追加する場合は `("リポジトリ名" . "URL")`をこの変数に `add-to-list`すればよい.
+新規に追加する場合は, この変数を `("リポジトリ名" . "URL")`のリストで上書きすればよい.
 
 
 ## 設定例
@@ -63,17 +58,12 @@ MELPAにも登録されているパッケージの場合, 安定版のパッケ�
 ```common-lisp
 (require 'package)
 
-;; MELPAを追加
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-
-;; MELPA-stableを追加
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-
-;; Marmaladeを追加
-(add-to-list 'package-archives  '("marmalade" . "http://marmalade-repo.org/packages/") t)
-
-;; Orgを追加
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+;; package-archivesを上書き
+(setq package-archives
+      '(("melpa" . "https://melpa.org/packages/")
+        ;; ("melpa-stable" . "https://stable.melpa.org/packages/")
+        ("org" . "https://orgmode.org/elpa/")
+        ("gnu" . "https://elpa.gnu.org/packages/")))
 
 ;; 初期化
 (package-initialize)
@@ -128,6 +118,10 @@ MELPAにも登録されているパッケージの場合, 安定版のパッケ�
 パッケージ更新の時間を要する. パッケージ情報が既に更新済み等の場合は,
 パッケージ情報の更新を行わない `package-list-packages-no-fetch`を実行すると良い.
 
+MELPAは頻繁に更新が行われているため, 手元のキャッシュが古くなり, インストールに失敗することがよくある.
+その場合,  `M-x package-refresh-contents` を行った後で再度インストールを実行すると良い.
+
+なお, 後述の `leaf` を使う場合, この作業を自動で行うので手元のキャッシュが古いことは考えなくて良い.
 
 ## package.elを使ったパッケージ管理例
 
@@ -144,8 +138,10 @@ package.elを使ったパッケージ管理方法について示す.
 
 ```common-lisp
 (require 'package)
-;; MELPAのみ追加
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(setq package-archives
+      '(("melpa" . "https://melpa.org/packages/")
+        ("org" . "https://orgmode.org/elpa/")
+        ("gnu" . "https://elpa.gnu.org/packages/")))
 (package-initialize)
 
 ;; パッケージ情報の更新
@@ -182,14 +178,39 @@ package.elを使ったパッケージ管理方法について示す.
     (package-install package)))
 ```
 
-
 #### NOTE
 
 `package-installed-p`関数はあくまでインストールしているかどうかを
 知らせるだけなので, アップグレードできるかどうかを検知できるわけではない.
 
+## leafを使ったパッケージ管理例
+[leaf.el](https://github.com/conao3/leaf.el)は[@conao3](https://twitter.com/conao_3)さんによって開発されたパッケージである.
+パッケージ設定で良く使われる「イディオム」をラップし, 宣言的にパッケージの設定を行うことができる.
 
-### packageの更新
+多数のキーワードが実装されているが, この項ではpackage.elに関連するキーワードである`:ensure`キーワードを解説する.
+
+キャッシュがない場合やキャッシュが古い場合のみ更新を行い, 不必要なパッケージ情報の更新は行わない.
+
+(M)ELPAからインストールしたいパッケージに `:ensure t` をつける. それだけで`leaf`が適切なS式を生成してくれる.
+
+```common-lisp
+(eval-and-compile
+  (customize-set-variable
+   'package-archives '(("org" . "https://orgmode.org/elpa/")
+                       ("melpa" . "https://melpa.org/packages/")
+                       ("gnu" . "https://elpa.gnu.org/packages/")))
+  (package-initialize)
+  (unless (package-installed-p 'leaf)
+    (package-refresh-contents)
+    (package-install 'leaf)))
+
+(leaf auto-complete :ensure t)
+(leaf magit
+  :ensure t
+  :custom ((magit-refresh-verbose . t)))
+```
+
+## packageの更新
 
 `package-list-packages`を実行し, `U`, `x`とすることで, インストール済みの
 パッケージをすべて upgradeできる.
