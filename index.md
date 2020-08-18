@@ -5,7 +5,7 @@ title: 日本のEmacsユーザーのためのハブサイト
 {% include JB/setup %}
 
 **{{ site.title }}**はEmacsと日本語に関わるあらゆるリソースを集約することを目的としたコミュニティサイトです。  
-Emacsと{{ site.title }}についての詳細は[このサイトについて](/about.html)をごらんください。
+Emacsと{{ site.title }}についての詳細は[このサイトについて](/about.html)をご覧ください。
 
 ## コンテンツ
 
