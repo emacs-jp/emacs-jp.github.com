@@ -1,4 +1,3 @@
-
 ---
 layout: page
 title: "パッケージの管理方法"
