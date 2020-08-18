@@ -12,13 +12,13 @@ group: navigation
 ### どこでも使えるテキストエディタ
 
 emacs は最もたくさんのコンピューター/OSで利用できるテキストエディタです。
-emacs は各種 UNIX 系を始め、Windows、MacOS Xさらにスマートフォンですら動作します。どこでも使えるのです。
+emacs は各種 UNIX 系を始め、Windows、MacOS X、さらにスマートフォン上ですら動作します。どこでも使えるのです。
 世の中には数多の良いテキストエディタが存在しますが、これほどまでにどこでも使えるのは唯一 emacs だけといっても過言ではありません。
 これはただ1つ emacs の使い方を覚えておけば、たくさんのコンピューター環境で即座にテキスト編集を行えることを意味します。
 
 ### 非常に高機能な emacs
 
-emacs はどこでも使えるだけでなく非常に高機能です。今ではテキストエディタにとって当たり前になった機能を、その旺盛な開発力により歴史的にもいち早く取り入れてきました。一例としては多くのファイルタイプに対応したシンタックスハイライティング、emacs lispによる拡張機構などがあげられます。加えて今でも貪欲に開発が続けられています。これは emacs の活用方法はユーザーの想像力と創造力次第で無限に広がっていることを意味しています。
+emacs はどこでも使えるだけでなく非常に高機能です。今ではテキストエディタにとって当たり前になった機能を、その旺盛な開発力により歴史的にもいち早く取り入れてきました。一例としては多くのファイルタイプに対応したシンタックスハイライティング、emacs lispによる拡張機構などが挙げられます。加えて今でも貪欲に開発が続けられています。これは emacs の活用方法はユーザーの想像力と創造力次第で無限に広がっていることを意味しています。
 
 ### {{ site.title }} の目的
 
@@ -26,9 +26,9 @@ emacs はどこでも使えるだけでなく非常に高機能です。今で�
 
 ### その他
 
-{{ site.title }} は サイト構築、issueトラッカーに [github](https://github.com)を使用しています。
-本サイトのリポジトリは[こちら](https://github.com/emacs-jp/emacs-jp.github.com)。
+{{ site.title }} は サイト構築、issueトラッカーに GitHubを使用しています。
+本サイトのリポジトリは [emacs-jp/emacs-jp.github.com](https://github.com/emacs-jp/emacs-jp.github.com) です。
 
-![emacs-jp logo](http://emacs-jp.github.io/images/emacs-jp.png)
+![emacs-jp logo](/images/emacs-jp.png)
 
 {{ site.title }}  のlogoには ([@ShingoFukuyama](https://github.com/ShingoFukuyama) さん改変)を使用しています。
