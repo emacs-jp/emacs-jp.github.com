@@ -86,7 +86,7 @@ Emacsにおける「ウィンドウ」はフレームのなかで、画面分割
 
 「メニューバー」と「ツールバー」、「スクロールバー」は通常のGUIアプリケーションで見慣れているものだと思います。
 
-黒い四角で表示されているものを「ポインタ」と呼び、現在の挿入位置を示します。
+黒い四角で表示されているものを「ポイント」と呼び、現在の挿入位置を示します。
 
 「モードライン」はウィンドウごとに作成され、現在の「バッファ名」や「メジャーモード」、「マイナーモード」のような重要な情報を始め、
 バッファの文字コード、改行コードや、バッファの未保存といった「バッファの状態」、
@@ -125,7 +125,7 @@ Emacsも他のGUIアプリケーションと同じように使うことができ
 ![](/images/tips/1d195864-dc13-4a94-9795-96d4f5255ebd.png)
 
 ### Emacsチュートリアル
-マウスポチポチでEmacsを使うとしても、ポインタ移動くらいはショートカットキーが欲しいです。
+マウスポチポチでEmacsを使うとしても、ポイント移動くらいはショートカットキーが欲しいです。
 方法はたくさんありますが、手軽な方法はEmacsに添付されたチュートリアルを見ることです。
 `M-x help-with-tutorial-spec-language Japanese` で日本語のチュートリアルを開くことができます。
 (同じものを「[Emacsチュートリアル 日本語訳](/tips/tutorial-ja.html)」でも見ることができます)
@@ -177,7 +177,7 @@ Emacsも他のGUIアプリケーションと同じように使うことができ
     - `F1 v (describe-variable)`: 変数のドキュメントを見る。
     - `F1 w (where-is)`: 「F1 f」とは逆に、関数に割り当てられているキーバインドを調べる。
 
-- ポインタ移動
+- ポイント移動
 
   | キーバインド | 操作             | コマンド名             |
   |--------------|------------------|------------------------|
@@ -211,7 +211,7 @@ Emacsも他のGUIアプリケーションと同じように使うことができ
   | M-%          | 置換         | query-replace              |
   | C-M-%        | 正規表現置換 | query-replace-regexp       |
 
-  - ※1 選択開始を指示して、その後ポインタを動かすことで範囲選択します。またEmacsでもShiftキーを使った選択は可能です。さらにEmacsでは選択領域のことを `region` (リージョン)と呼びます。
+  - ※1 選択開始を指示して、その後ポイントを動かすことで範囲選択します。またEmacsでもShiftキーを使った選択は可能です。さらにEmacsでは選択領域のことを `region` (リージョン)と呼びます。
   - ※2 Emacsではクリップボードのことを `kill-ring` といいます。
   - ※3 次の候補を表示するには、検索文字列入力後、さらに `C-s` を押します。
 
@@ -254,11 +254,11 @@ Emacsも他のGUIアプリケーションと同じように使うことができ
   | C-s                    | 保存         | 検索しようとしています。落ち着いてC-gを押してください         | C-x C-s   |
   | C-x                    | 切り取り     | 次のキーの入力を待っています。落ち着いてC-gを押してください。 | C-w       |
   | C-c                    | コピー       | 次のキーの入力を待っています。落ち着いて(ry                   | M-w       |
-  | C-a                    | 全選択       | ポインタを行頭に移動させました。逆の操作はC-e                 | C-x h     |
+  | C-a                    | 全選択       | ポイントを行頭に移動させました。逆の操作はC-e                 | C-x h     |
   | C-v                    | 貼り付け     | 1画面下に送りました。逆の操作はM-vです。            | C-y       |
   | C-z                    | アンドゥ     | タスクバーに最小化しました。(CUIコマンドのsuspendに対応)      | C-/       |
   | C-y                    | リドゥ       | kill-ringの内容を貼り付けました                               | C-g C-/   |
-  | C-f                    | 検索及び置換 | ポインタを前に一つ進めました。逆の操作はC-b                   | C-s       |
+  | C-f                    | 検索及び置換 | ポイントを前に一つ進めました。逆の操作はC-b                   | C-s       |
 
 ## Emacs設定ファイル
 ### init.elの作成
@@ -392,119 +392,7 @@ ELPAは特別なものではなく、 `package.el` が認識できるファイ�
 実際、筆者もCELPAというELPAを運用しています。([CELPA (Conao3's Emacs Lisp Package Archive) をデプロイした話 - Conao3 Note](https://conao3.com/blog/2020-d384-6424/))
 </small>
 
-さて、「leaf関連のパッケージ」と「C++の編集」とに必要なパッケージとして下記のパッケージをインストールすることとします。
-- [leaf](https://github.com/conao3/leaf.el) (インストール済み)
-  - [leaf-keywords](https://github.com/conao3/leaf-keywords.el) (インストール済み)
-    - [el-get](https://github.com/dimitri/el-get) (インストール済み)
-    - [blackout](https://github.com/raxod502/blackout) (インストール済み)
-  - [leaf-convert](https://github.com/conao3/leaf-convert.el)
-  - [leaf-tree](https://github.com/conao3/leaf-tree.el)
-  - [macrostep](https://github.com/joddie/macrostep)
-- [ivy](https://github.com/abo-abo/swiper)
-- [smartparens](https://github.com/Fuco1/smartparens)
-- [flycheck](https://github.com/flycheck/flycheck)
-- [company](https://github.com/company-mode/company-mode)
-
-さらにモダンなEmacsパッケージとして以下のパッケージについて紹介します。
-- [lsp-mode](https://github.com/emacs-lsp/lsp-mode)
-- [posframe](https://github.com/tumashu/posframe)
-
-先程の `;; ここにいっぱい設定を書く` の場所に以下の設定を書きます。
-
-```emacs-lisp
-(leaf leaf
-  :config
-  (leaf leaf-convert :ensure t)
-  (leaf leaf-tree
-    :ensure t
-    :custom ((imenu-list-size . 30)
-             (imenu-list-position . 'left))))
-
-(leaf macrostep
-  :ensure t
-  :bind (("C-c e" . macrostep-expand)))
-```
-
-迷子防止のために今回だけinit.elの全文を貼ります。一緒のコードになりましたでしょうか？
-
-```emacs-lisp
-;;; init.el --- My init.el  -*- lexical-binding: t; -*-
-
-;; Copyright (C) 2020  Naoya Yamashita
-
-;; Author: Naoya Yamashita <conao3@gmail.com>
-
-;; This program is free software: you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
-
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-
-;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-;;; Commentary:
-
-;; My init.el.
-
-;;; Code:
-
-;; this enables this running method
-;;   emacs -q -l ~/.debug.emacs.d/{{pkg}}/init.el
-(eval-and-compile
-  (when (or load-file-name byte-compile-current-file)
-    (setq user-emacs-directory
-          (expand-file-name
-           (file-name-directory (or load-file-name byte-compile-current-file))))))
-
-(eval-and-compile
-  (customize-set-variable
-   'package-archives '(("gnu"   . "https://elpa.gnu.org/packages/")
-                       ("melpa" . "https://melpa.org/packages/")
-                       ("org"   . "https://orgmode.org/elpa/")))
-  (package-initialize)
-  (unless (package-installed-p 'leaf)
-    (package-refresh-contents)
-    (package-install 'leaf))
-
-  (leaf leaf-keywords
-    :ensure t
-    :init
-    ;; optional packages if you want to use :hydra, :el-get, :blackout,,,
-    (leaf hydra :ensure t)
-    (leaf el-get :ensure t)
-    (leaf blackout :ensure t)
-
-    :config
-    ;; initialize leaf-keywords.el
-    (leaf-keywords-init)))
-
-;; ここにいっぱい設定を書く
-
-(leaf leaf
-  :config
-  (leaf leaf-convert :ensure t)
-  (leaf leaf-tree
-    :ensure t
-    :custom ((imenu-list-size . 30)
-             (imenu-list-position . 'left))))
-
-(leaf macrostep
-  :ensure t
-  :bind (("C-c e" . macrostep-expand)))
-
-(provide 'init)
-
-;; Local Variables:
-;; indent-tabs-mode: nil
-;; End:
-
-;;; init.el ends here
-```
+leafによる設定は `;; ここにいっぱい設定を書く` の場所に書き、Emacsを再起動することで反映できます。
 
 ### Emacsの標準添付パッケージの設定
 Emacsには多くの標準添付パッケージがあります。また、C言語で書かれたコア部分についても、Elispから設定ができます。
@@ -613,49 +501,30 @@ Emacsには多くの標準添付パッケージがあります。また、C言�
   選択している状態で入力したときに、regionを削除して挿入するマイナーモードです。
   おそらくこの挙動のほうが現代人の意図に合っていると思います。
 
-- dired
+- paren
   ```emacs-lisp
-  (leaf dired
-    :doc "directory-browsing commands"
-    :tag "builtin" "files"
-    :custom ((dired-recursive-copies . 'always)
-             (dired-recursive-deletes . 'always)
-             (dired-copy-preserve-time . t)
-             (dired-auto-revert-buffer . t)
-             (dired-dwim-target . t)
-             (dired-listing-switches . "-Alhv --group-directories-first")))
-
-  (leaf dired-x
-    :doc "extra Dired functionality"
-    :tag "builtin" "files" "extensions" "dired"
-    :after dired
-    :require t)
-
-  (leaf wdired
-    :doc "Rename files editing their names in dired buffers"
+  (leaf paren
+    :doc "highlight matching paren"
     :tag "builtin"
-    :after dired
-    :custom ((wdired-allow-to-change-permissions . t))
-    :bind ((dired-mode-map
-            :package dired
-            ("r" . wdired-change-to-wdired-mode))))
+    :custom ((show-paren-delay . 0.1))
+    :global-minor-mode show-paren-mode)
   ```
-  diredの設定です。 `dired-listing-switches` はlsに渡すオプションです。
-  デフォルトは `-al` ですが、ディレクトリが優先的に上に来るように設定しています。
-  BSDのlsなどでは不具合がある可能性があるので、注意してください。
+  対応するカッコを強調表示するマイナーモードです。
 
-- eldoc
+- simple
   ```emacs-lisp
-  (leaf eldoc
-      :doc "Show function arglist or variable docstring in echo area"
-      :tag "builtin"
-      :blackout t
-      :custom ((eldoc-idle-delay . 0.3)))
+  (leaf simple
+    :doc "basic editing commands for Emacs"
+    :tag "builtin" "internal"
+    :custom ((kill-ring-max . 100)
+             (kill-read-only-ok . t)
+             (kill-whole-line . t)
+             (eval-expression-print-length . nil)
+             (eval-expression-print-level . nil)))
   ```
-  関数の引数情報などをエコーエリアに出力する便利機能です。
-  `eldoc-idle-delay` を0.5から0.3にするとともに、モードラインから表示を消しています。
+  kill-ringの数を制御したり、kill-lineの挙動を変更したりします。
 
-- file
+- files
   ```emacs-lisp
   (leaf files
     :doc "file input and output commands for Emacs"
@@ -671,38 +540,6 @@ Emacsには多くの標準添付パッケージがあります。また、C言�
   Emacsで好みが分かれる設定として、バックアップファイルを開いているファイルと同じディレクトリに作成するという挙動があります。
   実際、このバックアップファイルに助けられることもあるので、 `.emacs.d` 以下にディレクトリを掘って、そこに保存するようにします。
 
-- paren
-  ```emacs-lisp
-  (leaf paren
-    :doc "highlight matching paren"
-    :tag "builtin"
-    :custom ((show-paren-delay . 0.1))
-    :global-minor-mode show-paren-mode)
-  ```
-  対応するカッコを強調表示するマイナーモードです。
-
-- saveplace
-  ```emacs-lisp
-  (leaf saveplace
-    :doc "automatically save place in files"
-    :tag "builtin"
-    :global-minor-mode save-place-mode)
-  ```
-  バッファを閉じたときのポインタの位置を、次回開いたときに復元するマイナーモードです。
-
-- simple
-  ```emacs-lisp
-  (leaf simple
-    :doc "basic editing commands for Emacs"
-    :tag "builtin" "internal"
-    :custom ((kill-ring-max . 100)
-             (kill-read-only-ok . t)
-             (kill-whole-line . t)
-             (eval-expression-print-length . nil)
-             (eval-expression-print-level . nil)))
-  ```
-  kill-ringの数を制御したり、kill-lineの挙動を変更したりします。
-
 - startup
   ```emacs-lisp
   (leaf startup
@@ -711,15 +548,6 @@ Emacsには多くの標準添付パッケージがあります。また、C言�
     :custom `((auto-save-list-file-prefix . ,(locate-user-emacs-file "backup/.saves-"))))
   ```
   自動保存されたファイルのリストです。 `.emacs.d/backup` 以下にまとめて保存するようにします。
-
-- vc-hook
-  ```emacs-lisp
-  (leaf vc-hooks
-    :doc "resident support for version-control"
-    :tag "builtin"
-    :custom ((vc-follow-symlinks . t)))
-  ```
-  Git管理されているディレクトリにおいて、シンボリックリンクを辿ることを確認なしで行います。
 
 ### leaf
 [leaf](https://github.com/conao3/leaf.el)とはパッケージ設定のためのパッケージです。
@@ -741,58 +569,6 @@ leafの場合はさらに著者によるブログ記事があるのでそれも�
 - [Emacs入門から始めるleaf.el入門 - Qiita](https://qiita.com/conao3/items/347d7e472afd0c58fbd7)
 - [2019年アップデート leaf.elで雑然としたEmacs設定ファイル「init.el」をクリーンにする - Qiita](https://qiita.com/conao3/items/db06dc1338aaf8e9b7b1)
 - [正式リリース leaf.elで雑然としたEmacs設定ファイル「init.el」をクリーンにする - Qiita](https://qiita.com/conao3/items/dc88bdadb0523ef95878)
-
-### leaf-convert
-```emacs-lisp
-(leaf leaf-convert :ensure t)
-```
-
-[leaf-convert](https://github.com/conao3/leaf-convert.el)はプレーンなElispやuse-packageからleafへの変換機能を提供します。目玉機能は2つです。
-
-- `M-x leaf-convert-replace-pop`, `M-x leaf-convert-replace-region`
-
-  選択したS式をleafブロックに変換し、 M-x leaf-convert-replace-pop は別バッファーに表示します。
-  M-x leaf-convert-replace-region は変換したleafブロックで置換します。
-
-  leafの第1引数は prog1 の第1引数に渡すことで指定できます。
-  gifではひとつのS式しか選択していませんが、複数S式を同時に選択して変換することも可能です。
-
-  ![](/images/tips/1910e495-fca3-42b1-8240-d9af77bef202.gif)
-
-- `M-x leaf-convert-insert-template`
-
-  `package.el` が持っている情報からよさげなleafブロックを生成し、挿入します。
-  ただ、自動生成された `:after` キーワードと引数については削除した方が事故が少ないかもしれません。
-
-  ![](/images/tips/c27d723a-3ad9-434c-8419-c403e00e14fb.gif)
-
-### leaf-tree
-[leaf-tree](https://github.com/conao3/leaf-tree.el)はleaf.elで書かれたinit.elを開き、 `M-x leaf-tree-mode` を実行することでクリックできるサイドバーを表示します。
-サイドバーはリアルタイムに更新され、現在のポインタがあるアイテムがハイライトされます。
-
-サイドバーのアイテムをクリックすると、そのleafブロックにジャンプします。
-
-![](/images/tips/10c8a24e-cd57-4909-bf09-8ff388b4d14d.gif)
-
-### macrostep
-```emacs-lisp
-(leaf macrostep
-  :ensure t
-  :bind (("C-c e" . macrostep-expand)))
-```
-
-leafに限らず、マクロを1ステップごとに展開することができます。
-
-標準キーバインディングでは、展開したいS式で `C-c e` すると `macro-step-mode` という特殊なモードになります。
-バッファは読み取り専用となり、 `n` と `p` でさらに展開するS式を選び、 `e` を押すと展開されます。
-`c` を押すと展開を元に巻き戻すことができます。 `C-g` で `macro-step-mode` から抜けることができます。
-
-この `macrostep` による確認はleafで何かうまくいかないときに最初に取る行動です。
-leafに何を入力したら、どんなS式が生成されるかを意識するのは重要です。
-
-leafは単なるマクロであり、雑多で典型的なS式を自動生成するためのパッケージにすぎないからです。
-
-![](/images/tips/a7661d45-1eac-4b24-8967-bb0738986037.gif)
 
 ### ivy
 ```emacs-lisp
@@ -870,7 +646,7 @@ leafは単なるマクロであり、雑多で典型的なS式を自動生成す
 
 補完が強化され、 `M-x` はこのような表示になります。
 コマンドの断片で検索できるようになるので、あえてキーバインドを与えず、 `M-x` から起動する方法も便利です。
-この補完では正規表現が使えるので、 `^leaf-convert-` をクエリーを入力すれば、 `leaf-convert` パッケージのインタラクティブ関数が一覧できます。
+この補完では正規表現が使えるので、 `^ivy-` をクエリーを入力すれば、 `ivy` パッケージのインタラクティブ関数が一覧できます。
 
 ![](/images/tips/4032d545-297e-409a-b34b-fcc27cbda901.png)
 
@@ -883,67 +659,6 @@ leafは単なるマクロであり、雑多で典型的なS式を自動生成す
 leafはimenuと統合されているので、init.elで実行するとカスタマイズしたいパッケージの場所にすぐジャンプすることができます。
 
 ![](/images/tips/c8ce6a8e-0ea7-4d67-ae39-b66d1ec7ee48.png)
-
-### smartparens
-```emacs-lisp
-(leaf smartparens
-  :when window-system
-  :doc "Automatic insertion, wrapping and paredit-like navigation with user defined pairs."
-  :url "https://github.com/Fuco1/smartparens/wiki/Working-with-expressions"
-  :url "https://github.com/Fuco1/smartparens/wiki/Tips-and-tricks"
-  :req "dash-2.13.0" "cl-lib-0.3"
-  :ensure t
-  :leaf-defer nil
-  :require smartparens-config
-  :custom ((sp-highlight-pair-overlay . nil)
-           (sp-navigate-interactive-always-progress-point . t)
-           (sp-navigate-reindent-after-up . nil))
-  :global-minor-mode smartparens-global-strict-mode
-  :bind ((smartparens-mode-map
-          ("C-M-f"    . sp-forward-sexp)
-          ("C-M-b"    . sp-backward-sexp)
-          ("C-M-n"    . sp-next-sexp)
-          ("C-M-p"    . sp-previous-sexp)
-          ("C-M-a"    . sp-beginning-of-sexp)
-          ("C-M-e"    . sp-end-of-sexp)
-          ("C-M-i"    . sp-down-sexp)
-          ("C-M-o"    . sp-backward-up-sexp)
-          ("C-M-k"    . sp-kill-sexp)
-          ("C-M-w"    . sp-copy-sexp)
-          ("C-M-t"    . sp-transpose-sexp)
-          ("C-M-SPC"  . sp-mark-sexp)
-          ("M-s"      . sp-splice-sexp)
-          ("M-r"      . sp-splice-sexp-killing-around)
-          ("M-<up>"   . nil)
-          ("M-<down>" . nil)
-          ("C-M-u"    . sp-splice-sexp-killing-backward)
-          ("C-M-d"    . sp-splice-sexp-killing-forward)
-          ("M-("      . sp-wrap-round)
-          ("M-["      . sp-wrap-square)
-          ("M-{"      . sp-wrap-qurly)
-          ("C-)"      . sp-forward-slurp-sexp)
-          ("C-}"      . sp-forward-barf-sexp)
-          ("C-("      . sp-backward-slurp-sexp)
-          ("C-{"      . sp-backward-barf-sexp)
-          ("M-S-s"    . sp-split-sexp)
-          ("M-j"      . sp-join-sexp)
-          ("M-?"      . sp-convolute-sexp)
-          ("C-c s a"  . sp-absorb-sexp)
-          ("C-c s e"  . sp-emit-sexp)
-          ("C-c s p"  . sp-convolute-sexp)
-          ("C-c s t"  . sp-transpose-hybrid-sexp)
-          ("C-c s ("  . sp-rewrap-sexp)
-          ("C-c s r"  . sp-change-inner)
-          ("C-c s s"  . sp-change-enclosing))))
-```
-[smartparens](https://github.com/Fuco1/smartparens)は煩雑なカッコ管理を自動化するパッケージです。
-Lisp界隈ではpareditがこの用途で使われていましたが、smartparensはLisp系以外の言語でも使うことができます。
-
-pareditについては[日本語のチュートリアル](https://daregada.sakuraweb.com/paredit_tutorial_ja.html)があるので参考にしてください。
-この設定ではsmartparensをpareditのように使えるように設定しているので、おおむねキーバインドは同じものになっています。
-
-注意点として、smartparensに制御されないように開きカッコを入力するには `C-q (`、削除するには範囲選択をして `C-u C-w` で削除できます。
-しかし、あえてカッコをアンバランスにする場面はほとんどありません。
 
 ### flycheck
 ```emacs-lisp
@@ -986,8 +701,7 @@ pareditについては[日本語のチュートリアル](https://daregada.sakur
          (company-search-map
           ("C-n" . company-select-next)
           ("C-p" . company-select-previous)))
-  :custom ((company-tooltip-limit . 12)
-           (company-idle-delay . 0)
+  :custom ((company-idle-delay . 0)
            (company-minimum-prefix-length . 1)
            (company-transformers . '(company-sort-by-occurrence)))
   :global-minor-mode global-company-mode)
@@ -1008,114 +722,6 @@ pareditについては[日本語のチュートリアル](https://daregada.sakur
 他エディタではインテリセンスと呼ばれているものと同一の機能を提供します。
 
 ![](/images/tips/47b4d946-d730-48f4-84e1-dab85f13a5fa.png)
-
-### lsp-mode
-Emacsのモダンな環境と題しておいて、LSP(Language Server Protocol)に触れないわけにはいきません。
-
-## 実践的なあれこれ
-### 変数の変更について
-
-パッケージで公開されている変数の変更には、全ての場合について setq ではなく custom-set-variables で設定するべきです。ネットを検索すると以下の記事があり、公開順から「結局、setqを使う方が良い選択だ」となってしまっています。
-
-- [defcustomで定義された変数はcustom-set-variablesで変更すべき？ - 2012-01-04](https://memo.sugyan.com/entry/20120104/1325604433)
-- [defcustomで定義された変数はsetqではなくcustom-set-variablesで設定すべき理由 - 2013-11-03](https://memo.sugyan.com/entry/20120104/1325604433)
-- [custom-set-variables は使わない方が良いかもしれない - 2013-12-30](https://abicky.net/2013/12/30/184239/)
-
-しかし時代は変わりました。「ユーザーが変更できる変数」はほとんどの場合で `defcustom` で宣言され、 `defvar` で宣言されたものは「パッケージの内部変数である」という慣習を多くのパッケージ開発者が守っています。
-
-`require` 前に値をセットしておくことでパッケージの動作が変更されるのは悪い設計であり、そのような設計を現在あえて採用するパッケージはありません。
-
-また、実際には `custom-set-variables` での変更は最終的に `set` を実行するので `defvar` で宣言された変数も問題なく変更できます。
-
-ということで常に `custom-set-variables` を使うべきであり、leafでは `:setq` ではなく、 `:custom` を使うほうが良いということになります。
-
-問題はcustomがinit.elに次のようなダンプを出力する点です。このダンプにより、leafの `:custom` で管理している場合、2箇所を修正する必要が生じます。
-
-```emacs-lisp
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ag-highligh-search t t)
- '(ag-reuse-buffers t t)
- '(ag-reuse-window t t)
- ;;...
- )
-```
-
-この動作については `custom-file` という変数を変えれば出力先を変更でき、そのファイルを `load` しないことで単に無視することができます。
-
-そのため、次のような設定を書いておくことはleafの全ユーザーに勧められます。
-
-```emacs-lisp
-(leaf cus-edit
-  :doc "tools for customizing Emacs and Lisp packages"
-  :tag "builtin" "faces" "help"
-  :custom `((custom-file . ,(locate-user-emacs-file "custom.el"))))
-```
-
-なお、動的な値をleafで設定するには上記のようにバッククオートとカンマを使うことによって実現します。
-
-### パッケージインストーラについて
-
-基本的に `M-x leaf-convert-insert-template` の出力を参考にします。
-MELPAかELPAに存在するパッケージは自動的に `:ensure t` が展開されます。
-`:ensure` はpacakge.elを使用してパッケージをインストールする設定です。
-
-存在しないパッケージの場合は、 `:el-get {user}/{repo}` が展開されるので、 GitHubにある場合、 `{user}` を調べて置換するだけで設定が完了します。
-例えば、point-undoは [emacsmirror/point-undo](https://github.com/emacsmirror/point-undo) にあるので、 `emacsmirror` を追加するだけで大丈夫です。
-
-しかし、 GitLabにある場合、きちんとリストにしてgitのurlを指定する必要があります。
-これはleafの使い方ではなく、どちらかというと[el-get](https://github.com/dimitri/el-get)の使い方です。
-
-![](/images/tips/f5d42290-fd35-4675-bc6e-c8fad8c39097.gif)
-
-### leafのキーワードについて
-
-leafには与えられたS式をそのまま展開するキーワードがあり、 `:preface`, `:init`, `:config` の3種類が用意されています。それぞれ以下の場所に展開されます
-
-- `:preface` は `:if`, `:when`, `:unless` の前
-- `:init` は `:if`, `:when`, `:unless` と `:require` の間
-- `:config` は `:require` の後
-
-3種類ありますが、基本的には `:config` を使用します。
-`:config` のS式はそのまま展開されるので、最初にleafを使う際はとりあえず `:config` に書いておくのは良い方針だと思います。
-
-なお、leaf-convertはleafからleafへの変換も可能なので、変換してみると、よりよいキーワードを使ったleafに変換してくれる可能性もあります。
-
-`:custom` で `nil` を設定する設定の変換結果は、ただのリストになってしまい、手で直す必要がありました。
-これは難しい問題ですが、将来的に解決したい問題ではあります。
-
-![](/images/tips/85bae766-658d-42b8-a463-bf6cbd804e5f.gif)
-
-### leaf-convertについて
-
-leaf-convertを手に入れたおかげで、use-packageの設定例があればleafに変換できるようになりました。
-例えば [Emacsモダン化計画 -かわEmacs編- - コードが読みやすいテーマ](https://qiita.com/Ladicle/items/feb5f9dce9adf89652cf#%E3%82%B3%E3%83%BC%E3%83%89%E3%81%8C%E8%AA%AD%E3%81%BF%E3%82%84%E3%81%99%E3%81%84%E3%83%86%E3%83%BC%E3%83%9E----doom-emacs-themesdoom-dracula) を参考にして、下記のuse-package設定例があるとします。
-
-```emacs-lisp
-(use-package doom-themes
-  :custom
-  (doom-themes-enable-italic t)
-  (doom-themes-enable-bold t)
-  :custom-face
-  (doom-modeline-bar ((t (:background "#6272a4"))))
-  :config
-  (load-theme 'doom-dracula t)
-  (doom-themes-neotree-config)
-  (doom-themes-org-config))
-```
-
-この場合、コード貼り付け、範囲選択、 `M-x leaf-convert-region-replace` を実行することでleafに変換できます。
-`use-package` を一度展開する必要があるので、 `use-package` をインストールする必要があることに注意する必要があります。
-
-ここで注目したいのは、これまでleaf移行で鬼門となっていた `:custom` や `:custom-face` の引数の微妙な違いをleaf-convertに任せることができるようになった点です。
-
-ただ、 `:custom-face` の変換結果の `quote` は見た目を気にすると、手で直す必要があります。
-これも難しい問題ですが、将来的に解決したいと思っています。
-
-![](/images/tips/64ee7df6-6191-46e2-aa4a-dc005e1f48c7.gif)
 
 ### 書籍
 
