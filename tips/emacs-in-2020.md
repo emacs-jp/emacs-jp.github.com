@@ -437,10 +437,11 @@ Emacsには多くの標準添付パッケージがあります。また、C言�
 
 - bytecomp
   ```emacs-lisp
-  (leaf bytecomp
-    :doc "compilation of Lisp code into byte code"
-    :tag "builtin" "lisp"
-    :custom (byte-compile-warnings . '(cl-functions)))
+  (eval-and-compile
+    (leaf bytecomp
+      :doc "compilation of Lisp code into byte code"
+      :tag "builtin" "lisp"
+      :custom (byte-compile-warnings . '(cl-functions))))
   ```
   Emacs 27.1から以前から非推奨ライブラリの `cl` パッケージを `require` すると下記のようなワーニングが表示されるようになりました。
   ```
@@ -448,6 +449,7 @@ Emacsには多くの標準添付パッケージがあります。また、C言�
   ```
 
   init.elに関するワーニングは他の人のパッケージに関するものなので、ひとまず無視してしまいます。
+  なお、少し難しい話になりますが、このleafについては他のパッケージの設定とは違い、バイトコンパイル中に評価して欲しいので `eval-and-compile` で囲み、該当の警告が出る前に記述する必要があります。
 
 - autorevert
   ```emacs-lisp
