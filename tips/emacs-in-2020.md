@@ -366,7 +366,7 @@ $ emacs --batch -f batch-byte-compile init.el
 [![](/images/tips/c39c9a99-73cb-4f42-b90b-81158397c4cb.png)](https://elpa.gnu.org/)
 [![](/images/tips/4ad8a5f8-9cd0-42fc-994b-2e6e99052f9f.png)](https://melpa.org/)
 
-Emacsは `pacakge.el` というビルトインのパッケージマネージャが標準添付されており、ELPAと呼ばれるサーバーからパッケージをダウンロードすることができます。
+Emacsは `package.el` というビルトインのパッケージマネージャが標準添付されており、ELPAと呼ばれるサーバーからパッケージをダウンロードすることができます。
 
 GNU ELPAはGNUの管理しているELPAであり、設定なしで利用できます。
 しかし、GNU ELPAに登録してもらうにはMLへの投稿が必要でハードルが高く、登録されているパッケージは多くありません。
@@ -542,7 +542,7 @@ Emacsには多くの標準添付パッケージがあります。また、C言�
 [leaf](https://github.com/conao3/leaf.el)とはパッケージ設定のためのパッケージです。
 パッケージの設定はイディオムが多く、設定のほとんどはパッケージのインストール、変数とキーバインド設定だけです。
 
-この目的で以前は[use-pacakge](https://github.com/jwiegley/use-package)が開発されましたが、文法を継ぎ足していった結果、文法の一貫性が一部で失われてしまっていました。
+この目的で以前は[use-package](https://github.com/jwiegley/use-package)が開発されましたが、文法を継ぎ足していった結果、文法の一貫性が一部で失われてしまっていました。
 また、著作権上の問題でEmacs本体への添付は事実上困難でした。そこで、筆者がスクラッチから書き直したパッケージです。
 
 GNU ELPAには既に登録されており、Emacs本体への添付を夢見ています。
