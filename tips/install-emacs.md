@@ -14,12 +14,12 @@ title: "Emacsのインストール"
 パッケージマネージャで提供されていない新しいEmacsを使用したい場合や、コア部分にパッチを当てたい場合などにおいては自分でmakeする必要があります。
 
 ## パッケージマネージャ
-### Linux
+### Windows
 
-Linux各ディストリビューションについては、それぞれのパッケージマネージャでインストールできます。
-各ディストリビューションでインストールできるバージョンについては「[repology.org - Versions for emacs](https://repology.org/project/emacs/versions)」で一覧できます。
+WindowsについてはMSYS2でインストールする方法が推奨されています。
+
 ```
-apt install install emacs
+pacman -S mingw-w64-x86_64-emacs
 ```
 
 ### macOS
@@ -30,15 +30,24 @@ macOSについてはbrewでインストールできます。
 brew cask install emacs
 ```
 
-### Windows
+### Linux
 
-WindowsについてはMSYS2でインストールする方法が推奨されています。
-
+Linux各ディストリビューションについては、それぞれのパッケージマネージャでインストールできます。
+各ディストリビューションでインストールできるバージョンについては「[repology.org - Versions for emacs](https://repology.org/project/emacs/versions)」で一覧できます。
 ```
-pacman -S mingw-w64-x86_64-emacs
+apt install install emacs
 ```
 
 ## make
+
+### Windows
+
+Windowsにおけるmakeについては外部記事が詳しいです。([Qiita - Windwos版 Emacs 27.1 / HEAD コンパイル手順メモ](https://qiita.com/kawabata@github/items/76239e8f39eb8ed4a79d))
+
+### macOS
+
+macOSにおけるmakeについては外部記事が詳しいです。([Qiita - Emacs-25.3/26.3(Mojave, Catalina)/27.1/28.x にインラインパッチをあてて使う（macOS）](https://qiita.com/takaxp/items/e07bb286d80fa9dd8e05))
+
 ### Linux
 Dockerfileで示します。ローカルで立てて、開発環境とする意図のものです。
 参照用であり、このまま利用することは想定していません。
@@ -477,11 +486,3 @@ docker run -it --rm -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME:/home/user/host -e
   #   Does Emacs support legacy unexec dumping?               no
   #   Which dumping strategy does Emacs use?                  pdumper
   ```
-
-### macOS
-
-macOSにおけるmakeについては外部記事が詳しいです。([Qiita - Emacs-25.3/26.3(Mojave, Catalina)/27.1/28.x にインラインパッチをあてて使う（macOS）](https://qiita.com/takaxp/items/e07bb286d80fa9dd8e05))
-
-### Windows
-
-Windowsにおけるmakeについては外部記事が詳しいです。([Qiita - Windwos版 Emacs 27.1 / HEAD コンパイル手順メモ](https://qiita.com/kawabata@github/items/76239e8f39eb8ed4a79d))
