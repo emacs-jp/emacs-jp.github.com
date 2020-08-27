@@ -2,6 +2,7 @@
 layout: page
 title: "Building Emacs for Linux"
 description: "Linuxでのビルド方法"
+redirect_to: /tips/install-emacs
 ---
 {% include JB/setup %}
 
