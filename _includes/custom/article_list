@@ -18,19 +18,11 @@ Usage:
         => 'post.next.date'
 -->{% endcomment %}
 
-{%- assign article_list_grouped
-             = article_list
-               | group_by_exp: "item", "item.date | date: '%Y'" %}
-
-{%- for year_post in article_list_grouped -%}
-  {{ year_post.date }}
-  <h2>{{ year_post.name }}</h2>
-  <ul>
-  {%- for post in year_post.items -%}
+<ul>
+  {%- for post in article_list -%}
     <li>
       <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a>
       <small>{{ post.date | date: "%Y-%m-%d" }}</small>
     </li>
   {%- endfor -%}
-  </ul>
-{%- endfor -%}
+</ul>
