@@ -1,8 +1,7 @@
 ---
 layout: page
 title: init.el読書会
-redirect_to:
-  - https://emacs-jp.github.io/reading-init.el/
+redirect_to: https://emacs-jp.github.io/reading-init.el/
 ---
 {% include JB/setup %}
 
