@@ -1,0 +1,29 @@
+{% comment %}<!--
+This file is partial with customize on JB/article_list.
+
+Collate_posts helper. Collated posts by year and month.
+Usage:
+  1) assign the 'article_list' variable to a valid array of posts.
+  2) include JB/article_list
+  example:
+    {% assign article_list = site.posts %}
+    {% include JB/article_list %}
+
+  Ordering:
+    Posts are displayed in reverse chronological order.
+    For normal chronological order:
+      1) Change the for loop to this:
+        => 'for post in site.posts reversed'
+      2) Next make sure to change 'post.previous.date' to:
+        => 'post.next.date'
+-->{% endcomment %}
+
+<ul>
+  {%- for post in article_list -%}
+    <li>
+      <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a>
+      <small>{{ post.date | date: "%Y-%m-%d" }}</small>
+    </li>
+  {%- endfor -%}
+</ul>
+{%- assign article_list = nil -%}
