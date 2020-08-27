@@ -7,9 +7,11 @@ maint: true
 ---
 {% include JB/setup %}
 
+<h2>Blog</h2>
 {% assign posts_collate = site.posts %}
 {% include JB/posts_collate %}
 
+<h2>Article</h2>
 <ul>
     {%- assign pages_list = site.pages
     | where_exp: 'item', 'item.redirect_to == nil'
