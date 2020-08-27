@@ -12,11 +12,10 @@ maint: true
 {% include custom/article_list %}
 
 <h2>Article</h2>
-<ul>
-    {%- assign pages_list = site.pages
-    | where_exp: 'item', 'item.redirect_to == nil'
-    | where_exp: 'item', 'item.maint == nil'
-    | sort: 'title' -%}
-    {%- include JB/pages_list %}
-</ul>
+{%- assign pages_list
+      = site.pages
+        | where_exp: 'item', 'item.redirect_to == nil'
+        | where_exp: 'item', 'item.maint == nil'
+        | sort: 'title' -%}
+{%- include custom/pages_list %}
 
