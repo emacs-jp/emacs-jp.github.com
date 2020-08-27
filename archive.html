@@ -8,8 +8,8 @@ maint: true
 {% include JB/setup %}
 
 <h2>Blog</h2>
-{% assign posts_collate = site.posts %}
-{% include JB/posts_collate %}
+{% assign article_list = site.posts %}
+{% include custom/article_list %}
 
 <h2>Article</h2>
 <ul>
