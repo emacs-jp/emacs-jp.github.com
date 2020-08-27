@@ -26,3 +26,4 @@ Usage:
     </li>
   {%- endfor -%}
 </ul>
+{%- assign article_list = nil -%}
