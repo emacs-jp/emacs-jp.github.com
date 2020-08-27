@@ -2,6 +2,7 @@
 layout: page
 title: "Emacs for Beginners"
 description: "Emacsビギナーのためのページ"
+redirect_to: /tips/emacs-in-2020
 ---
 {% include JB/setup %}
 
