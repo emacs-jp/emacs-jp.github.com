@@ -27,7 +27,10 @@ Usage:
   <h2>{{ year_post.name }}</h2>
   <ul>
   {%- for post in year_post.items -%}
-    <li><span>{{ post.date | date: "%B %e, %Y" }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
+    <li>
+      <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a>
+      <small>{{ post.date | date: "%Y-%m-%d" }}</small>
+    </li>
   {%- endfor -%}
   </ul>
 {%- endfor -%}
