@@ -49,7 +49,7 @@ CUI版では設定できないキーバインドの組み合わせがある他�
 
 ![](/images/tips/9407a43e-a53d-4ca5-9015-c6c8991395bf.png)
 
-CUIからEmacsを起動するときは、Emacsに起動時オプションを与えて起動するときです。([Appendix C Emacs呼び出しに対するコマンドライン引数 - Emacs Manual](https://ayatakesi.github.io/emacs/27.1/emacs-ja.html#Emacs-Invocation))
+CUIからEmacsを起動する必要があるのは、Emacsに起動時オプションを与えたい場合です。([Appendix C Emacs呼び出しに対するコマンドライン引数 - Emacs Manual](https://ayatakesi.github.io/emacs/27.1/emacs-ja.html#Emacs-Invocation))
 
 知っておくと便利な起動時オプションは以下の通りです。
 
