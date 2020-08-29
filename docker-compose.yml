@@ -1,0 +1,13 @@
+## docker-compose.yml
+
+version: '3'
+
+services:
+  main:
+    build: .
+    volumes:
+      - .:/work
+    ports:
+      - 4000:4000
+    working_dir: /work
+    command: jekyll serve --host 0.0.0.0

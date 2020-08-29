@@ -100,8 +100,13 @@ end # task :page
 
 desc "Launch preview environment"
 task :preview do
-  system "jekyll serve -w"
+  sh "jekyll serve -w"
 end # task :preview
+
+desc "Build static web page via jekyll"
+task :build do
+  sh "jekyll build --trace"
+end
 
 # Public: Alias - Maintains backwards compatability for theme switching.
 task :switch_theme => "theme:switch"
