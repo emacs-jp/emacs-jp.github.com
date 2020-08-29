@@ -49,7 +49,7 @@ CUI版では設定できないキーバインドの組み合わせがある他�
 
 ![](/images/tips/9407a43e-a53d-4ca5-9015-c6c8991395bf.png)
 
-CUIからEmacsを起動するときは、Emacsに起動時オプションを与えて起動するときです。([Appendix C Emacs呼び出しに対するコマンドライン引数 - Emacs Manual](https://ayatakesi.github.io/emacs/27.1/emacs-ja.html#Emacs-Invocation))
+CUIからEmacsを起動する必要があるのは、Emacsに起動時オプションを与えたい場合です。([Appendix C Emacs呼び出しに対するコマンドライン引数 - Emacs Manual](https://ayatakesi.github.io/emacs/27.1/emacs-ja.html#Emacs-Invocation))
 
 知っておくと便利な起動時オプションは以下の通りです。
 
@@ -744,5 +744,5 @@ Emacsについて、日本語でのコミュニケーションができる[Slack
 ぜひ参加して頂ければと思います。
 
 先述した通り、Emacsには5000近いパッケージがあります。
-好みなパッケージもあれば、少し自分の意図とは動作が違うパッケージもあると思います。
+好みのパッケージもあれば、少し自分の意図とは動作が違うパッケージもあると思います。
 Emacsという自由なエディタのもとで、自由なアイデアを実現して頂ければと思います。
