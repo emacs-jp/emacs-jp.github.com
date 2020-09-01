@@ -6,8 +6,8 @@ services:
   main:
     build: .
     volumes:
-      - .:/work
+      - ./docs:/docs
     ports:
       - 4000:4000
-    working_dir: /work
+    working_dir: /docs
     command: jekyll serve --host 0.0.0.0

@@ -1,7 +1,4 @@
-/.sass-cache/
-_site/*
-_theme_packages/*
-/.jekyll-metadata
+## .gitignore
 
 Thumbs.db
 .DS_Store
