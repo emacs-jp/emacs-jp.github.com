@@ -1,6 +1,6 @@
 ---
 layout: page
-author: shohex
+author: syohex
 title: "helm-open-github"
 description: "Githubユーティリティ"
 category: "helm"

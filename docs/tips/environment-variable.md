@@ -1,6 +1,6 @@
 ---
 layout: page
-author: shohex
+author: syohex
 title: "環境変数の設定"
 description: "環境変数の設定"
 category: "shell"

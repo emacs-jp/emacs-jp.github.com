@@ -1,6 +1,6 @@
 ---
 layout: page
-author: shohex
+author: syohex
 title: "helm-gtags"
 description: "GNU Globalの helmインタフェース"
 category: "helm"

@@ -1,6 +1,6 @@
 ---
 layout: page
-author: shohex
+author: syohex
 title: "Goプログラミングのための環境構築"
 description: "Goプログラミングのための環境構築"
 category: "env"
