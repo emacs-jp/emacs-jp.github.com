@@ -1,6 +1,6 @@
 ---
 layout: page
-author: shohex
+author: syohex
 title: "elisp-slime-nav"
 description: "Slime-style navigation for Emacs Lisp"
 category: "elisp"

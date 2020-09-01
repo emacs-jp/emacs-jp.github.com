@@ -1,6 +1,6 @@
 ---
 layout: page
-author: shohex
+author: syohex
 title: "anzu"
 description: "検索情報をモードラインに表示"
 category: "mode-line"

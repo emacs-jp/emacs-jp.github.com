@@ -1,6 +1,6 @@
 ---
 layout: page
-author: shohex
+author: syohex
 title: package
 description: "パッケージ管理ツール"
 category: "package"

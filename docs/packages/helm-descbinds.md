@@ -1,6 +1,6 @@
 ---
 layout: page
-author: shohex
+author: syohex
 title: "helm-descbinds"
 description: "describe-bindingsの helmインタフェース"
 category: "helm"
