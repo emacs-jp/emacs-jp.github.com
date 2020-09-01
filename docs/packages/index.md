@@ -7,15 +7,16 @@ descrition: 'package.el でinstallできるおすすめ melpa package紹介'
 
 Emacs24に標準搭載されている `package.el` を利用してインストール可能なパッケージの中からおすすめのパッケージを紹介します。
 
-{% for page in site.pages %}
-  {% if page.package %}
-    {% if page.redirect_to %}
-    {% else %}
+{% assign pages_list
+     = site.pages
+        | where_exp: 'item', 'item.dir == "/packages/"'
+        | where_exp: 'item', 'item.name != "index.md"'
+        | where_exp: 'item', 'item.redirect_to == nil' %}
 
+{% for page in pages_list %}
 * [{{ page.title }}]({{ page.url }})
    {% for tag in page.tags %}<span class="label label-info">{{ tag }}</span> {% endfor %}
   <br>{{ page.description }}
-
-    {% endif %}
-  {% endif %}
 {% endfor %}
+
+{% assign pages_list = nil %}

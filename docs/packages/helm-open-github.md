@@ -2,7 +2,6 @@
 layout: page
 title: "helm-open-github"
 description: "Githubユーティリティ"
-package: true
 category: "helm"
 tags: ["helm","github"]
 ---

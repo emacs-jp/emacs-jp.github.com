@@ -2,7 +2,6 @@
 layout: page
 title: "helm-descbinds"
 description: "describe-bindingsの helmインタフェース"
-package: true
 category: "helm"
 tags: ["helm"]
 ---

@@ -2,7 +2,6 @@
 layout: page
 title: "elisp-slime-nav"
 description: "Slime-style navigation for Emacs Lisp"
-package: true
 category: "elisp"
 tags: ["programming","elisp"]
 ---

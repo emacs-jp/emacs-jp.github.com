@@ -2,7 +2,6 @@
 layout: page
 title: "helm-gtags"
 description: "GNU Globalの helmインタフェース"
-package: true
 category: "helm"
 tags: ["helm","tagjump"]
 ---

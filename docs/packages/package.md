@@ -2,7 +2,6 @@
 layout: page
 title: package
 description: "パッケージ管理ツール"
-package: true
 category: "package"
 tags: ["package"]
 ---

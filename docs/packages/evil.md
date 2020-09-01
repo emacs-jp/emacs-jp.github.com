@@ -2,7 +2,6 @@
 layout: page
 title: "evil"
 description: "Vimのエミュレート"
-package: true
 category: "evil"
 tags: ["evil"]
 ---
