@@ -91,6 +91,7 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
  * [Emacs 23 アンチニュース](https://ayatakesi.github.io/emacs/24.5/Antinews.html)
  * [Emacs 24 アンチニュース](https://ayatakesi.github.io/emacs/25.2/html/Antinews.html)
  * [Emacs 25 アンチニュース](https://ayatakesi.github.io/emacs/26.1/html/Antinews.html)
+ * [Emacs 26 アンチニュース](https://ayatakesi.github.io/emacs/27.1/html/Antinews.html)
 
 
 以下の表は2011年(Emacs 23.3)以降のGNU Emacsのリリースカレンダーです。
