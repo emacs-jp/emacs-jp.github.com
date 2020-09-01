@@ -5,6 +5,8 @@ title: package
 description: "パッケージ管理ツール"
 category: "package"
 tags: ["package"]
+date: 2013-09-25
+last_modified: 2020-06-05
 ---
 {% include JB/setup %}
 

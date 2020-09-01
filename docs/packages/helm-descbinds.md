@@ -5,6 +5,8 @@ title: "helm-descbinds"
 description: "describe-bindingsの helmインタフェース"
 category: "helm"
 tags: ["helm"]
+date: 2013-05-06
+last_modified: 2013-05-09
 ---
 {% include JB/setup %}
 

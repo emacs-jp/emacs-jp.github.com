@@ -5,6 +5,8 @@ title: "ac-ispell.el"
 description: "ispellの auto-complete source"
 category: "auto-complete"
 tags: ["auto-complete"]
+date: 2014-04-15
+last_modified: 2014-04-15
 ---
 {% include JB/setup %}
 

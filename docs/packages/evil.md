@@ -5,6 +5,8 @@ title: "evil"
 description: "Vimのエミュレート"
 category: "evil"
 tags: ["evil"]
+date: 2014-09-09
+last_modified: 2020-05-28
 ---
 {% include JB/setup %}
 

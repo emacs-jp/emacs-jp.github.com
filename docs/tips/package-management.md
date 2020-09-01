@@ -3,6 +3,8 @@ layout: page
 author: sabottenda
 title: "パッケージの管理方法"
 description: "Package Management"
+date: 2013-04-01
+last_modified: 2014-05-14
 ---
 {% include JB/setup %}
 

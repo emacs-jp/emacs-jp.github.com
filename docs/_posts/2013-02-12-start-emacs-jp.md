@@ -3,6 +3,8 @@ layout: post
 author: kozo2
 title: Emacs JPはじめます
 tags: [announcement]
+date: 2013-02-12
+last_modified: 2013-02-12
 ---
 {% include JB/setup %}
 

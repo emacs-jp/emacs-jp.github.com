@@ -5,6 +5,8 @@ title: "git-gutter.el"
 description: "GitGutterの Emacs版"
 category: "vcs"
 tags: ["vcs"]
+date: 2013-03-17
+last_modified: 2020-06-05
 ---
 {% include JB/setup %}
 

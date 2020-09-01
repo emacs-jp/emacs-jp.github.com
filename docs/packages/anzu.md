@@ -5,6 +5,8 @@ title: "anzu"
 description: "検索情報をモードラインに表示"
 category: "mode-line"
 tags: ["mode-line", "search"]
+date: 2013-10-14
+last_modified: 2013-10-27
 ---
 {% include JB/setup %}
 

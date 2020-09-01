@@ -5,6 +5,8 @@ title: "パッケージフォーマット"
 description: "Package Format"
 category: "package"
 tags: ["package", "tips"]
+date: 2013-10-11
+last_modified: 2013-10-12
 ---
 {% include JB/setup %}
 
