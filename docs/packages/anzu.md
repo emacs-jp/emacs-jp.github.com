@@ -1,8 +1,8 @@
 ---
 layout: page
+author: shohex
 title: "anzu"
 description: "検索情報をモードラインに表示"
-package: true
 category: "mode-line"
 tags: ["mode-line", "search"]
 ---

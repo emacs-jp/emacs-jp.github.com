@@ -1,8 +1,8 @@
 ---
 layout: page
+author: shohex
 title: package
 description: "パッケージ管理ツール"
-package: true
 category: "package"
 tags: ["package"]
 ---

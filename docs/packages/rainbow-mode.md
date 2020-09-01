@@ -2,7 +2,6 @@
 layout: page
 title: "rainbow-mode"
 description: "色名, カラーコードの視覚化"
-package: true
 category: "face"
 tags: ["face"]
 ---

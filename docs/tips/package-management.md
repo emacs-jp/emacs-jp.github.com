@@ -1,8 +1,8 @@
 ---
 layout: page
+author: sabottenda
 title: "パッケージの管理方法"
 description: "Package Management"
-redirect_to: /tips/package-management
 ---
 {% include JB/setup %}
 
@@ -49,14 +49,3 @@ redirect_to: /tips/package-management
 
 ## 参考リンク
 * [Issue #31](https://github.com/emacs-jp/emacs-jp.github.com/issues/31)
-
-<!--
-This file has been left for redirection.
-Please do not add any content.
-Redirect to /tips/package-management.
-This file will be deleted after 6 month (2020/03/01).
-
-;; Local Variables:
-;; buffer-read-only: t
-;; End:
--->

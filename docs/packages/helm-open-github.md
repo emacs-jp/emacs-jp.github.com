@@ -1,10 +1,10 @@
 ---
 layout: page
+author: shohex
 title: "helm-open-github"
 description: "Githubユーティリティ"
-package: true
 category: "helm"
-tags: ["helm","github"]
+tags: ["helm", "github"]
 ---
 {% include JB/setup %}
 

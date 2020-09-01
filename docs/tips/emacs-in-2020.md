@@ -1,5 +1,6 @@
 ---
 layout: page
+author: conao3
 title: "2020年代のEmacs入門"
 ---
 {% include JB/setup %}

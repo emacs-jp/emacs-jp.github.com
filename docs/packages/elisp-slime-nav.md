@@ -1,10 +1,10 @@
 ---
 layout: page
+author: shohex
 title: "elisp-slime-nav"
 description: "Slime-style navigation for Emacs Lisp"
-package: true
 category: "elisp"
-tags: ["programming","elisp"]
+tags: ["programming", "elisp"]
 ---
 {% include JB/setup %}
 

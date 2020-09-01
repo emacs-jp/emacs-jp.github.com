@@ -1,8 +1,8 @@
 ---
 layout: page
+author: shohex
 title: "ac-ispell.el"
 description: "ispellの auto-complete source"
-package: true
 category: "auto-complete"
 tags: ["auto-complete"]
 ---

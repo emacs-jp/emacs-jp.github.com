@@ -1,8 +1,8 @@
 ---
 layout: page
+author: shohex
 title: "evil"
 description: "Vimのエミュレート"
-package: true
 category: "evil"
 tags: ["evil"]
 ---

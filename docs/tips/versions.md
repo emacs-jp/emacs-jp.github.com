@@ -1,5 +1,6 @@
 ---
 layout: page
+author: zonuexe
 title: "Emacsのバージョン"
 description: "今日にEmacsと呼ばれるGNU Emacsのバージョン表記とリリースの種類、過去の更新履歴についてまとめます。"
 ---

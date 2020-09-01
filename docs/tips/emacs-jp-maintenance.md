@@ -1,8 +1,9 @@
 ---
 layout: page
+author: eiel
 title: "Emacs JP で管理しているパッケージ"
 description: "Emacs JP で管理しているパッケージ"
-redirect_to: tips/emacs-jp-maintenance
+tags: ["tips"]
 ---
 {% include JB/setup %}
 
@@ -29,14 +30,3 @@ fork されて独自に修正されていることもありますが、修正が
 ## {{ site.title }}で管理して欲しいパッケージの登録方法
 
 [Issues](https://github.com/emacs-jp/issues/issues) に登録してください。
-
-<!--
-This file has been left for redirection.
-Please do not add any content.
-Redirect to /tips/emacs-jp-maintenance.
-This file will be deleted after 6 month (2020/03/01).
-
-;; Local Variables:
-;; buffer-read-only: t
-;; End:
--->
