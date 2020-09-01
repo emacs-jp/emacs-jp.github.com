@@ -5,17 +5,17 @@ title: 日本のEmacsユーザーのためのハブサイト
 {% include JB/setup %}
 
 **{{ site.title }}**はEmacsと日本語に関わるあらゆるリソースを集約することを目的としたコミュニティサイトです。  
-Emacsと{{ site.title }}についての詳細は[このサイトについて](/about.html)をご覧ください。
+Emacsと{{ site.title }}についての詳細は[このサイトについて](/about)をご覧ください。
 
 ## コンテンツ
 
-* [2020年代のEmacs入門](/tips/emacs-in-2020.html)
-* [**{{ site.title }}**で管理しているパッケージ](/maintenances/)
-* [Emacsのバージョン](/tips/versions.html)
-* [おすすめパッケージ紹介](/packages/)
+* [2020年代のEmacs入門](/tips/emacs-in-2020)
+* [**{{ site.title }}**で管理しているパッケージ](/maintenances)
+* [Emacsのバージョン](/tips/versions)
+* [おすすめパッケージ紹介](/packages)
 * helm とは
 * いろいろな日本語入力環境
-* [Linuxでのbuild方法](/build-linux.html)
+* [Linuxでのbuild方法](/build-linux)
 * [EmacsとVimの機能対応表](https://docs.google.com/spreadsheets/d/184i0Cmnfd0CdmPw2AVMMvmmnl7Gz5ryPqTaxnpIyqRE/edit?usp=sharing)
 
 ## お知らせ
