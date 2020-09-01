@@ -2,7 +2,6 @@
 layout: page
 title: "パッケージフォーマット"
 description: "Package Format"
-package: true
 category: "package"
 tags: ["package", "tips"]
 ---

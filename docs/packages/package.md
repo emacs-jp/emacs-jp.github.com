@@ -1,6 +1,6 @@
 ---
 layout: page
-title: package.el
+title: package
 description: "パッケージ管理ツール"
 package: true
 category: "package"
