@@ -1,9 +1,10 @@
 ---
 layout: page
-title: "Goプログラミングの環境構築"
-description: "Goプログラミングの環境構築"
-category: "programming"
-tags: ["go", "golang"]
+author: shohex
+title: "Goプログラミングのための環境構築"
+description: "Goプログラミングのための環境構築"
+category: "env"
+tags: ["env", "go", "golang"]
 ---
 {% include JB/setup %}
 

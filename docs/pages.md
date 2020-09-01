@@ -6,6 +6,7 @@ maint: true
 redirect_to: /archive
 ---
 {% include JB/setup %}
+
 <h2>All Pages</h2>
 <ul>
 {%- assign pages_list = site.pages

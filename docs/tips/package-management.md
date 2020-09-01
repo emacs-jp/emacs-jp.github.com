@@ -6,7 +6,6 @@ description: "Package Management"
 ---
 {% include JB/setup %}
 
-
 ## パッケージマネージャ
 ### package.el
 * Emacs24から標準添付

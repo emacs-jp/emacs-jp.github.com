@@ -1,5 +1,6 @@
 ---
 layout: page
+author: shohex
 title: "helm-descbinds"
 description: "describe-bindingsの helmインタフェース"
 category: "helm"

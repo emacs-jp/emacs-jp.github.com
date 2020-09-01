@@ -1,5 +1,6 @@
 ---
 layout: page
+author: shohex
 title: "git-gutter.el"
 description: "GitGutterの Emacs版"
 category: "vcs"

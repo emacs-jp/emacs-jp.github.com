@@ -1,5 +1,6 @@
 ---
 layout: page
+author: shohex
 title: "helm-ag"
 description: "The Silver Seacherの helmインタフェース"
 category: "helm"

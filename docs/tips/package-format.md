@@ -1,5 +1,6 @@
 ---
 layout: page
+author: shohex
 title: "パッケージフォーマット"
 description: "Package Format"
 category: "package"

@@ -1,5 +1,6 @@
 ---
 layout: page
+author: shohex
 title: "ac-ispell.el"
 description: "ispellの auto-complete source"
 category: "auto-complete"

@@ -1,5 +1,6 @@
 ---
 layout: post
+author: kozo2
 title: Emacs JPはじめます
 tags: [announcement]
 ---

@@ -1,5 +1,6 @@
 ---
 layout: page
+author: conao3
 title: "Emacsチュートリアル 日本語訳"
 ---
 {% include JB/setup %}

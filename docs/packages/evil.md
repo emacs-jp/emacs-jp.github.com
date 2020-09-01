@@ -1,5 +1,6 @@
 ---
 layout: page
+author: shohex
 title: "evil"
 description: "Vimのエミュレート"
 category: "evil"

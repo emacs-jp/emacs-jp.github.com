@@ -1,7 +1,7 @@
 ---
 layout: page
-title: 'パッケージ紹介'
-descrition: 'package.el でinstallできるおすすめ melpa package紹介'
+title: "Emacsパッケージ紹介"
+descrition: "package.elでinstallできるおすすめpackage紹介"
 ---
 {% include JB/setup %}
 

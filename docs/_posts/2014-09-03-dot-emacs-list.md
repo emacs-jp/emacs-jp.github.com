@@ -3,7 +3,6 @@ layout: post
 title: issue#15に投稿されたinit.elのリストをまとめました
 tags: [init.el, dot-emacs]
 ---
-
 {% include JB/setup %}
 
 # [issue\#15 .emacs 晒してる方](https://github.com/emacs-jp/emacs-jp.github.com/issues/15)に投稿されたinit.elのリストをまとめました。

@@ -1,5 +1,6 @@
 ---
 layout: page
+author: conao3
 title: "Emacsのインストール"
 ---
 {% include JB/setup %}

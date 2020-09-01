@@ -1,7 +1,9 @@
 ---
 layout: page
+author: eiel
 title: "Emacs JP で管理しているパッケージ"
 description: "Emacs JP で管理しているパッケージ"
+tags: ["tips"]
 ---
 {% include JB/setup %}
 

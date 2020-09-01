@@ -6,7 +6,6 @@ redirect_to: /tips/package-management
 ---
 {% include JB/setup %}
 
-
 ## パッケージマネージャ
 ### package.el
 * Emacs24から標準添付
