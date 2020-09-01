@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 2019年Emacs JPを再始動します
-tags : [announcement]
+tags: [announcement]
 author: zonuexe
 ---
 {% include JB/setup %}

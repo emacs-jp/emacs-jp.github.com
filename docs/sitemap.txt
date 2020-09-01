@@ -1,6 +1,6 @@
 ---
 # Remember to set production_url in your _config.yml file!
-title : Sitemap
+title: Sitemap
 maint: true
 ---
 {% for page in site.pages %}

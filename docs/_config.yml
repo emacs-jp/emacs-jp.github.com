@@ -25,8 +25,10 @@ kramdown:
   hard_wrap: false
   math_engine: mathjax
   syntax_highlighter: rouge
+
 gist:
   noscript: false
+
 timezone: Asia/Tokyo
 plugins: # https://help.github.com/articles/configuring-jekyll-plugins/#optional-plugins
  - jekyll-feed
@@ -40,15 +42,16 @@ plugins: # https://help.github.com/articles/configuring-jekyll-plugins/#optional
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
 #
-title : Emacs JP
+title: Emacs JP
 description: 日本のEmacsユーザーのためのハブサイト
 tagline: 日本のEmacsユーザーのためのハブサイト
-author :
-  name : Emacs JP
-  #email : blah@email.test
-  github : emacs-jp
-  twitter : emacs_jp
-  #feedburner : feedname
+author:
+  name: Emacs JP
+  # email: blah@email.test
+  github: emacs-jp
+  twitter: emacs_jp
+  # feedburner: feedname
+
 twitter:
   username: emacs_jp
   card: summary
@@ -67,12 +70,11 @@ defaults:
 # Else if you are pushing to username.github.com, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
-production_url : https://emacs-jp.github.io
+production_url: https://emacs-jp.github.io
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
-#
-JB :
-  version : 0.2.13
+JB:
+  version: 0.2.13
 
   # All links will be namespaced by BASE_PATH if defined.
   # Links in your website should always be prefixed with {{BASE_PATH}}
@@ -96,7 +98,7 @@ JB :
   #   - Only the following values are falsy: ["", null, false]
   #   - When setting BASE_PATH it must be a valid url.
   #     This means always setting the protocol (http|https) or prefixing with "/"
-  BASE_PATH : false
+  BASE_PATH: false
 
   # By default, the asset_path is automatically defined relative to BASE_PATH plus the enabled theme.
   # ex: [BASE_PATH]/assets/themes/[THEME-NAME]
@@ -105,30 +107,30 @@ JB :
   # ex:
   #   http://s3.amazonaws.com/yoursite/themes/watermelon
   #   /assets
-  #
-  ASSET_PATH : false
+
+  ASSET_PATH: false
 
   # These paths are to the main pages Jekyll-Bootstrap ships with.
   # Some JB helpers refer to these paths; change them here if needed.
-  #
+
   archive_path: /archive.html
-  categories_path : /categories.html
-  tags_path : /tags.html
+  categories_path: /categories.html
+  tags_path: /tags.html
 
   # Settings for comments helper
   # Set 'provider' to the comment provider you want to use.
   # Set 'provider' to false to turn commenting off globally.
   #
-  # comments :
-  #   provider : disqus
-  #   disqus :
-  #     short_name : jekyllbootstrap
-  #   livefyre :
-  #     site_id : 123
-  #   intensedebate :
-  #     account : 123abc
-  #   facebook :
-  #     appid : 123
+  # comments:
+  #   provider: disqus
+  #   disqus:
+  #     short_name: jekyllbootstrap
+  #   livefyre:
+  #     site_id: 123
+  #   intensedebate:
+  #     account: 123abc
+  #   facebook:
+  #     appid: 123
   #     num_posts: 5
   #     width: 580
   #     colorscheme: light
@@ -137,43 +139,43 @@ JB :
   # Set 'provider' to the analytics provider you want to use.
   # Set 'provider' to false to turn analytics off globally.
   #
-  # analytics :
-  #   provider : google
-  #   google :
-  #       tracking_id : 'UA-123-12'
-  #   getclicky :
-  #     site_id :
-  #   mixpanel :
-  #       token : '_MIXPANEL_TOKEN_'
+  # analytics:
+  #   provider: google
+  #   google:
+  #       tracking_id: 'UA-123-12'
+  #   getclicky:
+  #     site_id:
+  #   mixpanel:
+  #       token: '_MIXPANEL_TOKEN_'
 
   # Settings for sharing helper.
   # Sharing is for things like tweet, plusone, like, reddit buttons etc.
   # Set 'provider' to the sharing provider you want to use.
   # Set 'provider' to false to turn sharing off globally.
   #
-  # sharing :
-  #   provider : all
-  #   twitter :
-  #     size : medium
-  #     via :
-  #     count : horizontal
+  # sharing:
+  #   provider: all
+  #   twitter:
+  #     size: medium
+  #     via:
+  #     count: horizontal
   #     hashtag: emacsjp
-  #   facebook :
-  #     layout : button_count
-  #     faces : false
-  #     width : 90
-  #   googleplus :
-  #     size : medium
-  #     width : 250
-  #     annotation : bubble
-  #   hatena :
-  #     hatena-layout : standard-baloon
+  #   facebook:
+  #     layout: button_count
+  #     faces: false
+  #     width: 90
+  #   googleplus:
+  #     size: medium
+  #     width: 250
+  #     annotation: bubble
+  #   hatena:
+  #     hatena-layout: standard-baloon
 
   # Settings for all other include helpers can be defined by creating
   # a hash with key named for the given helper. ex:
   #
-  #   pages_list :
-  #     provider : "custom"
+  #   pages_list:
+  #     provider: "custom"
   #
   # Setting any helper's provider to 'custom' will bypass the helper code
   # and include your custom code. Your custom file must be defined at:

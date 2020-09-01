@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Emacs JPはじめます
-tags : [announcement]
+tags: [announcement]
 ---
 {% include JB/setup %}
 
