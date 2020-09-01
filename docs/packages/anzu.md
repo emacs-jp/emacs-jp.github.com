@@ -5,7 +5,6 @@ description: "検索情報をモードラインに表示"
 package: true
 category: "mode-line"
 tags: ["mode-line", "search"]
-redirect_to: /packages/anzu
 ---
 {% include JB/setup %}
 
@@ -175,14 +174,3 @@ migemoを利用するかどうかを示すフラグ. 利用する場合は, `t`�
 ;; migemoを利用している場合
 (setq anzu-use-migemo t)
 ```
-
-<!--
-This file has been left for redirection.
-Please do not add any content.
-Redirect to /packages/anzu.
-This file will be deleted after 6 month (2020/03/01).
-
-;; Local Variables:
-;; buffer-read-only: t
-;; End:
--->

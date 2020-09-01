@@ -2,10 +2,8 @@
 layout: page
 title: "パッケージフォーマット"
 description: "Package Format"
-package: true
 category: "package"
 tags: ["package", "tips"]
-redirect_to: /tips/package-format
 ---
 {% include JB/setup %}
 
@@ -102,14 +100,3 @@ Commentaryセクションはパッケージの説明, 簡単な利用方法, 設
 これらをいちいち気にして書くのは大変なので, パッケージを書く際は[yasnippet](https://github.com/capitaomorte/yasnippet)や
 [autoinsert](http://www.gnu.org/software/emacs/manual/html_node/autotype/Autoinserting.html)機能を使い, ひな形から
 作成するのが良いでしょう.
-
-<!--
-This file has been left for redirection.
-Please do not add any content.
-Redirect to /tips/package-format.
-This file will be deleted after 6 month (2020/03/01).
-
-;; Local Variables:
-;; buffer-read-only: t
-;; End:
--->

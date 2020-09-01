@@ -4,7 +4,6 @@ title: "Goプログラミングの環境構築"
 description: "Goプログラミングの環境構築"
 category: "programming"
 tags: ["go", "golang"]
-redirect_to: /env/go
 ---
 {% include JB/setup %}
 
@@ -169,14 +168,3 @@ Go用 flymake
 * [EmacsでのGo言語編集環境 by typesterさん](http://unknownplace.org/archives/golang-editing-with-emacs.html)
 * [Emacsを使ったGo言語開発手法(2013.07版) by ymotongpooさん](http://ymotongpoo.hatenablog.com/entry/2013/07/06/154448)
 * [Writing Go in Emacs by Dominik Honnefさん](http://www.honnef.co/posts/2013/08/writing_go_in_emacs__cont__/)
-
-<!--
-This file has been left for redirection.
-Please do not add any content.
-Redirect to /env/go.
-This file will be deleted after 6 month (2020/03/01).
-
-;; Local Variables:
-;; buffer-read-only: t
-;; End:
--->

@@ -79,3 +79,14 @@ Facebookアカウントとの連携を行いたくない方は、[こちらの�
 
 運営者はいつでも募集中です。
 お気軽に声をかけてください！
+
+<!--
+This file has been left for redirection.
+Please do not add any content.
+Redirect to https://emacs-jp.github.io/reading-init.el/.
+This file will be deleted after 6 month (2020/03/01).
+
+;; Local Variables:
+;; buffer-read-only: t
+;; End:
+-->

@@ -1,11 +1,10 @@
 ---
 layout: page
-title: package.el
+title: package
 description: "パッケージ管理ツール"
 package: true
 category: "package"
 tags: ["package"]
-redirect_to: /packages/package
 ---
 {% include JB/setup %}
 
@@ -220,14 +219,3 @@ package.elを使ったパッケージ管理方法について示す.
 ## 関連 URL
 * [packages](http://www.gnu.org/software/emacs/manual/html_node/emacs/Packages.html)
 * [el-get](https://github.com/dimitri/el-get)
-
-<!--
-This file has been left for redirection.
-Please do not add any content.
-Redirect to /packages/package.
-This file will be deleted after 6 month (2020/03/01).
-
-;; Local Variables:
-;; buffer-read-only: t
-;; End:
--->

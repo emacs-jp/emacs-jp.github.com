@@ -162,3 +162,14 @@ Emacsに関する話題いろいろ
 * 2011/09/23 [fukuoka_emacs #0x03](http://atnd.org/events/19653)
 * 2012/08/25 [Emacs温泉](http://d.hatena.ne.jp/kiwanami/20120827/1346092543)
 * 2015/06/05 [福岡Emacs 0x04](http://fukuoka-emacs.connpass.com/event/15117/)
+
+<!--
+This file has been left for redirection.
+Please do not add any content.
+Redirect to /tips/emacs-in-2020.
+This file will be deleted after 6 month (2020/03/01).
+
+;; Local Variables:
+;; buffer-read-only: t
+;; End:
+-->

@@ -44,3 +44,14 @@ emacs -Q --batch --eval '(message "%s" system-configuration-features)'
 ```
 
 ## Arch の場合
+
+<!--
+This file has been left for redirection.
+Please do not add any content.
+Redirect to /tips/install-emacs.
+This file will be deleted after 6 month (2020/03/01).
+
+;; Local Variables:
+;; buffer-read-only: t
+;; End:
+-->
