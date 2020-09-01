@@ -5,7 +5,6 @@ description: "The Silver Seacherの helmインタフェース"
 package: true
 category: "helm"
 tags: ["helm"]
-redirect_to: /packages/helm-ag
 ---
 {% include JB/setup %}
 
@@ -82,14 +81,3 @@ MacOSXユーザーの方であれば, homebrewで The Silver Searcherをイン�
 (setq helm-ag-base-command "ag --nocolor --nogroup --ignore-case")
 (setq helm-ag-thing-at-point 'symbol)
 ```
-
-<!--
-This file has been left for redirection.
-Please do not add any content.
-Redirect to /packages/helm-ag.
-This file will be deleted after 6 month (2020/03/01).
-
-;; Local Variables:
-;; buffer-read-only: t
-;; End:
--->

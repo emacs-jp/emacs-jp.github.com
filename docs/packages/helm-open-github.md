@@ -5,7 +5,6 @@ description: "Githubユーティリティ"
 package: true
 category: "helm"
 tags: ["helm","github"]
-redirect_to: /packages/helm-open-github
 ---
 {% include JB/setup %}
 
@@ -70,14 +69,3 @@ MELPAから package.elを使ってインストールすることができます.
 (global-set-key (kbd "C-c o i") 'helm-open-github-from-issues)
 (global-set-key (kbd "C-c p p") 'helm-open-github-from-pull-requests)
 ```
-
-<!--
-This file has been left for redirection.
-Please do not add any content.
-Redirect to /packages/helm-open-github.
-This file will be deleted after 6 month (2020/03/01).
-
-;; Local Variables:
-;; buffer-read-only: t
-;; End:
--->

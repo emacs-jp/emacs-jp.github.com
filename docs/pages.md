@@ -14,3 +14,14 @@ redirect_to: /archive
     | sort: 'title' -%}
 {%- include JB/pages_list %}
 </ul>
+
+<!--
+This file has been left for redirection.
+Please do not add any content.
+Redirect to /packages/ac-ispell.
+This file will be deleted after 6 month (2020/03/01).
+
+;; Local Variables:
+;; buffer-read-only: t
+;; End:
+-->

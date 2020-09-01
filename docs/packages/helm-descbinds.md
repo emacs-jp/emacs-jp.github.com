@@ -5,7 +5,6 @@ description: "describe-bindingsの helmインタフェース"
 package: true
 category: "helm"
 tags: ["helm"]
-redirect_to: /packages/helm-descbinds
 ---
 {% include JB/setup %}
 
@@ -60,14 +59,3 @@ Emacs 23をお使いの方は `helm-descbinds-mode`の部分を以下のよう�
 ```common-lisp
 (helm-descbinds-mode 1)
 ```
-
-<!--
-This file has been left for redirection.
-Please do not add any content.
-Redirect to /packages/helm-descbinds.
-This file will be deleted after 6 month (2020/03/01).
-
-;; Local Variables:
-;; buffer-read-only: t
-;; End:
--->

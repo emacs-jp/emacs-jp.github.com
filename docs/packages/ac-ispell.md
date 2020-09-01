@@ -5,7 +5,6 @@ description: "ispellの auto-complete source"
 package: true
 category: "auto-complete"
 tags: ["auto-complete"]
-redirect_to: /packages/ac-ispell
 ---
 {% include JB/setup %}
 
@@ -67,14 +66,3 @@ ispellの auto-complete sourceを `ac-sources`に追加する.
 (add-hook 'git-commit-mode-hook 'ac-ispell-ac-setup)
 (add-hook 'mail-mode-hook 'ac-ispell-ac-setup)
 ```
-
-<!--
-This file has been left for redirection.
-Please do not add any content.
-Redirect to /packages/ac-ispell.
-This file will be deleted after 6 month (2020/03/01).
-
-;; Local Variables:
-;; buffer-read-only: t
-;; End:
--->

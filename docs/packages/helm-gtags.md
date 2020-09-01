@@ -5,7 +5,6 @@ description: "GNU Globalの helmインタフェース"
 package: true
 category: "helm"
 tags: ["helm","tagjump"]
-redirect_to: /packages/helm-gtags
 ---
 {% include JB/setup %}
 
@@ -109,14 +108,3 @@ GNU Globalは 5.9で高速化が行われているので, 5.9以降の利用を�
               (local-set-key (kbd "M-s") 'helm-gtags-find-symbol)
               (local-set-key (kbd "C-t") 'helm-gtags-pop-stack)))
 ```
-
-<!--
-This file has been left for redirection.
-Please do not add any content.
-Redirect to /packages/helm-gtags.
-This file will be deleted after 6 month (2020/03/01).
-
-;; Local Variables:
-;; buffer-read-only: t
-;; End:
--->

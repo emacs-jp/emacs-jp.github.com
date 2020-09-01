@@ -1,11 +1,10 @@
 ---
 layout: page
-title: "Evil"
+title: "evil"
 description: "Vimのエミュレート"
 package: true
 category: "evil"
 tags: ["evil"]
-redirect_to: /packages/evil
 ---
 {% include JB/setup %}
 
@@ -19,14 +18,3 @@ redirect_to: /packages/evil
 ## 参考
 * [Official Page](https://github.com/emacs-evil/evil)
 * [Emacs Wikiのページ](http://www.emacswiki.org/emacs/Evil)
-
-<!--
-This file has been left for redirection.
-Please do not add any content.
-Redirect to /packages/evil.
-This file will be deleted after 6 month (2020/03/01).
-
-;; Local Variables:
-;; buffer-read-only: t
-;; End:
--->

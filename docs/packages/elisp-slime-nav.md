@@ -5,7 +5,6 @@ description: "Slime-style navigation for Emacs Lisp"
 package: true
 category: "elisp"
 tags: ["programming","elisp"]
-redirect_to: /packages/elisp-slime-nav
 ---
 {% include JB/setup %}
 
@@ -47,14 +46,3 @@ redirect_to: /packages/elisp-slime-nav
 
 カーソル下の関数, シンボルのドキュメントを表示する.
 `C-c C-d d`及び `C-c C-d C-d`にバインドされる.
-
-<!--
-This file has been left for redirection.
-Please do not add any content.
-Redirect to /packages/elisp-slime-nav.
-This file will be deleted after 6 month (2020/03/01).
-
-;; Local Variables:
-;; buffer-read-only: t
-;; End:
--->

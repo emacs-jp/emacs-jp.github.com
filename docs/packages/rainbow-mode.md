@@ -5,7 +5,6 @@ description: "色名, カラーコードの視覚化"
 package: true
 category: "face"
 tags: ["face"]
-redirect_to: /packages/rainbow-mode
 ---
 {% include JB/setup %}
 
@@ -36,14 +35,3 @@ rainbow-modeは MELPAに登録されているので, package.elを使ってイ�
 #### rainbow-mode
 
 rainbow-modeの有効, 無効を切り替える.
-
-<!--
-This file has been left for redirection.
-Please do not add any content.
-Redirect to /packages/rainbow-mode.
-This file will be deleted after 6 month (2020/03/01).
-
-;; Local Variables:
-;; buffer-read-only: t
-;; End:
--->

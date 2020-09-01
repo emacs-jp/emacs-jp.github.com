@@ -5,7 +5,6 @@ description: "GitGutterの Emacs版"
 package: true
 category: "vcs"
 tags: ["vcs"]
-redirect_to: /packages/git-gutter
 ---
 {% include JB/setup %}
 
@@ -211,14 +210,3 @@ undoを利用することで取り消せます.
 ## 質問, バグレポートについて
 
 質問, バグレポート, 要望等については [githubの issues](https://github.com/syohex/emacs-git-gutter/issues)までにお願いします.
-
-<!--
-This file has been left for redirection.
-Please do not add any content.
-Redirect to /packages/git-gutter.
-This file will be deleted after 6 month (2020/03/01).
-
-;; Local Variables:
-;; buffer-read-only: t
-;; End:
--->
