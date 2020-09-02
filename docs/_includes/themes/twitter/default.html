@@ -28,8 +28,9 @@
           </button>
 
           <div class="collapse navbar-collapse" id="navbar">
-            <ul class="navbar-nav mr-auto">
-              {%- assign pages_list = site.pages -%}
+            <div class="navbar-nav mr-auto"></div>
+            <ul class="navbar-nav">
+              {%- assign pages_list = site.pages | sort: "weight" -%}
               {%- assign group = 'navigation' -%}
               {%- include JB/pages_list -%}
             </ul>
