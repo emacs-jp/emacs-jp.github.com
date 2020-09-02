@@ -1,19 +1,71 @@
 @charset "UTF-8";
 
-h1, h2, h3 {
-    margin: 1.5rem 0;
+$foreground: #494545;
+$background: #fafaf8;
+
+body {
+    color: $foreground;
+    background: $background;
 }
 
 h1 {
     font-size: 2.0rem;
     border-bottom: solid 3px;
-    padding: 0 0.1rem 1rem 0.1rem;
+    padding-bottom: 1rem;
+    margin-top: 4rem;
+    margin-bottom: 1.5rem;
 }
 
 h2 {
     font-size: 1.8rem;
     border-bottom: solid 2px;
-    padding: 0.7rem 0.1rem;
+    padding: 0.7rem 0;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.container {
+    color: $foreground;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+p {
+    margin-bottom: 0.75rem;
+}
+
+ul, ol, img {
+    padding: 1rem;
+}
+
+ol ol, ol ul, ul ol, ul ul {
+    margin-bottom: 0.75rem;
+}
+
+table, pre {
+    background: darken($background, 3%);
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+th {
+    border-bottom: solid 1px;
+    padding: 0.3rem 0;
+    padding-right: 2rem;
+}
+
+td {
+    padding-right: 2rem;
+}
+
+a, code, kbd {
+    padding: 0 0.3rem;
 }
 
 footer {
@@ -21,7 +73,7 @@ footer {
     margin-top: 2.5rem;
     padding: 2.5rem 0;
     color: #e9ecef;
-    background-color: #343a40;
+    background: #343a40;
 }
 
 img {
@@ -48,10 +100,6 @@ ins {
 
 .sidebar address {
     margin-bottom: 0;
-}
-
-.page-header {
-    padding: 0.4rem 0;
 }
 
 .pagination {

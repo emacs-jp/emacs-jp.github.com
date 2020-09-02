@@ -1,6 +1,4 @@
-<div class="page-header">
-  <h1>{{ page.title }} {% if page.tagline %} <small>{{ page.tagline }}</small>{% endif %}</h1>
-</div>
+<h1>{{ page.title }}{% if page.tagline %} <small>{{ page.tagline }}</small>{% endif %}</h1>
 
 <div class="row">
   <section class="col-sm-8">
@@ -22,7 +20,7 @@
   </section>
 
   <section class="sidebar col-sm-4 list-group">
-    <div class="list-group-item">
+    <div class="list-group-itenm">
       <h4>Published</h4>
       <div class="date"><time datetime="{{ page.date | date_to_xmlschema }}" title="{{ page.date | date: '%Y年%-m月%-d日' }}">{{ page.date | date_to_long_string }}</time></div>
     </div>
