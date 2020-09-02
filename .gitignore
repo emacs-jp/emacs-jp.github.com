@@ -5,6 +5,8 @@ Thumbs.db
 
 !.gitkeep
 
+.docker.lock
+
 .rbenv-version
 .rvmrc
 Gemfile.lock
