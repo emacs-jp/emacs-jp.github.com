@@ -28,7 +28,7 @@ persistent-action(`C-z`)はドキュメントの表示となっています.
 
 ## スクリーンショット
 
-![helm-descbinds](/images/helm/helm-descbinds/helm-descbinds.png)
+![helm-descbinds](/images/helm-descbinds.png)
 
 
 バインドされたコマンドを検索する際は, キー(`C-c`等)とコマンド名を意識して検索すると良いでしょう.

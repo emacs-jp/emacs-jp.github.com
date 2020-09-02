@@ -16,7 +16,7 @@ last_modified: 2020-06-05
 
 ## スクリーンショット
 
-![screenshot1](/images/vcs/git-gutter/git-gutter-default.png)
+![screenshot1](/images/git-gutter-default.png)
 
 
 ## インストール方法
@@ -193,7 +193,7 @@ undoを利用することで取り消せます.
 
 そのときのスクリーンショットは以下のようになります.
 
-![screenshot1](/images/vcs/git-gutter/git-gutter-fullwidth.png)
+![screenshot1](/images/git-gutter-fullwidth.png)
 
 
 ## linum-modeと併用について

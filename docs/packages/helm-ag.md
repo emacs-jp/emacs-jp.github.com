@@ -17,7 +17,7 @@ The Silver Searcherは ack likeな grepツールで, ackよりも高速に検索
 
 ## スクリーンショット
 
-![helm-ag](/images/helm/helm-ag/helm-ag.png)
+![helm-ag](/images/helm-ag.png)
 
 
 ## インストール方法

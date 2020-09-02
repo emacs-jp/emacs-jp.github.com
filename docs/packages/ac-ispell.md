@@ -17,7 +17,7 @@ last_modified: 2014-04-15
 
 ## スクリーンショット
 
-![screenshot1](/images/auto-complete/ac-ispell/ac-ispell.png)
+![screenshot1](/images/ac-ispell.png)
 
 ## 必要要件
 

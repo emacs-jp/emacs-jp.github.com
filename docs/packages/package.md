@@ -85,7 +85,7 @@ load-pathの通ったディレクトリに配置してください.
 
 パッケージ操作バッファを開く.
 
-![package-list-packages](/images/package-manager/package-list-packages.png)
+![package-list-packages](/images/package-list-packages.png)
 
 
 #### `package-list-packages`での操作一覧

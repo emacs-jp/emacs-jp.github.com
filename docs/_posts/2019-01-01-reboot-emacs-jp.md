@@ -22,7 +22,7 @@ last_modified: 2019-01-01
 
 毎年の恒例行事ですが[Emacs Advent Calendar 2018]にも数多くの記事が投稿されました。
 
-[![Emacs Advent Calendar 2018](/images/2019/advent-calendar-2018.png)][Emacs Advent Calendar 2018]
+[![Emacs Advent Calendar 2018](/images/advent-calendar-2018.png)][Emacs Advent Calendar 2018]
 
 特に、[use-package]の代替実装を一から独自実装している大学生のConaoさん([@conao3])の活動([use-packageからの移行のすゝめ - leaf.elでバージョン安全なinit.elを書く])は目をみはるものがあります。
 

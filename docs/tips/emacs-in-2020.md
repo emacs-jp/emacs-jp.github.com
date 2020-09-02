@@ -50,7 +50,7 @@ Emacsの起動はOSが用意しているランチャーからクリックする�
 EmacsにはCUI版とGUI版がありますが、GUI版を使用して下さい。
 CUI版では設定できないキーバインドの組み合わせがある他、 `posframe` のような近代的なパッケージが使用できません。
 
-![](/images/tips/9407a43e-a53d-4ca5-9015-c6c8991395bf.png)
+![](/images/9407a43e-a53d-4ca5-9015-c6c8991395bf.png)
 
 CUIからEmacsを起動する必要があるのは、Emacsに起動時オプションを与えたい場合です。([Appendix C Emacs呼び出しに対するコマンドライン引数 - Emacs Manual](https://ayatakesi.github.io/emacs/27.1/emacs-ja.html#Emacs-Invocation))
 
@@ -80,7 +80,7 @@ CUIからEmacsを起動する必要があるのは、Emacsに起動時オプシ�
   ```
 
 ## Emacsの画面
-![](/images/tips/58015d69-2a71-4104-9b75-fc22013d3cce.png)
+![](/images/58015d69-2a71-4104-9b75-fc22013d3cce.png)
 
 Emacsにおいて、「フレーム」と「ウィンドウ」という用語は注意する必要があります。
 通常のGUIアプリケーションにおける「ウィンドウ」はEmacsにおいては「フレーム」に対応しており、
@@ -125,7 +125,7 @@ Emacsに慣れている人でも、設定されているショートカットを
 これらの操作でファイルを開こうとすると、なんと普通にファイルダイアログが表示されます。
 Emacsも他のGUIアプリケーションと同じように使うことができるのです。
 
-![](/images/tips/1d195864-dc13-4a94-9795-96d4f5255ebd.png)
+![](/images/1d195864-dc13-4a94-9795-96d4f5255ebd.png)
 
 ### Emacsチュートリアル
 マウスポチポチでEmacsを使うとしても、ポイント移動くらいはショートカットキーが欲しいです。
@@ -367,8 +367,8 @@ $ emacs --batch -f batch-byte-compile init.el
 ```
 
 ## パッケージのインストール
-[![](/images/tips/c39c9a99-73cb-4f42-b90b-81158397c4cb.png)](https://elpa.gnu.org/)
-[![](/images/tips/4ad8a5f8-9cd0-42fc-994b-2e6e99052f9f.png)](https://melpa.org/)
+[![](/images/c39c9a99-73cb-4f42-b90b-81158397c4cb.png)](https://elpa.gnu.org/)
+[![](/images/4ad8a5f8-9cd0-42fc-994b-2e6e99052f9f.png)](https://melpa.org/)
 
 Emacsは `package.el` というビルトインのパッケージマネージャが標準添付されており、ELPAと呼ばれるサーバーからパッケージをダウンロードすることができます。
 
@@ -641,17 +641,17 @@ leafの場合はさらに著者によるブログ記事があるのでそれも�
 コマンドの断片で検索できるようになるので、あえてキーバインドを与えず、 `M-x` から起動する方法も便利です。
 この補完では正規表現が使えるので、 `^ivy-` をクエリーを入力すれば、 `ivy` パッケージのインタラクティブ関数が一覧できます。
 
-![](/images/tips/4032d545-297e-409a-b34b-fcc27cbda901.png)
+![](/images/4032d545-297e-409a-b34b-fcc27cbda901.png)
 
 `C-s` はデフォルトでは `isearch` がバインドされていますが、 `swiper` で置き換えた方が便利です。
 バッファ内の検索を該当行のみ取り出して表示することができます。もちろん正規表現が使えます。
 
-![](/images/tips/4799cc1a-3102-4bf5-80e2-9cd65e13d266.png)
+![](/images/4799cc1a-3102-4bf5-80e2-9cd65e13d266.png)
 
 `C-S-s` には `counsel-imenu` をバインドしました。これはバッファ内の代表的な行(変数宣言、関数宣言など)を抜き出した上で、コードジャンプするものです。
 leafはimenuと統合されているので、init.elで実行するとカスタマイズしたいパッケージの場所にすぐジャンプすることができます。
 
-![](/images/tips/c8ce6a8e-0ea7-4d67-ae39-b66d1ec7ee48.png)
+![](/images/c8ce6a8e-0ea7-4d67-ae39-b66d1ec7ee48.png)
 
 ### flycheck
 ```emacs-lisp
@@ -671,7 +671,7 @@ leafはimenuと統合されているので、init.elで実行するとカスタ�
 
 エラーリストのバッファは `C-c ! l (flycheck-list-errors)` で開くことができます。
 
-![](/images/tips/c3cca160-9d34-41a9-bf44-9f72cf3ee8f4.png)
+![](/images/c3cca160-9d34-41a9-bf44-9f72cf3ee8f4.png)
 
 ### company
 ```emacs-lisp
@@ -714,7 +714,7 @@ leafはimenuと統合されているので、init.elで実行するとカスタ�
 [company](http://company-mode.github.io/)は入力補完のためのパッケージです。
 他エディタではインテリセンスと呼ばれているものと同一の機能を提供します。
 
-![](/images/tips/47b4d946-d730-48f4-84e1-dab85f13a5fa.png)
+![](/images/47b4d946-d730-48f4-84e1-dab85f13a5fa.png)
 
 ## まとめ
 
