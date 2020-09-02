@@ -15,7 +15,7 @@ last_modified: 2016-09-04
 
 ## スクリーンショット
 
-![helm-open-github](/images/helm/helm-open-github/helm-open-github.png)
+![helm-open-github](/images/helm-open-github.png)
 
 
 ## インストール

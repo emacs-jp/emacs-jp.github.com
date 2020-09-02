@@ -139,11 +139,11 @@ Go用 flymake
 
 <hr />
 
-![go-helm-util1](/images/programming/golang/go-helm-util1.png)
+![go-helm-util1](/images/go-helm-util1.png)
 
 <hr />
 
-![go-helm-util2](/images/programming/golang/go-helm-util2.png)
+![go-helm-util2](/images/go-helm-util2.png)
 
 
 ## 設定例

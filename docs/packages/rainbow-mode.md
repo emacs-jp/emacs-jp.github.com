@@ -21,7 +21,7 @@ Emacsには色一覧の表示を行う `list-colors-display`がありますが,
 
 ## スクリーンショット
 
-![ranbow-mode](/images/face/rainbow-mode/rainbow-mode.png)
+![ranbow-mode](/images/rainbow-mode.png)
 
 
 ## インストール方法

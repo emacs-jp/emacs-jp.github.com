@@ -25,7 +25,7 @@ GNU Globalに関する説明は[こちら](http://www.gnu.org/software/global/)�
 
 ## スクリーンショット
 
-![helm-gtags](/images/helm/helm-gtags/helm-gtags.png)
+![helm-gtags](/images/helm-gtags.png)
 
 
 ## 必要要件

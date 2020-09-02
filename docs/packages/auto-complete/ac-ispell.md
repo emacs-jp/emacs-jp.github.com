@@ -18,7 +18,7 @@ redirect_to: /packages/ac-ispell
 
 ## スクリーンショット
 
-![screenshot1](/images/auto-complete/ac-ispell/ac-ispell.png)
+![screenshot1](/images/ac-ispell.png)
 
 ## 必要要件
 
