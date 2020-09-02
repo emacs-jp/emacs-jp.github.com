@@ -3,6 +3,7 @@ layout: page
 title: About
 tagline: このサイトについて
 group: navigation
+weight: -90
 ---
 
 ## {{ site.title }}について
