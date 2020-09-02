@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: simple
 title: About
 tagline: このサイトについて
 group: navigation
