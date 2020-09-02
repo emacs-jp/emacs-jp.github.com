@@ -6,6 +6,8 @@ $background: #fafaf8;
 body {
     color: $foreground;
     background: $background;
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 h1 {
@@ -30,18 +32,27 @@ h3 {
     margin-bottom: 1rem;
 }
 
-.container {
-    color: $foreground;
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-
 p {
     margin-bottom: 0.75rem;
 }
 
 ul, ol, img {
     padding: 1rem;
+}
+
+.navbar-brand img {
+    padding: 0;
+}
+
+.navbar .nav-item .nav-link {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+    padding-bottom: 0.2rem;
+    margin: 0;
+}
+
+nav .navbar-nav {
+    padding: 0
 }
 
 ol ol, ol ul, ul ol, ul ul {
@@ -52,6 +63,9 @@ table, pre {
     background: darken($background, 3%);
     border-radius: 0.5rem;
     padding: 1rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 th {
@@ -68,6 +82,10 @@ a, code, kbd {
     padding: 0 0.3rem;
 }
 
+pre code {
+    padding: 0;
+}
+
 footer {
     text-align: center;
     margin-top: 2.5rem;
@@ -78,6 +96,9 @@ footer {
 
 img {
     max-width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 ins {
