@@ -26,6 +26,20 @@ Emacsと{{ site.title }}についての詳細は[このサイトについて](/a
   {% endfor %}
 </ul>
 
+## 更新情報
+
+{% assign target
+     = site.pages | concat: site.posts
+       | where_exp: 'item', 'item.last_modified'
+       | sort: "last_modified"
+       | reverse %}
+
+{%- for post in target limit:10 %}
+* {{ post.last_modified | date: "%Y-%m-%d" }} &raquo; <small>{{ post.dir | slice: 1,100 -}}</small>[{{ post.title }}]({{ post.url }})
+{%- endfor -%}
+
+{% assign target = nil %}
+
 ## Slack <small>- [emacs-jp.slack.com](https://emacs-jp.slack.com/)</small>
 
 Emacs JPのSlack teamには多くのEmacsユーザーが常駐しています。  

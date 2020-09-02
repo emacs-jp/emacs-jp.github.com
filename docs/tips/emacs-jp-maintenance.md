@@ -4,6 +4,8 @@ author: eiel
 title: "Emacs JP で管理しているパッケージ"
 description: "Emacs JP で管理しているパッケージ"
 tags: ["tips"]
+date: 2013-03-10
+last_modified: 2013-03-18
 ---
 {% include JB/setup %}
 

@@ -2,6 +2,8 @@
 layout: page
 author: conao3
 title: "Emacsチュートリアル 日本語訳"
+date: 2020-08-25
+last_modified: 2020-08-25
 ---
 {% include JB/setup %}
 

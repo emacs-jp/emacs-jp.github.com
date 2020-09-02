@@ -2,6 +2,8 @@
 layout: page
 author: conao3
 title: "Emacsのインストール"
+date: 2020-08-25
+last_modified: 2020-08-27
 ---
 {% include JB/setup %}
 

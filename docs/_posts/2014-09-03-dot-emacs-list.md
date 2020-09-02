@@ -2,6 +2,8 @@
 layout: post
 title: issue#15に投稿されたinit.elのリストをまとめました
 tags: [init.el, dot-emacs]
+date: 2014-09-03
+last_modified: 2014-09-03
 ---
 {% include JB/setup %}
 
