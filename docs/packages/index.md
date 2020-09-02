@@ -14,9 +14,5 @@ Emacs24に標準搭載されている `package.el` を利用してインスト�
         | where_exp: 'item', 'item.redirect_to == nil' %}
 
 {% for page in pages_list %}
-* [{{ page.title }}]({{ page.url }})
-   {% for tag in page.tags %}<span class="label label-info">{{ tag }}</span> {% endfor %}
-  <br>{{ page.description }}
-{% endfor %}
-
-{% assign pages_list = nil %}
+* [{{ page.name | remove: ".md"}}]({{ page.url }}): {{ page.description }}
+{%- endfor %}
