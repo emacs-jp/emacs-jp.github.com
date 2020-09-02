@@ -1,10 +1,8 @@
 ---
 layout: page
 author: syohex
-title: "elisp-slime-nav"
-description: "Slime-style navigation for Emacs Lisp"
-category: "elisp"
-tags: ["programming", "elisp"]
+title: "elisp-slime-nav: Slime-style navigation for Emacs Lisp"
+tags: [programming, elisp, elisp-slime-nav]
 date: 2013-05-06
 last_modified: 2014-09-09
 ---

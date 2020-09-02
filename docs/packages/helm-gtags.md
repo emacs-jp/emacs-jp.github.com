@@ -1,10 +1,8 @@
 ---
 layout: page
 author: syohex
-title: "helm-gtags"
-description: "GNU Globalの helmインタフェース"
-category: "helm"
-tags: ["helm", "tagjump"]
+title: "helm-gtags: GNU Globalの helmインタフェース"
+tags: [helm, tagjump]
 date: 2013-03-19
 last_modified: 2013-05-10
 ---

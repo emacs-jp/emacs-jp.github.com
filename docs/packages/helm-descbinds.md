@@ -1,10 +1,8 @@
 ---
 layout: page
 author: syohex
-title: "helm-descbinds"
-description: "describe-bindingsの helmインタフェース"
-category: "helm"
-tags: ["helm"]
+title: "helm-descbinds: describe-bindingsの helmインタフェース"
+tags: [helm]
 date: 2013-05-06
 last_modified: 2013-05-09
 ---

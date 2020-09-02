@@ -2,9 +2,7 @@
 layout: page
 author: syohex
 title: "Goプログラミングのための環境構築"
-description: "Goプログラミングのための環境構築"
-category: "env"
-tags: ["env", "go", "golang"]
+tags: [env, go]
 date: 2013-09-26
 last_modified: 2020-07-01
 ---
