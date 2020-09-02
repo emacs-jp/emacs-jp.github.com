@@ -19,9 +19,9 @@
 [docker](https://www.docker.com/)及び[docker-compose](https://docs.docker.com/compose/)を利用してローカルの環境に影響を与えずに、簡単にローカルサーバーを立てることができます。
 ```sh
 # ローカルサーバーを立てる (以下のいずれかを選んで実行する)
-make up            # localhost:4000 でローカルサーバーを立てる
-make serve         # make upのエイリアス
-PORT=3000 make up  # localhost:3000 でローカルサーバーを立てる
+make up                # localhost:4000 でローカルサーバーを立てる
+make serve             # make upのエイリアス
+PORT=3000 make up      # localhost:3000 でローカルサーバーを立てる
 
 # ビルドログを見る
 make log
