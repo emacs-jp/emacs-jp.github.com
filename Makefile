@@ -18,6 +18,7 @@ $(DOCKERLOCK):
 up: $(DOCKERLOCK)
 serve: $(DOCKERLOCK)
 
+.PHONY: log
 log: $(DOCKERLOCK)
 	docker-compose logs -f
 
