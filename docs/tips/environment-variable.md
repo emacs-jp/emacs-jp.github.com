@@ -2,9 +2,7 @@
 layout: page
 author: syohex
 title: "環境変数の設定"
-description: "環境変数の設定"
-category: "shell"
-tags: ["shell"]
+tags: [shell]
 date: 2013-10-13
 last_modified: 2013-10-13
 ---

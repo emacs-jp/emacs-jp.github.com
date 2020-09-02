@@ -1,10 +1,8 @@
 ---
 layout: page
 author: syohex
-title: "evil"
-description: "Vimのエミュレート"
-category: "evil"
-tags: ["evil"]
+title: "evil: Vimのエミュレート"
+tags: [evil]
 date: 2014-09-09
 last_modified: 2020-05-28
 ---

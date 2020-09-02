@@ -1,10 +1,8 @@
 ---
 layout: page
 author: syohex
-title: "ac-ispell.el"
-description: "ispellの auto-complete source"
-category: "auto-complete"
-tags: ["auto-complete"]
+title: "ac-ispell: ispellの auto-complete source"
+tags: [auto-complete, ispell, ac-ispell]
 date: 2014-04-15
 last_modified: 2014-04-15
 ---

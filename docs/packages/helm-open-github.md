@@ -1,10 +1,8 @@
 ---
 layout: page
 author: syohex
-title: "helm-open-github"
-description: "Githubユーティリティ"
-category: "helm"
-tags: ["helm", "github"]
+title: "helm-open-github: Githubユーティリティ"
+tags: [helm, github]
 date: 2014-03-02
 last_modified: 2016-09-04
 ---

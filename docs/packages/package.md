@@ -1,10 +1,8 @@
 ---
 layout: page
 author: syohex
-title: package
-description: "パッケージ管理ツール"
-category: "package"
-tags: ["package"]
+title: "package: パッケージ管理ツール"
+tags: [package]
 date: 2013-09-25
 last_modified: 2020-06-05
 ---

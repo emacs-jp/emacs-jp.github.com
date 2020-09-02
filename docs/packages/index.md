@@ -1,7 +1,6 @@
 ---
 layout: page
-title: "Emacsパッケージ紹介"
-descrition: "package.elでinstallできるおすすめpackage紹介"
+title: Emacsパッケージ紹介
 ---
 {% include JB/setup %}
 
@@ -14,5 +13,5 @@ Emacs24に標準搭載されている `package.el` を利用してインスト�
         | where_exp: 'item', 'item.redirect_to == nil' %}
 
 {% for page in pages_list %}
-* [{{ page.name | remove: ".md"}}]({{ page.url }}): {{ page.description }}
+* [{{ page.name | remove: ".md"}}]({{ page.url }}): {{ page.title }}
 {%- endfor %}

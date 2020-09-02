@@ -1,9 +1,7 @@
 ---
 layout: page
-title: "rainbow-mode"
-description: "色名, カラーコードの視覚化"
-category: "face"
-tags: ["face"]
+title: "rainbow-mode: 色名, カラーコードの視覚化"
+tags: [face, rainbow-mode]
 date: 2013-05-06
 last_modified: 2013-05-06
 ---

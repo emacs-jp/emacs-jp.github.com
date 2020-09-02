@@ -1,10 +1,8 @@
 ---
 layout: page
 author: syohex
-title: "helm-ag"
-description: "The Silver Seacherの helmインタフェース"
-category: "helm"
-tags: ["helm"]
+title: "helm-ag: The Silver Seacherの helmインタフェース"
+tags: [helm]
 date: 2013-03-22
 last_modified: 2013-05-10
 ---

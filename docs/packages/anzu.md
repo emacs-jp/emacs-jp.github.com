@@ -1,10 +1,8 @@
 ---
 layout: page
 author: syohex
-title: "anzu"
-description: "検索情報をモードラインに表示"
-category: "mode-line"
-tags: ["mode-line", "search"]
+title: "anzu: 検索情報をモードラインに表示"
+tags: [mode-line, search, anzu]
 date: 2013-10-14
 last_modified: 2013-10-27
 ---
