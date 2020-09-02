@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Tags
-header: Posts By Tag
 group: navigation
 maint: true
 ---
