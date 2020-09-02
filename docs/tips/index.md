@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: simple
 title: Emacsに関するtips
 ---
 

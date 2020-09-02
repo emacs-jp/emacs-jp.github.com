@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: simple
 title: 日本のEmacsユーザーのためのハブサイト
 ---
 {% include JB/setup %}

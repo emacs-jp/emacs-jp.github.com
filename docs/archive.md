@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: simple
 title: Archive
 header: Post Archive
 group: navigation

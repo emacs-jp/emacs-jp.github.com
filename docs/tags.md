@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: simple
 title: Tags
 group: navigation
 maint: true

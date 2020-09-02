@@ -1,46 +1,46 @@
-<div class="page-header">
-  <h1>{{ page.title }} {% if page.tagline %} <small>{{ page.tagline }}</small>{% endif %}</h1>
-</div>
+<div class="container">
+  <h1>{{ page.title }}{% if page.tagline %} <small>{{ page.tagline }}</small>{% endif %}</h1>
 
-<div class="row">
-  <section class="col-sm-8">
-    <article>{{ content }}</article>
-    <hr>
-    <ul class="pagination">
-      {%- if page.previous -%}
-      <li class="page-item prev"><a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}" class="page-link">&larr; 前の記事</a></li>
-      {%- else -%}
-      <li class="page-item prev disabled"><a class="page-link">&larr; Previous</a></li>
-      {%- endif -%}
-      <li><a href="{{ BASE_PATH }}{{ site.JB.archive_path }}" class="page-link">記事一覧</a></li>
-      {%- if page.next -%}
-      <li class="page-item next"><a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}" class="page-link">Next &rarr;</a></li>
-      {%- else -%}
-      <li class="page-item next disabled"><a class="page-link">次の記事 &rarr;</a>
+  <div class="row">
+    <section class="col-sm-8">
+      <article>{{ content }}</article>
+      <hr>
+      <ul class="pagination">
+        {%- if page.previous -%}
+        <li class="page-item prev"><a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}" class="page-link">&larr; 前の記事</a></li>
+        {%- else -%}
+        <li class="page-item prev disabled"><a class="page-link">&larr; Previous</a></li>
         {%- endif -%}
-    </ul>
-  </section>
-
-  <section class="sidebar col-sm-4 list-group">
-    <div class="list-group-item">
-      <h4>Published</h4>
-      <div class="date"><time datetime="{{ page.date | date_to_xmlschema }}" title="{{ page.date | date: '%Y年%-m月%-d日' }}">{{ page.date | date_to_long_string }}</time></div>
-    </div>
-
-    {%- unless page.author == empty -%}
-    <div class="list-group-item">
-      <h4>Author</h4>
-      <address>{{ page.author }}</address>
-    </div>
-    {%- endunless -%}
-    {%- unless page.tags == empty -%}
-    <div class="list-group-item">
-      <h4>Tags</h4>
-      <ul class="tag_box">
-        {%- assign tags_list = page.tags -%}
-        {%- include JB/tags_list -%}
+        <li><a href="{{ BASE_PATH }}{{ site.JB.archive_path }}" class="page-link">記事一覧</a></li>
+        {%- if page.next -%}
+        <li class="page-item next"><a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}" class="page-link">Next &rarr;</a></li>
+        {%- else -%}
+        <li class="page-item next disabled"><a class="page-link">次の記事 &rarr;</a>
+          {%- endif -%}
       </ul>
-    </div>
-    {%- endunless -%}
-  </section>
+    </section>
+
+    <section class="sidebar col-sm-4 list-group">
+      <div class="list-group-itenm">
+        <h4>Published</h4>
+        <div class="date"><time datetime="{{ page.date | date_to_xmlschema }}" title="{{ page.date | date: '%Y年%-m月%-d日' }}">{{ page.date | date_to_long_string }}</time></div>
+      </div>
+
+      {%- unless page.author == empty -%}
+      <div class="list-group-item">
+        <h4>Author</h4>
+        <address>{{ page.author }}</address>
+      </div>
+      {%- endunless -%}
+      {%- unless page.tags == empty -%}
+      <div class="list-group-item">
+        <h4>Tags</h4>
+        <ul class="tag_box">
+          {%- assign tags_list = page.tags -%}
+          {%- include JB/tags_list -%}
+        </ul>
+      </div>
+      {%- endunless -%}
+    </section>
+  </div>
 </div>

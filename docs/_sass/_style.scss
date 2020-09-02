@@ -1,19 +1,89 @@
 @charset "UTF-8";
 
-h1, h2, h3 {
-    margin: 1.5rem 0;
+$foreground: #494545;
+$background: #fafaf8;
+
+body {
+    color: $foreground;
+    background: $background;
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 h1 {
     font-size: 2.0rem;
     border-bottom: solid 3px;
-    padding: 0 0.1rem 1rem 0.1rem;
+    padding-bottom: 1rem;
+    margin-top: 4rem;
+    margin-bottom: 1.5rem;
 }
 
 h2 {
     font-size: 1.8rem;
     border-bottom: solid 2px;
-    padding: 0.7rem 0.1rem;
+    padding: 0.7rem 0;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 0.75rem;
+}
+
+ul, ol, img {
+    padding: 1rem;
+}
+
+.navbar-brand img {
+    padding: 0;
+}
+
+.navbar .nav-item .nav-link {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+    padding-bottom: 0.2rem;
+    margin: 0;
+    margin-top: 0.7rem;
+}
+
+nav .navbar-nav {
+    padding: 0
+}
+
+ol ol, ol ul, ul ol, ul ul {
+    margin-bottom: 0.75rem;
+}
+
+table, pre {
+    background: darken($background, 3%);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    display: block;
+    margin: 1rem auto;
+}
+
+th {
+    border-bottom: solid 1px;
+    padding: 0.3rem 0;
+    padding-right: 2rem;
+}
+
+td {
+    padding-right: 2rem;
+}
+
+a, code, kbd {
+    padding: 0 0.3rem;
+}
+
+pre code {
+    padding: 0;
 }
 
 footer {
@@ -21,11 +91,41 @@ footer {
     margin-top: 2.5rem;
     padding: 2.5rem 0;
     color: #e9ecef;
-    background-color: #343a40;
+    background: #343a40;
 }
 
 img {
     max-width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title-row {
+    align-items: center;
+}
+
+.authordiv {
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    line-height: 1.2rem;
+}
+
+.authordiv img.author-icon {
+    // display: inline-block;
+    width: 50px;
+    border-radius: 50%;
+    padding: 0;
+    margin-right: 1rem;
+}
+
+.authordiv .date {
+    color: lighten($foreground, 40%);
+}
+
+.authordiv .lastmoddate {
+    color: lighten($foreground, 30%);
 }
 
 ins {
@@ -48,10 +148,6 @@ ins {
 
 .sidebar address {
     margin-bottom: 0;
-}
-
-.page-header {
-    padding: 0.4rem 0;
 }
 
 .pagination {

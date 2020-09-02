@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: simple
 title: Emacsパッケージ紹介
 ---
 {% include JB/setup %}

@@ -1,4 +1,35 @@
-<div class="page-header">
-  <h1>{{ page.title }} {% if page.tagline %} <small>{{ page.tagline }}</small>{% endif %}</h1>
+{% assign author = page.author | default: "emacs-jp" %}
+{% assign user_icon
+= site.static_files
+| reverse
+| where: 'basename', author
+| first %}
+
+<div class="container">
+  <div class="row title-row">
+    <div class="col-lg-8">
+      <h1>{{ page.title }}{% if page.tagline %} <small>{{ page.tagline }}</small>{% endif %}</h1>
+    </div>
+    <div class="col-lg-4">
+      <div class="authordiv">
+        <div>
+          <a href="https://github.com/{{ author }}"><img class="author-icon" src="{{ user_icon.path | default: '/images/user/emacs-jp.png'}}"></a>
+        </div>
+        <div>
+          <span class="author">Author: {{ author }}</span><br>
+          {% if page.date != empty %}
+          <span class="date">Published: {{ page.date | date: "%Y-%m-%d" }}</span><br>
+          {% endif %}
+          {% if page.last_modified != empty %}
+          <span class="lastmoddate">Last Modified: {{ page.last_modified | date: "%Y-%m-%d" }}</span><br>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      {{ content }}
+    </div>
+  </div>
 </div>
-{{ content }}

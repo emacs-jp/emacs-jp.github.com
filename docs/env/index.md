@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: simple
 title: 各言語向けの環境構築
 ---
 {% include JB/setup %}
