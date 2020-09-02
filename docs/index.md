@@ -20,25 +20,22 @@ Emacsと{{ site.title }}についての詳細は[このサイトについて](/a
 
 ## お知らせ
 
-<ul class="posts">
-  {% for post in site.posts %}
-    <li><span>{{ post.date | date: "%Y-%m-%d" }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
-  {% endfor %}
-</ul>
+{% for post in site.posts limit:5 %}
+* {{ post.date | date: "%Y-%m-%d" }} &raquo; [{{ post.title }}]({{ post.url }})
+{%- endfor %}
 
 ## 更新情報
 
-{% assign target
+{% assign pages_list
      = site.pages | concat: site.posts
        | where_exp: 'item', 'item.last_modified'
        | sort: "last_modified"
        | reverse %}
 
-{%- for post in target limit:10 %}
-* {{ post.last_modified | date: "%Y-%m-%d" }} &raquo; <small>{{ post.dir | slice: 1,100 -}}</small>[{{ post.title }}]({{ post.url }})
-{%- endfor -%}
+{% for page in pages_list limit:10 %}
+* {{ page.last_modified | date: "%Y-%m-%d" }} &raquo; <small>{{ page.dir | slice: 1,100 }}</small>[{{ page.title }}]({{ page.url }})
+{%- endfor %}
 
-{% assign target = nil %}
 
 ## Slack <small>- [emacs-jp.slack.com](https://emacs-jp.slack.com/)</small>
 
