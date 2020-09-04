@@ -31,6 +31,10 @@
 (setf (alist-get "celpa" package-archives nil nil #'string=)
       "https://celpa.conao3.com/packages/")
 
+(unless (package-installed-p 'leaf)
+  (package-refresh-contents)
+  (package-install 'leaf))
+
 (leaf ox-gfm
   :ensure t
   :require org ox-publish t
