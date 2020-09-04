@@ -44,10 +44,12 @@
     (let ((parent (file-name-directory
                    (directory-file-name (expand-file-name path default-directory)))))
       (directory-file-name parent)))
+
   (defvar my/emacs-jp-org-dir (my/f-parent
                                (or load-file-name
                                    (bound-and-true-p byte-compile-current-file)
                                    buffer-file-name)))
+
   :config
   (setf (alist-get "emacs-jp" org-publish-project-alist nil nil #'string=)
         (list
