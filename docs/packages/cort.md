@@ -26,6 +26,15 @@ last_modified: 2020-09-04
 # 使用方法
 
 
+## インストール
+
+leafを利用してインストールします。
+
+```emacs-lisp
+(leaf cort :ensure t)
+```
+
+
 ## 準備
 
 
