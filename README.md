@@ -53,3 +53,13 @@ bundle exec jekyll serve         # localhost:4000 でローカルサーバーを
   - `docs/tips/<name>.md`: 雑多な話題について
 
 なにか疑問や提案があればissueで相談して頂ければと思います。
+
+
+### org-mode
+
+[org-mode](https://orgmode.org/)を用いてブログを生成できます。
+
+1. `docs/org/config.el` を `load`
+2. `docs/org/` 以下に作りたい階層と同じ構造でorgファイルを作成、編集
+3. `M-x org-publish emacs-jp` で `docs/org/` 以下のorgをmdに一括変換
+

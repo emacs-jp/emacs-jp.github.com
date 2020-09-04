@@ -1,4 +1,10 @@
-{% assign author = page.author | default: "emacs-jp" %}
+{% if page.author.first %}
+  {% assign author = page.author.first %}
+{% else %}
+  {% assign author = page.author %}
+{% endif%}
+
+{% assign author = author | default: "emacs-jp" %}
 {% assign user_icon
 = site.static_files
 | reverse
