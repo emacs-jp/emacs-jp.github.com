@@ -1,0 +1,18 @@
+#+title: cort: シンプルなテストフレームワーク
+#+author: conao3
+#+date: <2020-09-04 Fri>
+#+last_modified: <2020-09-04 Fri>
+#+options: ^:{} toc:nil
+
+#+link: images file+sys:../images/
+#+link: files file+sys:../files/
+
+#+keywords: a b c
+#+gfm_tags: test cort conao3
+
+* 概要
+asdf
+
+* スクショ
+スクショ
+[[images:1d195864-dc13-4a94-9795-96d4f5255ebd.png]]

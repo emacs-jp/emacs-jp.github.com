@@ -2,6 +2,8 @@
 # For more see: https://help.github.com/articles/configuring-jekyll/
 permalink: /:categories/:year/:month/:day/:title
 
+exclude:
+  - "org/"
 include:
   - "robots.txt"
 
