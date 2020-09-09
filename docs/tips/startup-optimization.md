@@ -483,10 +483,12 @@ Emacs Lisp は現時点ではデフォルトで動的束縛です。
 ``` emacs-lisp
 (defvar fn
   (let ((a 1))
-    (lambda (x) (+ x 1))))
+    (lambda (x) (+ x a))))
 
-(funcall fn 3) ;; => 4
+;; 関数定義時には a が定義されていたが、今はされていない
+(funcall fn 3) ;; => void variable 'a'
 
+;; a が定義されているスコープで呼び出すとそれが参照される
 (let ((a 2))
   (funcall fn 3)) ;; => 5
 ```
@@ -498,11 +500,12 @@ Emacs Lisp は現時点ではデフォルトで動的束縛です。
 
 (defvar fn
   (let ((a 1))
-    (lambda (x) (+ x 1))))
+    (lambda (x) (+ x a))))
 
+;; 関数定義時の a の値を関数が覚えている
 (funcall fn 3) ;; => 4
 
-;; 関数が定義された時の a を参照し続ける
+;; 新しいスコープで a をシャドーイングしても関数の挙動は変わらない
 (let ((a 2))
   (funcall fn 3)) ;; => 4
 ```
