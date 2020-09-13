@@ -30,6 +30,7 @@ Emacsと{{ site.title }}についての詳細は[このサイトについて](/a
 {% for page in p_page_list limit:10 %}
   * [{{ page.title }}]({{ page.url }})
 {%- endfor %}
+<div style="margin-bottom:2rem;"></div>
 * [Emacsに関する雑多な話題](/tips) <small>最近10記事</small>
 {% for page in t_page_list limit:10 %}
   * [{{ page.title }}]({{ page.url }})
