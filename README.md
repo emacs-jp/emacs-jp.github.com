@@ -61,5 +61,6 @@ bundle exec jekyll serve         # localhost:4000 でローカルサーバーを
 
 1. `docs/org/config.el` を `load`
 2. `docs/org/` 以下に作りたい階層と同じ構造でorgファイルを作成、編集
-3. `M-x org-publish emacs-jp` で `docs/org/` 以下のorgをmdに一括変換
 
+   新規ファイル作成後、 `M-x my/insert-emacs-jp-template` でテンプレートを挿入できます。
+3. `M-x my/publish-emacs-jp` で `docs/org/` 以下のorgをmdに一括変換
