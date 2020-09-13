@@ -18,7 +18,8 @@ maint: true
         | where_exp: 'item', 'item.redirect_to == nil'
         | where_exp: 'item', 'item.maint == nil'
         | where_exp: 'item', 'item.title != nil'
-        | sort: 'title' %}
+        | sort: 'title'
+        | sort: 'dir' %}
 
 {% for page in pages_list %}
 * <small>{{ page.dir | slice: 1,100 }}</small>[{{ page.title }}]({{ page.url }})
