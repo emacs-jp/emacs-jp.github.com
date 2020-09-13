@@ -208,3 +208,8 @@ cortのテストを定義する基本的なマクロです。
 cortはシンプルなElispテストフレームワークですが、シンプルであるがゆえにその最低限の機能については注意深く実装されています。
 
 ぜひcortを使って、「既に存在している機能を壊さず」、新しい機能追加をできるように環境整備をしていきましょう。
+
+* footer                                                           :noexport:
+# Local Variables:
+# org-src-preserve-indentation: t
+# End:
