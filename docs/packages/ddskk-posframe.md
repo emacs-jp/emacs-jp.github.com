@@ -5,6 +5,7 @@ title: "ddskk-posframe: ddskkツールチップposframeフロントエンド"
 tags: [ddskk, posframe, ddskk-posframe, conao3]
 date: 2020-09-04
 last_modified: 2020-09-04
+org: t
 ---
 {% include JB/setup %}
 

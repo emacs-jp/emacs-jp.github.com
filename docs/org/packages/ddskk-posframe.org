@@ -8,6 +8,7 @@
 #+link: files file+sys:../files/
 
 #+gfm_tags: ddskk posframe ddskk-posframe conao3
+#+gfm_custom_front_matter: :org t
 
 * 概要
 [[https://github.com/conao3/ddskk-posframe.el/][ddskk-posframe]]は[[https://github.com/conao3/][conao3]]によって作成された、ddskkツールチップの[[https://github.com/tumashu/posframe][posframe]]フロントエンドです。
