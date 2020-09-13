@@ -27,9 +27,9 @@ It is necessary to make plist-get as a generalized variable, and this
 definition allows user to use setf and other useful functions on
 plist-get.
 
-'* lisp/emacs-lisp/gv.el: Add gv-define-expander for plist-get
+,* lisp/emacs-lisp/gv.el: Add gv-define-expander for plist-get
 
-'* lisp/emacs-lisp/gv-tests.el: Add new tests for plist-get
+,* lisp/emacs-lisp/gv-tests.el: Add new tests for plist-get
 ---
  lisp/emacs-lisp/gv.el            | 11 +++++++++
  test/lisp/emacs-lisp/gv-tests.el | 40 ++++++++++++++++++++++++++++++++
