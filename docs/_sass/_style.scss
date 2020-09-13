@@ -2,6 +2,7 @@
 
 $foreground: #494545;
 $background: #fafaf8;
+$blockbackground: #efefef;
 
 body {
     color: $foreground;
@@ -36,8 +37,12 @@ p {
     margin-bottom: 0.75rem;
 }
 
-ul, ol, img {
-    padding: 1rem;
+.main > ul, .main > ol, .main > img {
+    margin: 1rem 0;
+}
+
+ul, ol {
+    padding-inline-start: 1.5rem;
 }
 
 .navbar-brand img {
@@ -56,12 +61,8 @@ nav .navbar-nav {
     padding: 0
 }
 
-ol ol, ol ul, ul ol, ul ul {
-    margin-bottom: 0.75rem;
-}
-
 table, pre {
-    background: darken($background, 3%);
+    background: $blockbackground;
     border-radius: 0.5rem;
     padding: 1rem;
     display: block;
@@ -177,4 +178,32 @@ ul.tag_box > li:first-child {
 
 .table a {
     word-break: break-word;
+}
+
+blockquote {
+    position: relative;
+    padding: 22px 1rem 1rem 60px;
+    box-sizing: border-box;
+    font-style: italic;
+    background: $blockbackground;
+}
+
+blockquote:before{
+    display: inline-block;
+    position: absolute;
+    top: 18px;
+    left: 15px;
+    content: "\f10d";
+    font-family: FontAwesome;
+    color: darken($blockbackground, 20%);
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 900;
+}
+
+blockquote cite {
+    display: block;
+    text-align: right;
+    color: #888888;
+    font-size: 0.9em;
 }
