@@ -13,10 +13,6 @@ Emacsと{{ site.title }}についての詳細は[このサイトについて](/a
 * [{{ site.title }}で管理しているパッケージ](/maintenances)
 * [Emacsのバージョン](/tips/versions)
 * [おすすめパッケージ紹介](/packages)
-* helm とは
-* いろいろな日本語入力環境
-* [Linuxでのbuild方法](/build-linux)
-* [EmacsとVimの機能対応表](https://docs.google.com/spreadsheets/d/184i0Cmnfd0CdmPw2AVMMvmmnl7Gz5ryPqTaxnpIyqRE/edit?usp=sharing)
 
 ## お知らせ
 
