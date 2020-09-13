@@ -2,6 +2,7 @@
 
 $foreground: #494545;
 $background: #fafaf8;
+$blockbackground: #efefef;
 
 body {
     color: $foreground;
@@ -61,7 +62,7 @@ nav .navbar-nav {
 }
 
 table, pre {
-    background: darken($background, 3%);
+    background: $blockbackground;
     border-radius: 0.5rem;
     padding: 1rem;
     display: block;
@@ -177,4 +178,32 @@ ul.tag_box > li:first-child {
 
 .table a {
     word-break: break-word;
+}
+
+blockquote {
+    position: relative;
+    padding: 22px 1rem 1rem 60px;
+    box-sizing: border-box;
+    font-style: italic;
+    background: $blockbackground;
+}
+
+blockquote:before{
+    display: inline-block;
+    position: absolute;
+    top: 18px;
+    left: 15px;
+    content: "\f10d";
+    font-family: FontAwesome;
+    color: darken($blockbackground, 20%);
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 900;
+}
+
+blockquote cite {
+    display: block;
+    text-align: right;
+    color: #888888;
+    font-size: 0.9em;
 }
