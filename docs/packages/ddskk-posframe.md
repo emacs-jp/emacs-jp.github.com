@@ -8,7 +8,6 @@ last_modified: 2020-09-04
 org: t
 ---
 {% include JB/setup %}
-
 # 概要
 
 [ddskk-posframe](https://github.com/conao3/ddskk-posframe.el/)は[conao3](https://github.com/conao3/)によって作成された、ddskkツールチップの[posframe](https://github.com/tumashu/posframe)フロントエンドです。

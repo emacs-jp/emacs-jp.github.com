@@ -38,8 +38,6 @@
 (leaf ox-gfm
   :ensure t
   :require org ox-publish t
-  :custom ((org-gfm-layout . "page")
-           (org-gfm-preamble . "{% include JB/setup %}\n"))
   :defun my/f-parent
   :defvar org-publish-project-alist
   :preface

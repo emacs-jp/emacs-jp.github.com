@@ -7,7 +7,9 @@
 #+link: images file+sys:../images/
 #+link: files file+sys:../files/
 
+#+gfm_layout: page
 #+gfm_tags: ddskk posframe ddskk-posframe conao3
+#+gfm_preamble: {% include JB/setup %}
 #+gfm_custom_front_matter: :org t
 
 * 概要

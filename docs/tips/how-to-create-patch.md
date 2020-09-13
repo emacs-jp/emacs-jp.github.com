@@ -8,7 +8,6 @@ last_modified: 2020-09-13
 org: t
 ---
 {% include JB/setup %}
-
 # 概要
 
 筆者は最近初めてEmacsにパッチを送り、[無事マージ](https://emba.gnu.org/emacs/emacs/-/commit/66509f2ead423b814378a44a55c9f63dcb1e149b)されました。 日本人の方でコミット権を持つ方すらおられるのに、この情報については散逸しておりパッチを送ることは戸惑うことがたくさんありました。
