@@ -3,8 +3,8 @@ layout: page
 author: [conao3]
 title: "Emacsにパッチを送るには"
 tags: [patch]
-date: 2020-09-12
-last_modified: 2020-09-04
+date: 2020-09-13
+last_modified: 2020-09-13
 ---
 {% include JB/setup %}
 
