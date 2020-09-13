@@ -9,10 +9,31 @@ Emacsと{{ site.title }}についての詳細は[このサイトについて](/a
 
 ## コンテンツ
 
+{% assign p_page_list
+     = site.pages | concat: site.posts
+       | where_exp: 'item', 'item.dir == "/packages/"'
+       | where_exp: 'item', 'item.last_modified'
+       | sort: "last_modified"
+       | reverse %}
+
+{% assign t_page_list
+     = site.pages | concat: site.posts
+       | where_exp: 'item', 'item.dir == "/tips/"'
+       | where_exp: 'item', 'item.last_modified'
+       | sort: "last_modified"
+       | reverse %}
+
 * [2020年代のEmacs入門](/tips/emacs-in-2020)
 * [{{ site.title }}で管理しているパッケージ](/maintenances)
 * [Emacsのバージョン](/tips/versions)
-* [おすすめパッケージ紹介](/packages)
+* [パッケージ紹介](/packages) <small>最近10記事</small>
+{% for page in p_page_list limit:10 %}
+  * [{{ page.title }}]({{ page.url }})
+{%- endfor %}
+* [Emacsに関する雑多な話題](/tips) <small>最近10記事</small>
+{% for page in t_page_list limit:10 %}
+  * [{{ page.title }}]({{ page.url }})
+{%- endfor %}
 
 ## お知らせ
 
