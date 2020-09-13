@@ -38,7 +38,7 @@
 (leaf ox-gfm
   :ensure t
   :require org ox-publish t
-  :defun my/f-parent
+  :defun my/f-parent org-publish
   :defvar org-publish-project-alist
   :preface
   (defun my/f-parent (path)
@@ -51,6 +51,35 @@
                                (or load-file-name
                                    (bound-and-true-p byte-compile-current-file)
                                    buffer-file-name)))
+
+  (defun my/publish-emacs-jp ()
+    "Publish emacs-jp blog files."
+    (interactive)
+    (org-publish "emacs-jp"))
+
+  (defun my/insert-emacs-jp-template ()
+    "Insert emacs-jp template."
+    (interactive)
+    (insert (format "\
+#+title: {{ todo: title }}
+#+author: {{ todo: author }}
+#+date: %s
+#+last_modified: %s
+#+options: ^:{} toc:nil
+
+#+link: images file+sys:../images/
+#+link: files file+sys:../files/
+
+#+gfm_layout: page
+#+gfm_tags: {{ todo: tags }}
+#+gfm_preamble: {%% include JB/setup %%}
+#+gfm_custom_front_matter: :org t
+
+* 概要
+* 使用方法
+* まとめ"
+                    (format-time-string "<%Y-%m-%d %a>")
+                    (format-time-string "<%Y-%m-%d %a>"))))
 
   :config
   (setf (alist-get "emacs-jp" org-publish-project-alist nil nil #'string=)
