@@ -36,8 +36,12 @@ p {
     margin-bottom: 0.75rem;
 }
 
-ul, ol, img {
-    padding: 1rem;
+.main > ul, .main > ol, .main > img {
+    margin: 1rem 0;
+}
+
+ul, ol {
+    padding-inline-start: 1.5rem;
 }
 
 .navbar-brand img {
@@ -54,10 +58,6 @@ ul, ol, img {
 
 nav .navbar-nav {
     padding: 0
-}
-
-ol ol, ol ul, ul ol, ul ul {
-    margin-bottom: 0.75rem;
 }
 
 table, pre {
