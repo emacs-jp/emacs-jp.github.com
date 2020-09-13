@@ -9,6 +9,7 @@
 
 #+gfm_layout: page
 #+gfm_tags: patch
+#+gfm_headline_offset: 1
 #+gfm_preamble: {% include JB/setup %}
 #+gfm_custom_front_matter: :org t
 
@@ -18,7 +19,7 @@
 
 この記事はその経験をまとめると共に、Emacs本体にパッチを送る際のtipsについてまとめるものです。
 
-*** 実際のパッチ
+** 実際のパッチ
 #+begin_src diff
 From 66509f2ead423b814378a44a55c9f63dcb1e149b Mon Sep 17 00:00:00 2001
 From: Naoya Yamashita <conao3@gmail.com>

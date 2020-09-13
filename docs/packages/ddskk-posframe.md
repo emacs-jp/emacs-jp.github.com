@@ -8,7 +8,7 @@ last_modified: 2020-09-04
 org: t
 ---
 {% include JB/setup %}
-# 概要
+## 概要
 
 [ddskk-posframe](https://github.com/conao3/ddskk-posframe.el/)は[conao3](https://github.com/conao3/)によって作成された、ddskkツールチップの[posframe](https://github.com/tumashu/posframe)フロントエンドです。
 
@@ -17,10 +17,10 @@ posframeを利用しているので、次のスクリーンショットのよう
 ![img](../images/fdd892b1-45c2-41bc-83eb-a8639d8d4e59.png)
 
 
-# 使用方法
+## 使用方法
 
 
-## インストール
+### インストール
 
 leafを利用してインストールします。
 
@@ -35,12 +35,12 @@ leafを利用してインストールします。
 ```
 
 
-## 操作
+### 操作
 
 `ddskk-posframe-mode` が有効になっている間、ddskkのツールチップをposframeで表示します。
 
 
-## カスタマイズ
+### カスタマイズ
 
 機能が単一で、そもそもddskkにおいてツールチップがでるような変換をする機会が少ないので、カスタマイズする項目も動機もあまりありませんが、 `ddskk-posfrme` や `ddskk-posframe-boarder` を変更すれば魅力的なオリジナルのツールチップを作れるかもしれません。
 
@@ -56,7 +56,7 @@ leafを利用してインストールします。
 ツールチップ1画面に表示する候補件数などの調整はddskk-posframeではなく、ddskkの設定で行ないます。
 
 
-# まとめ
+## まとめ
 
 posframeを使うと「モダンなエディタ」感が増しますね。 posframeを利用するパッケージは他にもありますので、検索して頂ければと思います。 [MELPA - posframe](https://melpa.org/#/?q=posframe)
 
