@@ -5,6 +5,7 @@ title: "Emacsにパッチを送るには"
 tags: [patch]
 date: 2020-09-13
 last_modified: 2020-09-13
+org: t
 ---
 {% include JB/setup %}
 

@@ -8,6 +8,7 @@
 #+link: files file+sys:../files/
 
 #+gfm_tags: patch
+#+gfm_custom_front_matter: :org t
 
 * 概要
 筆者は最近初めてEmacsにパッチを送り、[[https://emba.gnu.org/emacs/emacs/-/commit/66509f2ead423b814378a44a55c9f63dcb1e149b][無事マージ]]されました。

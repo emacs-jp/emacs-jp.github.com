@@ -23,12 +23,18 @@
         </div>
         <div>
           <span class="author">Author: {{ author }}</span><br>
-          {% if page.date != empty %}
+          {% if page.date != nil %}
           <span class="date">Published: {{ page.date | date: "%Y-%m-%d" }}</span><br>
           {% endif %}
-          {% if page.last_modified != empty %}
+          {% if page.last_modified != nil %}
           <span class="lastmoddate">Last Modified: {{ page.last_modified | date: "%Y-%m-%d" }}</span><br>
           {% endif %}
+          <span class="githubsource">GitHub Source:
+            <a href="https://github.com/emacs-jp/emacs-jp.github.com/blob/master/docs/{{ page.path }}">md</a>
+            {%- if page.org != nil -%}
+            , <a href="https://github.com/emacs-jp/emacs-jp.github.com/blob/master/docs/org{{ page.url }}.org">org</a>
+            {% endif %}
+          </span>
         </div>
       </div>
     </div>

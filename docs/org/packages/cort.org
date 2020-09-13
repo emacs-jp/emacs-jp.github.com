@@ -8,6 +8,7 @@
 #+link: files file+sys:../files/
 
 #+gfm_tags: test cort conao3
+#+gfm_custom_front_matter: :org t
 
 * 概要
 [[https://github.com/conao3/cort.el/][cort]]は[[https://github.com/conao3/][conao3]]によって作成された、シンプルなElispテストフレームワークです。
