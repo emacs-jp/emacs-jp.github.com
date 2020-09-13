@@ -61,7 +61,7 @@ nav .navbar-nav {
     padding: 0
 }
 
-table, pre {
+table, pre, blockquote {
     background: $blockbackground;
     border-radius: 0.5rem;
     padding: 1rem;
@@ -185,19 +185,17 @@ blockquote {
     padding: 22px 1rem 1rem 60px;
     box-sizing: border-box;
     font-style: italic;
-    background: $blockbackground;
 }
 
 blockquote:before{
     display: inline-block;
     position: absolute;
-    top: 18px;
+    top: 17px;
     left: 15px;
     content: "\f10d";
     font-family: FontAwesome;
     color: darken($blockbackground, 20%);
     font-size: 30px;
-    line-height: 1;
     font-weight: 900;
 }
 
