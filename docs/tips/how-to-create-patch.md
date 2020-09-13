@@ -8,7 +8,7 @@ last_modified: 2020-09-13
 org: t
 ---
 {% include JB/setup %}
-# 概要
+## 概要
 
 筆者は最近初めてEmacsにパッチを送り、[無事マージ](https://emba.gnu.org/emacs/emacs/-/commit/66509f2ead423b814378a44a55c9f63dcb1e149b)されました。 日本人の方でコミット権を持つ方すらおられるのに、この情報については散逸しておりパッチを送ることは戸惑うことがたくさんありました。
 
@@ -110,12 +110,12 @@ index 7a8402be07..10e3b531f3 100644
 ```
 
 
-# パッチを送る前に
+## パッチを送る前に
 
 Emacsマニュアルに記載があることについて、パッチを送る前に処理しておくとMLでのやりとりがスムーズになります。 メンテナさんの負担を減らすためにもこれらのことについては事前に準備しておきましょう。
 
 
-## 著作権譲渡の手続き
+### 著作権譲渡の手続き
 
 -   参考
     -   en
@@ -168,33 +168,30 @@ org-modeはさらに親切にも[テンプレート](https://orgmode.org/request
 
 先方から返信があったのは4/28でした。そこからサインを書いてスキャンして送りかえしたりと数回やりとりがあった後、5/13に手続きが完了しました。
 
+1.  「Do you have an employer&#x2026;」について
 
-### 「Do you have an employer&#x2026;」について
+    「Do you have an employer&#x2026;」に対する返答は重要です。 ここは「No」と答えておくことが無難です。実際私はこの手続きに一回挫折しており、一回目は「No. I'm just bachelor in Hiroshima University in Japan.」と書いたところ、大学の著作権管理部にサインをもらってこいと言われ難儀しました。(そもそも大学にこのような個人の活動を管理する部署はない。。)
+    
+    このサインをもらうことはほぼ不可能で、FSFに大学はサインしたくないと言っているんだがと相談しても、いやそれは説明の仕方が悪いんだと栓ないやりとりを続けることになります。。
+    
+    「No」と答えておけば自分のサインだけで十分ということになるので、スムーズに手続きを進めることができます。
 
-「Do you have an employer&#x2026;」に対する返答は重要です。 ここは「No」と答えておくことが無難です。実際私はこの手続きに一回挫折しており、一回目は「No. I'm just bachelor in Hiroshima University in Japan.」と書いたところ、大学の著作権管理部にサインをもらってこいと言われ難儀しました。(そもそも大学にこのような個人の活動を管理する部署はない。。)
+2.  「Which files have you changed so far&#x2026;」について
 
-このサインをもらうことはほぼ不可能で、FSFに大学はサインしたくないと言っているんだがと相談しても、いやそれは説明の仕方が悪いんだと栓ないやりとりを続けることになります。。
+    当時はパッチを書いていなかったので、「No. But I plan to contribute to GNU code.」と答えておきました。
 
-「No」と答えておけば自分のサインだけで十分ということになるので、スムーズに手続きを進めることができます。
+3.  生年について
 
-
-### 「Which files have you changed so far&#x2026;」について
-
-当時はパッチを書いていなかったので、「No. But I plan to contribute to GNU code.」と答えておきました。
-
-
-### 生年について
-
-手続きの最後に
-
-> One more thing, may I get your year of birth for our records? The information is missing from the questionnaire.
-
-と聞かれました。 こちらとしてはorg-modeの記載に従いましたよというスタンスなので記載してなくても問題ないのですが、よりスムーズに手続きしたいなら初回のメールに記載しておくと良いかもしれません。
-
-私の場合はこのように聞かれたので、その返信で生年を答えたところ、「Thanks」と返答を受け、手続きは完了しました。
+    手続きの最後に
+    
+    > One more thing, may I get your year of birth for our records? The information is missing from the questionnaire.
+    
+    と聞かれました。 こちらとしてはorg-modeの記載に従いましたよというスタンスなので記載してなくても問題ないのですが、よりスムーズに手続きしたいなら初回のメールに記載しておくと良いかもしれません。
+    
+    私の場合はこのように聞かれたので、その返信で生年を答えたところ、「Thanks」と返答を受け、手続きは完了しました。
 
 
-## upstreamのレポジトリ
+### upstreamのレポジトリ
 
 -   参考
     -   en
@@ -212,7 +209,7 @@ git clone https://git.savannah.gnu.org/git/emacs.git
 patchがconflictしていてmasterに当てられないと、まずマージはしてもらえないので先端の変更に追随することは重要です。
 
 
-## パッチを送るML
+### パッチを送るML
 
 -   参考
     -   en
@@ -248,7 +245,7 @@ patchがconflictしていてmasterに当てられないと、まずマージは�
     完成度の高いパッチならバグレポートに加えても良いということでしょうか。。
 
 
-# コードの変更
+## コードの変更
 
 cloneしたemacsディレクトリで作業します。 とりあえずmasterの状態でテストが通るか確認します。
 
@@ -274,7 +271,7 @@ make lisp/emacs-lisp/gv-tests
 テストは[ERT](https://www.gnu.org/software/emacs/manual/html_node/ert/index.html)で記述します。前後を見て追加すれば雰囲気で動くと思います。
 
 
-# パッチの作成
+## パッチの作成
 
 -   参考
     -   en
@@ -297,7 +294,7 @@ make lisp/emacs-lisp/gv-tests
 なお、複数コミットをパッチにしたいときは 「[git 複数のコミットを反映する git format-patch apply](https://blog.bbtune.com/archives/2617/git-patch-format-apply)」などを参照してください。Magitでの操作は分かりません。。
 
 
-# タイムテーブル
+## タイムテーブル
 
 一例として今回のパッチがマージされるまでのやりとりをまとめておきます。
 
@@ -321,7 +318,7 @@ make lisp/emacs-lisp/gv-tests
 今回のやりとりでもdrewさんと私が失敗していて、このメールはMLのアーカイブから見えません。。Gmailの設定で「全員に返信」をデフォルトにしておいた方が良いと思います。
 
 
-# まとめ
+## まとめ
 
 人生初の大型OSSへのコントリビュートでした。
 

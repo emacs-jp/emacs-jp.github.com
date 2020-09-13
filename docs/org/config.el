@@ -72,6 +72,7 @@
 
 #+gfm_layout: page
 #+gfm_tags: {{ todo: tags }}
+#+gfm_headline_offset: 1
 #+gfm_preamble: {%% include JB/setup %%}
 #+gfm_custom_front_matter: :org t
 
