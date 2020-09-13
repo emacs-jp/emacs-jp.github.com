@@ -10,7 +10,7 @@ Emacsと{{ site.title }}についての詳細は[このサイトについて](/a
 ## コンテンツ
 
 * [2020年代のEmacs入門](/tips/emacs-in-2020)
-* [**{{ site.title }}**で管理しているパッケージ](/maintenances)
+* [{{ site.title }}で管理しているパッケージ](/maintenances)
 * [Emacsのバージョン](/tips/versions)
 * [おすすめパッケージ紹介](/packages)
 * helm とは
