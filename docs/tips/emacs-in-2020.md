@@ -3,7 +3,7 @@ layout: page
 author: conao3
 title: "2020年代のEmacs入門"
 date: 2020-08-25
-last_modified: 2020-08-29
+last_modified: 2020-09-14
 ---
 {% include JB/setup %}
 
@@ -167,7 +167,7 @@ Emacsも他のGUIアプリケーションと同じように使うことができ
     - `F1 k (describe-key)`: このコマンドに続けてキーバインドを入力すると、そのキーバインドに割り当てられているコマンドのドキュメントを見ることができる。
     - `F1 f (describe-function)`: 関数のドキュメントを見る。
     - `F1 v (describe-variable)`: 変数のドキュメントを見る。
-    - `F1 w (where-is)`: 「F1 f」とは逆に、関数に割り当てられているキーバインドを調べる。
+    - `F1 w (where-is)`: 「F1 k」とは逆に、関数に割り当てられているキーバインドを調べる。
 
 - ポイント移動
 
