@@ -58,7 +58,7 @@ Dockerfileで示します。ローカルで立てて、開発環境とする意�
 システムのEmacsと競合しないように `$HOME/.local` 以下にインストールする手順になっています。
 `build-deps` やそれに類するコマンドを使用した場合、具体的にインストールされたパッケージをコマントで示しました。
 
-なお、以下のDockerfiileは以下のコマンドを入力することにより、GUI版のEmacsを起動できます。
+なお、以下のDockerfileは以下のコマンドを入力することにより、GUI版のEmacsを起動できます。
 ```
 docker image build -t emacs-arch -f Dockerfile-arch .
 docker run -it --rm -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME:/home/user/host -e DISPLAY=$DISPLAY --user 1000 emacs-arch emacs
