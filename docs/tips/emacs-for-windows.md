@@ -31,7 +31,7 @@ Emacs が Windows ユーザーに優しくないような噂をよく耳にし�
 
 ## Emacs for Windows のインストール
 
-まずは PewerShell を起動します。PowerShell は Windows ユーザーにとっては効率化行うための必須ツールです。
+まずは PowerShell を起動します。PowerShell は Windows ユーザーにとっては効率化行うための必須ツールです。
 必須ではありませんが、WindowsTerminal をインストールしておくと作業効率があがります。
 
 ### Scoop
