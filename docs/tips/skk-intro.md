@@ -9,7 +9,7 @@ last_modified: 2020-10-02
 
 ## はじめに
 
-Emacs でかなや漢字を入力する方法は、標準で同梱されている LEIM や、Google 日本語入力のオープンソース版である Mozc など複数の方法があります。Windows で Emacs 27 をお使いであれば [tr-emacs-ime-module](https://github.com/trueroad/tr-emacs-ime-module) を導入することで普段から使い慣れている MS-IME を利用することができます。
+Emacs でかなや漢字を入力する方法は、標準で同梱されている LEIM や、Google 日本語入力のオープンソース版である Mozc など複数の方法があります。Windows で Emacs 27.1 以降 をお使いであれば [tr-emacs-ime-module](https://github.com/trueroad/tr-emacs-ime-module) を導入することで普段から使い慣れている MS-IME を利用することができます。
 
 いろいろ試して好みのものを選択するのが良いと思いますが、選択肢のひとつとして SKK というソフトウェアもあります。
 
