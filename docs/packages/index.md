@@ -4,7 +4,7 @@ title: Emacsパッケージ紹介
 ---
 {% include JB/setup %}
 
-Emacs24に標準搭載されている `package.el` を利用してインストール可能なパッケージの中からおすすめのパッケージを紹介します。
+Emacs24以降に標準搭載されている `package.el` を利用してインストール可能なパッケージの中からおすすめのパッケージを紹介します。
 
 {% assign pages_list
      = site.pages
