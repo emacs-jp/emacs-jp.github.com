@@ -559,8 +559,6 @@ leafの場合はさらに著者によるブログ記事があるのでそれも�
   :blackout t
   :leaf-defer nil
   :custom ((ivy-initial-inputs-alist . nil)
-           (ivy-re-builders-alist . '((t . ivy--regex-fuzzy)
-                                      (swiper . ivy--regex-plus)))
            (ivy-use-selectable-prompt . t))
   :global-minor-mode t
   :config
