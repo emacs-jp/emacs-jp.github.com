@@ -587,15 +587,6 @@ leafの場合はさらに著者によるブログ記事があるのでそれも�
               (counsel-find-file-ignore-regexp . ,(rx-to-string '(or "./" "../") 'no-group)))
     :global-minor-mode t))
 
-(leaf ivy-rich
-  :doc "More friendly display transformer for ivy."
-  :req "emacs-24.5" "ivy-0.8.0"
-  :tag "ivy" "emacs>=24.5"
-  :emacs>= 24.5
-  :ensure t
-  :after ivy
-  :global-minor-mode t)
-    
 (leaf prescient
   :doc "Better sorting and filtering"
   :req "emacs-25.1"
