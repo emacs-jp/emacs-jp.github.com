@@ -264,7 +264,7 @@ cargo-editでインストールされたサブコマンド、 `cargo add` を使
 どうやらlsp-modeが追記を読み込んでくれないようなので `M-x lsp-restart-workspace` でリロードしましょう。
 
 今追加したregexパッケージを使ってみましょう。
-`let regex = Regex::new("foo.*").unwarp();` と入力しようとしてみて下さい。
+`let regex = Regex::new("foo.*").unwrap();` と入力しようとしてみて下さい。
 
 
 ![regex::Regexを補完しているところ](/images/env/rust/completion_regex.png)
@@ -338,4 +338,3 @@ Actionを適用すると以下のように補完されます。
 あとはこれを埋めてコードを完成させましょう。
 
 解説は以上です。
-
