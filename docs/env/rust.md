@@ -3,8 +3,8 @@ layout: page
 author: blackenedgold
 title: "Rustプログラミングのための環境構築"
 tags: [env, rust]
-date: 2013-09-26
-last_modified: 2020-07-01
+date: 2029-12-04
+last_modified: 2029-12-04
 ---
 {% include JB/setup %}
 
