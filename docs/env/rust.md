@@ -136,7 +136,7 @@ Rustの開発で一番使われているエディタはVSCodeらしいですが�
 
 ```
 
-1つづつ解説していきます。
+1つずつ解説していきます。
 
 ``` emacs-lisp
 (setq exec-path (cons (expand-file-name "/PATH/TO") exec-path))
