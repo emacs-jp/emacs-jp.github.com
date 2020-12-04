@@ -594,9 +594,7 @@ leafの場合はさらに著者によるブログ記事があるのでそれも�
   :url "https://github.com/raxod502/prescient.el"
   :emacs>= 25.1
   :ensure t
-  :commands (prescient-persist-mode)
-  :custom `((prescient-aggressive-file-save . t)
-            (prescient-save-file . ,(locate-user-emacs-file "prescient")))
+  :custom ((prescient-aggressive-file-save . t))
   :global-minor-mode prescient-persist-mode)
   
 (leaf ivy-prescient
