@@ -106,8 +106,8 @@ Rustの開発で一番使われているエディタはVSCodeらしいですが�
 
 
 ``` emacs-lisp
-(setq exec-path (cons (expand-file-name "/PATH/TO") exec-path))
-(setq exec-path (cons (expand-file-name "~/.cargo/bin") exec-path))
+(add-to-list 'exec-path (expand-file-name "/PATH/TO"))
+(add-to-list 'exec-path (expand-file-name "~/.cargo/bin"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; #rust
@@ -139,14 +139,14 @@ Rustの開発で一番使われているエディタはVSCodeらしいですが�
 1つずつ解説していきます。
 
 ``` emacs-lisp
-(setq exec-path (cons (expand-file-name "/PATH/TO") exec-path))
+(add-to-list 'exec-path (expand-file-name "/PATH/TO"))
 ```
 
 rust-analyzerをインストールしたディレクトリを `exec-path` に加えます。
 
 
 ``` emacs-lisp
-(setq exec-path (cons (expand-file-name "~/.cargo/bin") exec-path))
+(add-to-list 'exec-path (expand-file-name "~/.cargo/bin"))
 ```
 
 `~/.cargo/bin` を `exec-path` に加えます。cargoやrustfmtなどをEmacsから使うために必要です。
