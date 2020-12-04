@@ -3,7 +3,7 @@ layout: page
 author: conao3
 title: "2020年代のEmacs入門"
 date: 2020-08-25
-last_modified: 2020-09-14
+last_modified: 2020-12-04
 ---
 {% include JB/setup %}
 
