@@ -3,7 +3,7 @@ layout: page
 author: conao3
 title: "2020年代のEmacs入門"
 date: 2020-08-25
-last_modified: 2020-09-14
+last_modified: 2020-12-04
 ---
 {% include JB/setup %}
 
@@ -439,29 +439,12 @@ Emacsには多くの標準添付パッケージがあります。また、C言�
   私の設定を書いておくので、取捨選択して頂ければと思います。変数の説明は `F1 v` で確認できます。
   無効にしているGUI要素についてはコメントアウトしておきました。
 
-- bytecomp
-  ```emacs-lisp
-  (eval-and-compile
-    (leaf bytecomp
-      :doc "compilation of Lisp code into byte code"
-      :tag "builtin" "lisp"
-      :custom (byte-compile-warnings . '(cl-functions))))
-  ```
-  Emacs 27.1から以前から非推奨ライブラリの `cl` パッケージを `require` すると下記のようなワーニングが表示されるようになりました。
-  ```
-  init.el:34:1:Warning: Package cl is deprecated
-  ```
-
-  init.elに関するワーニングは他の人のパッケージに関するものなので、ひとまず無視してしまいます。
-  なお、少し難しい話になりますが、このleafについては他のパッケージの設定とは違い、バイトコンパイル中に評価して欲しいので `eval-and-compile` で囲み、該当の警告が出る前に記述する必要があります。
-
 - autorevert
   ```emacs-lisp
   (leaf autorevert
     :doc "revert buffers when files on disk change"
     :tag "builtin"
-    :custom ((auto-revert-interval . 0.3)
-             (auto-revert-check-vc-info . t))
+    :custom ((auto-revert-interval . 1))
     :global-minor-mode global-auto-revert-mode)
   ```
   Emacsの外でファイルが書き変わったときに自動的に読み直すマイナーモードです。
@@ -531,7 +514,8 @@ Emacsには多くの標準添付パッケージがあります。また、C言�
               (delete-old-versions . t)))
   ```
   Emacsで好みが分かれる設定として、バックアップファイルを開いているファイルと同じディレクトリに作成するという挙動があります。
-  実際、このバックアップファイルに助けられることもあるので、 `.emacs.d` 以下にディレクトリを掘って、そこに保存するようにします。
+
+  単にdisableするのではなく、バックアップファイルを一箇所に集めることでバックアップのメリットを享受しつつ、バックアップファイルが散らばるのを防ぎます。
 
 - startup
   ```emacs-lisp
@@ -575,8 +559,6 @@ leafの場合はさらに著者によるブログ記事があるのでそれも�
   :blackout t
   :leaf-defer nil
   :custom ((ivy-initial-inputs-alist . nil)
-           (ivy-re-builders-alist . '((t . ivy--regex-fuzzy)
-                                      (swiper . ivy--regex-plus)))
            (ivy-use-selectable-prompt . t))
   :global-minor-mode t
   :config
@@ -603,15 +585,6 @@ leafの場合はさらに著者によるブログ記事があるのでそれも�
               (counsel-find-file-ignore-regexp . ,(rx-to-string '(or "./" "../") 'no-group)))
     :global-minor-mode t))
 
-(leaf ivy-rich
-  :doc "More friendly display transformer for ivy."
-  :req "emacs-24.5" "ivy-0.8.0"
-  :tag "ivy" "emacs>=24.5"
-  :emacs>= 24.5
-  :ensure t
-  :after ivy
-  :global-minor-mode t)
-    
 (leaf prescient
   :doc "Better sorting and filtering"
   :req "emacs-25.1"
@@ -619,9 +592,7 @@ leafの場合はさらに著者によるブログ記事があるのでそれも�
   :url "https://github.com/raxod502/prescient.el"
   :emacs>= 25.1
   :ensure t
-  :commands (prescient-persist-mode)
-  :custom `((prescient-aggressive-file-save . t)
-            (prescient-save-file . ,(locate-user-emacs-file "prescient")))
+  :custom ((prescient-aggressive-file-save . t))
   :global-minor-mode prescient-persist-mode)
   
 (leaf ivy-prescient
