@@ -439,22 +439,6 @@ Emacsには多くの標準添付パッケージがあります。また、C言�
   私の設定を書いておくので、取捨選択して頂ければと思います。変数の説明は `F1 v` で確認できます。
   無効にしているGUI要素についてはコメントアウトしておきました。
 
-- bytecomp
-  ```emacs-lisp
-  (eval-and-compile
-    (leaf bytecomp
-      :doc "compilation of Lisp code into byte code"
-      :tag "builtin" "lisp"
-      :custom (byte-compile-warnings . '(cl-functions))))
-  ```
-  Emacs 27.1から以前から非推奨ライブラリの `cl` パッケージを `require` すると下記のようなワーニングが表示されるようになりました。
-  ```
-  init.el:34:1:Warning: Package cl is deprecated
-  ```
-
-  init.elに関するワーニングは他の人のパッケージに関するものなので、ひとまず無視してしまいます。
-  なお、少し難しい話になりますが、このleafについては他のパッケージの設定とは違い、バイトコンパイル中に評価して欲しいので `eval-and-compile` で囲み、該当の警告が出る前に記述する必要があります。
-
 - autorevert
   ```emacs-lisp
   (leaf autorevert
