@@ -4,7 +4,7 @@ author: blackenedgold
 title: "Rustプログラミングのための環境構築"
 tags: [env, rust]
 date: 2020-12-04
-last_modified: 2020-12-04
+last_modified: 2021-02-03
 ---
 {% include JB/setup %}
 
@@ -65,11 +65,18 @@ $ rustup component add rls
 
 毎週[バイナリリリースがGitHubに作られる](https://github.com/rust-analyzer/rust-analyzer/releases)ので、そこからダウンロードして使います。
 
-rust-analyzerを `/PATH/TO/rust-analyzer` に保存するとして、以下のようなコマンドを毎週叩くことになるでしょう。
+rust-analyzerを `/PATH/TO/rust-analyzer` に保存するとして、以下のようなコマンドを毎週叩くことになるでしょう。(自分の環境向けのバイナリをダウンロードしてください)
 
 
 ``` console
+# Linux
 $ curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux -o /PATH/TO/rust-analyzer
+
+# macOS
+$ curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-mac -o /PATH/TO/rust-analyzer
+
+# Windows
+$ curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-windows.exe -o /PATH/TO/rust-analyzer.exe
 ```
 
 
