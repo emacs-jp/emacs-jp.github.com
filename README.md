@@ -38,6 +38,8 @@ RubyおよびBundlerが必要です。詳細は[Using Jekyll as a static site ge
 git clone git@github.com:emacs-jp/emacs-jp.github.com.git
 cd emacs-jp.github.com
 bundle install
+
+cd docs
 bundle exec jekyll serve         # localhost:4000 でローカルサーバーを立てる
 ```
 
