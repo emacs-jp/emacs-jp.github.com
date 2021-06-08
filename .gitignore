@@ -1,10 +1,5 @@
 ## .gitignore
 
-Thumbs.db
-.DS_Store
-
-!.gitkeep
-
 .docker.lock
 
 .rbenv-version
