@@ -22,7 +22,7 @@ masterブランチでは次期メジャーバージョンとなる **`28.0`** �
 
 ## バージョン表記
 
-GNU Emacsのバージョンは<strong><code><var>x</var>.<var>y</var></code></strong>や<strong><code><var>x</var>.<var>y</var>.<var>z</var></code></strong>または<strong><code><var>x</var>.<var>y</var>-rc</code></strong>の形式で表記されます。
+GNU Emacsのバージョン表記は<strong><code><var>x</var>.<var>y</var></code></strong>や<strong><code><var>x</var>.<var>y</var>.<var>z</var></code></strong>または<strong><code><var>x</var>.<var>y</var>-rc</code></strong>の形式です。
 
 ここでは**Emacs 25**を例に紹介します。
 
