@@ -51,25 +51,6 @@ GNU Emacsのバージョン表記は<strong><code><var>x</var>.<var>y</var></cod
  * **`25.1`**, **`25.2`** のような2桁の表記です
  * **特別な理由がない限りはこのバージョンの利用を推奨します**
 
-<details><summary>Emacs 25系の全リリース履歴</summary><table class="table"><tr><th>バージョン</th><th>リリース日</th></tr>
-<tr class="table-secondary"><td>emacs-25.0.90</td><td><time datetime="2016-01-30">2016年01月30日</time></td></tr>
-<tr class="table-secondary"><td>emacs-25.0.91</td><td><time datetime="2016-02-13">2016年02月13日</time></td></tr>
-<tr class="table-secondary"><td>emacs-25.0.92</td><td><time datetime="2016-03-02">2016年03月02日</time></td></tr>
-<tr class="table-secondary"><td>emacs-25.0.93</td><td><time datetime="2016-04-22">2016年04月22日</time></td></tr>
-<tr class="table-secondary"><td>emacs-25.0.94</td><td><time datetime="2016-05-17">2016年05月17日</time></td></tr>
-<tr class="table-secondary"><td>emacs-25.0.95</td><td><time datetime="2016-06-11">2016年06月11日</time></td></tr>
-<tr class="table-info"><td>emacs-25.1-rc1</td><td><time datetime="2016-07-24">2016年7月24日</time> </td></tr>
-<tr class="table-info"><td>emacs-25.1-rc2</td><td><time datetime="2016-08-21">2016年8月21日</time> </td></tr>
-<tr class="table-primary"><td>emacs-25.1</td><td><time datetime="2016-09-15">2016年9月15日</time> </td></tr>
-<tr class="table-secondary"><td>emacs-25.1.90</td><td><time datetime="2016-11-28">2016年11月28日</time></td></tr>
-<tr class="table-secondary"><td>emacs-25.1.91</td><td><time datetime="2016-12-30">2016年12月30日</time></td></tr>
-<tr class="table-info"><td>emacs-25.2-rc1</td><td><time datetime="2017-02-03">2017年2月3日</time>  </td></tr>
-<tr class="table-info"><td>emacs-25.2-rc2</td><td><time datetime="2017-02-21">2017年2月21日</time> </td></tr>
-<tr class="table-primary"><td>emacs-25.2</td><td><time datetime="2017-04-20">2017年4月20日</time> </td></tr>
-<tr class="table-primary"><td>emacs-25.3</td><td><time datetime="2017-09-12">2017年09月12日</time></td></tr>
-</table>
-</details>
-
 ##  各OSのEmacsバージョン
 
 ### GNU/Linux
@@ -97,111 +78,13 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
  * [Emacs 26 アンチニュース](https://ayatakesi.github.io/emacs/27.1/html/Antinews.html)
 
 
-以下の表は2011年(Emacs 23.3)以降のGNU Emacsのリリースカレンダーです。
+以下の表は2018年(Emacs 26)以降のGNU Emacsのリリースカレンダーです。
 
 <div style="width: 100%; overflow-y: scroll;">
 <table class="table table-hover" style="text-align:center">
 <thead><tr><th>年／月</th>
 <th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th><th scope="col">5</th><th scope="col">6</th><th scope="col">7</th><th scope="col">8</th><th scope="col">9</th><th scope="col">10</th><th scope="col">11</th><th scope="col">12</th></tr></thead>
 <tbody>
-<tr><th scope="row">2011</th>
-  <td><span class="badge badge-pill badge-secondary">23.2.93.1</span></td>
-  <td><span class="badge badge-pill badge-secondary">23.2.94</span></td>
-  <td><span class="badge badge-pill badge-primary">23.3</span></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td><span class="badge badge-pill badge-secondary">24.0.90</span></td>
-  <td><span class="badge badge-pill badge-secondary">24.0.91</span></td>
-  <td></td>
-  <td><span class="badge badge-pill badge-secondary">24.0.92</span></td>
-</tr>
-<tr><th scope="row">2012</th>
-  <td><span class="badge badge-pill badge-secondary">24.0.93</span></td>
-  <td><span class="badge badge-pill badge-secondary">24.0.94</span></td>
-  <td></td>
-  <td><span class="badge badge-pill badge-secondary">24.0.96</span></td>
-  <td><span class="badge badge-pill badge-secondary">24.0.97</span></td>
-  <td><span class="badge badge-pill badge-primary">24.1</span></td>
-  <td></td>
-  <td><span class="badge badge-pill badge-primary">24.2</span></td>
-  <td></td>
-  <td></td>
-  <td><span class="badge badge-pill badge-secondary">24.2.90</span></td>
-  <td><span class="badge badge-pill badge-secondary">24.2.91</span></td>
-</tr>
-<tr><th scope="row">2013</th>
-  <td><span class="badge badge-pill badge-secondary">24.2.92</span></td>
-  <td><span class="badge badge-pill badge-secondary">24.2.93</span></td>
-  <td><span class="badge badge-pill badge-primary">24.3</span></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
-<tr><th scope="row">2014</th>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td><span class="badge badge-pill badge-secondary">24.3.90</span></td>
-  <td><span class="badge badge-pill badge-secondary">24.3.91</span></td>
-  <td><span class="badge badge-pill badge-secondary">24.3.92</span></td>
-  <td></td>
-  <td><span class="badge badge-pill badge-secondary">24.3.93</span></td>
-  <td></td>
-  <td><span class="badge badge-pill badge-primary">24.4</span></td>
-  <td></td>
-  <td></td>
-</tr>
-<tr><th scope="row">2015</th>
-  <td></td>
-  <td><span class="badge badge-pill badge-secondary">24.4.90</span></td>
-  <td><span class="badge badge-pill badge-info">24.5-rc1</span></td>
-  <td><span class="badge badge-pill badge-primary">24.5</span></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
-<tr><th scope="row">2016</th>
-  <td><span class="badge badge-pill badge-secondary">25.0.90</span></td>
-  <td><span class="badge badge-pill badge-secondary">25.0.91</span></td>
-  <td><span class="badge badge-pill badge-secondary">25.0.92</span></td>
-  <td><span class="badge badge-pill badge-secondary">25.0.93</span></td>
-  <td><span class="badge badge-pill badge-secondary">25.0.94</span></td>
-  <td><span class="badge badge-pill badge-secondary">25.0.95</span></td>
-  <td><span class="badge badge-pill badge-info">25.1-rc1</span></td>
-  <td><span class="badge badge-pill badge-info">25.1-rc2</span></td>
-  <td><span class="badge badge-pill badge-primary">25.1</span></td>
-  <td></td>
-  <td><span class="badge badge-pill badge-secondary">25.1.90</span></td>
-  <td><span class="badge badge-pill badge-secondary">25.1.91</span></td>
-</tr>
-<tr scope="row"><th>2017</th>
-  <td></td>
-  <td><span class="badge badge-pill badge-info">25.2-rc1</span></td>
-  <td><span class="badge badge-pill badge-info">25.2-rc2</span></td>
-  <td><span class="badge badge-pill badge-primary">25.2</span></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td><span class="badge badge-pill badge-primary">25.3</span></td>
-  <td></td>
-  <td><span class="badge badge-pill badge-secondary">26.0.90</span></td>
-  <td></td>
-  <td></td>
-</tr>
 <tr><th scope="row">2018</th>
   <td><span class="badge badge-pill badge-secondary">26.0.91</span></td>
   <td></td>
