@@ -59,9 +59,43 @@ GNU Emacsのバージョン表記は<strong><code><var>x</var>.<var>y</var></cod
 
 ### macOS
 
-**macOS**には`/usr/bin/emacs`にEmacsコマンドがプリインストールされています。しかしながら、これは**Emacs 22.1**という、2007年にリリースされた実に古いバージョンがベースです。10年以上にわたって累積されてきたバグ修正や機能追加の恩恵が受けられないのはもちろん、現在にWeb上に公開されている多くのパッケージを利用することはできず、実用するには非常な困難が伴います。
+GNU EmacsはmacOS向けにCocoa APIによるGUIをサポートしています。macOSのサポート状況およびシステム固有のカスタマイズについては[Mac OS / GNUstep (GNU Emacs Manual (Japanese Translation))](https://ayatakesi.github.io/emacs/27.2/html/Mac-OS-_002f-GNUstep.html)を参照してください。
 
-プリインストールされたEmacsは利用せず、`brew install emacs`でインストールするか、ソースコードからビルドすることを**強く推奨**します。
+macOSでのEmacsのインストール方法には、ソースコードからビルドする以外に複数の選択肢があります。おそらく[Homebrew](https://brew.sh/index_ja)を使うのがもっとも簡単でしょう。`emacs`以外は[Tap](https://docs.brew.sh/Taps)として提供されています。
+
+ * [Emacs Mac Port](https://bitbucket.org/mituharu/emacs-mac/src/master/) (`emacs-mac`)
+   * 山本光晴氏によるEmacs 27.2の派生であり、ネイティブGUIを実装することでmacOSとの親和性を強化したバージョンです ([変更点についての説明](https://bitbucket.org/mituharu/emacs-mac/raw/master/README-mac))
+   * HomebrewのTapは[railwaycat/homebrew-emacsmacport](https://github.com/railwaycat/homebrew-emacsmacport)で提供されています
+   * `brew install`時のオプションでアプリのアイコンを変更できます
+ * [Emacs Plus](https://github.com/d12frosted/homebrew-emacs-plus) (`emacs-plus`)
+   * d12frosted氏によるHomebrewのTapで、通常のEmacsにパッチを追加しデフォルトのビルドオプションを変更したものです
+   * `brew install`時のオプションでアプリのアイコンを変更できます
+ * [Emacs](https://formulae.brew.sh/formula/emacs#default) `emacs`
+   * `brew install emacs`でインストールできるGUIなしのパッケージです
+   * ターミナルでのみEmacsを利用し、GUIサポートが一切不要の場合に利用できます
+ * [GNU Emacs For Mac OS X] (`--cask emacs`)
+   * `brew install --cask emacs`でインストールできるビルド済みのEmacsパッケージです
+   * Doom Emacsを利用する場合は[互換性に問題があるため利用しない](https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org)ことを推奨しています
+
+| パッケージ名 | 最新安定版(27.2) | ビルド済み安定版(cask)    | 開発版(28.50) | window-system   |
+|--------------|:----------------:|:-------------------------:|:-------------:|-----------------|
+| emacs-mac    | ○                | [homebrew-emacsmacport]   | ×             | `'mac`          |
+| emacs-plus   | ○                | ×                         | ○             | `'ns`           |
+| emacs        | CLIのみ          | ×                         | ○             |                 |
+| emacs (cask) | ○                | [GNU Emacs For Mac OS X]  | ×             | `'ns`           |
+
+[homebrew-emacsmacport]: https://github.com/railwaycat/homebrew-emacsmacport/releases
+[GNU Emacs For Mac OS X]: https://emacsformacosx.com/
+
+**macOS 10.14 Mojave以前**に添付されていたのは2007年にリリースされた**Emacs 22.1**という古いバージョンなので、利用しないことを**強く推奨**します。
+
+### Microsoft Windows
+
+WindowsでのEmacsについては[GNU Emacs for Windows再入門](/tips/emacs-for-windows)および[GNU Emacs download - GNU Project](https://www.gnu.org/software/emacs/download.html)などを参考にしてください。
+
+日本語入力について[trueroad/tr-emacs-ime-module: Emulator of GNU Emacs IME patch for Windows (tr-ime)](https://github.com/trueroad/tr-emacs-ime-module#readme)を参考にMELPAから`tr-ime`パッケージをインストールし有効化することでIMEの挙動を改善できます。
+
+<p class="alert alert-warning" role="alert">プレテスト版および開発版のコンパイル済みバイナリは<a href="https://alpha.gnu.org/gnu/emacs/pretest/windows/">alpha.gnu.org</a>からダウンロードもできます。ただし、正式リリースされたものではなく、最新版ではないものが含まれていることを注意してください。技術的な問題を自己解決できない場合は安定版のバージョンを利用することを強く推奨します。</p>
 
 ## リリース履歴
 
