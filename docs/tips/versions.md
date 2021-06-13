@@ -4,7 +4,7 @@ author: zonuexe
 title: "Emacsのバージョン"
 description: "今日にEmacsと呼ばれるGNU Emacsのバージョン表記とリリースの種類、過去の更新履歴についてまとめます。"
 date: 2019-01-13
-last_modified: 2020-09-02
+last_modified: 2021-06-13
 ---
 {% include JB/setup %}
 
