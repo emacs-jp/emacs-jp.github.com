@@ -4,7 +4,7 @@ author: zonuexe
 title: "Emacsのバージョン"
 description: "今日にEmacsと呼ばれるGNU Emacsのバージョン表記とリリースの種類、過去の更新履歴についてまとめます。"
 date: 2019-01-13
-last_modified: 2020-09-02
+last_modified: 2021-06-13
 ---
 {% include JB/setup %}
 
@@ -12,7 +12,7 @@ last_modified: 2020-09-02
 
 歴史的には多様なEmacsがありますが、今日においてEmacsと呼ばれるのは、もっぱら**[GNU Emacs]**です。
 
-<ins datetime="2020-03-04T22:30:00+0900">**GNU Emacs**の最新安定版は **`27.1`** (<time datetime="2020-08-10">2020年8月10日</time>リリース)です。<br>
+<ins datetime="2021-06-12T18:30:00+0900">**GNU Emacs**の最新安定版は **`27.2`** (<time datetime="2021-03-25">2021年3月25日</time>リリース)です。<br>
 <!-- 次期安定版のリリース候補版として<time datetime="2020-07-28T22:30:24+0200">2020年7月28日</time>に**`27.1-rc1`**がリリースされました。<br> -->
 <!-- GNU Emacsの新しい安定版である**`27.1`**が<time datetime="2020-08-06">2020年8月6日</time>にリリースされることが予告されています。<br> -->
 masterブランチでは次期メジャーバージョンとなる **`28.0`** 系統の開発が進行しています。</ins>
@@ -22,53 +22,34 @@ masterブランチでは次期メジャーバージョンとなる **`28.0`** �
 
 ## バージョン表記
 
-GNU Emacsのバージョンは<strong><code><var>x</var>.<var>y</var></code></strong>や<strong><code><var>x</var>.<var>y</var>.<var>z</var></code></strong>または<strong><code><var>x</var>.<var>y</var>-rc</code></strong>の形式で表記されます。
+GNU Emacsのバージョン表記は<strong><code><var>x</var>.<var>y</var></code></strong>や<strong><code><var>x</var>.<var>y</var>.<var>z</var></code></strong>または<strong><code><var>x</var>.<var>y</var>-rc</code></strong>の形式です。
 
-ここでは**Emacs 25**を例に紹介します。
+ここでは**Emacs 27**を例に紹介します。
 
 ### 開発版 (master)
 
  * 正式にリリースされていない開発中のバージョンです
- * 便宜上、**`25.0.50`**のような番号がつけられています
+ * 便宜上、**`27.0.50`**のような番号がつけられています
  * EmacsのGitリポジトリのmasterブランチからソースコードをチェックアウトした場合は通常このバージョンです
  * 日常的に変更されるため、**自分で問題解決できるユーザー**以外には向きません
 
 ### プレテスト版 (pretest)
  * 次の安定版に向けて開発が進むと段階的にリリースされるバージョンです
- * 通例、**`25.0.90`**から始まり、**`25.0.91`**, **`25.0.92`**... のように進んでいきます
+ * 通例、**`27.0.90`**から始まり、**`27.0.91`**, **`27.0.92`**... のように進んでいきます
  * 一般的なソフトウェアの**β版**に相当します
  * **新しいものをいち早く試したい熟練ユーザー**はこの時点で試してもよいでしょう
 
 ### リリース候補版 (<abbr title="Release Candidate">RC</abbr>)
 
  * さらに開発が進み、安定版としてリリースするための候補バージョンです
- * **`25.1-rc1`**, **`25.1-rc2`**, **`25.2-rc1`**のように、バージョン番号の最後に`-rc`がつきます
+ * **`27.1-rc1`**, **`27.1-rc2`**, **`27.2-rc1`**のように、バージョン番号の最後に`-rc`がつきます
  * **Lispパッケージの開発者**はこの段階でテストしておくことが望ましいです
 
 ### 安定版 (stable)
 
  * 品質が安定し、正式にリリースされたバージョンです
- * **`25.1`**, **`25.2`** のような2桁の表記です
+ * **`27.1`**, **`27.2`** のような2桁の表記です
  * **特別な理由がない限りはこのバージョンの利用を推奨します**
-
-<details><summary>Emacs 25系の全リリース履歴</summary><table class="table"><tr><th>バージョン</th><th>リリース日</th></tr>
-<tr class="table-secondary"><td>emacs-25.0.90</td><td><time datetime="2016-01-30">2016年01月30日</time></td></tr>
-<tr class="table-secondary"><td>emacs-25.0.91</td><td><time datetime="2016-02-13">2016年02月13日</time></td></tr>
-<tr class="table-secondary"><td>emacs-25.0.92</td><td><time datetime="2016-03-02">2016年03月02日</time></td></tr>
-<tr class="table-secondary"><td>emacs-25.0.93</td><td><time datetime="2016-04-22">2016年04月22日</time></td></tr>
-<tr class="table-secondary"><td>emacs-25.0.94</td><td><time datetime="2016-05-17">2016年05月17日</time></td></tr>
-<tr class="table-secondary"><td>emacs-25.0.95</td><td><time datetime="2016-06-11">2016年06月11日</time></td></tr>
-<tr class="table-info"><td>emacs-25.1-rc1</td><td><time datetime="2016-07-24">2016年7月24日</time> </td></tr>
-<tr class="table-info"><td>emacs-25.1-rc2</td><td><time datetime="2016-08-21">2016年8月21日</time> </td></tr>
-<tr class="table-primary"><td>emacs-25.1</td><td><time datetime="2016-09-15">2016年9月15日</time> </td></tr>
-<tr class="table-secondary"><td>emacs-25.1.90</td><td><time datetime="2016-11-28">2016年11月28日</time></td></tr>
-<tr class="table-secondary"><td>emacs-25.1.91</td><td><time datetime="2016-12-30">2016年12月30日</time></td></tr>
-<tr class="table-info"><td>emacs-25.2-rc1</td><td><time datetime="2017-02-03">2017年2月3日</time>  </td></tr>
-<tr class="table-info"><td>emacs-25.2-rc2</td><td><time datetime="2017-02-21">2017年2月21日</time> </td></tr>
-<tr class="table-primary"><td>emacs-25.2</td><td><time datetime="2017-04-20">2017年4月20日</time> </td></tr>
-<tr class="table-primary"><td>emacs-25.3</td><td><time datetime="2017-09-12">2017年09月12日</time></td></tr>
-</table>
-</details>
 
 ##  各OSのEmacsバージョン
 
@@ -78,9 +59,43 @@ GNU Emacsのバージョンは<strong><code><var>x</var>.<var>y</var></code></st
 
 ### macOS
 
-**macOS**には`/usr/bin/emacs`にEmacsコマンドがプリインストールされています。しかしながら、これは**Emacs 22.1**という、2007年にリリースされた実に古いバージョンがベースです。10年以上にわたって累積されてきたバグ修正や機能追加の恩恵が受けられないのはもちろん、現在にWeb上に公開されている多くのパッケージを利用することはできず、実用するには非常な困難が伴います。
+GNU EmacsはmacOS向けにCocoa APIによるGUIをサポートしています。macOSのサポート状況およびシステム固有のカスタマイズについては[Mac OS / GNUstep (GNU Emacs Manual (Japanese Translation))](https://ayatakesi.github.io/emacs/27.2/html/Mac-OS-_002f-GNUstep.html)を参照してください。
 
-プリインストールされたEmacsは利用せず、`brew install emacs`でインストールするか、ソースコードからビルドすることを**強く推奨**します。
+macOSでのEmacsのインストール方法には、ソースコードからビルドする以外に複数の選択肢があります。おそらく[Homebrew](https://brew.sh/index_ja)を使うのがもっとも簡単でしょう。`emacs`以外は[Tap](https://docs.brew.sh/Taps)として提供されています。
+
+ * [Emacs Mac Port](https://bitbucket.org/mituharu/emacs-mac/src/master/) (`emacs-mac`)
+   * 山本光晴氏によるEmacs 27.2の派生であり、ネイティブGUIを実装することでmacOSとの親和性を強化したバージョンです ([変更点についての説明](https://bitbucket.org/mituharu/emacs-mac/raw/master/README-mac))
+   * HomebrewのTapは[railwaycat/homebrew-emacsmacport](https://github.com/railwaycat/homebrew-emacsmacport)で提供されています
+   * `brew install`時のオプションでアプリのアイコンを変更できます
+ * [Emacs Plus](https://github.com/d12frosted/homebrew-emacs-plus) (`emacs-plus`)
+   * d12frosted氏によるHomebrewのTapで、通常のEmacsにパッチを追加しデフォルトのビルドオプションを変更したものです
+   * `brew install`時のオプションでアプリのアイコンを変更できます
+ * [Emacs](https://formulae.brew.sh/formula/emacs#default) `emacs`
+   * `brew install emacs`でインストールできるGUIなしのパッケージです
+   * ターミナルでのみEmacsを利用し、GUIサポートが一切不要の場合に利用できます
+ * [GNU Emacs For Mac OS X] (`--cask emacs`)
+   * `brew install --cask emacs`でインストールできるビルド済みのEmacsパッケージです
+   * Doom Emacsを利用する場合は[互換性に問題があるため利用しない](https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org)ことを推奨しています
+
+| パッケージ名 | 最新安定版(27.2) | ビルド済み安定版(cask)    | 開発版(28.50) | window-system   |
+|--------------|:----------------:|:-------------------------:|:-------------:|-----------------|
+| emacs-mac    | ○                | [homebrew-emacsmacport]   | ×             | `'mac`          |
+| emacs-plus   | ○                | ×                         | ○             | `'ns`           |
+| emacs        | CLIのみ          | ×                         | ○             |                 |
+| emacs (cask) | ○                | [GNU Emacs For Mac OS X]  | ×             | `'ns`           |
+
+[homebrew-emacsmacport]: https://github.com/railwaycat/homebrew-emacsmacport/releases
+[GNU Emacs For Mac OS X]: https://emacsformacosx.com/
+
+**macOS 10.14 Mojave以前**に添付されていたのは2007年にリリースされた**Emacs 22.1**という古いバージョンなので、利用しないことを**強く推奨**します。
+
+### Microsoft Windows
+
+WindowsでのEmacsについては[GNU Emacs for Windows再入門](/tips/emacs-for-windows)および[GNU Emacs download - GNU Project](https://www.gnu.org/software/emacs/download.html)などを参考にしてください。
+
+日本語入力について[trueroad/tr-emacs-ime-module: Emulator of GNU Emacs IME patch for Windows (tr-ime)](https://github.com/trueroad/tr-emacs-ime-module#readme)を参考にMELPAから`tr-ime`パッケージをインストールし有効化することでIMEの挙動を改善できます。
+
+<p class="alert alert-warning" role="alert">プレテスト版および開発版のコンパイル済みバイナリは<a href="https://alpha.gnu.org/gnu/emacs/pretest/windows/">alpha.gnu.org</a>からダウンロードもできます。ただし、正式リリースされたものではなく、最新版ではないものが含まれていることを注意してください。技術的な問題を自己解決できない場合は安定版のバージョンを利用することを強く推奨します。</p>
 
 ## リリース履歴
 
@@ -97,111 +112,13 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
  * [Emacs 26 アンチニュース](https://ayatakesi.github.io/emacs/27.1/html/Antinews.html)
 
 
-以下の表は2011年(Emacs 23.3)以降のGNU Emacsのリリースカレンダーです。
+以下の表は2018年(Emacs 26)以降のGNU Emacsのリリースカレンダーです。
 
 <div style="width: 100%; overflow-y: scroll;">
 <table class="table table-hover" style="text-align:center">
 <thead><tr><th>年／月</th>
 <th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th><th scope="col">5</th><th scope="col">6</th><th scope="col">7</th><th scope="col">8</th><th scope="col">9</th><th scope="col">10</th><th scope="col">11</th><th scope="col">12</th></tr></thead>
 <tbody>
-<tr><th scope="row">2011</th>
-  <td><span class="badge badge-pill badge-secondary">23.2.93.1</span></td>
-  <td><span class="badge badge-pill badge-secondary">23.2.94</span></td>
-  <td><span class="badge badge-pill badge-primary">23.3</span></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td><span class="badge badge-pill badge-secondary">24.0.90</span></td>
-  <td><span class="badge badge-pill badge-secondary">24.0.91</span></td>
-  <td></td>
-  <td><span class="badge badge-pill badge-secondary">24.0.92</span></td>
-</tr>
-<tr><th scope="row">2012</th>
-  <td><span class="badge badge-pill badge-secondary">24.0.93</span></td>
-  <td><span class="badge badge-pill badge-secondary">24.0.94</span></td>
-  <td></td>
-  <td><span class="badge badge-pill badge-secondary">24.0.96</span></td>
-  <td><span class="badge badge-pill badge-secondary">24.0.97</span></td>
-  <td><span class="badge badge-pill badge-primary">24.1</span></td>
-  <td></td>
-  <td><span class="badge badge-pill badge-primary">24.2</span></td>
-  <td></td>
-  <td></td>
-  <td><span class="badge badge-pill badge-secondary">24.2.90</span></td>
-  <td><span class="badge badge-pill badge-secondary">24.2.91</span></td>
-</tr>
-<tr><th scope="row">2013</th>
-  <td><span class="badge badge-pill badge-secondary">24.2.92</span></td>
-  <td><span class="badge badge-pill badge-secondary">24.2.93</span></td>
-  <td><span class="badge badge-pill badge-primary">24.3</span></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
-<tr><th scope="row">2014</th>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td><span class="badge badge-pill badge-secondary">24.3.90</span></td>
-  <td><span class="badge badge-pill badge-secondary">24.3.91</span></td>
-  <td><span class="badge badge-pill badge-secondary">24.3.92</span></td>
-  <td></td>
-  <td><span class="badge badge-pill badge-secondary">24.3.93</span></td>
-  <td></td>
-  <td><span class="badge badge-pill badge-primary">24.4</span></td>
-  <td></td>
-  <td></td>
-</tr>
-<tr><th scope="row">2015</th>
-  <td></td>
-  <td><span class="badge badge-pill badge-secondary">24.4.90</span></td>
-  <td><span class="badge badge-pill badge-info">24.5-rc1</span></td>
-  <td><span class="badge badge-pill badge-primary">24.5</span></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
-<tr><th scope="row">2016</th>
-  <td><span class="badge badge-pill badge-secondary">25.0.90</span></td>
-  <td><span class="badge badge-pill badge-secondary">25.0.91</span></td>
-  <td><span class="badge badge-pill badge-secondary">25.0.92</span></td>
-  <td><span class="badge badge-pill badge-secondary">25.0.93</span></td>
-  <td><span class="badge badge-pill badge-secondary">25.0.94</span></td>
-  <td><span class="badge badge-pill badge-secondary">25.0.95</span></td>
-  <td><span class="badge badge-pill badge-info">25.1-rc1</span></td>
-  <td><span class="badge badge-pill badge-info">25.1-rc2</span></td>
-  <td><span class="badge badge-pill badge-primary">25.1</span></td>
-  <td></td>
-  <td><span class="badge badge-pill badge-secondary">25.1.90</span></td>
-  <td><span class="badge badge-pill badge-secondary">25.1.91</span></td>
-</tr>
-<tr scope="row"><th>2017</th>
-  <td></td>
-  <td><span class="badge badge-pill badge-info">25.2-rc1</span></td>
-  <td><span class="badge badge-pill badge-info">25.2-rc2</span></td>
-  <td><span class="badge badge-pill badge-primary">25.2</span></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td><span class="badge badge-pill badge-primary">25.3</span></td>
-  <td></td>
-  <td><span class="badge badge-pill badge-secondary">26.0.90</span></td>
-  <td></td>
-  <td></td>
-</tr>
 <tr><th scope="row">2018</th>
   <td><span class="badge badge-pill badge-secondary">26.0.91</span></td>
   <td></td>
@@ -244,6 +161,20 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
   <td></td>
   <td></td>
 </tr>
+<tr><th scope="row">2021</th>
+  <td></td>
+  <td></td>
+  <td><span class="badge badge-pill badge-primary">27.2</span></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
 </tbody></table>
 </div>
 
@@ -253,6 +184,7 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
 
 <table class="table"><thead><tr><th scope="col">バージョン</th><th scope="col">リリース日</th></tr></thead>
 <tbody>
+<tr><th scope="row"><a href="https://lists.gnu.org/archive/html/info-gnu/2021-03/msg00008.html">Emacs 27.2</a></th><td><time datetime="2020-08-10">2021年3月25日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2020-08/msg00237.html">Emacs 27.1</a></th><td><time datetime="2020-08-10">2020年8月10日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2019-08/msg00577.html">Emacs 26.3</a></th><td><time datetime="2019-04-12">2019年8月28日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2019-04/msg00503.html">Emacs 26.2</a></th><td><time datetime="2019-04-12">2019年4月12日</time></td></tr>
