@@ -79,8 +79,10 @@ td {
     padding-right: 2rem;
 }
 
-a, code, kbd {
-    padding: 0 0.3rem;
+a::before, a::after, code::before, code::after, kbd::before, kbd::after {
+    content: ' ';
+    font-size: 0;
+    word-spacing: 0.2rem;
 }
 
 pre code {
