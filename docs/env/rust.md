@@ -247,9 +247,9 @@ lsp-modeがワークスペースをインポートするか尋いてくるので
 
 `cargo new` で動くプロジェクトが作られているのでcargo-minor-modeのキーバインドを使って走らせてみましょう。
 
-`C-c C-c r` です。
+`C-c C-c C-r` です。
 
-![C-c C-c rで走らせたところ](/images/env/rust/cargo_run.png)
+![C-c C-c C-rで走らせたところ](/images/env/rust/cargo_run.png)
 
 
 下のウィンドウに "Hello world!" と表示されていますね。成功です。
