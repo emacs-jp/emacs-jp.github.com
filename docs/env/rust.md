@@ -4,7 +4,7 @@ author: blackenedgold
 title: "Rustプログラミングのための環境構築"
 tags: [env, rust]
 date: 2020-12-04
-last_modified: 2021-02-03
+last_modified: 2021-06-30
 ---
 {% include JB/setup %}
 
@@ -262,7 +262,7 @@ lsp-modeがワークスペースをインポートするか尋いてくるので
 
 
 次にツールでインストールしたcargo-editを使っていみましょう。cargo-minor-mode経由で使えます。
-`C-c C-c a RET regex RET` と入力してみて下さい。
+`C-c C-c C-a RET regex RET` と入力してみて下さい。
 
 ![cargo addを使っているところ](/images/env/rust/cargo_add.png)
 
@@ -286,9 +286,9 @@ cargo-editでインストールされたサブコマンド、 `cargo add` を使
 ![Regex::newを補完しているところ](/images/env/rust/completion_regex_new.png)
 
 それではこれの型検査（`cargo check`）をしてみましょう。
-cargo-minor-modeの `C-c C-c k` を使います。
+cargo-minor-modeの `C-c C-c C-k` を使います。
 
-![C-c C-c kでチェックしているところ](/images/env/rust/compile.png)
+![C-c C-c C-kでチェックしているところ](/images/env/rust/compile.png)
 
 
 未使用アイテムの警告が出て、エラーが0なのでチェックは通っているようですね。
@@ -301,15 +301,15 @@ cargo-minor-modeの `C-c C-c k` を使います。
 * LSPの補完
 * LSPの定義ジャンプ（`M-.`）と元の場所に戻る（`M-,`）
 * LSPのActions（`s-l a a`）
-* cargo-minor-modeのcheck（`C-c C-c k`）
+* cargo-minor-modeのcheck（`C-c C-c C-k`）
   + Rustの型検査だけやってくれる `cargo check` を起動する
-* cargo-minor-modeのcheck（`C-c C-c K`）
+* cargo-minor-modeのcheck（`C-c C-c C-K`）
   + Rustのlinterの `cargo clippy` を起動する
-* cargo-minor-modeのtest（`C-c C-c t`）
+* cargo-minor-modeのtest（`C-c C-c C-t`）
   + テストを走らせる `cargo test` を起動する
-* cargo-minor-modeのadd（`C-c C-c a`）
+* cargo-minor-modeのadd（`C-c C-c C-a`）
   + cargo-editプラグインの依存パッケージ追加コマンド `cargo add` を起動する
-* `C-c C-c k` のあとの `M-g M-n`/`M-g M-p` （next-error/previous-error）
+* `C-c C-c C-k` のあとの `M-g M-n`/`M-g M-p` （next-error/previous-error）
   + Cargoの出したエラーの起きたソースの位置に飛べる
 
 そんなに多くないので簡単に覚えられるでしょう。
