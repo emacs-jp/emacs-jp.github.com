@@ -30,7 +30,7 @@ pacman -S mingw-w64-x86_64-emacs
 macOSについてはbrewでインストールできます。
 
 ```
-brew cask install emacs
+brew install emacs --cask
 ```
 
 ### Linux
