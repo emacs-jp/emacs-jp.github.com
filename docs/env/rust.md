@@ -69,14 +69,14 @@ rust-analyzerを `/PATH/TO/rust-analyzer` に保存するとして、以下の�
 
 
 ``` console
-# Linux
-$ curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux -o /PATH/TO/rust-analyzer
+# x86_64 Linux
+$ curl -sL https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | zcat > /PATH/TO/rust-analyzer
 
-# macOS
-$ curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-mac -o /PATH/TO/rust-analyzer
+# x86_64 macOS
+$ curl -sL https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-apple-darwin.gz | zcat > /PATH/TO/rust-analyzer
 
-# Windows
-$ curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-windows.exe -o /PATH/TO/rust-analyzer.exe
+# x86_64 Windows
+$ curl -sL https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-pc-windows-msvc.gz | zcat >  /PATH/TO/rust-analyzer.exe
 ```
 
 
