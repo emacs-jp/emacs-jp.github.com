@@ -72,13 +72,14 @@ rust-analyzerを `/PATH/TO/rust-analyzer` に保存するとして、以下の�
 # x86_64 Linux
 $ curl -sL https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | zcat > /PATH/TO/rust-analyzer
 
-# x86_64 macOS
-$ curl -sL https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-apple-darwin.gz | zcat > /PATH/TO/rust-analyzer
+# macOS
+$ brew install rust-analyzer
 
 # x86_64 Windows
 $ curl -sL https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-pc-windows-msvc.gz | zcat >  /PATH/TO/rust-analyzer.exe
 ```
 
+[rust-analyzerのマニュアル](https://rust-analyzer.github.io/manual.html#rust-analyzer-language-server-binary)も参考にして下さい。
 
 rust-analyzerは毎週更新されるので使う方はGitHubの右上にある[Watch]から[Custom]の[Releases]にチェックを入れて、毎週のリリースの通知を受け取るとよいでしょう[^1]
 
