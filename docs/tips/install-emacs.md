@@ -38,7 +38,7 @@ brew install emacs --cask
 Linux各ディストリビューションについては、それぞれのパッケージマネージャでインストールできます。
 各ディストリビューションでインストールできるバージョンについては「[repology.org - Versions for emacs](https://repology.org/project/emacs/versions)」で一覧できます。
 ```
-apt install install emacs
+apt install emacs
 ```
 
 ## make
