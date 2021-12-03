@@ -4,7 +4,7 @@ author: zonuexe
 title: "Emacsのバージョン"
 description: "今日にEmacsと呼ばれるGNU Emacsのバージョン表記とリリースの種類、過去の更新履歴についてまとめます。"
 date: 2019-01-13
-last_modified: 2021-06-13
+last_modified: 2021-12-04
 ---
 {% include JB/setup %}
 
@@ -12,10 +12,11 @@ last_modified: 2021-06-13
 
 歴史的には多様なEmacsがありますが、今日においてEmacsと呼ばれるのは、もっぱら**[GNU Emacs]**です。
 
-<ins datetime="2021-06-12T18:30:00+0900">**GNU Emacs**の最新安定版は **`27.2`** (<time datetime="2021-03-25">2021年3月25日</time>リリース)です。<br>
+<ins datetime="2021-12-04T00:00:15+0900">**GNU Emacs**の最新安定版は **`27.2`** (<time datetime="2021-03-25">2021年3月25日</time>リリース)です。<br>
+次期安定版(Emacs 28)のプレテスト版として<time datetime="2021-12-02T14:41:30-0800">2021年12月2日</time>に**`28.0.90`**がリリースされました。<br>
 <!-- 次期安定版のリリース候補版として<time datetime="2020-07-28T22:30:24+0200">2020年7月28日</time>に**`27.1-rc1`**がリリースされました。<br> -->
 <!-- GNU Emacsの新しい安定版である**`27.1`**が<time datetime="2020-08-06">2020年8月6日</time>にリリースされることが予告されています。<br> -->
-masterブランチでは次期メジャーバージョンとなる **`28.0`** 系統の開発が進行しています。</ins>
+masterブランチではさらに次のメジャーバージョンとなる **`29.0`** 系統の開発が進行しています。</ins>
 
 [GNU Emacs]: https://ja.wikipedia.org/wiki/GNU_Emacs
 [26.3-rc1]: https://lists.gnu.org/archive/html/emacs-devel/2019-08/msg00416.html
