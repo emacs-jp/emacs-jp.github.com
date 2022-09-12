@@ -4,7 +4,7 @@ author: zonuexe
 title: "Emacsのバージョン"
 description: "今日にEmacsと呼ばれるGNU Emacsのバージョン表記とリリースの種類、過去の更新履歴についてまとめます。"
 date: 2019-01-13
-last_modified: 2021-12-04
+last_modified: 2022-09-12
 ---
 {% include JB/setup %}
 
@@ -12,7 +12,7 @@ last_modified: 2021-12-04
 
 歴史的には多様なEmacsがありますが、今日においてEmacsと呼ばれるのは、もっぱら**[GNU Emacs]**です。
 
-<ins datetime="2022-04-05T11:00:00+0900">**GNU Emacs**の最新安定版は **`28.1`** (<time datetime="2022-04-04T15:06:39+0300">2022年4月4日</time>リリース)です。<br>
+<ins datetime="2022-09-12T20:00:00+0900">**GNU Emacs**の最新安定版は **`28.2`** (<time datetime="2022-09-12T06:13:13-0400">2022年9月12日</time>リリース)です。<br>
 <!-- 次期安定版のリリース候補版として<time datetime="2020-07-28T22:30:24+0200">2020年7月28日</time>に**`27.1-rc1`**がリリースされました。<br> -->
 <!-- GNU Emacsの新しい安定版である**`27.1`**が<time datetime="2020-08-06">2020年8月6日</time>にリリースされることが予告されています。<br> -->
 masterブランチでは次のメジャーバージョンとなる **`29.0`** 系統の開発が進行しています。</ins>
@@ -183,7 +183,7 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
   <td></td>
   <td></td>
   <td></td>
-  <td></td>
+  <td><span class="badge badge-pill badge-primary">28.2</span></td>
   <td></td>
   <td></td>
   <td></td>
@@ -197,7 +197,8 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
 
 <table class="table"><thead><tr><th scope="col">バージョン</th><th scope="col">リリース日</th></tr></thead>
 <tbody>
-<tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2022-04/msg00093.html">Emacs 28.1</a></th><td><time datetime="2022-04-04">2021年4月4日</time></td></tr>
+<tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2022-09/msg00730.html">Emacs 28.1</a></th><td><time datetime="2022-09-12">2022年9月12日</time></td></tr>
+<tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2022-04/msg00093.html">Emacs 28.1</a></th><td><time datetime="2022-04-04">2022年4月4日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/info-gnu/2021-03/msg00008.html">Emacs 27.2</a></th><td><time datetime="2021-03-25">2021年3月25日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2020-08/msg00237.html">Emacs 27.1</a></th><td><time datetime="2020-08-10">2020年8月10日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2019-08/msg00577.html">Emacs 26.3</a></th><td><time datetime="2019-04-12">2019年8月28日</time></td></tr>
