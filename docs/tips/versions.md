@@ -197,7 +197,7 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
 
 <table class="table"><thead><tr><th scope="col">バージョン</th><th scope="col">リリース日</th></tr></thead>
 <tbody>
-<tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2022-09/msg00730.html">Emacs 28.1</a></th><td><time datetime="2022-09-12">2022年9月12日</time></td></tr>
+<tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2022-09/msg00730.html">Emacs 28.2</a></th><td><time datetime="2022-09-12">2022年9月12日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2022-04/msg00093.html">Emacs 28.1</a></th><td><time datetime="2022-04-04">2022年4月4日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/info-gnu/2021-03/msg00008.html">Emacs 27.2</a></th><td><time datetime="2021-03-25">2021年3月25日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2020-08/msg00237.html">Emacs 27.1</a></th><td><time datetime="2020-08-10">2020年8月10日</time></td></tr>
