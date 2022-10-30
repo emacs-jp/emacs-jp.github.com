@@ -10,7 +10,7 @@
 
 ## Slack - <https://emacs-jp.slack.com>
 
-参加したい方は https://slack-emacs-jp.herokuapp.com/ からサインアップできます。
+参加したい方はこちらの [招待リンク](https://join.slack.com/t/emacs-jp/shared_invite/zt-1id7hvbxh-~n_wSBrdrHMk8~Ge8Fp3IQ) からサインアップできます。
 
 ## ページ作成者向け情報
 
