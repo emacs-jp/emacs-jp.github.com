@@ -58,7 +58,7 @@ Emacsと{{ site.title }}についての詳細は[このサイトについて](/a
 ## Slack <small>- [emacs-jp.slack.com](https://emacs-jp.slack.com/)</small>
 
 Emacs JPのSlack teamには多くのEmacsユーザーが常駐しています。  
-どなたでも <https://slack-emacs-jp.herokuapp.com/> からサインアップして参加できます。
+どなたでも <https://join.slack.com/t/emacs-jp/shared_invite/zt-1id7hvbxh-~n_wSBrdrHMk8~Ge8Fp3IQ> からサインアップして参加できます。
 
 Emacsについて、
 
