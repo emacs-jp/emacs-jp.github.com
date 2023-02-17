@@ -9,7 +9,7 @@ redirect_to: https://emacs-jp.github.io/reading-init.el/
 
 - 第1回
 - 日時: 2014/09/06(土) 22:00
-- 場所: [LingrのEmacs部屋](http://lingr.com/room/emacs/)
+- 場所: [Slackの #reading-init-el channel](https://app.slack.com/client/T1B60DPHV/CMJ3J83QE)
 - init.el: 未定
 
 ## init.el勉強会
@@ -25,16 +25,16 @@ redirect_to: https://emacs-jp.github.io/reading-init.el/
 ## 開催概要
 
 - 日時: 毎週土曜日夜22時(JST)
-- 場所: オンラインのチャットルーム [LingrのEmacs部屋](http://lingr.com/room/emacs/)
+- 場所: [Slackの #reading-init-el channel](https://app.slack.com/client/T1B60DPHV/CMJ3J83QE)
 
 発言するにはLingrのアカウントを取得する必要があります。
 ログを読みたいだけならその必要はありません(各過去の開催ページにログへのリンクがあります)。
 終了時間は特に決まっていませんが、1時間くらいを想定しています。
 
-## Lingrのアカウント登録方法について
+## Slackの招待について
 
-現在、スパム対策のためLingrのアカウント取得はFacebookアカウント連携を行うか、専用の招待リンクを経由する必要があります。
-Facebookアカウントとの連携を行いたくない方は、[こちらのリンク](http://goo.gl/te79YK)を経由してアカウント登録を行って下さい。
+[こちらの招待リンク](https://join.slack.com/t/emacs-jp/shared_invite/zt-1id7hvbxh-~n_wSBrdrHMk8~Ge8Fp3IQ)からお願いします
+
 
 ## おやくそく
 

@@ -108,6 +108,11 @@ Emacsに標準で付属しているInfoが公式な一次情報です。
 
 ## ML、オンラインコミュニケーション
 
+### Slack emacs-jp
+
+* https://emacs-jp.slack.com
+* 参加したい方はこちらの[招待リンク](https://join.slack.com/t/emacs-jp/shared_invite/zt-1id7hvbxh-~n_wSBrdrHMk8~Ge8Fp3IQ)からサインアップできます
+
 ### twitter
 
 * ハッシュタグ [#emacs](https://twitter.com/hashtag/emacs?src=hash), [#emacsjp](https://twitter.com/hashtag/emacsjp?src=hash)
