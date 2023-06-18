@@ -13,7 +13,7 @@ last_modified: 2022-09-12
 歴史的には多様なEmacsがありますが、今日においてEmacsと呼ばれるのは、もっぱら**[GNU Emacs]**です。
 
 <ins datetime="2022-09-12T20:00:00+0900">**GNU Emacs**の最新安定版は **`28.2`** (<time datetime="2022-09-12T06:13:13-0400">2022年9月12日</time>リリース)です。<br>
-次期安定版のプレテスト版として<time datetime="2023-04-10T10:26:34+0300">2023年4月10日</time>に**`29.0.90`**がリリースされました。<br>
+次期安定版のプレテスト版として<time datetime="2023-06-18T15:14:21+0300">2023年6月18日</time>に**`29.0.92`**がリリースされました。<br>
 <!-- 次期安定版のリリース候補版として<time datetime="2020-07-28T22:30:24+0200">2020年7月28日</time>に**`27.1-rc1`**がリリースされました。<br> -->
 <!-- GNU Emacsの新しい安定版である**`27.1`**が<time datetime="2020-08-06">2020年8月6日</time>にリリースされることが予告されています。<br> -->
 masterブランチでは次のメジャーバージョンとなる **`30.0`** 系統の開発が進行しています。</ins>
@@ -194,8 +194,8 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
   <td></td>
   <td><span class="badge badge-pill badge-info">28.3-rc1</span></td>
   <td><span class="badge badge-pill badge-secondary">29.0.90</span></td>
-  <td></td>
-  <td></td>
+  <td><span class="badge badge-pill badge-secondary">29.0.91</span></td>
+  <td><span class="badge badge-pill badge-secondary">29.0.92</span></td>
   <td></td>
   <td></td>
   <td></td>
