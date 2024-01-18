@@ -4,7 +4,7 @@ author: zonuexe
 title: "Emacsのバージョン"
 description: "今日にEmacsと呼ばれるGNU Emacsのバージョン表記とリリースの種類、過去の更新履歴についてまとめます。"
 date: 2019-01-13
-last_modified: 2023-07-31
+last_modified: 2024-01-18
 ---
 {% include JB/setup %}
 
@@ -12,7 +12,7 @@ last_modified: 2023-07-31
 
 歴史的には多様なEmacsがありますが、今日においてEmacsと呼ばれるのは、もっぱら**[GNU Emacs]**です。
 
-<ins datetime="2023-07-31T00:25:00+0900">**GNU Emacs**の最新安定版は **`29.1`** (<time datetime="2023-07-31T10:00:16+0300">2023年7月31日</time>リリース)です。<br>
+<ins datetime="2024-01-18T23:30:00+0900">**GNU Emacs**の最新安定版は **`29.2`** (<time datetime="2024-01-18T13:06:24+0200">2024年1月18日</time>リリース)です。<br>
 <!-- 次期安定版のプレテスト版として<time datetime="2023-06-18T15:14:21+0300">2023年6月18日</time>に**`29.0.92`**がリリースされました。<br> -->
 <!-- 次期安定版のリリース候補版として<time datetime="2023-07-23T11:55:44+0300">2023年7月23日</time>に**`29.1-rc1`**がリリースされました。<br> -->
 <!-- GNU Emacsの新しい安定版である**`27.1`**が<time datetime="2020-08-06">2020年8月6日</time>にリリースされることが予告されています。<br> -->
@@ -59,9 +59,14 @@ GNU Emacsのバージョン表記は<strong><code><var>x</var>.<var>y</var></cod
 
 ### macOS
 
-GNU EmacsはmacOS向けにCocoa APIによるGUIをサポートしています。macOSのサポート状況およびシステム固有のカスタマイズについては[Mac OS / GNUstep (GNU Emacs Manual (Japanese Translation))](https://ayatakesi.github.io/emacs/27.2/html/Mac-OS-_002f-GNUstep.html)を参照してください。
+GNU EmacsはmacOS向けにCocoa APIによるGUIをサポートしています。macOSのサポート状況およびシステム固有のカスタマイズについては[EmacsとmacOS / GNUstep][macos]を参照してください。
 
-macOSでのEmacsのインストール方法には、ソースコードからビルドする以外に複数の選択肢があります。おそらく[Homebrew](https://brew.sh/index_ja)を使うのがもっとも簡単でしょう。`emacs`以外は[Tap](https://docs.brew.sh/Taps)として提供されています。
+[macos]: https://ayatakesi.github.io/emacs/29.1/html/Mac-OS-_002f-GNUstep.html
+
+macOSでのEmacsのインストール方法には、ソースコードからビルドする以外に複数の選択肢があります。おそらく[Homebrew][]を使うのがもっとも簡単でしょう。`emacs`以外は[Tap][]として提供されています。
+
+[Homebrew]: https://brew.sh/ja/
+[Tap]: https://docs.brew.sh/Taps
 
  * [Emacs Mac Port](https://bitbucket.org/mituharu/emacs-mac/src/master/) (`emacs-mac`)
    * 山本光晴氏によるEmacs 27.2の派生であり、ネイティブGUIを実装することでmacOSとの親和性を強化したバージョンです ([変更点についての説明](https://bitbucket.org/mituharu/emacs-mac/raw/master/README-mac))
@@ -77,12 +82,12 @@ macOSでのEmacsのインストール方法には、ソースコードからビ�
    * `brew install --cask emacs`でインストールできるビルド済みのEmacsパッケージです
    * Doom Emacsを利用する場合は[互換性に問題があるため利用しない](https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org)ことを推奨しています
 
-| パッケージ名 | 最新安定版(27.2) | ビルド済み安定版(cask)    | 開発版(28.50) | window-system   |
-|--------------|:----------------:|:-------------------------:|:-------------:|-----------------|
-| emacs-mac    | ○                | [homebrew-emacsmacport]   | ×             | `'mac`          |
-| emacs-plus   | ○                | ×                         | ○             | `'ns`           |
-| emacs        | CLIのみ          | ×                         | ○             |                 |
-| emacs (cask) | ○                | [GNU Emacs For Mac OS X]  | ×             | `'ns`           |
+| パッケージ名 | 最新安定版(29.x) | ビルド済み安定版(cask)   | 開発版(30.50) | window-system |
+|--------------|:----------------:|:------------------------:|:-------------:|---------------|
+| emacs-mac    | ○               | [homebrew-emacsmacport]  | ×            | `'mac`        |
+| emacs-plus   | ○               | ×                       | ○            | `'ns`         |
+| emacs        | CLIのみ          | ×                       | ○            |               |
+| emacs (cask) | ○               | [GNU Emacs For Mac OS X] | ×            | `'ns`         |
 
 [homebrew-emacsmacport]: https://github.com/railwaycat/homebrew-emacsmacport/releases
 [GNU Emacs For Mac OS X]: https://emacsformacosx.com/
@@ -203,6 +208,20 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
   <td></td>
   <td></td>
 </tr>
+<tr><th scope="row">2024</th>
+  <td><span class="badge badge-pill badge-primary">29.2</span></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
 </tbody></table>
 </div>
 
@@ -212,7 +231,8 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
 
 <table class="table"><thead><tr><th scope="col">バージョン</th><th scope="col">リリース日</th></tr></thead>
 <tbody>
-<tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2023-07/msg00879.html">Emacs 29.1</a></th><td><time datetime="2022-09-12">2023年7月30日</time></td></tr>
+<tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2024-01/msg00666.html">Emacs 29.2</a></th><td><time datetime="2024-01-18">2024年1月18日</time></td></tr>
+<tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2023-07/msg00879.html">Emacs 29.1</a></th><td><time datetime="2023-07-30">2023年7月30日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2022-09/msg00730.html">Emacs 28.2</a></th><td><time datetime="2022-09-12">2022年9月12日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2022-04/msg00093.html">Emacs 28.1</a></th><td><time datetime="2022-04-04">2022年4月4日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/info-gnu/2021-03/msg00008.html">Emacs 27.2</a></th><td><time datetime="2021-03-25">2021年3月25日</time></td></tr>
