@@ -11,7 +11,7 @@ PORT ?= 4000
 all: up
 
 $(DOCKERLOCK):
-	PORT=${PORT} docker-compose up -d
+	PORT=${PORT} docker compose up -d
 	touch $@
 
 .PHONY: up serve
@@ -20,14 +20,14 @@ serve: $(DOCKERLOCK)
 
 .PHONY: log
 log: $(DOCKERLOCK)
-	docker-compose logs -f
+	docker compose logs -f
 
 # -T option from https://github.com/docker/compose/issues/7306
 .PHONY: build
 build: $(DOCKERLOCK)
-	docker-compose exec -T main jekyll build --trace
+	docker compose exec -T main jekyll build --trace
 
 .PHONY: down
 down:
-	docker-compose down
+	docker compose down
 	rm -rf $(DOCKERLOCK)
