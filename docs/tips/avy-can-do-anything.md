@@ -1,4 +1,6 @@
 ---
+layout: page
+author: ayatakesi
 title: Avyならなんでもできる
 tags:
   - Emacs
@@ -13,7 +15,7 @@ ignorePublish: false
 
 これはKarthik Chikmagalurさんによって記述された記事を日本語に翻訳した記事であり、記事の所有権と著作権はKarthik Chikmagalurさんに帰属します。
 
-元の記事: [Avy can do anything | Karthinks](https://karthinks.com/software/avy-can-do-anything/)
+元の記事: [Avy can do anything \| Karthinks](https://karthinks.com/software/avy-can-do-anything/)
 
 
 <!-- # You're using Avy wrong. -->
@@ -129,7 +131,7 @@ Isearchの使用に少しでも時間を費やした経験があればIsearchの
 But back to Isearch: what can we do to decouple the three stages here? Not much without modifying its guts. It's all elisp, so that's not a tall order. For example, Protesilaos Stavrou adds many intuitive actions (such as marking candidates) to Isearch in this video. But it turns out we don't need to modify Isearch, because Avy exists, has a killer Filter feature, and it separates the three stages like a champ. This makes for some very intriguing possibilities. 
 -->
 
-話しをIsearchに戻す。どうやれば3つのステージに分割できるのか? 根性が持続できれば大したことはないだろう。すべてがelispである以上、それは難しい注文ではないのだ。たとえばProtesilaos Stavrouは[ビデオ](https://www.youtube.com/watch?v=y6_bmcd3nis)において、候補のマーキングといった直観的な多くのアクションをIsearchに追加している。しかし **Avy** の存在によってIsearchの修整が不要だということが明らかになった。フィルターというキラー機能を有しつつも、王者同様3つのステージを分離しているのがAvyである。Avyによって何とも興味がそそられる可能性が生みだされた。
+話をIsearchに戻す。どうやれば3つのステージに分割できるのか? 根性が持続できれば大したことはないだろう。すべてがelispである以上、それは難しい注文ではないのだ。たとえばProtesilaos Stavrouは[ビデオ](https://www.youtube.com/watch?v=y6_bmcd3nis)において、候補のマーキングといった直観的な多くのアクションをIsearchに追加している。しかし **Avy** の存在によってIsearchの修整が不要だということが明らかになった。フィルターというキラー機能を有しつつも、王者同様3つのステージを分離しているのがAvyである。Avyによって何とも興味がそそられる可能性が生みだされた。
 
 ![avy-interaction-paradigm.png](https://karthinks.com/img/avy-interaction-paradigm.png)
 
@@ -381,7 +383,6 @@ First, taking the annoyance out of some common editing actions with Avy. If you 
 まずはAvyを用いて一般的な編集アクションを行う際の悩みの種を解消する。VimとEasymotionを使っていれば、以下のアクションのうち最初のいくつかは無料で入手できる:
 
 <details><summary>以下のデモに関する注意</summary>
-<div>
 
 <!--
 For clarity, I set Avy to desaturate the screen and to "pulse" the line during a few of these actions. These are not enabled by default. I also slowed down the operations by adding a delay to make them easier to follow. In actual usage these are instantaneous.
@@ -391,13 +392,16 @@ The keys Avy uses to dispatch actions on candidates are specified in avy-dispatc
 We will also need to ensure that these keys don't coincide with the ones Avy uses as selection hints on screen. Consider customizing avy-keys for this.
 -->
 
-- わかりやすくするために、いくつのアクションの間はスクリーン彩度を下げて、行が"点滅"するようにAvyをセットアップしてある。これらはデフォルトでは有効になっていない。追いやすくするために、遅延を追加して操作の低速化も行った。実際の使用では瞬時に実行される。
+<ul>
 
-- Avyで候補にアクションをディスパッチするために使用するキーは、avy-dispatch-alistで指定する。
+<li>わかりやすくするために、いくつのアクションの間はスクリーン彩度を下げて、行が"点滅"するようにAvyをセットアップしてある。これらはデフォルトでは有効になっていない。追いやすくするために、遅延を追加して操作の低速化も行った。実際の使用では瞬時に実行される。</li>
 
-- 使用するキーがAvyがスクリーン上の選択ヒントにAvyが用いるキーと重複しないことも保証する必要があるだろう。これを行うためにはavy-keysのカスタマイズも検討してほしい。
+<li>Avyで候補にアクションをディスパッチするために使用するキーは、avy-dispatch-alistで指定する。</li>
 
-</div>
+<li>使用するキーがAvyがスクリーン上の選択ヒントにAvyが用いるキーと重複しないことも保証する必要があるだろう。これを行うためにはavy-keysのカスタマイズも検討してほしい。</li>
+
+</ul>
+
 </details>
 
 ## 単語、sexp、行の候補のkill
@@ -410,31 +414,35 @@ Killing words or s-expressions is built-in. I added an action to kill a line. In
 
 [avy-kill-demo.mp4](https://karthinks.com/img/avy-kill-demo.mp4)
 
-<details><summary>ビデオ実況</summary><div>
+<details><summary>ビデオ実況</summary>
 
-1. avy-goto-char-timerを呼び出す。
+<ol>
 
-2. "is"をタイプする。"is"にマッチするすべての候補にヒントが表示される。
+<li><code>avy-goto-char-timer</code>を呼び出す。</li>
 
-3. kでavy-action-killを呼び出す。
+<li>is"をタイプする。"is"にマッチするすべての候補にヒントが表示される。</li>
 
-4. 重複した"is"のいずれかを選択して削除する。
+<li>kで<code>avy-action-kill</code>を呼び出す。</li>
 
-5. 余分な"and"にたいして1-4のステップを繰り返す。
+<li>重複した"is"のいずれかを選択して削除する。</li>
 
-6. avy-goto-char-timerを呼び出す。
+<li>余分な"and"にたいして1-4のステップを繰り返す。</li>
 
-7. "keyへのマッチに絞り込むために"key"とタイプする。
+<li><code>avy-goto-char-timer</code>を呼び出す。</li>
 
-8. kでavy-action-kill-whole-lineを呼び出す。
+<li>keyへのマッチに絞り込むために"key"とタイプする。</li>
 
-9. コメント行を選択してその行を削除する。
+<li>kで<code>avy-action-kill-whole-line</code>を呼び出す。</li>
 
-10. 今度は別ウィンドウにある"("を選択して1-4のステップを繰り返して、関数の定義をkillする。
+<li>コメント行を選択してその行を削除する。</li>
 
-11. 今度は別ウィンドウにある"add"を選択して7-9のステップを繰り返して"(advice-add …)"がある行をkillする。
+<li>今度は別ウィンドウにある"("を選択して1-4のステップを繰り返して、関数の定義をkillする。</li>
 
-</div></details>
+<li>今度は別ウィンドウにある"add"を選択して7-9のステップを繰り返して"(advice-add …)"がある行をkillする。</li>
+
+</ol>
+
+</details>
 
 ```elisp
 (defun avy-action-kill-whole-line (pt)
@@ -460,7 +468,7 @@ killリングまたはバッファーのポイント位置にコピーする。�
 
 [avy-copy-demo.mp4](https://karthinks.com/img/avy-copy-demo.mp4)
 
-<details><summary>ビデオ実況</summary><div>
+<details><summary>ビデオ実況</summary>
 
 <!--
 Call avy-goto-char-timer.
@@ -474,25 +482,31 @@ Select one of the matches. The line is copied to the buffer.
 Fix indentation with just-one-space, bound to M-SPC by default.
 -->
 
-1. avy-goto-char-timerを呼び出す。
+<ol>
 
-2. "["をタイプしてフレーム内の"["へのマッチすべてをフィルタリングする。
+<li><code>avy-goto-char-timer</code>を呼び出す。</li>
 
-3. yにバインドされているavy-action-yankを呼び出す。
+<li>"["をタイプしてフレーム内の"["へのマッチすべてをフィルタリングする。</li>
 
-4. "[big-cache]"にたいするマッチを選択する。これは別ウィンドウからこのバッファーにコピーされたテキスト。
+<li>yにバインドされている<code>avy-action-yank</code>を呼び出す。</li>
 
-5. avy-goto-char-timerを呼び出す。
+<li>"[big-cache]"にたいするマッチを選択する。これは別ウィンドウからこのバッファーにコピーされたテキスト。</li>
 
-6. "de"をタイプして"demuxer"を含んだマッチを選択する。
+<li><code>avy-goto-char-timer</code>を呼び出す。</li>
 
-7. Yにバインドされているavy-action-yank-whole-lineを呼び出す。
+<li>"de"をタイプして"demuxer"を含んだマッチを選択する。</li>
 
-8. マッチからいずれか1つ選択する。その行がバッファーにコピーされる。
+<li><code>Y</code>にバインドされている<code>avy-action-yank-whole-line</code>を呼び出す。</li>
 
-9. デフォルトでM-SPCにバインドされているjust-one-spaceでインデントを修整する。
+<li>マッチからいずれか1つ選択する。その行がバッファーにコピーされる。</li>
 
-</div></details>
+<li>デフォルトで<code>M-SPC</code>にバインドされているjust-one-spaceでインデントを修整する。</li>
+
+</ol>
+
+</details>
+
+
 
 ```elisp
 (defun avy-action-copy-whole-line (pt)
@@ -529,7 +543,7 @@ Note that Avy actually defines separate commands for this: avy-copy-line and avy
 
 [avy-transpose-demo.mp4](https://karthinks.com/img/avy-transpose-demo.mp4)
 
-<details><summary>ビデオ実況</summary><div>
+<details><summary>ビデオ実況</summary>
 
 <!--
 Make some room, type in a space.
@@ -544,27 +558,31 @@ Press T to run =avy-action-teleport-line~.
 Select a candidate line (the one just below the image). It is moved over (transposed) to where the point is.
 -->
 
-1. 場所を空けるためにスペースを何個かタイプする。
+<ol>
 
-2. avy-goto-char-timerを呼び出す。
+<li>場所を空けるためにスペースを何個かタイプする。</li>
 
-3. "("で始まる候補にフィルタリングする。
+<li><code>avy-goto-char-timer</code>を呼び出す。</li>
 
-4. tを押下してavy-action-teleportを実行する。
+<li>"("で始まる候補にフィルタリングする。</li>
 
-5. "(parametric forcing)"という候補を選択する。
+<li>tを押下して<code>avy-action-teleport</code>を実行する。</li>
 
-6. avy-goto-char-timerでそのウィンドウ内にある"DOWNLOADED"という候補にジャンプする。ポイントがある位置に移動(またはtranspoae: 転地)するはず。
+<li>"(parametric forcing)"という候補を選択する。</li>
 
-7. avy-goto-char-timerを呼び出す。
+<li><code>avy-goto-char-timer</code>でそのウィンドウ内にある"DOWNLOADED"という候補にジャンプする。ポイントがある位置に移動(またはtranspoae: 転地)するはず。</li>
 
-8. "the"にマッチする候補にフィルタリングする。
+<li><code>avy-goto-char-timer</code>を呼び出す。</li>
 
-9. Tを押下してavy-action-teleport-lineを実行する。
+<li>"the"にマッチする候補にフィルタリングする。</li>
 
-10. 候補の行(イメージの直下にある)を選択する。ポイントがある位置に移動(またはtranspoae: 転地)するはず。
+<li>Tを押下して<code>avy-action-teleport-line</code>を実行する。</li>
 
-</div></details>
+<li>候補の行(イメージの直下にある)を選択する。ポイントがある位置に移動(またはtranspoae: 転地)するはず。</li>
+
+</ol>
+
+</details>
 
 ```elisp
 (defun avy-action-teleport-whole-line (pt)
@@ -581,7 +599,7 @@ Select a candidate line (the one just below the image). It is moved over (transp
 
 [avy-zap-demo.mp4](https://karthinks.com/img/avy-zap-demo.mp4)
 
-<details><summary>ビデオ実況</summary><div>
+<details><summary>ビデオ実況</summary>
 
 <!--
 Call avy-goto-char-timer
@@ -590,15 +608,19 @@ Press z to run avy-action-zap.
 Select a candidate char, in this case "In Emacs…". The text between point and the candidate is killed.
 -->
 
-1. avy-goto-char-timerを呼び出す。
+<ol>
 
-2. "in"とタイプする。"In Emacs "を含めて、"in"へのすべてのマッチにヒントが表示される。
+<li><code>avy-goto-char-timer</code>を呼び出す。</li>
 
-3. avy-action-zapを実行するためにzを押下する。
+<li>"in"とタイプする。"In Emacs "を含めて、"in"へのすべてのマッチにヒントが表示される。</li>
 
-4. 候補(この場合だと"In Emacs"にたいするヒントの文字を選択する。ポイントと候補の間にあったテキストがkillされるだろう。
+<li><code>avy-action-zap</code>を実行するために<code>z</code>を押下する。</li>
 
-</div></details>
+<li>候補(この場合だと"In Emacs"にたいするヒントの文字を選択する。ポイントと候補の間にあったテキストがkillされるだろう。</li>
+
+</ol>
+
+</details>
 
 ## 単語やsexpの候補をマーク
 
@@ -610,7 +632,7 @@ Also built in, m by default. This isn’t different from jumping to the candidat
 
 [avy-mark-demo.mp4](https://karthinks.com/img/avy-mark-demo.mp4)
 
-<details><summary>ビデオ実況</summary><div>
+<details><summary>ビデオ実況</summary>
 
 <!--
 Call avy-goto-char-timer.
@@ -620,17 +642,21 @@ Select a candidate word or sexp, in this case ("~/.local/share").
 Repeat steps 1 to 4 twice to mark other candidates: (data_directory... and RotatingFileHandler
 -->
 
-1. avy-goto-char-timerを呼び出す。
+<ol>
 
-2. フィルタリングするためのテキスト(ここでは"(")をタイプする。
+<li><code>avy-goto-char-timer</code>を呼び出す。</li>
 
-3. avy-action-markを実行するためにmを押下する。
+<li>フィルタリングするためのテキスト(ここでは"(")をタイプする。</li>
 
-4. 候補から単語かsexp(ここでは("~/.local/share"))を選択する。
+<li><code>avy-action-mark</code>を実行するためにmを押下する。</li>
 
-5. 他の候補(data_directory...とRotatingFileHandler)をマークするために、1-4のステップを2回繰り返す。
+<li>候補から単語かsexp(ここでは("~/.local/share"))を選択する。</li>
 
-</div></details>
+<li>他の候補(data_directory...とRotatingFileHandler)をマークするために、1-4のステップを2回繰り返す。</li>
+
+</ol>
+
+</details>
 
 ## ポイントから候補までのリージョンをマーク
 
@@ -642,7 +668,7 @@ Avyジャンプする前にマークをセットするので、C-x C-xを使用�
 
 [avy-mark-to-char-demo.mp4](https://karthinks.com/img/avy-mark-to-char-demo.mp4)
 
-<details><summary>ビデオ実況</summary><div>
+<details><summary>ビデオ実況</summary>
 
 <!--
 Call avy-goto-char-timer.
@@ -655,23 +681,27 @@ Press SPC to run avy-action-mark-to-char.
 Choose a candidate (series of spaces) that begins a line. This marks the region from point to the line.
 -->
 
-1. avy-goto-char-timerを呼び出す。
+<ol>
 
-2. フィルタリングに使用するテキスト(ここでは"')")をタイプする。
+<li><code>avy-goto-char-timer</code>を呼び出す。</li>
 
-3. avy-action-mark-to-charを実行するために、SPCを押下する。
+<li>フィルタリングに使用するテキスト(ここでは"')")をタイプする。</li>
 
-4. 候補のヒント文字を選択する。これによりポイントからヒント文字までのリージョンをマークして、ポイントを移動する。
+<li><code>avy-action-mark-to-char</code>を実行するために、SPCを押下する。</li>
 
-5. avy-goto-char-timerを呼び出す。
+<li>候補のヒント文字を選択する。これによりポイントからヒント文字までのリージョンをマークして、ポイントを移動する。</li>
 
-6. フィルタリングに使用するテキスト(ここでは単に一連のスペース)をタイプする。
+<li><code>avy-goto-char-timer</code>を呼び出す。</li>
 
-7. avy-action-mark-to-charを実行するために、SPCを押下する。
+<li>フィルタリングに使用するテキスト(ここでは単に一連のスペース)をタイプする。</li>
 
-8. 行の開始となる候補(ここでは一連のスペース)を選択する。これによりポイントからその行までがマークされる。
+<li><code>avy-action-mark-to-char</code>を実行するために、SPCを押下する。</li>
 
-</div></details>
+<li>行の開始となる候補(ここでは一連のスペース)を選択する。これによりポイントからその行までがマークされる。</li>
+
+</ol>
+
+</details>
 
 ```elisp
 (defun avy-action-mark-to-char (pt)
@@ -697,7 +727,7 @@ This is built-in, bound to i by default.
 
 [avy-ispell.mp4](https://karthinks.com/img/avy-ispell.mp4)
 
-<details><summary>ビデオ実況</summary><div>
+<details><summary>ビデオ実況</summary>
 
 <!--
 Call avy-goto-char-timer (or any other Avy jump command)
@@ -713,29 +743,31 @@ Select the candidate, in this case the "teh" match.
 This runs ispell-word again, and 、"teh" can be corrected.
 -->
 
-1. avy-goto-char-timer(Avyの他のジャンプコマンドでもよい)を呼び出す。
+<li><code>avy-goto-char-timer</code>(Avyの他のジャンプコマンドでもよい)を呼び出す。</li>
 
-2. "can"とタイプすると"candidate"(スペル間違い)がハイライトされる。
+<li>"can"とタイプすると"candidate"(スペル間違い)がハイライトされる。</li>
 
-3. avy-action-ispell用のディスパッチキー(デフォルトではiにセットされている)を押下する。
+<li><code>avy-action-ispell</code>用のディスパッチキー(デフォルトでは<code>i</code>にセットされている)を押下する。</li>
 
-4. マッチのいずれか(ここではスペル間違いの"candidate"のマッチ)を選択する。
+<li>マッチのいずれか(ここではスペル間違いの"candidate"のマッチ)を選択する。</li>
 
-5. これにより選択にたいしてispell-wordが実行される。
+<li>これにより選択にたいして<code>ispell-word</code>が実行される。</li>
 
-6. 正しいスペルを選ぶ。
+<li>正しいスペルを選ぶ。</li>
 
-7. もう一度avy-goto-char-timerを呼び出す。
+<li>もう一度<code>avy-goto-char-timer</code>を呼び出す。</li>
 
-8. "te"をタイプすると"teh"にたいするマッチが(他より強調されて)ハイライトされる。
+<li>"te"をタイプすると"teh"にたいするマッチが(他より強調されて)ハイライトされる。</li>
 
-9. avy-action-ispell用のディスパッチキーを押下する 。
+<li><code>avy-action-ispell</code>用のディスパッチキーを押下する 。</li>
 
-10. 候補(ここでは"teh"のマッチ)を選択する。
+<li>候補(ここでは"teh"のマッチ)を選択する。</li>
 
-11. これによりもう一度ispell-wordが実行されて、"teh"が修整される。
+<li>これによりもう一度<code>ispell-word</code>が実行されて、"teh"が修整される。</li>
 
-</div></details>
+</ol>
+
+</details>
 
 <!--
 You can replace avy-action-ispell (built-in) with a version that automatically picks the top correction for a word, automating the process:
@@ -767,7 +799,7 @@ I use the dictionary package for Emacs, and I’m lazy about it:
 
 [avy-define.mp4](https://karthinks.com/img/avy-define.mp4)
 
-<details><summary>ビデオ実況</summary><div>
+<details><summary>ビデオ実況</summary>
 
 <!--
 Call avy-goto-char-timer (or any other Avy jump command)
@@ -783,29 +815,33 @@ Select the candidate, in this case the "finch" match.
 This produces the buffer with the dictionary definition of "finch"
 -->
 
-1. avy-goto-char-timer(Avyの他のジャンプコマンドでもよい)を呼び出す。
+<ol>
 
-2. "non"とタイプすると"nonpareil"にたいするマッチが(他より強調されて)がハイライトされる。
+<li><code>avy-goto-char-timer</code>(Avyの他のジャンプコマンドでもよい)を呼び出す。</li>
 
-3. avy-action-define用のディスパッチキー(ここでは=にセットされている)を押下する。
+<li>"non"とタイプすると"nonpareil"にたいするマッチが(他より強調されて)がハイライトされる。</li>
 
-4. マッチのいずれか(ここでは"nonpareil"にたいするマッチのいずれか)を選択する。
+<li><code>avy-action-define</code>用のディスパッチキー(ここでは=にセットされている)を押下する。</li>
 
-5. これにより""nonpareil""の定義とともにバッファーが生成される。
+<li>マッチのいずれか(ここでは"nonpareil"にたいするマッチのいずれか)を選択する。</li>
 
-6. こdefinitionバッファーをスクロールするために、scroll-other-window (C-M-v)を呼び出す。
+<li>これにより""nonpareil""の定義とともにバッファーが生成される。</li>
 
-7. もう一度avy-goto-char-timerを呼び出す。
+<li>こdefinitionバッファーをスクロールするために、<code>scroll-other-window</code> (<code>C-M-v</code>)を呼び出す。</li>
 
-8. "fi"をタイプすると"finch"にたいするマッチが(他より強調されて)ハイライトされる。これは定義をもつ別のバッファーでのマッチであることに注意。このバッファーへの切り替えは不要。
+<li>もう一度<code>avy-goto-char-timer</code>を呼び出す。</li>
 
-9. avy-action-define用のディスパッチキーを押下する 。
+<li>"fi"をタイプすると"finch"にたいするマッチが(他より強調されて)ハイライトされる。これは定義をもつ別のバッファーでのマッチであることに注意。このバッファーへの切り替えは不要。</li>
 
-10. 候補(ここでは"finch"のマッチ)を選択する。
+<li><code>avy-action-define</code>用のディスパッチキーを押下する 。</li>
 
-11. これによりもう一度finchの辞書定義とともにバッファーが生成される。
+<li>候補(ここでは"finch"のマッチ)を選択する。</li>
 
-</div></details>
+<li>これによりもう一度finchの辞書定義とともにバッファーが生成される。</li>
+
+</ol>
+
+</details>
 
 ```elisp
 ;パッケージマネージャーを変えたりお気に入りの辞書パッケージに変えてもよい
@@ -841,7 +877,7 @@ This produces the buffer with the dictionary definition of "finch"
 
 [avy-help-demo.mp4](https://karthinks.com/img/avy-help-demo.mp4)
 
-<details><summary>ビデオ実況</summary><div>
+<details><summary>ビデオ実況</summary>
 
 <!--
 Call avy-goto-char-timer
@@ -856,27 +892,31 @@ Select a candidate phrase, in this case "macroexp-parse-body". Note that this is
 Repeat steps 5-9 to find the documentation of another symbol, in this case memq.
 -->
 
-1. avy-goto-char-timerを呼び出す。
+<ol>
 
-2. フィルタリングするためのテキスト(ここでは"case")をタイプする。
+<li><code>avy-goto-char-timer</code>を呼び出す。</li>
 
-3. run avy-action-helpfulを実行するためにHを押下する。
+<li>フィルタリングするためのテキスト(ここでは"case")をタイプする。</li>
 
-4. 候補フレーズ(ここでは"pcase-lambda")を選択する。これによりシンボルのドキュメントのバッファーがオープンする。
+<li><code>avy-action-helpful</code>を実行するためにHを押下する。</li>
 
-5. helpバッファーをスクロールするために、C-M-vでscroll-other-windowを呼び出す。
+<li>候補フレーズ(ここでは"pcase-lambda")を選択する。これによりシンボルのドキュメントのバッファーがオープンする。</li>
 
-6. avy-goto-char-timerを呼び出す。
+<li>helpバッファーをスクロールするために、<code>C-M-v</code>で<code>scroll-other-window</code>を呼び出す。</li>
 
-7. フィルタリングするためのテキスト(ここでは"ma")をタイプする。
+<li><code>avy-goto-char-timer</code>を呼び出す。</li>
 
-8. avy-action-helpfulを実行するためにHを押下する。
+<li>フィルタリングするためのテキスト(ここでは"ma")をタイプする。</li>
 
-9. 候補フレーズ(ここでは"macroexp-parse-body")を選択する。これは他のウィンドウ(helpバッファー)でのマッチであることに注意。これによりシンボルのドキュメントが表示される。
+<li><code>avy-action-helpful</code>を実行するためにHを押下する。</li>
 
-10. 他のシンボル(ここでは"memq"のドキュメントを調べるために、ステップ5-9を繰り返す。
+<li>候補フレーズ(ここでは"macroexp-parse-body")を選択する。これは他のウィンドウ(helpバッファー)でのマッチであることに注意。これによりシンボルのドキュメントが表示される。</li>
 
-</div></details>
+<li>他のシンボル(ここでは"memq"のドキュメントを調べるために、ステップ5-9を繰り返す。</li>
+
+</ol>
+
+</details>
 
 ```elisp
 ;パッケージマネージャーの置き換えや別のヘルプライブラリーの選択も可
@@ -903,7 +943,7 @@ Googleを検索できるEmacs機能が必要になるだろう。[いくつか�
 
 [avy-tuxi-demo.mp4](https://karthinks.com/img/avy-tuxi-demo.mp4)
 
-<details><summary>ビデオ実況</summary><div>
+<details><summary>ビデオ実況</summary>
 
 <!--
 Call avy-goto-char-timer (or any other Avy jump command)
@@ -919,29 +959,33 @@ This produces the buffer with Google’s description of Vi.
 Repeat steps 6-10 but selecting the string "POSIX" instead.
 -->
 
-1. avy-goto-char-timer(Avyの他のジャンプコマンドでもよい)を呼び出す。
+<ol>
 
-2. "ema"とタイプすると"Emacs"にたいするマッチが(他より強調されて)がハイライトされる。
+<li><code>avy-goto-char-timer</code>(Avyの他のジャンプコマンドでもよい)を呼び出す。</li>
 
-3. avy-action-tuxi用のディスパッチキー(ここではC-=にセット)を押下する。
+<li>"ema"とタイプすると"Emacs"にたいするマッチが(他より強調されて)がハイライトされる。</li>
 
-4. 候補(ここでは"Emacs"にたいするマッチのいずれか)を選択する。
+<li><code>avy-action-tuxi</code>用のディスパッチキー(ここではC-=にセット)を押下する。</li>
 
-5. これによりGoogleのEmacsの説明とともにバッファーが生成される。
+<li>候補(ここでは"Emacs"にたいするマッチのいずれか)を選択する。</li>
 
-6. もう一度avy-goto-char-timerを呼び出す。
+<li>これによりGoogleのEmacsの説明とともにバッファーが生成される。</li>
 
-7. "vi"とタイプすると"Vi"にたいするマッチが(他より強調されて)がハイライトされる。これはGoogleの説明が表示されている別のバッファーでのマッチであることに注意。このバッファーへの切り替えは不要。
+<li>もう一度<code>avy-goto-char-timer</code>を呼び出す。</li>
 
-8. avy-action-tuxi用のディスパッチキーを押下する。
+<li>"vi"とタイプすると"Vi"にたいするマッチが(他より強調されて)がハイライトされる。これはGoogleの説明が表示されている別のバッファーでのマッチであることに注意。このバッファーへの切り替えは不要。</li>
 
-9. 候補(ここでは"Vi"にたいするマッチ)を選択する。
+<li>avy-action-tuxi用のディスパッチキーを押下する。</li>
 
-10. これによりGoogleのViの説明とともにバッファーが生成される。
+<li>候補(ここでは"Vi"にたいするマッチ)を選択する。</li>
 
-11. "POSIX"という文字列を選択して、ステップ6-10を繰り返す。
+<li>これによりGoogleのViの説明とともにバッファーが生成される。</li>
 
-</div></details>
+<li>"POSIX"という文字列を選択して、ステップ6-10を繰り返す。</li>
+
+</ol>
+
+</details>
 
 <!-- Now: We could continue populating avy-dispatch-alist with functions to do increasingly arcane contextual actions, but let's take a step back. We want a list of easily callable actions on pieces of semantically classified buffer text… now where have we seen something like this before? -->
 
@@ -965,7 +1009,7 @@ In this demo I highlight some keywords in a busy LaTeX document, then visit the 
 
 [avy-embark-demo-2.mp4](https://karthinks.com/img/avy-embark-demo-2.mp4)
 
-<details><summary>ビデオ実況</summary><div>
+<details><summary>ビデオ実況</summary>
 
 <!---
 Call avy-goto-char-timer (or any other Avy jump command)
@@ -981,29 +1025,33 @@ Select the citation key match. This runs Embark on it.
 Choose the bibtex-action to visit the Bib file, bound to e by the bibtex-actions package.
 -->
 
-1. avy-goto-char-timer(Avyの他のジャンプコマンドでもよい)を呼び出す。
+<ol>
 
-2. "Floquet"を含むマッチにフィルタリングするために、"flo"とタイプする。
+<li><code>avy-goto-char-timer</code>(Avyの他のジャンプコマンドでもよい)を呼び出す。</li>
 
-3. oでavy-action-embarkを実行する。
+<li>"Floquet"を含むマッチにフィルタリングするために、"flo"とタイプする。</li>
 
-4. "Floquet"にたいするマッチからいずれかを選択する。これによりそのマッチにEmbarkが実行される。
+<li>oで<code>avy-action-embark</code>を実行する。</li>
 
-5. Hでembark-toggle-highlightアクションを選択する。
+<li>"Floquet"にたいするマッチからいずれかを選択する。これによりそのマッチにEmbarkが実行される。</li>
 
-6. "Parametric"をハイライトするために、1-5を繰り返す。
+<li>Hで<code>embark-toggle-highlight</code>アクションを選択する。</li>
 
-7. もう一度avy-goto-char-timerを呼び出す。
+<li>"Parametric"をハイライトするために、1-5を繰り返す。</li>
 
-8. 引用キーの中から1つのキーにマッチさせるために、"na"とタイプする。
+<li>もう一度<code>avy-goto-char-timer</code>を呼び出す。</li>
 
-9. oでavy-action-embarkを実行する。
+<li>引用キーの中から1つのキーにマッチさせるために、"na"とタイプする。</li>
 
-10. マッチした引用キーを選択する。これによりそのマッチにEmbarkが実行される。
+<li>oで<code>avy-action-embark</code>を実行する。</li>
 
-11. Bibファイル(訳注: 文献データベースファイル)をvisitするために、bibtex-actionを選択する(bibtex-actionsパッケージによってeにバインドされている)。
+<li>マッチした引用キーを選択する。これによりそのマッチにEmbarkが実行される。</li>
 
-</div></details>
+<li>Bibファイル(訳注: 文献データベースファイル)をvisitするために、bibtex-actionを選択する(bibtex-actionsパッケージによってeにバインドされている)。</li>
+
+</ol>
+
+</details>
 
 <!-- 
 ## Run a skein through Emacs’ help systems
@@ -1019,7 +1067,7 @@ In this demo I explore my way through a package with Avy and Embark, threading h
 
 [avy-embark-demo-1.mp4](https://karthinks.com/img/avy-embark-demo-1.mp4)
 
-<details><summary>ビデオ実況</summary><div>
+<details><summary>ビデオ実況</summary>
 
 <!--
 1. 
@@ -1040,37 +1088,39 @@ Repeat the previous steps to run Embark again, this time on the symbol “projec
 Choose the customize-variable action with u in Embark. This opens a customization buffer for the variable project-x-local-identifier.
 -->
 
-1. avy-goto-char-timerを実行する。
+<li><code>avy-goto-char-timer</code>を実行する。</li>
 
-2. フィルタリングするためにテキスト(ここでは"root")をタイプする。
+<li>フィルタリングするためにテキスト(ここでは"root")をタイプする。</li>
 
-3. oでavy-action-embarkを実行する。
+<li>oでavy-action-embarkを実行する。</li>
 
-4. マッチの中からproject-rootを選択する。これによりそのマッチにたいしてEmbarkが実行される。
+<li>マッチの中からproject-rootを選択する。これによりそのマッチにたいしてEmbarkが実行される。</li>
 
-5. hを押下するとマッチにたいしてEmbarkがdescribe-symbolを実行する。これによりそのマッチの関数にたいするヘルプバッファーがオープンする(これより前の箇所でAvyにヘルプコマンドをバインドしてあるので、そちらを使うこともできるだろう)。
+<li>hを押下するとマッチにたいしてEmbarkがdescribe-symbolを実行する。これによりそのマッチの関数にたいするヘルプバッファーがオープンする(これより前の箇所でAvyにヘルプコマンドをバインドしてあるので、そちらを使うこともできるだろう)。</li>
 
-6. ヘルプバッファーをスクロールするためにC-M-v (scroll-other-window)を押下する。
+<li>ヘルプバッファーをスクロールするためにC-M-v (scroll-other-window)を押下する。</li>
 
-7. もう一度avy-goto-char-timerを呼び出す。
+<li>もう一度avy-goto-char-timerを呼び出す。</li>
 
-8. フィルタリングするためにテキスト(ここでは"proj")をタイプする。
+<li>フィルタリングするためにテキスト(ここでは"proj")をタイプする。</li>
 
-9. oでavy-action-embarkを実行する。
+<li>oでavy-action-embarkを実行する。</li>
 
-10. マッチの中から"project-x"を選択する。これによりそのマッチにたいしてEmbarkが実行される。
+<li>マッチの中から"project-x"を選択する。これによりそのマッチにたいしてEmbarkが実行される。</li>
 
-11. embark-cycleを呼び出して、ターゲットを("poject-x"という名前の)ファイルから("poject-x"という名前の)ライブラリーに変更する。
+<li>embark-cycleを呼び出して、ターゲットを("poject-x"という名前の)ファイルから("poject-x"という名前の)ライブラリーに変更する。</li>
 
-12. hを押下するとproject-xライブラリーにたいしてEmbarkがfinder-commentaryを実行する。これによりコメントが表示されているバッファーがオープンする。
+<li>hを押下するとproject-xライブラリーにたいしてEmbarkがfinder-commentaryを実行する。これによりコメントが表示されているバッファーがオープンする。</li>
 
-13. 前のステップを繰り返して、もう一度"project-x"にたいしてEmbarkを実行する。
+<li>前のステップを繰り返して、もう一度"project-x"にたいしてEmbarkを実行する。</li>
 
-14. 今度はシンボル"project-x-local-identfier"にたいして前のステップを繰り返す。
+<li>今度はシンボル"project-x-local-identfier"にたいして前のステップを繰り返す。</li>
 
-15. uでEmbarkのcustomize-variableアクションを選択する。これにより編集project-x-local-identfierにたいするcustomizationバッファーがオープンする。
--
-</div></details>
+<li><code>u</code>でEmbarkの<code>customize-variable</code>アクションを選択する。これにより編集<code>project-x-local-identfier</code>にたいするcustomizationバッファーがオープンする。</li>
+
+</ol>
+
+</details>
 
 ## 責任の分担
 
@@ -1125,7 +1175,7 @@ Again, consciously deciding which of the two commands to call every time is a ba
 
 [avy-isearch-basic-demo.mp4](https://karthinks.com/img/avy-isearch-basic-demo.mp4)
 
-<details><summary>ビデオ実況</summary><div>
+<details><summary>ビデオ実況</summary>
 
 <!--
 Start Isearch with C-s. In the video I switched to isearch-regexp with M-r.
@@ -1135,17 +1185,21 @@ Call avy-goto-char-timer. The candidate pool limits to the Isearch matches.
 以前と同様に、ジャンプ先の Isearch 一致を選択します。Pick an Isearch match to jump to as before.
 -->
 
-1. C-sでIsearchを開始する。ビデオではM-rでisearch-regexpに切り替えている。
+<ol>
 
-2. 検索するフレーズをタイプする。ビデオでは"-region"で終わるregexpをタイプしている。
+<li><code>C-s</code>でIsearchを開始する。ビデオでは<code>M-r</code>で<code>isearch-regexp</code>に切り替えている。</li>
 
-3. Isearch のマッチ間のナビゲートはC-s、スクリーンの再センタリングは必要に応じてC-lで行っている。
+<li>検索するフレーズをタイプする。ビデオでは"-region"で終わるregexpをタイプしている。</li>
 
-4. avy-goto-char-timerを呼び出す。候補プールはIsearchのマッチによって限界が定められる。
+<li>Isearchのマッチ間のナビゲートはC-s、スクリーンの再センタリングは必要に応じてC-lで行っている。</li>
 
-5. 以前と同様、Isearchのいずれかのマッチを選んでジャンプする。
+<li><code>avy-goto-char-timer</code>を呼び出す。候補プールはIsearchのマッチによって限界が定められる。</li>
 
-</div></details>
+<li>以前と同様、Isearchのいずれかのマッチを選んでジャンプする。</li>
+
+</ol>
+
+</details>
 
 <!--
 At least, that’s the usual pitch.
@@ -1187,15 +1241,19 @@ In this demo I jump twice with Avy to edit text and then chain jump my way back 
 
 [avy-jump-back-demo.mp4](https://karthinks.com/img/avy-jump-back-demo.mp4)
 
-<details><summary>ビデオ実況</summary><div>
+<details><summary>ビデオ実況</summary>
 
-1. avy-goto-char-timerを呼び出して候補にジャンプする(またはアクシデントによりそこで終わる
+<ol>
 
-2. 編集する(またはしない)。
+<li><code>avy-goto-char-timer</code>を呼び出して候補にジャンプする(またはアクシデントによりそこで終わる</li>
 
-3. プレフィックス引数とともにset-mark-commandを呼び出して戻る(C-u C-SPC)。これらのジャンプを連鎖して行うことができる。
+<li>編集する(またはしない)。</li>
 
-</div></details>
+<li>プレフィックス引数とともに<code>set-mark-command</code>を呼び出して戻る(<code>C-u C-SPC</code>)。これらのジャンプを連鎖して行うことができる。</li>
+
+</ol>
+
+</details>
 
 # ところでポイントとは何ぞや?
 
@@ -1312,9 +1370,7 @@ Searching or jumping to the contents of other windows beyond the confines of the
 
 - スクリーンの境界を超えた別ウィンドウのコンテンツにたいする検索やジャンプ。これにはシンプルな解決策がある:
 
-<details><summary>別ウィンドウをIsearchする</summary><div>
-
-```elisp
+<details><summary>別ウィンドウをIsearchする</summary><pre><code>
 (defun isearch-forward-other-window (prefix)
     "Function to isearch-forward in other-window."
     (interactive "P")
@@ -1336,10 +1392,10 @@ Searching or jumping to the contents of other windows beyond the confines of the
         (other-window (- next))))))
 
 (define-key global-map (kbd "C-M-s") 'isearch-forward-other-window)
-(define-key global-map (kbd "C-M-r") '
-```
+(define-key global-map (kbd "C-M-r") 'isearch-backward-other-window)
+</code></pre>
 
-</div></details>
+</details>
 
 <!--
 In keeping with C-M-v to scroll the other window, you can Isearch the other window with C-M-s without switching to it8. If you’re feeling adventurous, replace (other-window next) in the above functions with (ace-window).
@@ -1359,7 +1415,9 @@ You can call Avy from Isearch as before, to run actions on essentially any text 
 This post primarily concerned itself with the Act part as it connects with the ideas in the the previous one about ways to use Embark. But Avy is composed of modular pieces that makes it suitable for a wide variety of Filter → Select applications as well. In part II of this series, we will dig into the Avy API and see how to create unique commands.
 -->
 
-この記事は[Embarkの使用方法に関する記事](https://karthinks.com/software/fifteen-ways-to-use-embark)のアイデアと関連しているので、主にアクションについて記述されている。しかしAvyはモジュールの組み合わせにより構成されているので、フィルター -> 選択によって機能するさまざまなアプリケーションの広い範囲に適正がある。シリーズ第2弾ではAvyのAPI、および独自コマンドを作成する方法についても掘り下げていくつもりだ。
+この記事は[Embarkの使用方法に関する記事](https://karthinks.com/software/fifteen-ways-to-use-embark)のアイデアと関連しているので、主にアクションについて記述されている。しかしAvyはモジュールの組み合わせにより構成されているので、フィルター -> 選択によって機能するさまざまなアプリケーションの広い範囲に適性がある。シリーズ第2弾ではAvyのAPI、および独自コマンドを作成する方法についても掘り下げていくつもりだ。
+
+# 脚注
 
 [^1]: 技術的には候補の並べ替えも含まれる。この内訳ではフィルターとしてひとまとめにしてある。
 

@@ -1,4 +1,6 @@
 ---
+layout: page
+author: ayatakesi
 title: Embarkを使う15の方法
 tags:
   - Emacs
@@ -13,7 +15,7 @@ ignorePublish: false
 
 これはKarthik Chikmagalurさんによって記述された記事を日本語に翻訳した記事であり、記事の所有権と著作権はKarthik Chikmagalurさんに帰属します。
 
-元の記事: [Fifteen ways to use Embark | Karthinks](https://karthinks.com/software/fifteen-ways-to-use-embark/)
+元の記事: [Fifteen ways to use Embark \| Karthinks](https://karthinks.com/software/fifteen-ways-to-use-embark/)
 
 <!-- 
 Embark is a fantastic and thoughtfully designed package for Emacs that flips Emacs’ action → object ordering without adding a learning curve. It’s completely changed how I use Emacs, and I’m going to show you why. 
@@ -167,7 +169,7 @@ This needs a little background. The ace-window package allows you to switch to a
 
 [ace-dispatch-demo.mp4](https://karthinks.com/img/ace-dispatch-demo.mp4)
 
-<details><summary>ビデオ実況</summary><div>
+<details><summary>ビデオ実況</summary>
 
 <!--
 With two or more windows open, call ace-window
@@ -179,15 +181,19 @@ Press the dispatch key to split a window vertically (s in my video)
 Press the ace-window key corresponding to the buffer you want to split (w in my video)
 -->
 
-1. 2つ以上のウィンドウをオープンしてace-windowを呼び出す。
-2. ?を押下してディスパッチメニューを立ち上げる。
-3. ウィンドウを水平方向に分割するためにディスパッチキー(ここではv)を押下する。
-4. 分割したいバッファーに応じたace-windowキー(ここではe)を押下する。
-5. ステップ1と2を繰り返す。
-6. ウィンドウを垂直方向に分割するためにディスパッチキー(ここではs)を押下する。
-7. 分割したいバッファーに応じたace-windowキー(ここではw)を押下する。
+<ol>
 
-</div></details>
+<li>2つ以上のウィンドウをオープンして<code>ace-window</code>を呼び出す。</li>
+<li>?を押下してディスパッチメニューを立ち上げる。</li>
+<li>ウィンドウを水平方向に分割するためにディスパッチキー(ここではv)を押下する。</li>
+<li>分割したいバッファーに応じたace-windowキー(ここではe)を押下する。</li>
+<li>ステップ1と2を繰り返す。</li>
+<li>ウィンドウを垂直方向に分割するためにディスパッチキー(ここではs)を押下する。</li>
+<li>分割したいバッファーに応じたace-windowキー(ここではw)を押下する。</li>
+
+</ol>
+
+</details>
 
 <!--
 So you can kill windows, move them around, split them and more by using the dispatch keys. (Hit ? to bring up the dispatch menu.) 
@@ -209,7 +215,7 @@ In the below demo, I open a bookmark (with consult-bookmark), a file (with find-
 
 [embark-ace-open-demo.mp4](https://karthinks.com/img/embark-ace-open-demo.mp4)
 
-<details><summary>ビデオ実況</summary><div>
+<details><summary>ビデオ実況</summary>
 
 <!--
 Run a command that requires selecting a file, bookmark or buffer, perhaps switch-to-buffer
@@ -219,13 +225,15 @@ Select the window where you want the buffer to be placed, OR
 Split an existing window with v or b (see aw-dispatch-alist) followed by a window selection, and display the buffer in the new split.
 -->
 
-1. ファイル、ブックマーク、バッファーの選択を要するコマンド(switch-to-bufferとか)を実行する。
-2. 選択したらembark-actを実行する。
-3. oでmy/embark-ace-actionを実行する(以下参照)。
-4. バッファーを配置したいウィンドウを選択する。
-5. またはvやb(aw-dispatch-alistを参照)で既存のウィンドウを分割してウィンドウを選択、新たに分割されたウィンドウにバッファーを表示する。
+<ol>
+<li>ファイル、ブックマーク、バッファーの選択を要するコマンド(switch-to-bufferとか)を実行する。</li>
+<li>選択したら<code>embark-act</code>を実行する。</li>
+<li><code>o</code>で<code>my/embark-ace-action</code>を実行する(以下参照)。</li>
+<li>バッファーを配置したいウィンドウを選択する。</li>
+<li>または<code>v</code>や<code>b</code>(<code>aw-dispatch-alist</code>を参照)で既存のウィンドウを分割してウィンドウを選択、新たに分割されたウィンドウにバッファーを表示する。</li>
+</ol>
 
-</div></details>
+</details>
 
 <!--
 To get this to work, you’ll need to add a few ace-window functions to the Embark file actions map: 
@@ -280,7 +288,7 @@ I also add actions to open the buffer in a vertical or horizontal split. But you
 
 [embark-copy-remote-demo.mp4](https://karthinks.com/img/embark-copy-remote-demo.mp4)
 
-<details><summary>ビデオ実況</summary><div>
+<details><summary>ビデオ実況</summary>
 
 <!--
 Run any command that requires selecting a file, perhaps find-file-other-window
@@ -290,13 +298,17 @@ Navigate to the destination path. In the video I used the consult-dir package to
 Press RET to copy the file. You can type in a name to copy it as.
 -->
 
-1. ファイルの選択を要する任意のコマンド(find-file-other-windowとか)を実行する。
-2. ファイルを選択してembark-actを実行する。
-3. cでcopy-fileアクションを実行する。Embarkにはこれ用のキーがあるが、ここでM-x copy-fileの実行も可。
-4. 目的となるパスへ移動する。ビデオではconsult-dirを使って、わたしのブックマークからリモートにあるパスに一時的に切り替えている。
-5. RETを押下してファイルをコピーする。コピー先での名前を入力できる。
+<ol>
 
-</div></details>
+<li>ファイルの選択を要する任意のコマンド(<code>find-file-other-window</code>とか)を実行する。</li>
+<li>ファイルを選択して<code>embark-act</code>を実行する。</li>
+<li><code>c</code>で<code>copy-file</code>アクションを実行する。Embarkにはこれ用のキーがあるが、ここで<code>M-x copy-file</code>の実行も可。</li>
+<li>目的となるパスへ移動する。ビデオでは<code>consult-dir</code>を使って、わたしのブックマークからリモートにあるパスに一時的に切り替えている。</li>
+<li><code>RET</code>を押下してファイルをコピーする。コピー先での名前を入力できる。</li>
+
+</ol>
+
+</details>
 
 <!--
 Here’s what happened. In any file prompt, you can call embark-act and select the copy action to copy the file instead. (You could just as well call M-x copy-file.) In this case I then use consult-dir to insert a bookmark that points to my server into the destination prompt, and the file is copied using Tramp. 
@@ -312,7 +324,7 @@ find-fileプロンプトを残したまま、これを行うことすらでき�
 
 [embark-copy-remote-persist-demo.mp4](https://karthinks.com/img/embark-copy-remote-persist-demo.mp4)
 
-<details><summary>ビデオ実況</summary><div>
+<details><summary>ビデオ実況</summary>
 
 <!--
 Run any command that requires selecting a file, perhaps find-file-other-window
@@ -322,15 +334,18 @@ Navigate to the destination path. In the video I used the consult-dir package to
 Press RET to copy the file. You can type in a name to copy it as.
 Continue to use your find-file-other-window prompt as before.
 -->
+<ol>
 
-1. ファイルの選択を要する任意のコマンド(find-file-other-windowとか)を実行する。
-2. ファイルを選択してプレフィックス引数とともにembark-actを実行する。つまりC-.にembark-actをバインドしている場合にはC-u C-.。
-3. cでcopy-fileアクションを実行する。Embarkにはこれを行うキーが用意されているがM-x copy-fileでも可。
-4. 目的のパスへ移動する。ビデオではconsult-dirを使って、わたしのブックマークからリモートにあるパスに一時的に切り替えている。
-5. RETを押下してファイルをコピーする。コピー先での名前を入力できる。
-6. 操作の前に行っていたfind-file-other-windowプロンプトへの入力を継続する。
+<li>ファイルの選択を要する任意のコマンド(find-file-other-windowとか)を実行する。</li>
+<li>ファイルを選択してプレフィックス引数とともにembark-actを実行する。つまりC-.にembark-actをバインドしている場合にはC-u C-.。</li>
+<li>cでcopy-fileアクションを実行する。Embarkにはこれを行うキーが用意されているがM-x copy-fileでも可。</li>
+<li>目的のパスへ移動する。ビデオではconsult-dirを使って、わたしのブックマークからリモートにあるパスに一時的に切り替えている。</li>
+<li>RETを押下してファイルをコピーする。コピー先での名前を入力できる。</li>
+<li>操作の前に行っていたfind-file-other-windowプロンプトへの入力を継続する。</li>
 
-</div></details>
+</ol>
+
+</details>
 
 <!--
 At the end I quit the find-file prompt manually and check the remote directory to ensure that the file has been copied. 
@@ -368,7 +383,7 @@ Press i to insert the text of the selection into the main buffer. In the video I
 
 [embark-shell-cmd-demo.mp4](https://karthinks.com/img/embark-shell-cmd-demo.mp4)
 
-<details><summary>ビデオ実況</summary><div>
+<details><summary>ビデオ実況</summary>
 
 <!--
 Run any command that requires selecting a file, perhaps find-file
@@ -379,14 +394,18 @@ Type in the command at the prompt. The file name is already filled in for you. I
 Press RET to run the command and return to the find-file prompt.
 -->
 
-1. ファイルの選択を要求する任意のコマンド(find-fileとか)を実行する。
-2. consult-dirで離れたディレクトリーに切り替える。
-3. ファイルを選択して、プレフィックス引数とともにembark-actを実行する。つまりC-.にembark-actをバインドしている場合にはC-u C-.。
-4. &を押下してasync-shell-commandアクションを実行する。Embarkのキーマップにはこれを行うためのキーがあるがM-x async-shell-command、あるいはasync-shell-commandのデフォルトのキーバインディング(M-&)でも実行可。
-5. プロンプトにコマンドを入力する。ファイル名はすでに用意されている。ファイルについてさらに情報を得るために、シェルコマンドfileを使用した。
-6. RETを押下してコマンドを実行して、find-fileの入力プロンプトにリターンする。
+<ol>
 
-</div></details>
+<li>ファイルの選択を要求する任意のコマンド(find-fileとか)を実行する。</li>
+<li><code>consult-dir</code>で離れたディレクトリーに切り替える。</li>
+<li>ファイルを選択して、プレフィックス引数とともにembark-actを実行する。つまり<code>C-.</code>に<code>embark-act</code>をバインドしている場合には<code>C-u C-.</code>。</li>
+<li><code>&</code>を押下して<code>async-shell-command</code>アクションを実行する。Embarkのキーマップにはこれを行うためのキーがあるが<code>M-x async-shell-command</code>、あるいは<code>async-shell-commandの</code>デフォルトのキーバインディング(<code>M-&</code>)でも実行可。</li>
+<li>プロンプトにコマンドを入力する。ファイル名はすでに用意されている。ファイルについてさらに情報を得るために、シェルコマンドfileを使用した。</li>
+<li><code>RET</code>を押下してコマンドを実行して、<code>find-file</code>の入力プロンプトにリターンする。</li>
+
+</ol>
+
+</details>
 
 <!--
 I called the “file” shell command for more info on the file without ending the find-file prompt. 
@@ -404,7 +423,7 @@ Emacs’ version of forgetting to add sudo before the command. In the shell you 
 
 [embark-sudo-demo.mp4](https://karthinks.com/img/embark-sudo-demo.mp4)
 
-<details><summary>ビデオ実況</summary><div>
+<details><summary>ビデオ実況</summary>
 
 <!--
 Run any command that requires selecting a file. I used consult-locate to locate a root-owned file on my filesystem.
@@ -412,14 +431,18 @@ Select one and run embark-act with a prefix argument. That is, if your binding f
 Select the sudo-find-file action with S. Note: You’ll need to add this action to the keymap, see below. Alternatively you can run M-x sudo-find-file or its global binding.
 -->
 
-1. ファイルの選択を要求する任意のコマンドを実行する。わたしはファイルシステム上でroot所有のファイルをlocateするためにconsult-locateを使用した。
-2. ファイルを選択してプレフィックス引数とともにembark-actを実行する。つまりC-.にembark-actをバインドしている場合にはC-u C-.。
-3. Sでsudo-find-fileアクションを選択した。注意: このアクションをキーマップに追加する必要があるだろう(以下参照)。かわりにM-x sudo-find-fileやそれのグローバルバインディングの実行でも可。
+<ol>
 
-</div></details>
+<li>ファイルの選択を要求する任意のコマンドを実行する。わたしはファイルシステム上でroot所有のファイルをlocateするためにconsult-locateを使用した。</li>
+<li>ファイルを選択してプレフィックス引数とともに<code>embark-act</code>を実行する。つまり<code>C-.</code>に<code>embark-act</code>をバインドしている場合には<code>C-u C-.</code>。</li>
+<li><code>S</code>で<code>sudo-find</code>アクションを選択した。注意:このアクションをキーマップに追加する必要があるだろう(以下参照)。かわりに<code>M-x sudo-find-file</code>やそれのグローバルバインディングの実行でも可。</li>
+
+</ol>
+
+</details>
 
 <!--
-Like before, this works from any file prompt but the command I started with was consult-locate. For the sudo program there is the sudo-edit package, although I used a snippet from my init file that I can’t ascertain the provenance of anymore: 
+<li>For the sudo program there is the sudo-edit package, although I used a snippet from my init file that I</li> can’t ascertain the provenance of anymore: 
 -->
 
 わたしはconsult-locateをコマンドを実行したが、前の例と同じようにファイルの入力を求めるコマンドなら何でも機能するはずだ。わたしはinitファイルからもはや来歴不明なスニペットを流用したが、sudoプログラム向けのsudo-editパッケージもある。
@@ -897,6 +920,8 @@ Finally a quick note for Doom Emacs users: Doom ships with Embark out of the box
 Despite what these examples suggest, I estimate that I use less than a third of what Embark provides. Even so, in allowing me to change or chain actions at any time, it lets me pilot Emacs by the seat of my pants. A second, unforeseen benefit is that it makes commands and listings that I would never use available in a frictionless way: commands like transpose-regions and apply-macro-to-region-lines, or custom dired, ibuffer and package-menu listings that are interactively inaccessible otherwise[^4]. The ability to quickly whip up such buffers makes knowhing how to use dired or ibuffer pay off several fold.  In composing such features seamlessly with minibuffer interaction or with text-regions, Embark acts as a lever to amplify the power of Emacs’ myriad built in commands and libraries.
 -->
 これらの例が示唆する事実にも関わらず、おそらくわたしはEmbarkの能力の3分の1も使用できていないのだろう。たとえそうであったとしても、いつでもアクションの変更したり連鎖させられるので、経験と勘によるEmacsの操縦を可能にしてくれるのだ。2つ目の予期せぬ利点として、わたしが決して使うことがなかったであろうコマンドやリストを、抵抗なく利用できるようになることだ。transpose-regionsやapply-macro-to-region-linesのようなコマンド、あるいはdired、ibuffer、package-menuのような機能を使わなければアクセスできなかったカスタマイズされたリストをスムーズに利用できるようになった[^4]。このようなバッファーを素早く作成できるので、diredやibufferを使う方法を知ることによって、数倍の利益が得られるようになる。これらのような機能とミニバッファーとの対話やテキストリージョンをシームレスに構成する際に、Emacsに組み込まれた無数のコマンドやライブラリーのパワーを増幅するレバーとして振る舞うのがEmbarkなのである。
+
+# 脚注
 
 <!-- Although of course, Helm and Embark both do a good job with their presets. -->
 [^1]: もちろんHelmとEmbarkはどちらも自身の役割を良好にこなすよう事前に調整されている訳だが。
