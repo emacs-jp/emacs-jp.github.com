@@ -17,6 +17,53 @@ ignorePublish: false
 
 元の記事: [Avy can do anything \| Karthinks](https://karthinks.com/software/avy-can-do-anything/)
 
+<style>
+video {
+    object-fit: contain;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    box-shadow: 0px -5px 10px #421D5D;
+    margin-top: 14px;
+    margin-bottom: 6px;
+}
+
+.Filter {
+    text-align: center;
+    background: #bb90b7;
+    padding-left: 2px;
+    padding-right: 3px;
+    border-radius: 4px;
+    color: black;
+}
+
+.Select {
+    text-align: center;
+    background: #f0ad95;
+    padding-left: 2px;
+    padding-right: 3px;
+    border-radius: 4px;
+    color: black;
+}
+
+.Act {
+    text-align: center;
+    background: #a3b09a;
+    padding-left: 2px;
+    padding-right: 3px;
+    border-radius: 4px;
+    color: black;
+}
+
+details {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #b79eb0;
+    border-radius: 8px;
+    padding: 12px;
+    padding-right: 20px;
+    margin: 10px 0px 4px 0px;
+}
+</style>
 
 <!-- # You're using Avy wrong. -->
 
@@ -32,9 +79,12 @@ Too harsh? Let me rephrase: you’re barely using Avy. Still too broad? Okay, th
 Without burying the lede any further, here's a demo that uses a single Avy command (avy-goto-char-timer) to do various things in multiple buffers and windows, all without manually moving the cursor:
 -->
 
-説明はこれ位にしておこう。以下のデモでは複数のバッファーやウィンドウにたいして、手作業でカーソルを移動することなく、Avyのコマンド1つ(avy-goto-char-timer)で様々な物事すべてを行う様子をお見せする:
+説明はこれ位にしておこう。以下のデモでは複数のバッファーやウィンドウにたいして、手作業でカーソルを移動することなく、Avyのコマンド1つ(`avy-goto-char-timer`)で様々な物事すべてを行う様子をお見せする:
 
-[avy-all-demo.mp4](https://karthinks.com/img/avy-all-demo.mp4)
+<video style="center" width="700" controls="">
+<source src="https://karthinks.com/img/avy-all-demo.mp4" type="video/mp4">
+<a href="https://karthinks.com/img/avy-all-demo.mp4">[VIDEO]</a>
+</video>
 
 <!-- 
 Copy text, kill lines or regions, move text around, mark text, bring up help buffers, look up definitions, search google, check my spelling, the list goes on. I emphasize this again: Avy defines dozens of jump commands, but I'm only using one. This post breaks this down in detail so you can create your own version of this, but more importantly tries to explain why this is a neat idea.
@@ -51,13 +101,13 @@ This is the first of two parts in a series on , an Emacs package for jumping aro
 
 <!-- # Filter → Select → Act -->
 
-# フィルター -> 選択 -> アクション
+# <span class="Filter">フィルター</span> → <span class="Select">選択</span> → <span class="Act">アクション</span>
 
 <!--
 We see the same pattern repeated in most interactions with Emacs whose primary purpose isn't typing text. To perform a task, we Filter, Select and Act in sequence:
 -->
 
-主要目的がテキストをタイプすることではないEmacsとのやり取りのほとんどにおいて、同じパターンが繰り返されるのを目にする。あるタスクを実行するためにフィルター(filter: 抽出)して、選択(select)して、それからアクション(act: 実行)を順繰りに行うパターンのことだ。
+主要目的がテキストをタイプすることではないEmacsとのやり取りのほとんどにおいて、同じパターンが繰り返されるのを目にする。あるタスクを実行するために<span class="Filter">フィルター</span>(filter: 抽出)して、<span class="Select">選択</span>(select)して、それから<span class="Act">アクション</span>(act: 実行)を順繰りに行うパターンのことだ。
 
 <!--
 Filter: Winnow a large pile of candidates to a smaller number, usually by typing in
@@ -69,11 +119,11 @@ If you filter a list down to one candidate, it's automatically selected.
 Act: Run the task with this candidate as an argument. 
 -->
 
-フィルター(Filter): 通常は何らかのテキストをタイプすることによって、大量に積まれたウィンドウ候補をより少ない候補へと絞り込む。以下に示す例のように候補は何でもよい。
+<span class="Filter"><strong>フィルター</strong></span>： 通常は何らかのテキストをタイプすることによって、大量に積まれたウィンドウ候補をより少ない候補へと絞り込む。以下に示す例のように候補は何でもよい。
 
-選択(Select): 必要は候補いずれかを指定する(通常は視覚的な同意つき)。フィルターによって候補リストが1つの候補に絞り込まれた場合には自動的にそれを選択する。
+<span class="Select"><strong>選択</strong></span>： 必要は候補いずれかを指定する(通常は視覚的な同意つき)。フィルターによって候補リストが1つの候補に絞り込まれた場合には自動的にそれを選択する。
 
-アクション(Act): 引数としてその候補を渡してタスクを実行する。
+<span class="Act"><strong>アクション</strong></span>： 引数としてその候補を渡してタスクを実行する。
 
 <!-- 
 * Want to open a file? Invoke a command, then type in text to filter a list of completions, select a completion, find-file.
@@ -81,17 +131,19 @@ Act: Run the task with this candidate as an argument.
 * Autocomplete a symbol in code? Type a few characters to narrow a pop-up list, choose a candidate, confirm. 
 -->
 
-* ファイルをオープンしたい? ならコマンドを呼び出してから補完リストをフィルターするテキストをタイプして補完結果から選択してからfind-fileだ。
+* ファイルをオープンしたい? ならコマンドを呼び出してから補完リストを<span class="Filter">フィルター</span>するテキストをタイプして補完結果から<span class="Select">選択</span>してから<span class="Act">find-file</span>だ。
 
-* バッファーの切り替え? フィルターに何かをタイプ、バッファーを選択して切り替えるだけ。
+* バッファーの切り替え? <span class="Filter">フィルター</span>に何かをタイプ、バッファーを<span class="Select">選択</span>して<span class="Act">切り替える</span>だけ。
 
-* コード内のシンボルの自動補完はどうだろう? ポップアップリストを絞り込むための文字を数文字タイプして、候補を選択したら確認に同意すればいい。
+* コード内のシンボルの<span class="Act">自動補完</span>はどうだろう? ポップアップリストを<span class="Filter">絞り込む</span>ための文字を数文字タイプして、候補を<span class="Select">選択</span>したら確認に同意すればいい。
 
 <!-- 
 This observation leads to several interesting ideas. For one, the Filter → Select → Act process is often thought of as a single operation. Decoupling the filtering, selection and action phases (in code and in our heads) frees us to consider a flock of possibilities. Here's minibuffer interaction: 
 -->
 
-例のごとく、これは単純化されたモデルだ。たとえばHelm、Ivy、Diredの仲間たちは処理する複数の候補をユーザーが選択できるようにしている。このアイデアを検討する間は、この知識は脇に避けておくことにしよう。この観察によっていくつかの興味深いアイデアが導かれる。たとえばフィルター->選択->アクションというプロセスが、1つの操作と考えられることが珍しくない。フィルタリング、選択、アクションのフェーズを(コードや脳内で)分離してみれば、多くの可能性を考慮する自由が得られるだろう。以下はミニバッファーにおけるやり取り:
+例のごとく、これは単純化されたモデルだ。たとえばHelm、Ivy、Diredの仲間たちは<span class="Act">処理する</span>複数の候補をユーザーが<span class="Select">選択</span>できるようにしている。このアイデアを検討する間は、この知識は脇に避けておくことにしよう。
+
+この観察によっていくつかの興味深いアイデアが導かれる。たとえば<span class="Filter">フィルター</span>→<span class="Select">選択</span>→<span class="Act">アクション</span>というプロセスが、1つの操作と考えられることが珍しくない。フィルタリング、選択、アクションのフェーズを(コードや脳内で)分離してみれば、多くの可能性を考慮する自由が得られるだろう。以下はミニバッファーにおけるやり取り:
 
 ![minibuffer-interaction-paradigm.png](https://karthinks.com/img/minibuffer-interaction-paradigm.png)
 
@@ -107,7 +159,9 @@ The possibilities are, respectively: different completion styles (matching by re
 But this usage pattern extends to more than just minibuffer interaction. We often do things in regular buffers that involve the Filter → Select → Act pattern. In fact, you can look at most interactions with Emacs (whose focus isn't typing text) this way: when you call a goto-definition command with point–the text cursor–in some text, the filtering stage is skipped, the selection is made for you by a function from the thing-at-pt library, and a preset action is called. How about a mouse interaction? scroll through a window full of icons, move the mouse cursor to an icon and click on it. These completely redundant examples prime us for the more interesting cases. Consider Isearch: 
 -->
 
-この使用パターンはミニバッファーとの対話にかぎらず拡張できる。通常のバッファー操作において、フィルター->選択->アクションというパターンで物事を行うことは珍しいことではない。Emacsとのほとんどの(テキストのタイプに重点を置かない)対話において、この使い方を実際に目にできるだろう。ポイント(テキストカーソルのこと)が何らかのテキストにあるときにgoto-definitionコマンドを呼び出せば、フィルタリングのステップは飛ばしてthing-at-ptライブラリーの関数が選択を行い事前にセットされたアクションを行うのだ。マウスによる対話ならどうなるだろう? アイコンだらけのウィンドウをスクロールしてかいくぐり、お目当てのアイコンにマウスカーソルを置いてクリックといった具合である。この完全に冗長な例から、より興味深いケースにたいする気づきが得られる。Isearchで考えてみよう:
+この使用パターンはミニバッファーとの対話にかぎらず拡張できる。通常のバッファー操作において、<span class="Filter">フィルター</span>→<span class="Select">選択</span>→アクションというパターンで物事を行うことは珍しいことではない。Emacsとのほとんどの(テキストのタイプに重点を置かない)対話において、この使い方を実際に目にできるだろう。ポイント(テキストカーソルのこと)が何らかのテキストにあるときにgoto-definitionコマンドを呼び出せば、<span class="Filter">フィルタリング</span>のステップは飛ばして`thing-at-pt`ライブラリーの関数が<span class="Select">選択</span>を行い事前にセットされた<span class="Act">アクション</span>を行うのだ。マウスによる対話ならどうなるだろう? アイコンだらけのウィンドウを<span class="Filter">スクロール</span>してかいくぐり、お目当てのアイコンにマウスカーソルを置いて<span class="Act">クリック</span>といった具合である。この完全に冗長な例から、より興味深いケースにたいする気づきが得られる。
+
+Isearchで考えてみよう:
 
 ![isearch-interaction-paradigm.png](https://karthinks.com/img/isearch-interaction-paradigm.png)
 
@@ -119,19 +173,19 @@ When you type (after C-s), you automatically filter buffer text and select the n
 Isearch combines filter/search/act into a single command for efficiency. Even so,  it's a very cleverly designed library for Emacs with support for many actions.  Folks who replace Isearch entirely with Swiper or similar commands are missing  out.
 -->
 
-(C-sの後に)何かタイプすると、バッファーのテキストが自動的にフィルターされてもっとも近くにあるマッチが選択される。その後に続くマッチを順に選択したり、最初や最後のマッチにジャンプすることも可能だ。ここではマッチした位置へのカーソル移動というプロセスがアクションに相当するが、これは検索文字列にたいするoccurやquery-replaceの実行のような処理のうちの1つとみなすことができる。Isearchには多くはフィルターと選択、アクションを同時に行うコマンドが多く、そのためにユーザーは丸い穴に無理して四角い釘を打つような破目となる[^2]。
+(`C-s`の後に)何かタイプすると、バッファーのテキストが自動的に<span class="Filter">フィルター</span>されてもっとも近くにあるマッチが<span class="Select">選択</span>される。その後に続くマッチを順に選択したり、最初や最後のマッチに<span class="Act">ジャンプ</span>することも可能だ。ここではマッチした位置へのカーソル移動というプロセスが<span class="Act">アクション</span>に相当するが、これは検索文字列にたいする`occur`や`query-replace`の実行のような処理のうちの1つとみなすことができる。Isearchには多くは<span class="Filter">フィルター</span>と選択、アクションを同時に行うコマンドが多く、そのためにユーザーは丸い穴に無理して四角い釘を打つような破目となる[^2]。
 
 <!-- 
 If you've spent any time using Isearch, you can appreciate the tradeoff involved in dividing a task into these three independently configurable phases. Lumping two or all three into a single operation makes Isearch a wicked fast keyboard interaction. When I use Isearch my brain is usually trying to catch up to my fingers. On the other hand, the advantage of modularity is expressive power. The three phase process is slower on the whole, but we can do a whole lot more by plugging in different pieces into each of the Filter , Select and Act slots. To see this, you have only to consider how many disparate tasks the minibuffer handles, and in how many different ways!
 -->
 
-Isearchの使用に少しでも時間を費やした経験があればIsearchの単一のタスクを、独自に構成可能な3つのフェーズに分割することで生じるトレードオフが理解できるはずだ。2つ、あるいは3つすべてを単一操作にまとめることが、Isearchにおけるキーボード操作を *邪悪なまでに高速化* する。わたしがIsearchを使用する際には、頭が指を追いかける場面が珍しくない。他方モジュール化がもつ優位な点は、その表現力にある。3つのフェーズからなるプロセスは全体として遅くはなるもののフィルター、選択、アクションそれぞれのスロットに異なるパーツを繋げることによって、さらに多くのことを行うことが可能になる。まったく異なるタスクにたいして、ミニバッファーがさまざま方法を用いていかにして処理をこなすか思い浮かべてみればわかるだろう!
+Isearchの使用に少しでも時間を費やした経験があればIsearchの単一のタスクを、独自に構成可能な3つのフェーズに分割することで生じるトレードオフが理解できるはずだ。2つ、あるいは3つすべてを単一操作にまとめることが、Isearchにおけるキーボード操作を *邪悪なまでに高速化* する。わたしがIsearchを使用する際には、頭が指を追いかける場面が珍しくない。他方モジュール化がもつ優位な点は、その表現力にある。3つのフェーズからなるプロセスは全体として遅くはなるものの<span class="Filter">フィルター</span>、<span class="Select">選択</span>、<span class="Act">アクション</span>それぞれのスロットに異なるパーツを繋げることによって、さらに多くのことを行うことが可能になる。まったく異なるタスクにたいして、ミニバッファーがさまざま方法を用いていかにして処理をこなすか思い浮かべてみればわかるだろう!
 
 <!-- 
 But back to Isearch: what can we do to decouple the three stages here? Not much without modifying its guts. It's all elisp, so that's not a tall order. For example, Protesilaos Stavrou adds many intuitive actions (such as marking candidates) to Isearch in this video. But it turns out we don't need to modify Isearch, because Avy exists, has a killer Filter feature, and it separates the three stages like a champ. This makes for some very intriguing possibilities. 
 -->
 
-話をIsearchに戻す。どうやれば3つのステージに分割できるのか? 根性が持続できれば大したことはないだろう。すべてがelispである以上、それは難しい注文ではないのだ。たとえばProtesilaos Stavrouは[ビデオ](https://www.youtube.com/watch?v=y6_bmcd3nis)において、候補のマーキングといった直観的な多くのアクションをIsearchに追加している。しかし **Avy** の存在によってIsearchの修整が不要だということが明らかになった。フィルターというキラー機能を有しつつも、王者同様3つのステージを分離しているのがAvyである。Avyによって何とも興味がそそられる可能性が生みだされた。
+話をIsearchに戻す。どうやれば3つのステージに分割できるのか? 根性が持続できれば大したことはないだろう。すべてがelispである以上、それは難しい注文ではないのだ。たとえばProtesilaos Stavrouは[ビデオ](https://www.youtube.com/watch?v=y6_bmcd3nis)において、候補のマーキングといった直観的な多くのアクションをIsearchに追加している。しかし **Avy** の存在によってIsearchの修整が不要だということが明らかになった。<span class="Filter">フィルター</span>というキラー機能を有しつつも、王者同様3つのステージを分離しているのがAvyである。Avyによって何とも興味がそそられる可能性が生みだされた。
 
 ![avy-interaction-paradigm.png](https://karthinks.com/img/avy-interaction-paradigm.png)
 
@@ -145,7 +199,7 @@ Wait, what's Avy
 Avy is authored by the prolific abo-abo (Oleh Krehel), who also wrote Ivy, Counsel, Ace-Window, Hydra, Swiper and many other mainstays of the Emacs package ecosystem that you've probably used. If you're reading this, chances are you already know (and probably use) Avy. So here's a very short version from the documentation:
 -->
 
-[Avy](https://github.com/abo-abo/avy)は[abo-abo](https://oremacs.com/)の作者でもあるOleh Krehelによって記述された。彼は実に多産な作者でありIvy、Counsel、Ace-Window、Hydra、Swiperを記述したのは彼であり、他にもおそらく読者も使ったことがあるEmacsのパッケージエコシステムの主要コンポーネントの多くも彼が記述した。この記事を読んでいる読者なら、すでにAvyを知っている(そして多分使ったことがある)かもしれない。したがってAvyのドキュメントから非常に短いバージョンを紹介しよう:
+[Avy](https://github.com/abo-abo/avy)は[abo-abo](https://oremacs.com/)ことOleh Krehelによって記述された。彼は実に多産な作者でありIvy、Counsel、Ace-Window、Hydra、Swiperを記述したのは彼であり、他にもおそらく読者も使ったことがあるEmacsのパッケージエコシステムの主要コンポーネントの多くも彼が記述した。この記事を読んでいる読者なら、すでにAvyを知っている(そして多分使ったことがある)かもしれない。したがってAvyのドキュメントから非常に短いバージョンを紹介しよう:
 
 <!-- 
 *avy is a GNU Emacs package for jumping to visible text using a char-based decision tree.* 
@@ -173,7 +227,7 @@ Typing in one of the hints then jumps the cursor to that location. Here I jump t
 Typical  Avy usage looks something like this: Jump to a location that matches your text (across all windows), then jump back with pop-global-mark (C-x C-SPC). In a later section I go into more detail on jumping back and forth with Avy. Here is a demo of this process where I jump twice with Avy and then jump back in sequence:
 -->
 
-テキストにマッチする位置に(ウィンドウ間を横断して)ジャンプ、その後はpop-global-mark (C-x C-SPC)で元の位置にジャンプして戻る、というのがAvyの典型的な使い方だろう。後半のセクションではじAvyを使った前方あるいは後方へのジャンプについて詳解する。以下のデモではAvyで2回ジャンプしてから順番にジャンプして戻るプロセスを行っている:
+テキストにマッチする位置に(ウィンドウ間を横断して)ジャンプ、その後は`pop-global-mark` (`C-x C-SPC`)で元の位置にジャンプして戻る、というのがAvyの典型的な使い方だろう。後半のセクションではじAvyを使った前方あるいは後方へのジャンプについて詳解する。以下のデモではAvyで2回ジャンプしてから順番にジャンプして戻るプロセスを行っている：
 
 [avy-jump-back-demo-2.mp4](https://karthinks.com/img/avy-jump-back-demo-2.mp4)
 
@@ -181,21 +235,21 @@ Typical  Avy usage looks something like this: Jump to a location that matches yo
 At  least that's the official description. You can peruse the README for more information, but what I find mystifying is that…
 -->
 
-少なくとも、これが公式の説明だ。詳細については[README](https://github.com/abo-abo/avy/blob/master/README.md)を参照してほしいが、わたしが疑問に思うのは...
+少なくとも、これが公式の説明だ。詳細については[README](https://github.com/abo-abo/avy/blob/master/README.md)を参照してほしいが、わたしが疑問に思うのは……
 
 <!-- 
 # …Avy's documentation leaves out the best part
 -->
 
-# ... Avyのドキュメントにはもっとも肝心な部分が記載されていない
+# Avyのドキュメントにはもっとも肝心な部分が記載されていない
 
 <!-- 
 Avy handles filtering automatically and the selection is made through a char-based decision tree. Here's how it fits into our three part interaction model.
 -->
 
-Avy自動的にフィルタリングを行い、文字ベースのデシジョンツリーを通じて選択を行う。これを3つのパートからなるわたしたちの対話モデルにどのように適合させるかを示そう。
+Avyは自動的にフィルタリングを行い、文字ベースのデシジョンツリーを通じて選択を行う。これを3つのパートからなるわたしたちの対話モデルにどのように適合させるかを示そう。
 
-## フィルター
+## <span class="Filter">フィルター</span>して、
 
 <!-- 
 Before you call Avy every text character on your screen is a potential candidate for selection. The possibilites are all laid out for you, and there are too many of them!
@@ -256,7 +310,7 @@ Filtering in Avy is independent of the selection method (as it should be), but t
 Here's the problem: **We want to use our mental bandwidth for the problem we're trying to solve with the text editor, not the editor itself.** Conscious decision-making is expensive and distracting. As of now we need to decide on the fly between Isearch and Avy to find and act on things. If you use a fancy search tool like Swiper, Helm-swoop or Consult-line, you now have three options. Having a bunch of Avy commands on top is a recipe for mental gridlock. To that end, we just pick the most adaptable, flexible and general-purpose Avy command (avy-goto-char-timer) for everything.
 -->
 
-ここで問題が生じる: **わたしたちはエディター自体にではなく、テキストエディターで解決しようとしている問題にたいして精神的な帯域幅を使用したい** のだ。無意識に行えない意思決定にはコストがかかり、集中力も乱されてしまう。現段階では物事を見つけて処理を行うためには、IsearchとAvyの中間点の何かを使ってその場で決定する必要がある。Swiper、Helm-swoop、Consult-lineといった多機能な検索ツールを使っている場合には、選べるオプションは3つだ。大量のAvyコマンドをトップに据えると、それが精神的な行き詰まりへと導くための処方箋になりかねない。すべての面においてもっとも適応力があり、柔軟かつ汎用的なAvyコマンド(avy-goto-char-timer)を選択するだけにしておけば、これを回避できるだろう。
+ここで問題が生じる: **わたしたちはエディター自体にではなく、テキストエディターで解決しようとしている問題にたいして精神的な帯域幅を使用したい** のだ。無意識に行えない意思決定にはコストがかかり、集中力も乱されてしまう。現段階では物事を見つけて処理を行うためには、IsearchとAvyの中間点の何かを使ってその場で決定する必要がある。Swiper、Helm-swoop、Consult-lineといった多機能な検索ツールを使っている場合には、選べるオプションは3つだ。大量のAvyコマンドをトップに据えると、それが精神的な行き詰まりへと導くための処方箋になりかねない。すべての面においてもっとも適応力があり、柔軟かつ汎用的なAvyコマンド(`avy-goto-char-timer`)を選択するだけにしておけば、これを回避できるだろう。
 
 ```elisp
 (global-set-key (kbd "M-j") 'avy-goto-char-timer)
@@ -280,13 +334,13 @@ But in this piece we are interested in a different, much less explored aspect of
 
 とは言ったものの興味があるのは、まだ探求が済んでいないAvyの別の側面だ。以下の主張ではそれについても目を向けていこう。
 
-## 選択
+## <span class="Select">選択</span>して、
 
 <!-- 
 Every selection method that Avy offers involves typing characters that map to screen locations. This is quite different from Isearch, where you call isearch-repeat-forward (C-s, possibly with a numerical prefix argument) or the minibuffer, where you navigate a  completions buffer or list with C-n and C-p. Avy's selection method is generally faster because it minimizes, by design, the length of the character sequences it uses, and we have ten fingers that can access ∼40 keys in O(1) time. The fact that we're often looking directly where we mean to jump means we don't need to parse an entire screen of gibberish. Unfortunately for this article, this means using Avy is much more intuitive than looking at screenshots or watching demos.
 -->
 
-Avyが提供する選択メソッドには、すべてスクリーン上の位置にマッピングされた文字のタイプが含まれている。これはIsearchとは大きく異なる。isearch-repeat-forward (C-s、数プレフィックス引数が指定されているかもしれない)を呼び出すIsearch、補完バッファー(completions buffer)のナビゲーションにC-nやC-pを用いるミニバッファーとはまったく異なるのだ。Avyの選択メソッドは使用する文字シーケンスが最小となるようにデザインされており、わたしたちには40のキーに計算量オーダーO(1)でアクセス可能な10本の指が備わっているので、より高速であることが一般的だ。ジャンプしようとしている位置を直接見ていることが多いという事実は、ちんぷんかんぷんなスクリーン全体の解析が不要なことを意味している。この記事にとっては不幸ではあるが、スクリーンショットやデモを見るよりも、Avyを使ってみるほうが遥かに直観的であることをも意味している。
+Avyが提供する選択メソッドには、すべてスクリーン上の位置にマッピングされた文字のタイプが含まれている。これはIsearchとは大きく異なる。`isearch-repeat-forward` (`C-s`、数プレフィックス引数が指定されているかもしれない)を呼び出すIsearch、補完バッファー(completions buffer)のナビゲーションに`C-n`や`C-p`を用いるミニバッファーとはまったく異なるのだ。Avyの選択メソッドは使用する文字シーケンスが最小となるようにデザインされており、わたしたちには40のキーに計算量オーダーO(1)でアクセス可能な10本の指が備わっているので、より高速であることが一般的だ。ジャンプしようとしている位置を直接見ていることが多いという事実は、ちんぷんかんぷんなスクリーン全体の解析が不要なことを意味している。この記事にとっては不幸ではあるが、スクリーンショットやデモを見るよりも、Avyを使ってみるほうが遥かに直観的であることをも意味している。
 
 <!-- 
 This  excellent design leaves us with little reason to tinker with the selection phase: it's sufficiently modular and accommodating of different filter and act stages. You can customize avy-style if you want to change the set or positions of characters used for selection. Here is an example of using simple words to select candidates:
@@ -302,7 +356,7 @@ We will pay more attention to the selection operation in part II as well.
 
 選択操作については第2部でも注目していく予定。
 
-## アクション!
+## <span class="Act">アクション</span>！
 
 <!-- 
 This brings us to the focus of this article. The stated purpose of Avy, jumping to things, makes it sound like a (contextually) faster Isearch. But jumping is only one of many possibilities. Avy provides a "dispatch list", a collection of actions you can perform on a candidate, and they are all treated on equal footing with the jump action. You can show these commands any time you use Avy with ?:
@@ -324,7 +378,7 @@ This means we are free to leverage Avy’s unique filtering and selection method
 Additionally, Avy also defines a few commands that run different actions, like copying text from anywhere on screen:
 -->
 
-さらにAvyには、スクリーン上の何処かからテキストをコピーするのように、他のアクションを実行するいくつかのコマンドも定義されている:
+さらにAvyには、スクリーン上の何処かからテキストをコピーするのように、他のアクションを実行するいくつかのコマンドも定義されている：
 
 | Kill                          | Copy            | Move                          |
 |-------------------------------|-----------------|-------------------------------|
@@ -339,7 +393,7 @@ The problem with this approach is that it doesn't scale. Each of these commands 
 -->
 
 このアプローチは拡張性において問題がある。
-これらはそれぞれフィルター -> 選択 -> アクションという完全なプロセスを定義するコマンドなので、多様性や対応範囲で何らかの必要が生じたとしても、拡張の余地やキーボードの空きはすぐに枯渇してしまうだろう。動的な面においても不十分だ。一旦コマンドを開始してから気が変わっても、コマンド間をつなぐパイプラインが固定されているので変更できないのだ。
+これらはそれぞれ<span class="Filter">フィルター</span>→<span class="Select">選択</span>→ <span class="Act">アクション</span>という完全なプロセスを定義するコマンドなので、多様性や対応範囲で何らかの必要が生じたとしても、拡張の余地やキーボードの空きはすぐに枯渇してしまうだろう。動的な面においても不十分だ。一旦コマンドを開始してから気が変わっても、コマンド間をつなぐパイプラインが固定されているので変更できないのだ。
 
 <!--
 Folks love Vim's editing model for a reason: it's a mini-language where knowing M actions (verbs) and N cursor motions gives you M × N composite operations. This (M + N) → (M × N) ratio pays off quadratically with the effort you put into learning verbs and motions in Vim. Easymotion, which is Vim's version of Avy3[^3], has part of this composability built-in as a result. We seek to bring some of this to Avy, and (because this is Emacs) do a lot more than combining motions with verbs. We won't need to step into Avy's source code for this, it has all the hooks we need already.
@@ -362,27 +416,27 @@ Select: Pick one of the candidates to run the action on.
 
 Avyにおいて任意のアクションを実行する際の基本的な使い方は以下のとおり:
 
-1. Avyのコマンドを呼び出す。どのコマンドでもよいが、わたしはavy-goto-char-timerの一択。
+1. Avyのコマンドを呼び出す。どのコマンドでもよいが、わたしは`avy-goto-char-timer`の一択。
 
-2. フィルター: スクリーン全体からいくつかの位置に候補を絞り込むためのテキストを何かタイプする。
+2. <span class="Filter">フィルター</span>：スクリーン全体からいくつかの位置に候補を絞り込むためのテキストを何かタイプする。
 
-3. 選択: 実行したいアクションを指定する。?でディスパッチのヘルプを表示できる。正しくセットアップしてあれば不要だが、詳細が知りたければ"Avyにたいする心構え"を参照のこと。
+3. <span class="Select">選択</span>：実行したいアクションを指定する。?でディスパッチのヘルプを表示できる。正しくセットアップしてあれば不要だが、詳細が知りたければ"Avyにたいする心構え"を参照のこと。
 
-4. アクション: アクションを実行したい候補を1つ選ぶ。
+4. <span class="Act">アクション</span>：アクションを実行したい候補を1つ選ぶ。
 
 <!-- 
 Here are some things I frequently do with Avy. Note that you can do this on any text in your frame, not just the active window! 
 -->
 
-以下はわたしがAvyで頻繁に行うことの一部。アクティブなウィンドウにかぎらず、フレーム内のすべてのテキスト行えることに注目!
+以下はわたしがAvyで頻繁に行うことの一部。アクティブなウィンドウにかぎらず、フレーム内のすべてのテキスト行えることに注目！
 
 <!-- 
 First, taking the annoyance out of some common editing actions with Avy. If you use Vim and Easymotion, you get the first few actions below for free:
 -->
 
-まずはAvyを用いて一般的な編集アクションを行う際の悩みの種を解消する。VimとEasymotionを使っていれば、以下のアクションのうち最初のいくつかは無料で入手できる:
+まずはAvyを用いて一般的な編集アクションを行う際の悩みの種を解消する。VimとEasymotionを使っていれば、以下のアクションのうち最初のいくつかは無料で入手できる：
 
-<details><summary>以下のデモに関する注意</summary>
+<details open><summary>以下のデモに関する注意</summary>
 
 <!--
 For clarity, I set Avy to desaturate the screen and to "pulse" the line during a few of these actions. These are not enabled by default. I also slowed down the operations by adding a delay to make them easier to follow. In actual usage these are instantaneous.
@@ -420,9 +474,9 @@ Killing words or s-expressions is built-in. I added an action to kill a line. In
 
 <li><code>avy-goto-char-timer</code>を呼び出す。</li>
 
-<li>is"をタイプする。"is"にマッチするすべての候補にヒントが表示される。</li>
+<li>"is"をタイプする。"is"にマッチするすべての候補にヒントが表示される。</li>
 
-<li>kで<code>avy-action-kill</code>を呼び出す。</li>
+<li><code>k</code>で<code>avy-action-kill</code>を呼び出す。</li>
 
 <li>重複した"is"のいずれかを選択して削除する。</li>
 
@@ -432,7 +486,7 @@ Killing words or s-expressions is built-in. I added an action to kill a line. In
 
 <li>keyへのマッチに絞り込むために"key"とタイプする。</li>
 
-<li>kで<code>avy-action-kill-whole-line</code>を呼び出す。</li>
+<li><code>K</code>で<code>avy-action-kill-whole-line</code>を呼び出す。</li>
 
 <li>コメント行を選択してその行を削除する。</li>
 
@@ -488,7 +542,7 @@ Fix indentation with just-one-space, bound to M-SPC by default.
 
 <li>"["をタイプしてフレーム内の"["へのマッチすべてをフィルタリングする。</li>
 
-<li>yにバインドされている<code>avy-action-yank</code>を呼び出す。</li>
+<li><code>y</code>にバインドされている<code>avy-action-yank</code>を呼び出す。</li>
 
 <li>"[big-cache]"にたいするマッチを選択する。これは別ウィンドウからこのバッファーにコピーされたテキスト。</li>
 
@@ -500,7 +554,7 @@ Fix indentation with just-one-space, bound to M-SPC by default.
 
 <li>マッチからいずれか1つ選択する。その行がバッファーにコピーされる。</li>
 
-<li>デフォルトで<code>M-SPC</code>にバインドされているjust-one-spaceでインデントを修整する。</li>
+<li>デフォルトで<code>M-SPC</code>にバインドされている<code>just-one-space</code>でインデントを修整する。</li>
 
 </ol>
 
@@ -535,11 +589,11 @@ Fix indentation with just-one-space, bound to M-SPC by default.
 Note that Avy actually defines separate commands for this: avy-copy-line and avy-copy-region to copy lines and regions from anywhere in the frame. These are a little faster since they have the action stage baked into the function call. You might be better served by these. But we want to avoid the mental burden of remembering too many top level commands, so we work in two simpler stages: call avy-goto-char-timer (to filter and select) and then dispatch on our selected candidate as we see fit.
 -->
 
-フレームのどこかから行やリージョンをコピーするために、実際にはavy-copy-lineおよびavy-copy-regionというコマンドをAvyが個別に定義している。これらのコマンドの方が関数呼び出しにアクションステージが織り込み済みなので僅かに速いので、そちらを使うほうがよいかもしれない。しかし多すぎるトップレベルコマンドを記憶することによる精神的な燃え尽き症候群をわたしたちは避けたいので、avy-goto-char-timerを呼び出して(フィルターと選択)、その後にお目当ての候補を選択してディスパッチを行うという、よりシンプルな2つのステージで作業を行っている。
+フレームのどこかから行やリージョンをコピーするために、実際には`avy-copy-line`および`avy-copy-region`というコマンドをAvyが個別に定義している。これらのコマンドの方が関数呼び出しに<span class="Act">アクション</span>ステージが織り込み済みなので僅かに速いので、そちらを使うほうがよいかもしれない。しかし多すぎるトップレベルコマンドを記憶することによる精神的な燃え尽き症候群をわたしたちは避けたいので、`avy-goto-char-timer`を呼び出して(<span class="Filter">フィルター</span>と<span class="Select">選択</span>)、その後にお目当ての候補を選択してディスパッチを行うという、よりシンプルな2つのステージで作業を行っている。
 
 ## 単語、sexp、行の候補の移動
 
-これはAvyでは"teleport"、わたしは"transpose"と呼んでいるが、いずれにせよtにバインドされることになる。このデモではバッファーのあちこちをあまり移動せずに、バッファーのあちこちにテキストを移動する。
+これはAvyでは"teleport"、わたしは"transpose"と呼んでいるが、いずれにせよ`t`にバインドされることになる。このデモではバッファーのあちこちをあまり移動せずに、バッファーのあちこちにテキストを移動する。
 
 [avy-transpose-demo.mp4](https://karthinks.com/img/avy-transpose-demo.mp4)
 
@@ -566,7 +620,7 @@ Select a candidate line (the one just below the image). It is moved over (transp
 
 <li>"("で始まる候補にフィルタリングする。</li>
 
-<li>tを押下して<code>avy-action-teleport</code>を実行する。</li>
+<li><code>t</code>を押下して<code>avy-action-teleport</code>を実行する。</li>
 
 <li>"(parametric forcing)"という候補を選択する。</li>
 
@@ -576,7 +630,7 @@ Select a candidate line (the one just below the image). It is moved over (transp
 
 <li>"the"にマッチする候補にフィルタリングする。</li>
 
-<li>Tを押下して<code>avy-action-teleport-line</code>を実行する。</li>
+<li><code>T</code>を押下して<code>avy-action-teleport-line</code>を実行する。</li>
 
 <li>候補の行(イメージの直下にある)を選択する。ポイントがある位置に移動(またはtranspoae: 転地)するはず。</li>
 
@@ -595,7 +649,7 @@ Select a candidate line (the one just below the image). It is moved over (transp
 
 ## 候補の位置までzap
 
-これはビルトインのコマンドで、デフォルトではzにバインドされている。
+これはビルトインのコマンドで、デフォルトでは<code>z</code>にバインドされている。
 
 [avy-zap-demo.mp4](https://karthinks.com/img/avy-zap-demo.mp4)
 
@@ -628,7 +682,7 @@ Select a candidate char, in this case "In Emacs…". The text between point and 
 Also built in, m by default. This isn’t different from jumping to the candidate using Avy and calling mark-sexp, but it is more convenient:
 -->
 
-これもビルトインのコマンドであり、デフォルトではmにバインドされている。Avyを使って候補にジャンプするのは、 mark-sexpを呼び出すジャンプと変わらないが、Avyの方がより使いやすくなっている:
+これもビルトインのコマンドであり、デフォルトでは<code>m</code>にバインドされている。Avyを使って候補にジャンプするのは、<code>mark-sexp</code>を呼び出すジャンプと変わらないが、Avyの方がより使いやすくなっている：
 
 [avy-mark-demo.mp4](https://karthinks.com/img/avy-mark-demo.mp4)
 
@@ -650,9 +704,9 @@ Repeat steps 1 to 4 twice to mark other candidates: (data_directory... and Rotat
 
 <li><code>avy-action-mark</code>を実行するためにmを押下する。</li>
 
-<li>候補から単語かsexp(ここでは("~/.local/share"))を選択する。</li>
+<li>候補から単語かsexp(ここでは<code>("~/.local/share")</code>)を選択する。</li>
 
-<li>他の候補(data_directory...とRotatingFileHandler)をマークするために、1-4のステップを2回繰り返す。</li>
+<li>他の候補<code>(data_directory...</code>と<code>RotatingFileHandler</code>をマークするために、1-4のステップを2回繰り返す。</li>
 
 </ol>
 
@@ -687,7 +741,7 @@ Choose a candidate (series of spaces) that begins a line. This marks the region 
 
 <li>フィルタリングに使用するテキスト(ここでは"')")をタイプする。</li>
 
-<li><code>avy-action-mark-to-char</code>を実行するために、SPCを押下する。</li>
+<li><code>avy-action-mark-to-char</code>を実行するために、<code>SPC</code>を押下する。</li>
 
 <li>候補のヒント文字を選択する。これによりポイントからヒント文字までのリージョンをマークして、ポイントを移動する。</li>
 
@@ -695,7 +749,7 @@ Choose a candidate (series of spaces) that begins a line. This marks the region 
 
 <li>フィルタリングに使用するテキスト(ここでは単に一連のスペース)をタイプする。</li>
 
-<li><code>avy-action-mark-to-char</code>を実行するために、SPCを押下する。</li>
+<li><code>avy-action-mark-to-char</code>を実行するために、<code>SPC</code>を押下する。</li>
 
 <li>行の開始となる候補(ここでは一連のスペース)を選択する。これによりポイントからその行までがマークされる。</li>
 
@@ -708,7 +762,8 @@ Choose a candidate (series of spaces) that begins a line. This marks the region 
   (activate-mark)
   (goto-char pt))
 
-(setf (alist-get ?  avy-dispatch-alist) 'avy-action-mark-to-char)
+(setf (alist-get ?t avy-dispatch-alist) 'avy-action-mark-to-char
+      (alist-get ?T avy-dispatch-alist) 'avy-action-teleport-whole-line)
 ```
 
 <!--
@@ -723,7 +778,7 @@ Avyにより自動的に実行される、コンテキストに応じたアク�
 This is built-in, bound to i by default.
 -->
 
-これはビルトインのコマンドであり、デフォルトではiにバインドされている。
+これはビルトインのコマンドであり、デフォルトでは<code>i</code>にバインドされている。
 
 [avy-ispell.mp4](https://karthinks.com/img/avy-ispell.mp4)
 
@@ -743,13 +798,15 @@ Select the candidate, in this case the "teh" match.
 This runs ispell-word again, and 、"teh" can be corrected.
 -->
 
+<ol>
+
 <li><code>avy-goto-char-timer</code>(Avyの他のジャンプコマンドでもよい)を呼び出す。</li>
 
-<li>"can"とタイプすると"candidate"(スペル間違い)がハイライトされる。</li>
+<li>"can"と<span class="Filter">タイプ</span>すると"candidate"(スペル間違い)がハイライトされる。</li>
 
-<li><code>avy-action-ispell</code>用のディスパッチキー(デフォルトでは<code>i</code>にセットされている)を押下する。</li>
+<li><code>avy-action-ispell</code>用の<span class="Act">ディスパッチ</span>キー(デフォルトでは<code>i</code>にセットされている)を押下する。</li>
 
-<li>マッチのいずれか(ここではスペル間違いの"candidate"のマッチ)を選択する。</li>
+<li>マッチのいずれか(ここではスペル間違いの"candidate"のマッチ)を<span class="Select">選択</span>する。</li>
 
 <li>これにより選択にたいして<code>ispell-word</code>が実行される。</li>
 
@@ -757,11 +814,11 @@ This runs ispell-word again, and 、"teh" can be corrected.
 
 <li>もう一度<code>avy-goto-char-timer</code>を呼び出す。</li>
 
-<li>"te"をタイプすると"teh"にたいするマッチが(他より強調されて)ハイライトされる。</li>
+<li>"te"を<span class="Filter">タイプ</span>すると"teh"にたいするマッチが(他より強調されて)ハイライトされる。</li>
 
-<li><code>avy-action-ispell</code>用のディスパッチキーを押下する 。</li>
+<li><code>avy-action-ispell</code>用の<span class="Act">ディスパッチ</span>キーを押下する 。</li>
 
-<li>候補(ここでは"teh"のマッチ)を選択する。</li>
+<li>候補(ここでは"teh"のマッチ)を<span class="Select">選択</span>する。</li>
 
 <li>これによりもう一度<code>ispell-word</code>が実行されて、"teh"が修整される。</li>
 
@@ -773,7 +830,7 @@ This runs ispell-word again, and 、"teh" can be corrected.
 You can replace avy-action-ispell (built-in) with a version that automatically picks the top correction for a word, automating the process:
 -->
 
-このプロセスを自動化するために、一番上にある修整を自動的に採用するバージョンで、avy-action-ispell(ビルトイン)を置き換えることもできる。
+このプロセスを自動化するために、一番上にある修整を自動的に採用するバージョンで、<code>avy-action-ispell</code>(ビルトイン)を置き換えることもできる。
 
 ```elisp
 (defun avy-action-flyspell (pt)
@@ -795,7 +852,7 @@ You can replace avy-action-ispell (built-in) with a version that automatically p
 I use the dictionary package for Emacs, and I’m lazy about it:
 -->
 
-わたしはEmacsdictionaryパッケージを使っているので、単語の登録は怠けがちだ:
+わたしはEmacsのdictionaryパッケージを使っているので、単語の登録は怠けがちだ:
 
 [avy-define.mp4](https://karthinks.com/img/avy-define.mp4)
 
@@ -819,25 +876,25 @@ This produces the buffer with the dictionary definition of "finch"
 
 <li><code>avy-goto-char-timer</code>(Avyの他のジャンプコマンドでもよい)を呼び出す。</li>
 
-<li>"non"とタイプすると"nonpareil"にたいするマッチが(他より強調されて)がハイライトされる。</li>
+<li>"non"と<span class="Filter">タイプ</span>すると"nonpareil"にたいするマッチが(他より強調されて)がハイライトされる。</li>
 
-<li><code>avy-action-define</code>用のディスパッチキー(ここでは=にセットされている)を押下する。</li>
+<li><code>avy-action-define</code>用の<span class="Act">ディスパッチ</span>キー(ここでは<code>=</code>にセットされている)を押下する。</li>
 
-<li>マッチのいずれか(ここでは"nonpareil"にたいするマッチのいずれか)を選択する。</li>
+<li>マッチのいずれか(ここでは"nonpareil"にたいするマッチのいずれか)を<span class="Select">選択</span>する。</li>
 
-<li>これにより""nonpareil""の定義とともにバッファーが生成される。</li>
+<li>これにより"nonpareil"の定義とともにバッファーが生成される。</li>
 
 <li>こdefinitionバッファーをスクロールするために、<code>scroll-other-window</code> (<code>C-M-v</code>)を呼び出す。</li>
 
 <li>もう一度<code>avy-goto-char-timer</code>を呼び出す。</li>
 
-<li>"fi"をタイプすると"finch"にたいするマッチが(他より強調されて)ハイライトされる。これは定義をもつ別のバッファーでのマッチであることに注意。このバッファーへの切り替えは不要。</li>
+<li>"fi"を<span class="Filter">タイプ</span>すると"finch"にたいするマッチが(他より強調されて)ハイライトされる。これは定義をもつ別のバッファーでのマッチであることに注意。このバッファーへの切り替えは不要。</li>
 
-<li><code>avy-action-define</code>用のディスパッチキーを押下する 。</li>
+<li><code>avy-action-define</code>用の<span class="Act">ディスパッチ</span>キーを押下する 。</li>
 
-<li>候補(ここでは"finch"のマッチ)を選択する。</li>
+<li>候補(ここでは"finch"のマッチ)を<span class="Select">選択</span>する。</li>
 
-<li>これによりもう一度finchの辞書定義とともにバッファーが生成される。</li>
+<li>これによりもう一度"finch"の辞書定義とともにバッファーが生成される。</li>
 
 </ol>
 
@@ -908,11 +965,11 @@ Repeat steps 5-9 to find the documentation of another symbol, in this case memq.
 
 <li>フィルタリングするためのテキスト(ここでは"ma")をタイプする。</li>
 
-<li><code>avy-action-helpful</code>を実行するためにHを押下する。</li>
+<li><code>avy-action-helpful</code>を実行するために<code>H</code>を押下する。</li>
 
 <li>候補フレーズ(ここでは"macroexp-parse-body")を選択する。これは他のウィンドウ(helpバッファー)でのマッチであることに注意。これによりシンボルのドキュメントが表示される。</li>
 
-<li>他のシンボル(ここでは"memq"のドキュメントを調べるために、ステップ5-9を繰り返す。</li>
+<li>他のシンボル(ここでは<code>memq</code>のドキュメントを調べるために、ステップ5-9を繰り返す。</li>
 
 </ol>
 
@@ -939,7 +996,7 @@ Repeat steps 5-9 to find the documentation of another symbol, in this case memq.
 You’ll need an Emacs feature that can search Google for you. There are several. I use a CLI program named Tuxi for this, and it’s pretty handy:
 -->
 
-Googleを検索できるEmacs機能が必要になるだろう。[いくつか存在する](https://melpa.org/#/?q=google%20search)が、わたしが使っている[Tuxi](https://github.com/Bugswriter/tuxi%20)という名前のCLIプログラムはとても便利だ:
+Googleを検索できるEmacs機能が必要になるだろう。[いくつか存在する](https://melpa.org/#/?q=google%20search)が、わたしが使っている[Tuxi](https://github.com/Bugswriter/tuxi)という名前のCLIプログラムはとても便利だ:
 
 [avy-tuxi-demo.mp4](https://karthinks.com/img/avy-tuxi-demo.mp4)
 
@@ -963,21 +1020,21 @@ Repeat steps 6-10 but selecting the string "POSIX" instead.
 
 <li><code>avy-goto-char-timer</code>(Avyの他のジャンプコマンドでもよい)を呼び出す。</li>
 
-<li>"ema"とタイプすると"Emacs"にたいするマッチが(他より強調されて)がハイライトされる。</li>
+<li>"ema"と<span class="Filter">タイプ</span>すると"Emacs"にたいするマッチが(他より強調されて)がハイライトされる。</li>
 
-<li><code>avy-action-tuxi</code>用のディスパッチキー(ここではC-=にセット)を押下する。</li>
+<li><code>avy-action-tuxi</code>用の<span class="Act">ディスパッチ</span>キー(ここでは<code>C-=</code>にセット)を押下する。</li>
 
-<li>候補(ここでは"Emacs"にたいするマッチのいずれか)を選択する。</li>
+<li>候補(ここでは"Emacs"にたいするマッチのいずれか)を<span class="Select">選択</span>する。</li>
 
 <li>これによりGoogleのEmacsの説明とともにバッファーが生成される。</li>
 
 <li>もう一度<code>avy-goto-char-timer</code>を呼び出す。</li>
 
-<li>"vi"とタイプすると"Vi"にたいするマッチが(他より強調されて)がハイライトされる。これはGoogleの説明が表示されている別のバッファーでのマッチであることに注意。このバッファーへの切り替えは不要。</li>
+<li>"vi"と<span class="Filter">タイプ</span>すると"Vi"にたいするマッチが(他より強調されて)がハイライトされる。これはGoogleの説明が表示されている別のバッファーでのマッチであることに注意。このバッファーへの切り替えは不要。</li>
 
-<li>avy-action-tuxi用のディスパッチキーを押下する。</li>
+<li><code>avy-action-tuxi</code>用の<span class="Act">ディスパッチ</span>キーを押下する。</li>
 
-<li>候補(ここでは"Vi"にたいするマッチ)を選択する。</li>
+<li>候補(ここでは"Vi"にたいするマッチ)を<span class="Select">選択</span>する。</li>
 
 <li>これによりGoogleのViの説明とともにバッファーが生成される。</li>
 
@@ -997,7 +1054,7 @@ Repeat steps 6-10 but selecting the string "POSIX" instead.
 Avy and Embark plug into each other like LEGO blocks. Here are a couple of examples:
 -->
 
-AvyとEmbarkはレゴブロックのように互いに接続させることができる。例をいくつか示そう:
+AvyとEmbarkはレゴブロックのように互いに接続させることができる。例をいくつか示そう：
 
 ## 出現位置のハイライト
 
@@ -1005,7 +1062,7 @@ AvyとEmbarkはレゴブロックのように互いに接続させることが�
 In this demo I highlight some keywords in a busy LaTeX document, then visit the bibliography entry of a citation key with Avy and Embark, without ever manually moving the cursor:
 -->
 
-このデモでは細部まで記述されたLaTeXドキュメントの一部のキーワードをハイライトして、その後に手作業でカーソルを移動するのではなく、AvyとEmbarkを用いて引用キーから参考文献にアクセスしている:
+このデモでは細部まで記述されたLaTeXドキュメントの一部のキーワードをハイライトして、その後に手作業でカーソルを移動するのではなく、AvyとEmbarkを用いて引用キーから参考文献にアクセスしている：
 
 [avy-embark-demo-2.mp4](https://karthinks.com/img/avy-embark-demo-2.mp4)
 
@@ -1031,11 +1088,11 @@ Choose the bibtex-action to visit the Bib file, bound to e by the bibtex-actions
 
 <li>"Floquet"を含むマッチにフィルタリングするために、"flo"とタイプする。</li>
 
-<li>oで<code>avy-action-embark</code>を実行する。</li>
+<li><code>o</code>で<code>avy-action-embark</code>を実行する。</li>
 
 <li>"Floquet"にたいするマッチからいずれかを選択する。これによりそのマッチにEmbarkが実行される。</li>
 
-<li>Hで<code>embark-toggle-highlight</code>アクションを選択する。</li>
+<li><code>H</code>で<code>embark-toggle-highlight</code>アクションを選択する。</li>
 
 <li>"Parametric"をハイライトするために、1-5を繰り返す。</li>
 
@@ -1043,11 +1100,11 @@ Choose the bibtex-action to visit the Bib file, bound to e by the bibtex-actions
 
 <li>引用キーの中から1つのキーにマッチさせるために、"na"とタイプする。</li>
 
-<li>oで<code>avy-action-embark</code>を実行する。</li>
+<li><code>o</code>で<code>avy-action-embark</code>を実行する。</li>
 
 <li>マッチした引用キーを選択する。これによりそのマッチにEmbarkが実行される。</li>
 
-<li>Bibファイル(訳注: 文献データベースファイル)をvisitするために、bibtex-actionを選択する(bibtex-actionsパッケージによってeにバインドされている)。</li>
+<li>Bibファイル(訳注: 文献データベースファイル)をvisitするために、bibtex-actionを選択する(bibtex-actionsパッケージによって<code>e</code>にバインドされている)。</li>
 
 </ol>
 
@@ -1088,33 +1145,35 @@ Repeat the previous steps to run Embark again, this time on the symbol “projec
 Choose the customize-variable action with u in Embark. This opens a customization buffer for the variable project-x-local-identifier.
 -->
 
+<ol>
+
 <li><code>avy-goto-char-timer</code>を実行する。</li>
 
 <li>フィルタリングするためにテキスト(ここでは"root")をタイプする。</li>
 
-<li>oでavy-action-embarkを実行する。</li>
+<li><code>o</code>で<code>avy-action-embark</code>を実行する。</li>
 
-<li>マッチの中からproject-rootを選択する。これによりそのマッチにたいしてEmbarkが実行される。</li>
+<li>マッチの中から"project-root"を選択する。これによりそのマッチにたいしてEmbarkが実行される。</li>
 
-<li>hを押下するとマッチにたいしてEmbarkがdescribe-symbolを実行する。これによりそのマッチの関数にたいするヘルプバッファーがオープンする(これより前の箇所でAvyにヘルプコマンドをバインドしてあるので、そちらを使うこともできるだろう)。</li>
+<li><code>h</code>を押下するとマッチにたいしてEmbarkが<code>describe-symbol</code>を実行する。これによりそのマッチの関数にたいするヘルプバッファーがオープンする(これより前の箇所でAvyにヘルプコマンドをバインドしてあるので、そちらを使うこともできるだろう)。</li>
 
-<li>ヘルプバッファーをスクロールするためにC-M-v (scroll-other-window)を押下する。</li>
+<li>ヘルプバッファーをスクロールするために<code>C-M-v</code> (<code>scroll-other-window</code>)を押下する。</li>
 
-<li>もう一度avy-goto-char-timerを呼び出す。</li>
+<li>もう一度<code>avy-goto-char-timer</code>を呼び出す。</li>
 
 <li>フィルタリングするためにテキスト(ここでは"proj")をタイプする。</li>
 
-<li>oでavy-action-embarkを実行する。</li>
+<li><code>o</code>で<code>avy-action-embark</code>を実行する。</li>
 
 <li>マッチの中から"project-x"を選択する。これによりそのマッチにたいしてEmbarkが実行される。</li>
 
-<li>embark-cycleを呼び出して、ターゲットを("poject-x"という名前の)ファイルから("poject-x"という名前の)ライブラリーに変更する。</li>
+<li><code>embark-cycle</code>を呼び出して、ターゲットを("poject-x"という名前の)ファイルから("poject-x"という名前の)ライブラリーに変更する。</li>
 
-<li>hを押下するとproject-xライブラリーにたいしてEmbarkがfinder-commentaryを実行する。これによりコメントが表示されているバッファーがオープンする。</li>
+<li><code>h</code>を押下すると"project-x"ライブラリーにたいしてEmbarkが<code>finder-commentary</code>を実行する。これによりコメントが表示されているバッファーがオープンする。</li>
 
 <li>前のステップを繰り返して、もう一度"project-x"にたいしてEmbarkを実行する。</li>
 
-<li>今度はシンボル"project-x-local-identfier"にたいして前のステップを繰り返す。</li>
+<li>今度はシンボル<code>project-x-local-identfier</code>にたいして前のステップを繰り返す。</li>
 
 <li><code>u</code>でEmbarkの<code>customize-variable</code>アクションを選択する。これにより編集<code>project-x-local-identfier</code>にたいするcustomizationバッファーがオープンする。</li>
 
@@ -1128,7 +1187,7 @@ Choose the customize-variable action with u in Embark. This opens a customizatio
 We save ourselves a lot of redundancy and reuse muscle memory here. Avy provides its unique means of filtering and Embark does what it does best, run actions! The intermediate job of candidate selection is shared between Avy and Embark: Avy specifies the general location of the candidate, and Embark figures out the semantic unit at that position on which to act. The fact that the Filter → Select → Act process is helpfully chunked this way by Avy makes the elisp required to integrate the two completely trivial[^5].
 -->
 
-ここではわたしたち自身がもつ大量の冗長性と指に教え込んだ記憶を節約する。Avyには独自のフィルタリング手段を提供してもらい、Embarkには自分のベストを尽くすこと、すなわちアクションを実行してもらうのだ! 候補選択における中間的な作業はAvyとEmbarkで共有して行ってもらおう。Avyが候補の一般的な位置を指定して、その位置でアクションを行う際の意味的単位の解決はEmbarkが行う。Avyによってフィルター -> 選択 -> アクションというプロセスが使いやすいようにchunk化(訳注: あるものをより小さな断片に分割したり、より大きな断片にまとめすること)されているので、2つを統合するために必要なelispは簡単なもので事足りるはずだ[^5]。
+ここではわたしたち自身がもつ大量の冗長性と指に教え込んだ記憶を節約する。Avyには独自のフィルタリング手段を提供してもらい、Embarkには自分のベストを尽くすこと、すなわちアクションを実行してもらうのだ! 候補選択における中間的な作業はAvyとEmbarkで共有して行ってもらおう。Avyが候補の一般的な位置を指定して、その位置でアクションを行う際の意味的単位の解決はEmbarkが行う。Avyによって<span class="Filter">フィルター</span> → <span class="Select">選択</span> → <span class="Act">アクション</span>というプロセスが使いやすいようにchunk化(訳注: あるものをより小さな断片に分割したり、より大きな断片にまとめすること)されているので、2つを統合するために必要なelispは簡単なもので事足りるはずだ[^5]。
 
 ```elisp
 (defun avy-action-embark (pt)
@@ -1147,7 +1206,7 @@ We save ourselves a lot of redundancy and reuse muscle memory here. Avy provides
 Note that if you don’t like the candidate that Embark picks as the unit to act on, you can call embark-cycle to cycle through the other targets.
 -->
 
-アクションを行う単位としてEmbarkが採用した候補が気に入らなければ、他のターゲットに巡回するためにembark-cycleを呼び出すことができる。
+アクションを行う単位としてEmbarkが採用した候補が気に入らなければ、他のターゲットに巡回するために`embark-cycle`を呼び出すことができる。
 
 <!-- 
 All that, and we didn’t even move the point.
@@ -1191,7 +1250,7 @@ Call avy-goto-char-timer. The candidate pool limits to the Isearch matches.
 
 <li>検索するフレーズをタイプする。ビデオでは"-region"で終わるregexpをタイプしている。</li>
 
-<li>Isearchのマッチ間のナビゲートはC-s、スクリーンの再センタリングは必要に応じてC-lで行っている。</li>
+<li>Isearchのマッチ間のナビゲートは<code>C-s</code>、スクリーンの再センタリングは必要に応じて<code>C-l</code>で行っている。</li>
 
 <li><code>avy-goto-char-timer</code>を呼び出す。候補プールはIsearchのマッチによって限界が定められる。</li>
 
@@ -1209,9 +1268,9 @@ For us, however, “jump” in that description is replaced with “act”. We c
 
 少なくとも、これが通常のピッチだろう。
 
-ただしわたしたちにとって説明の中の"ジャンプ"は"アクション"に置き換えられる。Isearchの可視な候補であればどれでにたいしても、上述したいずれかのアクションを適用できる。Isearchのマッチとマッチの間のテキストのkill? ある単語を含む前の行をカレント位置にコピー? 試してみよう。要するにIsearchからフィルター以外の2つのアクションを間接的に切り離してフィルタリングと選択を行い、Avyでアクションを行えばよいのだ。
+ただしわたしたちにとって説明の中の"ジャンプ"は"アクション"に置き換えられる。Isearchの可視な候補であればどれでにたいしても、上述したいずれかのアクションを適用できる。Isearchのマッチとマッチの間のテキストのkill? ある単語を含む前の行をカレント位置にコピー? 試してみよう。要するにIsearchからフィルター以外の2つのアクションを間接的に切り離して<span class="Filter">フィルタリング</span>と<span class="Select">選択</span>を行い、Avyで<span class="Act">アクション</span>を行えばよいのだ。
 
-# Avyが賢こ過ぎるとき
+# Avyが賢すぎるとき
 
 <!--
 This usage pattern has a failure mode. When there’s a single match, Avy jumps to the location and does not offer any actions. Oops.
@@ -1233,9 +1292,9 @@ In this demo I jump twice with Avy to edit text and then chain jump my way back 
 
 1つだけのマッチにたいして選択用のヒント/文字を表示するようAvyに強いることも可能だが、デフォルトのDWIMを選択する挙動のほうが通常は望ましいだろう。その場合に考え得るはオプションが2つある:
 
-- たとえば1文字をタイプするといったような保守的な方法によって候補をフィルタリングする。avy-goto-charやavy-goto-char-2を使えば、ほとんど常に2つ以上のマッチを得られるので、この問題は回避できる。timerベースのAvyコマンドのいずれかを使えば、フィルターにどのくらいのテキストを用いるかをその場で変更できる。 
+- たとえば1文字をタイプするといったような保守的な方法によって候補をフィルタリングする。`avy-goto-char`や`avy-goto-char-2`を使えば、ほとんど常に2つ以上のマッチを得られるので、この問題は回避できる。timerベースのAvyコマンドのいずれかを使えば、フィルターにどのくらいのテキストを用いるかをその場で変更できる。
 
-- ジャンプしたら昔ながらの方法でアクションを実行して、その後はAvyがセットしたマークpopして元の位置にジャンプして戻る。これはデフォルトのset-mark-command (C-u C-SPC)で行うことができる[^7]。これはポイントをジャンプさせるようなほとんどのコマンド(Isearchも含む)で行うことが可能だ。Vimユーザーならジャンプリスト(jumplist)へのアクセスはC-o、変更リスト(changelist)はgでアクセスできる。 
+- ジャンプしたら昔ながらの方法でアクションを実行して、その後はAvyがセットしたマークpopして元の位置にジャンプして戻る。これはデフォルトの`set-mark-command` (`C-u C-SPC`)で行うことができる[^7]。これはポイントをジャンプさせるようなほとんどのコマンド(Isearchも含む)で行うことが可能だ。Vimユーザーならジャンプリスト(jumplist)へのアクセスは`C-o`、変更リスト(changelist)は`g`でアクセスできる。
 
 以下のデモはテキストを編集するためにAvyで2回ジャンプ、それから連鎖的にジャンプを辿って開始位置に戻っている:
 
@@ -1273,7 +1332,7 @@ I’ve been using “point” and “cursor” interchangeably in this article. 
 One of the illustrated advantages of using Avy to filter and select text to run actions on is that you can do it without moving the cursor. But as the above code snippets make clear with their save-excursion blocks, we do move the point, mostly just invisibly. The point is where the “gap” in Emacs’ gap-buffer data structure is located, so Emacs commands are all oriented around acting on the point, and usually more efficient when doing so. 
 -->
 
-Avyを用いることで得られる利点として、カーソルを移動せずにアクションを実行するテキストのフィルタリングと選択を行えることが証拠の1つとして挙げられる。しかしこれまで示してきたコードスニペットのsave-excursionブロックによりポイントを移動しないのではなく、単にほとんど不可視な状態でポイントを移動していたことが明らかになった。ポイントがあるのはEmacsのgap-bufferと呼ばれるデータ構造体の中であり、Emacsのコマンドはすべてそのポイントを中心に動作することを指向しているし、通常はその方が効率的なのだ。
+Avyを用いることで得られる利点として、カーソルを移動せずにアクションを実行するテキストのフィルタリングと選択を行えることが証拠の1つとして挙げられる。しかしこれまで示してきたコードスニペットの`save-excursion`ブロックによりポイントを移動しないのではなく、単にほとんど不可視な状態でポイントを移動していたことが明らかになった。ポイントがあるのはEmacsのgap-bufferと呼ばれるデータ構造体の中であり、Emacsのコマンドはすべてそのポイントを中心に動作することを指向しているし、通常はその方が効率的なのだ。
 
 <!--
 Yes: it’s much faster to run an Avy action on some text in a different window than it is to call other-window, then Isearch to the text, run an action and switch back. But to me, the Point (har) is primarily a useful abstraction for writing elisp. The real advantage of Avy is in how it lets me think about the contents of the entire frame in the powerful Filter → select → Act paradigm. The fact that you can do this without the mental context switch involved in expressly navigating around the window or frame is a bonus. 
@@ -1288,7 +1347,7 @@ chatgptによる解答
 
 -->
 
-正にその通り。other-windowを呼び出してからテキストをIsearch、アクションを実行して戻るよりも、別のウィンドウにあるテキストにたいして任意のAvyアクションを実行するほうがより高速だ。しかしわたしにとってポイント(har)は、elispを記述に役に立つ抽象化なのだ(訳注: harはポイントを実際に実装するgapではなくハードウェアポイント、つまりカーソル位置と等価な意味でのポイントを強調するためだと思われる)。フレーム全体のコンテンツについて、フィルター -> 選択 -> アクションという強力なパラダイムで考えさせてくれることがAvyの真価だ。意識的にウィンドウやフレームを移動することで生じる精神的なコンテキストスイッチなしで操作を行うことができるという事実は、ボーナスのようなものだろう。
+正にその通り。`other-window`を呼び出してからテキストをIsearch、アクションを実行して戻るよりも、別のウィンドウにあるテキストにたいして任意のAvyアクションを実行するほうがより高速だ。しかしわたしにとってポイント(har)は、elispを記述に役に立つ抽象化なのだ(訳注: harはポイントを実際に実装するgapではなくハードウェアポイント、つまりカーソル位置と等価な意味でのポイントを強調するためだと思われる)。フレーム全体のコンテンツについて、<span class="Filter">フィルター</span> → <span class="Select">選択</span> → <span class="Act">アクション</span>という強力なパラダイムで考えさせてくれることがAvyの真価だ。意識的にウィンドウやフレームを移動することで生じる精神的なコンテキストスイッチなしで操作を行うことができるという事実は、ボーナスのようなものだろう。
 
 # Avyにたいする心構え
 
@@ -1317,7 +1376,7 @@ Jumping to locations to delete single words
 - テキストにカーソルを合わせるためにウィンドウを何回か切り替えている
 - Isearchで正しいマッチにたどり着くために4個以上のマッチをジャンプしている
 - 何かを調べるコマンドを実行するためにポイントを長距離移動している
-- 毎回C-SPCによる手作業でマークをアクティブにしている
+- 毎回`C-SPC`による手作業でマークをアクティブにしている
 - 単語1つの削除のために場所をジャンプしている
 
 ## キーマップに埋もれて
@@ -1336,25 +1395,26 @@ This is true. But the effort is greatly mitigated by a choice of keys that is se
 
 これは真実だが自分にとって道理に適ったキーを選択することで、労力は大幅に軽減されるだろう。これまでのコードスニペットでは、わたしのEmacsのキーバインディング(ほぼデフォルト)を真似たので、新たに何かを覚える必要はないはずだ:
 
-| Action          | Avy keybinding | Emacs keybinding     | Emacs Default? |
-|-----------------|----------------|----------------------|----------------|
-| Copy            | w, W (line)    | M-w                  | Yes            |
-| Yank            | y, Y (line)    | C-y                  | Yes            |
-| Transpose       | t, T (line)    | C-t, M-t etc         | Yes            |
-| Zap             | z              | M-z                  | Yes            |
-| Flyspell        | ;              | C-;                  | Yes            |
-| Mark            | m              | m in special buffers | Yes            |
-| Activate region | SPC            | C-SPC                | Yes            |
-| Dictionary      | =              | C-h =                | No             |
-| Google search   | C-=            | C-h C-=              | No             |
-| Embark          | o              | C-o                  | No             |
+| Action          | Avy keybinding | Emacs keybinding       | Emacs Default? |
+|-----------------|----------------|------------------------|----------------|
+| Kill            | `k`, `K` (行)  | `C-k`                  | Yes            |
+| Copy            | `w`, `W` (行)  | `M-w`                  | Yes            |
+| Yank            | `y`, `Y` (行)  | `C-y`                  | Yes            |
+| Transpose       | `t`, `T` (行)  | `C-t`, `M-t` など      | Yes            |
+| Zap             | `z`            | `M-z`                  | Yes            |
+| Flyspell        | `;`            | `C-;`                  | Yes            |
+| Mark            | `m`            | `m` in special buffers | Yes            |
+| Activate region | `SPC`          | `C-SPC`                | Yes            |
+| Dictionary      | `=`            | `C-h =`                | No             |
+| Google search   | `C-=`          | `C-h C-=`              | No             |
+| Embark          | `o`            | `C-o`                  | No             |
 
 
 <!--
 You can go beyond the mnemonic and simply reuse the same keybindings you use in regular editing, trading off a slightly longer key sequence for maximally reusing your muscle memory. If you’re an Embark user, you don’t even need the above keys, just one to call embark-act.
 -->
 
-ニーモニックに留めず通常の編集で使うのと同じキーバインディングを再利用するだけだ。若干長目のキーシーケンスという犠牲を払うことによって、指に覚えさせた記憶を最大限に再利用できる。Embarkユーザーであれば上記のキーすら必要なくなる。必要なのはembark-actの呼び出しだけだ。
+ニーモニックに留めず通常の編集で使うのと同じキーバインディングを再利用するだけだ。若干長目のキーシーケンスという犠牲を払うことによって、指に覚えさせた記憶を最大限に再利用できる。Embarkユーザーであれば上記のキーすら必要なくなる。必要なのは`embark-act`の呼び出しだけだ。
 
 # 未解決問題
 
@@ -1362,13 +1422,13 @@ You can go beyond the mnemonic and simply reuse the same keybindings you use in 
 There are two common editing actions that still require manually moving the point elsewhere, perhaps to another window: 
 -->
 
-一般的な編集においてポイントをどこか(別のウィンドウかもしれない)へ移動する際に、依然として手作業を要するアクションが2つ存在する:
+一般的な編集においてポイントをどこか(別のウィンドウかもしれない)へ移動する際に、依然として手作業を要するアクションが2つ存在する：
 
 <!--
 Searching or jumping to the contents of other windows beyond the confines of the screen. This has a simple solution: 
 -->
 
-- スクリーンの境界を超えた別ウィンドウのコンテンツにたいする検索やジャンプ。これにはシンプルな解決策がある:
+- スクリーンの境界を超えた別ウィンドウのコンテンツにたいする検索やジャンプ。これにはシンプルな解決策がある：
 
 <details><summary>別ウィンドウをIsearchする</summary><pre><code>
 (defun isearch-forward-other-window (prefix)
@@ -1401,7 +1461,7 @@ Searching or jumping to the contents of other windows beyond the confines of the
 In keeping with C-M-v to scroll the other window, you can Isearch the other window with C-M-s without switching to it8. If you’re feeling adventurous, replace (other-window next) in the above functions with (ace-window).
 -->
 
-  C-M-vで他のウィンドウのスクロールしながら、そのウィンドウに切り替えずにC-M-sでIsearchできる[^8]。冒険してみたければ、上記関数の`(other-window next)`を`(ace-window)`に置き換えてみよう。
+  `C-M-v`で他のウィンドウのスクロールしながら、そのウィンドウに切り替えずに`C-M-s`でIsearchできる[^8]。冒険してみたければ、上記関数の`(other-window next)`を`(ace-window)`に置き換えてみよう。
 
 <!-- 
 You can call Avy from Isearch as before, to run actions on essentially any text in the other-window’s buffer.
@@ -1409,13 +1469,13 @@ You can call Avy from Isearch as before, to run actions on essentially any text 
 
   基本的には他のウィンドウのバッファーにある任意のテキストにたいして、以前と同じようにIsearchからAvyを呼び出すことができる。
 
-- リージョンのテキストのコピー。これにはavy-copy-regionというAvyベースの解決策がある。とは言え、必要なのはAvyコマンドを1回呼び出すだけ、というのが冒頭の約束だった。現時点ではAvyだけで短いジャンプを繰り返すか、あるいはIsearchAvyを使うという退屈な方法でこれを行うことになるだろう。もっとelispっぽい解決策については、この記述のシリーズ第2弾を待ってほしい。
+- リージョンのテキストのコピー。これには`avy-copy-region`というAvyベースの解決策がある。とは言え、必要なのはAvyコマンドを1回呼び出すだけ、というのが冒頭の約束だった。現時点ではAvyだけで短いジャンプを繰り返すか、あるいはIsearchAvyを使うという退屈な方法でこれを行うことになるだろう。もっとelispっぽい解決策については、この記述のシリーズ第2弾を待ってほしい。
 
 <!--
 This post primarily concerned itself with the Act part as it connects with the ideas in the the previous one about ways to use Embark. But Avy is composed of modular pieces that makes it suitable for a wide variety of Filter → Select applications as well. In part II of this series, we will dig into the Avy API and see how to create unique commands.
 -->
 
-この記事は[Embarkの使用方法に関する記事](https://karthinks.com/software/fifteen-ways-to-use-embark)のアイデアと関連しているので、主にアクションについて記述されている。しかしAvyはモジュールの組み合わせにより構成されているので、フィルター -> 選択によって機能するさまざまなアプリケーションの広い範囲に適性がある。シリーズ第2弾ではAvyのAPI、および独自コマンドを作成する方法についても掘り下げていくつもりだ。
+この記事は[Embarkの使用方法に関する記事](https://karthinks.com/software/fifteen-ways-to-use-embark)のアイデアと関連しているので、主に<span class="Act">アクション</span>について記述されている。しかしAvyはモジュールの組み合わせにより構成されているので、<span class="Filter">フィルター</span> → <span class="Select">選択</span>によって機能するさまざまなアプリケーションの広い範囲に適性がある。シリーズ第2弾ではAvyのAPI、および独自コマンドを作成する方法についても掘り下げていくつもりだ。
 
 # 脚注
 
@@ -1429,8 +1489,8 @@ This post primarily concerned itself with the Act part as it connects with the i
 
 [^5]: この関数を改善してくれたOmar Antolinに感謝する。
 
-[^6]: Avyのすべてのアクション関数の内部でsave-excursionを使用しているので、これは技術的には誤りだ。ここでの実際の成果はEmbarkに言及する前に、このコード断片にほぼ4000語にのぼる単語を詰め込んだことだろう。
+[^6]: Avyのすべてのアクション関数の内部で`save-excursion`を使用しているので、これは技術的には誤りだ。ここでの実際の成果はEmbarkに言及する前に、このコード断片にほぼ4000語にのぼる単語を詰め込んだことだろう。
 
-[^7]:  違うウィンドウに戻ってしまう場合には、かわりにpop-global-mark (C-x C-SPC)でグローバルマークをpopできる。今ではdogearsのような外部パッケージでこれを行うことができる。
+[^7]:  違うウィンドウに戻ってしまう場合には、かわりに`pop-global-mark` (`C-x C-SPC`)でグローバルマークをpopできる。今ではdogearsのような外部パッケージでこれを行うことができる。
 
-[^8]: C-M-sはデフォルトではisearch-forward-regexpにバインドされている。isearch-forward-regexpにはC-s M-rのようにIsearchマップでM-rとタイプすればアクセスできる。
+[^8]: `C-M-s`はデフォルトでは`isearch-forward-regexp`にバインドされている。`isearch-forward-regexp`には`C-s M-r`のようにIsearchマップで`M-r`とタイプすればアクセスできる。
