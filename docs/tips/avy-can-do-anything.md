@@ -221,7 +221,10 @@ Typing in one of the hints then jumps the cursor to that location. Here I jump t
 
 ヒントのいずれかをタイプすれば、カーソルがその位置にジャンプする。以下のビデオでは別のウィンドウからこのセンテンスにジャンプしている:
 
-[avy-basic-demo.mp4](https://karthinks.com/img/avy-basic-demo.mp4)
+<video style="center" width="700" controls="">
+<source src="https://karthinks.com/img/avy-basic-demo.mp4" type="video/mp4">
+<a href="https://karthinks.com/img/avy-basic-demo.mp4">[VIDEO]</a>
+</video>
 
 <!--
 Typical  Avy usage looks something like this: Jump to a location that matches your text (across all windows), then jump back with pop-global-mark (C-x C-SPC). In a later section I go into more detail on jumping back and forth with Avy. Here is a demo of this process where I jump twice with Avy and then jump back in sequence:
@@ -229,7 +232,10 @@ Typical  Avy usage looks something like this: Jump to a location that matches yo
 
 テキストにマッチする位置に(ウィンドウ間を横断して)ジャンプ、その後は`pop-global-mark` (`C-x C-SPC`)で元の位置にジャンプして戻る、というのがAvyの典型的な使い方だろう。後半のセクションではじAvyを使った前方あるいは後方へのジャンプについて詳解する。以下のデモではAvyで2回ジャンプしてから順番にジャンプして戻るプロセスを行っている：
 
-[avy-jump-back-demo-2.mp4](https://karthinks.com/img/avy-jump-back-demo-2.mp4)
+<video style="center" width="700" controls="">
+<source src="https://karthinks.com/img/avy-jump-back-demo-2.mp4" type="video/mp4">
+<a href="https://karthinks.com/img/avy-jump-back-demo-2.mp4">[VIDEO]</a>
+</video>
 
 <!-- 
 At  least that's the official description. You can peruse the README for more information, but what I find mystifying is that…
@@ -466,7 +472,10 @@ Killing words or s-expressions is built-in. I added an action to kill a line. In
 
 単語とsexpのkillについてはビルトイン。行のkillはわたしが追加した。このデモでは手っ取り早くtypo修整とコメント削除を行い、その後に別ウィンドウのコードを削除している:
 
-[avy-kill-demo.mp4](https://karthinks.com/img/avy-kill-demo.mp4)
+<video style="center" width="700" controls="">
+<source src="https://karthinks.com/img/avy-kill-demo.mp4" type="video/mp4">
+<a href="https://karthinks.com/img/avy-kill-demo.mp4">[VIDEO]</a>
+</video>
 
 <details><summary>ビデオ実況</summary>
 
@@ -520,7 +529,10 @@ Copy to the kill-ring or copy to point in your buffer. In this demo I copy some 
 
 killリングまたはバッファーのポイント位置にコピーする。このデモではmanページからファイルにテキストをコピーしている。
 
-[avy-copy-demo.mp4](https://karthinks.com/img/avy-copy-demo.mp4)
+<video style="center" width="700" controls="">
+<source src="https://karthinks.com/img/avy-copy-demo.mp4" type="video/mp4">
+<a href="https://karthinks.com/img/avy-copy-demo.mp4">[VIDEO]</a>
+</video>
 
 <details><summary>ビデオ実況</summary>
 
@@ -595,7 +607,10 @@ Note that Avy actually defines separate commands for this: avy-copy-line and avy
 
 これはAvyでは"teleport"、わたしは"transpose"と呼んでいるが、いずれにせよ`t`にバインドされることになる。このデモではバッファーのあちこちをあまり移動せずに、バッファーのあちこちにテキストを移動する。
 
-[avy-transpose-demo.mp4](https://karthinks.com/img/avy-transpose-demo.mp4)
+<video style="center" width="700" controls="">
+<source src="https://karthinks.com/img/avy-transpose-demo.mp4" type="video/mp4">
+<a href="https://karthinks.com/img/avy-transpose-demo.mp4">[VIDEO]</a>
+</video>
 
 <details><summary>ビデオ実況</summary>
 
@@ -651,7 +666,10 @@ Select a candidate line (the one just below the image). It is moved over (transp
 
 これはビルトインのコマンドで、デフォルトでは<code>z</code>にバインドされている。
 
-[avy-zap-demo.mp4](https://karthinks.com/img/avy-zap-demo.mp4)
+<video style="center" width="700" controls="">
+<source src="https://karthinks.com/img/avy-zap-demo.mp4" type="video/mp4">
+<a href="https://karthinks.com/img/avy-zap-demo.mp4">[VIDEO]</a>
+</video>
 
 <details><summary>ビデオ実況</summary>
 
@@ -684,7 +702,10 @@ Also built in, m by default. This isn’t different from jumping to the candidat
 
 これもビルトインのコマンドであり、デフォルトでは<code>m</code>にバインドされている。Avyを使って候補にジャンプするのは、<code>mark-sexp</code>を呼び出すジャンプと変わらないが、Avyの方がより使いやすくなっている：
 
-[avy-mark-demo.mp4](https://karthinks.com/img/avy-mark-demo.mp4)
+<video style="center" width="700" controls="">
+<source src="https://karthinks.com/img/avy-mark-demo.mp4" type="video/mp4">
+<a href="https://karthinks.com/img/avy-mark-demo.mp4">[VIDEO]</a>
+</video>
 
 <details><summary>ビデオ実況</summary>
 
@@ -720,7 +741,10 @@ Avy sets the mark before it jumps, so you could use C-x C-x to activate the regi
 
 Avyジャンプする前にマークをセットするので、C-x C-xを使用してリージョンをアクティブにすることも可能だが、このコマンドを使うほうがトラブルを回避できるだろう。
 
-[avy-mark-to-char-demo.mp4](https://karthinks.com/img/avy-mark-to-char-demo.mp4)
+<video style="center" width="700" controls="">
+<source src="https://karthinks.com/img/avy-mark-to-char-demo.mp4" type="video/mp4">
+<a href="https://karthinks.com/img/avy-mark-to-char-demo.mp4">[VIDEO]</a>
+</video>
 
 <details><summary>ビデオ実況</summary>
 
@@ -780,7 +804,10 @@ This is built-in, bound to i by default.
 
 これはビルトインのコマンドであり、デフォルトでは<code>i</code>にバインドされている。
 
-[avy-ispell.mp4](https://karthinks.com/img/avy-ispell.mp4)
+<video style="center" width="700" controls="">
+<source src="https://karthinks.com/img/avy-ispell.mp4" type="video/mp4">
+<a href="https://karthinks.com/img/avy-ispell.mp4">[VIDEO]</a>
+</video>
 
 <details><summary>ビデオ実況</summary>
 
@@ -854,7 +881,10 @@ I use the dictionary package for Emacs, and I’m lazy about it:
 
 わたしはEmacsのdictionaryパッケージを使っているので、単語の登録は怠けがちだ:
 
-[avy-define.mp4](https://karthinks.com/img/avy-define.mp4)
+<video style="center" width="700" controls="">
+<source src="https://karthinks.com/img/avy-define.mp4" type="video/mp4">
+<a href="https://karthinks.com/img/avy-define.mp4">[VIDEO]</a>
+</video>
 
 <details><summary>ビデオ実況</summary>
 
@@ -932,7 +962,10 @@ This produces the buffer with the dictionary definition of "finch"
 
 ## シンボルのドキュメントを調べる
 
-[avy-help-demo.mp4](https://karthinks.com/img/avy-help-demo.mp4)
+<video style="center" width="700" controls="">
+<source src="https://karthinks.com/img/avy-help-demo.mp4" type="video/mp4">
+<a href="https://karthinks.com/img/avy-help-demo.mp4">[VIDEO]</a>
+</video>
 
 <details><summary>ビデオ実況</summary>
 
@@ -998,7 +1031,10 @@ You’ll need an Emacs feature that can search Google for you. There are several
 
 Googleを検索できるEmacs機能が必要になるだろう。[いくつか存在する](https://melpa.org/#/?q=google%20search)が、わたしが使っている[Tuxi](https://github.com/Bugswriter/tuxi)という名前のCLIプログラムはとても便利だ:
 
-[avy-tuxi-demo.mp4](https://karthinks.com/img/avy-tuxi-demo.mp4)
+<video style="center" width="700" controls="">
+<source src="https://karthinks.com/img/avy-tuxi-demo.mp4" type="video/mp4">
+<a href="https://karthinks.com/img/avy-tuxi-demo.mp4">[VIDEO]</a>
+</video>
 
 <details><summary>ビデオ実況</summary>
 
@@ -1064,7 +1100,10 @@ In this demo I highlight some keywords in a busy LaTeX document, then visit the 
 
 このデモでは細部まで記述されたLaTeXドキュメントの一部のキーワードをハイライトして、その後に手作業でカーソルを移動するのではなく、AvyとEmbarkを用いて引用キーから参考文献にアクセスしている：
 
-[avy-embark-demo-2.mp4](https://karthinks.com/img/avy-embark-demo-2.mp4)
+<video style="center" width="700" controls="">
+<source src="https://karthinks.com/img/avy-embark-demo-2.mp4" type="video/mp4">
+<a href="https://karthinks.com/img/avy-embark-demo-2.mp4">[VIDEO]</a>
+</video>
 
 <details><summary>ビデオ実況</summary>
 
@@ -1122,7 +1161,10 @@ In this demo I explore my way through a package with Avy and Embark, threading h
 
 このデモではパッケージで何かを探す際にAvyとEmbarkを使ってhelp、apropos、customizationのバッファーを結びつける。ここでも手動でのカーソル移動は行わない。
 
-[avy-embark-demo-1.mp4](https://karthinks.com/img/avy-embark-demo-1.mp4)
+<video style="center" width="700" controls="">
+<source src="https://karthinks.com/img/avy-embark-demo-1.mp4" type="video/mp4">
+<a href="https://karthinks.com/img/avy-embark-demo-1.mp4">[VIDEO]</a>
+</video>
 
 <details><summary>ビデオ実況</summary>
 
@@ -1232,7 +1274,10 @@ Again, consciously deciding which of the two commands to call every time is a ba
 
 繰り返す。2つのコマンドのいずれかを呼び出すかを毎回意識的に判断するのは悪いアイデアだ。常にIsearch呼び出して、必要に応じてAvyを呼び出すというのなら悪くないが。
 
-[avy-isearch-basic-demo.mp4](https://karthinks.com/img/avy-isearch-basic-demo.mp4)
+<video style="center" width="700" controls="">
+<source src="https://karthinks.com/img/avy-isearch-basic-demo.mp4" type="video/mp4">
+<a href="https://karthinks.com/img/avy-isearch-basic-demo.mp4">[VIDEO]</a>
+</video>
 
 <details><summary>ビデオ実況</summary>
 
@@ -1298,7 +1343,10 @@ In this demo I jump twice with Avy to edit text and then chain jump my way back 
 
 以下のデモはテキストを編集するためにAvyで2回ジャンプ、それから連鎖的にジャンプを辿って開始位置に戻っている:
 
-[avy-jump-back-demo.mp4](https://karthinks.com/img/avy-jump-back-demo.mp4)
+<video style="center" width="700" controls="">
+<source src="https://karthinks.com/img/avy-jump-back-demo.mp4" type="video/mp4">
+<a href="https://karthinks.com/img/avy-jump-back-demo.mp4">[VIDEO]</a>
+</video>
 
 <details><summary>ビデオ実況</summary>
 
