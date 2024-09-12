@@ -12,8 +12,8 @@ last_modified: 2024-01-18
 
 歴史的には多様なEmacsがありますが、今日においてEmacsと呼ばれるのは、もっぱら**[GNU Emacs]**です。
 
-<ins datetime="2024-01-18T23:30:00+0900">**GNU Emacs**の最新安定版は **`29.2`** (<time datetime="2024-01-18T13:06:24+0200">2024年1月18日</time>リリース)です。<br>
-<!-- 次期安定版のプレテスト版として<time datetime="2023-06-18T15:14:21+0300">2023年6月18日</time>に**`29.0.92`**がリリースされました。<br> -->
+<ins datetime="2024-01-18T23:30:00+0900">**GNU Emacs**の最新安定版は **`29.4`** (<time datetime="2024-06-22T09:15:14-0700">2024年1月18日</time>リリース)です。<br>
+次期安定版のプレテスト版として<time datetime="2024-09-11T18:42:33-0400">2024年9月11日</time>に**`30.0.91`**がリリースされました。<br>
 <!-- 次期安定版のリリース候補版として<time datetime="2023-07-23T11:55:44+0300">2023年7月23日</time>に**`29.1-rc1`**がリリースされました。<br> -->
 <!-- GNU Emacsの新しい安定版である**`27.1`**が<time datetime="2020-08-06">2020年8月6日</time>にリリースされることが予告されています。<br> -->
 masterブランチでは次のメジャーバージョンとなる **`30.0`** 系統の開発が進行しています。</ins>
@@ -211,13 +211,13 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
 <tr><th scope="row">2024</th>
   <td><span class="badge badge-pill badge-primary">29.2</span></td>
   <td></td>
+  <td><span class="badge badge-pill badge-primary">29.3</span></td>
   <td></td>
   <td></td>
+  <td><span class="badge badge-pill badge-primary">29.4</span></td>
   <td></td>
   <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
+  <td><span class="badge badge-pill badge-secondary">30.0.91</span></td>
   <td></td>
   <td></td>
   <td></td>
@@ -231,6 +231,8 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
 
 <table class="table"><thead><tr><th scope="col">バージョン</th><th scope="col">リリース日</th></tr></thead>
 <tbody>
+<tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2024-06/msg00695.html">Emacs 29.4</a></th><td><time datetime="2024-06-22">2024年6月22日</time></td></tr>
+<tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2024-03/msg00611.html">Emacs 29.3</a></th><td><time datetime="2024-03-24">2024年3月24日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2024-01/msg00666.html">Emacs 29.2</a></th><td><time datetime="2024-01-18">2024年1月18日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2023-07/msg00879.html">Emacs 29.1</a></th><td><time datetime="2023-07-30">2023年7月30日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2022-09/msg00730.html">Emacs 28.2</a></th><td><time datetime="2022-09-12">2022年9月12日</time></td></tr>
