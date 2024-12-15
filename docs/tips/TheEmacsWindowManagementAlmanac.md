@@ -3,8 +3,8 @@ title: Emacsウィンドウ管理年代記
 tags:
   - Emacs
   - emacs-lisp
-private: true
-updated_at: '2024-12-13T23:45:04+09:00'
+private: false
+updated_at: '2024-12-15T20:59:16+09:00'
 id: 94a578172cc582531443
 organization_url_name: null
 slide: false
@@ -33,7 +33,7 @@ ignorePublish: false
 
 <!-- At some point this transitions from listing well known tools to tips, then hacks, and finally unvarnished opinions. It’s front-loaded: the first chunk of the write-up gives you a 70% solution. If you are new to Emacs, feel free to stop at 30%. If you are an old hand, feel free to skip the first 30%. It also lists substitutes: several ways to do the same things, so you can pick just one method and ignore the rest. Things get progressively more opinionated and idiosyncratic in the second half. -->
 
-この記事の内容はよく知られているツールからヒント、ハッキング、そして最後には忌憚のない意見へと遷移するポイントがいくつかある。この記事には前半ほど多くの内容を詰め込んだ。記述の冒頭部分を読めば解決策の70%が得られるだろう。Emacs初心者な30%の部分で読むのを止めても構わない。代替え手段についてもリストしておいた。同じことを行うための方法はいくつもあるが、**1つだけ採用して他を無視** しても問題ない。後半になるにつれ、記事の内容は独善的になり特異度が増していくだろう。
+この記事の内容はよく知られているツールからヒント、ハッキング、そして最後には忌憚のない意見へと遷移するポイントがいくつかある。この記事には前半ほど多くの内容を詰め込んだ。記述の冒頭部分を読めば解決策の70%が得られるだろう。Emacs初心者なら30%の部分で読むのを止めても構わない。代替え手段についてもリストしておいた。同じことを行うための方法はいくつもあるが、**1つだけ採用して他を無視** しても問題ない。後半になるにつれ、記事の内容は独善的になり特異度が増していくだろう。
 
 
 <!-- If you are reading this in the future, this write-up is probably out of date. The Emacs core is very stable, but the package ecosystem tends to drift around as packages are developed and abandoned. The built-in solutions will still be around, but there are no guarantees on the third-party packages! That said, the longer a package has been around the more likely it’s going to stick around in a functional state – even if only as a frozen entry in the Emacs Orphanage. -->
@@ -1054,7 +1054,7 @@ Avyがウィンドウやフレームを跨いで移動しない場合には、�
 
 ## 切り替えて戻る: 別のウィンドウでのアクション
 
-では別のケースだ。単一の論理的アクションを行うという理由でウィンドウを切り替えるのは珍しいことではない。メインバッファーに戻る前に、何かを見るためにisearchのようなアクションでフォーカスの移動する等の複合アクションかもしれない。これこそ切り替え→アクション→切り替えて戻パターンのるダンスだ。
+では別のケースだ。単一の論理的アクションを行うという理由でウィンドウを切り替えるのは珍しいことではない。メインバッファーに戻る前に、何かを見るためにisearchのようなアクションでフォーカスの移動する等の複合アクションかもしれない。これこそ切り替え→アクション→切り替えて戻るパターンのダンスだ。
 
 わたしたちはこのダンスを自明かつ具体的な解決策から、反復可能で一般的な解決策、さらに最終的には抽象化された汎用性のある解決策へと段階的に自動化していこう。
 
