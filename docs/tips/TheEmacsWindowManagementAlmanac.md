@@ -1,19 +1,43 @@
----
-title: Emacsウィンドウ管理年代記
-tags:
-  - Emacs
-  - emacs-lisp
-private: false
-updated_at: '2024-12-15T20:59:16+09:00'
-id: 94a578172cc582531443
-organization_url_name: null
-slide: false
-ignorePublish: false
----
-
-これはKarthik Chikmagalurさんによって記述された記事を日本語に翻訳した記事であり、記事の所有権と著作権はKarthik Chikmagalurさんに帰属します。
+**これはKarthik Chikmagalurさんによって記述された記事を日本語に翻訳した記事であり、記事の所有権と著作権はKarthik Chikmagalurさんに帰属します。**
 
 元の記事: [The Emacs Window Management Almanac | Karthinks](https://karthinks.com/software/emacs-window-management-almanac/)
+
+- - -
+
+* ["ウィンドウ管理"ってどんな意味だろう](#ウィンドウ管理ってどんな意味だろう)
+* [この記事で説明しないことは…](#この記事で説明しないことは)
+* [ウォーミングアップ](#ウォーミングアップ)
+   * [frames-only-mode](#frames-only-mode)
+   * [winum-mode](#winum-mode)
+   * [ace-window](#ace-window)
+   * [マウスであれこれ (built-in)](#マウスであれこれ-built-in)
+      * [rotate-frame](#rotate-frame)
+      * [flip-frame](#flip-frame)
+      * [flop-frame](#flop-frame)
+      * [イライラその１](#イライラその１)
+      * [イライラその２](#イライラその２)
+      * [イライラその３](#イライラその３)
+   * [ウィンドウ構成の保存とリストア](#ウィンドウ構成の保存とリストア)
+   * ["oops"オプション](#oopsオプション)
+* [深堀り](#深堀り)
+   * [back-and-forth手法](#back-and-forth手法)
+      * [一石二鳥](#一石二鳥)
+      * [switchy-window](#switchy-window)
+      * [other-window-alternating](#other-window-alternating)
+      * [Emacsウィンドウにとってのcompleting-readに匹敵するもの: aw-select](#emacsウィンドウにとってのcompleting-readに匹敵するもの-aw-select)
+* [ウィンドウを切り替える必要があるのか?](#ウィンドウを切り替える必要があるのか)
+   * [切り替えて留まる: ウィンドウ切り替え機能としてのAvy](#切り替えて留まる-ウィンドウ切り替え 機能としてのavy)
+   * [切り替えて戻る: 別のウィンドウでのアクション](#切り替えて戻る-別のウィンドウでのアクション)
+   * [isearch-other-window](#isearch-other-window)
+   * [次のウィンドウでのバッファーの切り替え](#次のウィンドウでのバッファーの切り替え)
+* [たくさんのウィンドウは必要か?](#たくさんのウィンドウは必要か)
+   * [ウィンドウが作られたら無視する](#ウィンドウが作られたら無視する)
+   * [ウィンドウの世話をしなくてよいようにウィンドウを取り扱う](#ウィンドウの世話をしなくてよい ようにウィンドウを取り扱う)
+   * [Popper、Popwin、shell-pop、vterm-toggle](#popperpopwinshell-popvterm-toggle)
+* [未解決事項](#未解決事項)
+   * [window-tree](#window-tree)
+   * [タイル式ウィンドウマネージャー統合](#タイル式ウィンドウマネージャー統合)
+* [ここからの眺め](#ここからの眺め)
 
 - - -
 
@@ -359,7 +383,7 @@ winumによるウィンドウアクセスの高速化
 </summary>
 <div>
 
-わたしの好みからするとデフォルトのキーバインディング(ウィンドウ`n`を選択する場合には`C-x w <n>`)は、他の2ステップのキーバインディングと同様冗長すぎる。`M-0`から`M-9`による数字引数へのアクセスを失うことを気にしないのであれば、かわりにウィンドウの選択に流用するのはどうだろう:
+わたしの好みからするとデフォルトのキーバインディング(ウィンドウ`n`を選択する場合には`C-x w \<n>`)は、他の2ステップのキーバインディングと同様冗長すぎる。`M-0`から`M-9`による数字引数へのアクセスを失うことを気にしないのであれば、かわりにウィンドウの選択に流用するのはどうだろう:
 
 ```lisp
 (defvar-keymap winum-keymap
@@ -534,7 +558,7 @@ transpose-frameはフレーム上のウィンドウの回転(rotate)、反転(mi
 
 ```lisp
 ;; わたしのマウスはmouse-9が"前進"のボタン
-(keymap-global-set "M-<mouse-9>" 'tear-off-window)
+(keymap-global-set "M-\<mouse-9>" 'tear-off-window)
 ```
 
 ## `other-window-prefix` (built-in)
@@ -1119,9 +1143,9 @@ Avyがウィンドウやフレームを跨いで移動しない場合には、�
 
 ```lisp
 (with-eval-after-load 'pdf-tools
-     (keymap-set pdf-view-mode-map "<remap> <scroll-up-command>"
+     (keymap-set pdf-view-mode-map "\<remap> \<scroll-up-command>"
                  #'pdf-view-scroll-up-or-next-page)
-     (keymap-set pdf-view-mode-map "<remap> <scroll-down-command>"
+     (keymap-set pdf-view-mode-map "\<remap> \<scroll-down-command>"
                  #'pdf-view-scroll-down-or-previous-page))
 ```
 
@@ -1264,7 +1288,7 @@ Emacsではバッファーなら幾らでももてるが、ウィンドウの方
 </summary>
 <div>
 
-- `my/next-buffer`か`my/previous-buffer`を呼び出す(わたしは`next-buffer`のデフォルトのバインディング`C-x <right>`はリマップせずに、`C-x C-n`と`C-x C-p`にバインドした)
+- `my/next-buffer`か`my/previous-buffer`を呼び出す(わたしは`next-buffer`のデフォルトのバインディング`C-x \<right>`はリマップせずに、`C-x C-n`と`C-x C-p`にバインドした)
 
 - repeat-mapの`buffer-cycle-map`がアクティブになるので`n`と`p`でバッファーを循環させ続けられる
 
