@@ -1,3 +1,56 @@
+
+# "ウィンドウ管理"ってどんな意味だろう
+# This article is not about…
+# この記事で説明しないことは…
+# ウォーミングアップ
+## `other-window`と"次のウィンドウ(next window)" (built-in)
+## `windmove` (built-in)
+## `frames-only-mode`
+## `winum-mode`
+## `ace-window`
+## マウスであれこれ (built-in)
+## `transpose-frame` (回転、フリップフロップ)
+### `rotate-frame`
+### `flip-frame`
+### `flop-frame`
+## `window-prefix-map` (built-in)
+### `split-root-window-right`と`split-root-window-below`
+### `tab-window-detach`と`tear-off-window`
+## `other-window-prefix` (built-in)
+### イライラその１
+### イライラその２
+### イライラその３
+## ウィンドウ構成の保存とリストア
+## "oops"オプション
+# 深堀り                                                                                        ## back-and-forth手法
+## `other-window`の改善
+### 一石二鳥
+### `switchy-window`
+### `other-window-alternating`                                                                  ## `ace-window`のディスパッチによるウィンドウマジック
+### Emacsウィンドウにとっての`completing-read`に匹敵するもの: `aw-select`
+### `tear-off-window`と`tab-window-detach`
+### `ace-window-one-command`: 任意のコマンドをace-windowで                                      ### `ace-window`用のwindow-prefixコマンド
+# ウィンドウを切り替える必要があるのか?
+## 切り替えて留まる: ウィンドウ切り替え機能としてのAvy
+## 切り替えて戻る: 別のウィンドウでのアクション
+## `scroll-other-window` (built-in)
+## `isearch-other-window`
+## 次のウィンドウでのバッファーの切り替え
+## `master-mode` and `scroll-all-mode`
+## `with-other-window`: elispヘルパー
+# たくさんのウィンドウは必要か?
+## ウィンドウが作られたら無視する
+## ウィンドウの世話をしなくてよいようにウィンドウを取り扱う
+## Popper、Popwin、shell-pop、vterm-toggle
+# 未解決事項
+## window-tree
+## タイル式ウィンドウマネージャー統合
+# ここからの眺め
+
+
+
+
+
 **これはKarthik Chikmagalurさんによって記述された記事を日本語に翻訳した記事であり、記事の所有権と著作権はKarthik Chikmagalurさんに帰属します。**
 
 元の記事: [The Emacs Window Management Almanac | Karthinks](https://karthinks.com/software/emacs-window-management-almanac/)
@@ -249,7 +302,7 @@ Emacsのウィンドウ動作にたいするパラダイム的な変更
 
 [^4]: [ACME editor](https://en.wikipedia.org/wiki/Acme_(text_editor))は特筆すべき例外かもしれない。
 
-わたしはウィンドウの管理にマウスを使うことがよくある。とはいえ特定のコンテキストにおいてのみではあるが。[Mousing around](https://karthinks.com/software/emacs-window-management-almanac/#mousing-around--built-in)を参照して欲しい。
+わたしはウィンドウの管理にマウスを使うことがよくある。とはいえ特定のコンテキストにおいてのみではあるが。[マウスであれこれ](#マウスであれこれ-built-in)を参照して欲しい。
 
 </div>
 </details>
@@ -258,7 +311,7 @@ Emacsのウィンドウ動作にたいするパラダイム的な変更
 
 前菜: もっとも有名で一般的に推奨されているウィンドウマネージャーの選択肢を一通り見ておこう。これらのウィンドウマネージャーのカバー範囲にはバッファー管理やお決まりのウィンドウアクション以外にも、フォーカスのあるウィンドウの変更や移動、間違いの取り消しが含まれている[^5]。
 
-[^5]: これらのウィンドウマネージャーを何個か試した経験があれば、ここは飛ばしてしまっても大丈夫だ。[digging in](https://karthinks.com/software/emacs-window-management-almanac/#digging-in)へ進もう。
+[^5]: これらのウィンドウマネージャーを何個か試した経験があれば、ここは飛ばしてしまっても大丈夫だ。[深堀り](#深堀り)へ進もう。
 
 
 ## `other-window`と"次のウィンドウ(next window)" (built-in)
@@ -299,13 +352,13 @@ other-windowのハッキング
 
 あなたが今までEmacsで同時に2つまでしかウィンドウウィンドウ表示したことがないとか、多少キーを押す回数が増えても気にしない人ならここで読むのを終えても問題はない。なぜならこの記事の残りの部分は、あなたなら多分解決の必要を感じない(そして恐らく実際に必要ないのだろう)問題にたいする、さまざまな最適化レベルに関する話題だけだからだ!
 
-<details>
+<details id="org-target--window-management-next-window">
 <summary>
 "次のウィンドウ(next window)"とは何か
 </summary>
 <div>
 
-"次のウィンドウ"とは`other-window`が通常選択するウィンドウ、つまりカレントウィンドウから時計回りで次のウィンドウのことだ。これはelispから`next-window`関数を呼び出してアクセスできるウィンドウでもある。Emacsのフレームにおける時計回りのウィンドウ順は、日々の使用で自ずと身についていく。考えるというより、勘で判るという意味でだが。次のウィンドウというのは、ウィンドウ選択以外でも使用する概念なので身につけておけば役に立つだろう。ウィンドウを選択するためにはもっとよい方法も存在する。でなければ記事を書いた意味がない! 次のウィンドウ、他のウィンドウを操作する、`scroll-other-window`のようなコマンドにとってはデフォルトとなるウィンドウでもある。[Do you need to switch windows?](https://karthinks.com/software/emacs-window-management-almanac/#do-you-need-to-switch-windows)を参照のこと。
+"次のウィンドウ"とは`other-window`が通常選択するウィンドウ、つまりカレントウィンドウから時計回りで次のウィンドウのことだ。これはelispから`next-window`関数を呼び出してアクセスできるウィンドウでもある。Emacsのフレームにおける時計回りのウィンドウ順は、日々の使用で自ずと身についていく。考えるというより、勘で判るという意味でだが。次のウィンドウというのは、ウィンドウ選択以外でも使用する概念なので身につけておけば役に立つだろう。ウィンドウを選択するためにはもっとよい方法も存在する。でなければ記事を書いた意味がない! 次のウィンドウ、他のウィンドウを操作する、`scroll-other-window`のようなコマンドにとってはデフォルトとなるウィンドウでもある。[ウィンドウを切り替える必要があるのか?](#ウィンドウを切り替える必要があるのか)を参照のこと。
 
 </div>
 </details>
@@ -340,7 +393,7 @@ Windmoveにはまだまだ機能がある。たとえば`windmove-delete-*`を�
 </summary>
 <div>
 
-もしタイル式の環境下でEmacsを使用すれば、ネスト(入れ子)されたタイル式ウィンドウマネージャーという状況を手にすることになる。同じキーでEmacsのウィンドウとOSのウィンドウをシームレスに行き来できるように、2つを統合したほうが便利な場合もあるかもしれない(tmuxでVimを使っているユーザーにはお馴染みだろう)。これには多少の手間は要するものの実現は可能だ。Emacs+i3wm(おそらくSwayも可)の統合についてはPavel Korytovによる[i3 integration](https://sqrtminusone.xyz/posts/2021-10-04-emacs-i3/)のポスト、ウィンドウマネージャーについてはわたしも1つ[qtile用の設定](https://github.com/karthink/.emacs.d/blob/master/plugins/emacs-wm.el)を記述したことがある。このプロジェクトについては[後ほど詳細](https://karthinks.com/software/emacs-window-management-almanac/#the-tiling-wm-integrator)に議論しよう。
+もしタイル式の環境下でEmacsを使用すれば、ネスト(入れ子)されたタイル式ウィンドウマネージャーという状況を手にすることになる。同じキーでEmacsのウィンドウとOSのウィンドウをシームレスに行き来できるように、2つを統合したほうが便利な場合もあるかもしれない(tmuxでVimを使っているユーザーにはお馴染みだろう)。これには多少の手間は要するものの実現は可能だ。Emacs+i3wm(おそらくSwayも可)の統合についてはPavel Korytovによる[i3 integration](https://sqrtminusone.xyz/posts/2021-10-04-emacs-i3/)のポスト、ウィンドウマネージャーについてはわたしも1つ[qtile用の設定](https://github.com/karthink/.emacs.d/blob/master/plugins/emacs-wm.el)を記述したことがある。このプロジェクトについては[詳細に述べる](#タイル式ウィンドウマネージャー統合)ことにしよう。
 
 </div>
 </details>
@@ -537,14 +590,14 @@ transpose-frameはフレーム上のウィンドウの回転(rotate)、反転(mi
 </summary>
 <div>
 
-いい機会なので説明しておこう。Emacsにおいてウィンドウはツリー構造にアレンジされている。このツリー構造では"現実のウィンドウ"がleafノード、すなわち葉ノードとなる。分割アクションを行う度に葉ノードが2つのウィンドウ(分割したウィンドウと新たに分割されたウィンドウ)の親ノードになるという訳だ。これは`i3`や`bspwm`のような手動タイル式ウィンドウマネージャーによるウィンドウのアレンジによく似ているので、冗長性を改善するために[パッチを入手](https://karthinks.com/software/emacs-window-management-almanac/#the-tiling-wm-integrator)したほうがよいだろう。
+いい機会なので説明しておこう。Emacsにおいてウィンドウはツリー構造にアレンジされている。このツリー構造では"現実のウィンドウ"がleafノード、すなわち葉ノードとなる。分割アクションを行う度に葉ノードが2つのウィンドウ(分割したウィンドウと新たに分割されたウィンドウ)の親ノードになるという訳だ。これは`i3`や`bspwm`のような手動タイル式ウィンドウマネージャーによるウィンドウのアレンジによく似ているので、冗長性を改善するために[パッチを入力](#タイル式ウィンドウマネージャー統合)したほうがよいだろう。
 
 </div>
 </details>
 
 わたしの知る限り、これらはただのEmacsの組み込みコマンドだ。これらのコマンドを使えば、(`delete-other-windows`のように)単にツリー全体をクリアーするのではなく、葉ノード以外のレベルでツリー構造を変更できる。現実的側面から考えると、フレーム内でタスクを論理的に分割するために空きを作成するなど、役に立つことが多い(デフォルトの分割コマンドは既存のウィンドウをさらに細分化するだけだ)。
 
-ツリーの配置を理解することでよりキメの細かい制御が可能になる筈だが、それ用のツールはまだ登場していない。 [後述する提言](https://karthinks.com/software/emacs-window-management-almanac/#window-tree)を参照のこと。
+ツリーの配置を理解することでよりキメの細かい制御が可能になる筈だが、それ用のツールはまだ登場していない。 [後述が提言](#xswindow-tree)を参照のこと。
 
 ### `tab-window-detach`と`tear-off-window`
 
@@ -573,7 +626,7 @@ Emacsの多くのコマンドは、バッファーとウィンドウという主
 
 カップリング、つまり結合されていることが問題なのだ。バッファーを表示するウィンドウの選択は、コマンドの主機能、たとえばこの例ではファイルのオープンから分離可能であるべきなのだ。この問題にたいする解決策となるのが、`other-window-prefix`だ(`C-x 4 4`にバインドされている)。
 
-このコマンドを使えば次のコマンド(バッファーをウィンドウに表示するコマンドなら何でも)が[次のウィンドウ](https://karthinks.com/software/emacs-window-management-almanac/#org-target--window-management-next-window)に表示される(必要ならウィンドウを作成する)。これで必要なコマンドは`find-file`、`find-file-read-only`、`switch-to-buffer`だけになった。このプレフィックスを使えば、ウィンドウでの表示を必要とするバッファーを、以下のように別のウィンドウにリダイレクトできる:
+このコマンドを使えば次のコマンド(バッファーをウィンドウに表示するコマンドなら何でも)が[次のウィンドウ](#org-target--window-management-next-window)に表示される(必要ならウィンドウを作成する)。これで必要なコマンドは`find-file`、`find-file-read-only`、`switch-to-buffer`だけになった。このプレフィックスを使えば、ウィンドウでの表示を必要とするバッファーを、以下のように別のウィンドウにリダイレクトできる:
 
 1. `other-window-prefix`(`C-x 4 4`)を呼び出す
 
