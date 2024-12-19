@@ -352,8 +352,8 @@ other-windowのハッキング
 
 あなたが今までEmacsで同時に2つまでしかウィンドウウィンドウ表示したことがないとか、多少キーを押す回数が増えても気にしない人ならここで読むのを終えても問題はない。なぜならこの記事の残りの部分は、あなたなら多分解決の必要を感じない(そして恐らく実際に必要ないのだろう)問題にたいする、さまざまな最適化レベルに関する話題だけだからだ!
 
-<details id="org-target--window-management-next-window">
-<summary>
+<details>
+<summary id="org-target--window-management-next-window">
 "次のウィンドウ(next window)"とは何か
 </summary>
 <div>
