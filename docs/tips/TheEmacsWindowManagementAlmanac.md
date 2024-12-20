@@ -171,7 +171,7 @@ The result is that you end up with hundreds of buffers and start looking for way
 -->
 
 <details open>
-<summary>
+<summary id="org-target--window-configuration-persistence">
 ウィンドウ構成の永続化、ワークスペースやバッファーとの分離
 </summary>
 <div>
@@ -662,7 +662,7 @@ Emacsの多くのコマンドは、バッファーとウィンドウという主
 </div>
 </details>
 
-さらに以下ではace-window(他に何があるというのだ)によって[このアイデアを極限まで推し進めて](https://karthinks.com/software/emacs-window-management-almanac/#a-window-prefix-command-for-ace-window)、次のコマンドのバッファーを任意のウィンドウ(ジャストインタイムで作成したウィンドウを含む)にリダイレクトする方法を議論しよう。
+さらに以下ではace-window(他に何があるというのだ)によって[このアイデアを極限まで推し進めて](#ace-window用のwindow-prefixコマンド)、次のコマンドのバッファーを任意のウィンドウ(ジャストインタイムで作成したウィンドウを含む)にリダイレクトする方法を議論しよう。
 
 ## ウィンドウ構成の保存とリストア
 
@@ -676,7 +676,7 @@ Emacsの多くのコマンドは、バッファーとウィンドウという主
 </summary>
 <div>
 
-`current-window-configuration`関数は`window-configuration-to-register`のelispバージョンであり、この関数のリターン値を変数にバインドして、`set-window-configuration`でそれをフレームに適用できる。lispオブジェクトのデータをディスクに永続化する`prin1`、あるいは`persist`や`multisession`のようなライブラリー組み合わせることによって、Emacsのセッション間に跨がる状態リストア機能の種とすることも可能だ。言うまでもないと思うがこれは原始的なアプローチであり、[window configuration persistence](https://karthinks.com/software/emacs-window-management-almanac/#org-target--window-configuration-persistence)に挙げた多くのパッケージリストから選んで使うほうがよいだろう。
+`current-window-configuration`関数は`window-configuration-to-register`のelispバージョンであり、この関数のリターン値を変数にバインドして、`set-window-configuration`でそれをフレームに適用できる。lispオブジェクトのデータをディスクに永続化する`prin1`、あるいは`persist`や`multisession`のようなライブラリー組み合わせることによって、Emacsのセッション間に跨がる状態リストア機能の種とすることも可能だ。言うまでもないと思うがこれは原始的なアプローチであり、[ウィンドウ構成の永続化](#org-target--window-configuration-persistence)に挙げた多くのパッケージリストから選んで使うほうがよいだろう。
 
 </div>
 </details>
