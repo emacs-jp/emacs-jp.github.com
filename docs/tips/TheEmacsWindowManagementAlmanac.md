@@ -38,7 +38,7 @@
       * [ace-window-one-command: 任意のコマンドをace-windowで](#ace-window-one-command-任意のコマンドをace-windowで)
       * [ace-window用のwindow-prefixコマンド](#ace-window用のwindow-prefixコマンド)
 * [ウィンドウを切り替える必要があるのか?](#ウィンドウを切り替える必要があるのか)
-   * [切り替えて留まる: ウィンドウ切り替え機能としてのAvy](#切り替えて留まる-ウィンドウ切り替え 機能としてのavy)
+   * [切り替えて留まる: ウィンドウ切り替え機能としてのAvy](#切り替えて留まる-ウィンドウ切り替え機能としてのavy)
    * [切り替えて戻る: 別のウィンドウでのアクション](#切り替えて戻る-別のウィンドウでのアクション)
    * [scroll-other-window (built-in)](#scroll-other-window-built-in)
    * [isearch-other-window](#isearch-other-window)
