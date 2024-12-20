@@ -1,69 +1,26 @@
-<!--
-## `windmove` (built-in)
-## `frames-only-mode`
-## `winum-mode`
-## `ace-window`
-## マウスであれこれ (built-in)
-## `transpose-frame` (回転、フリップフロップ)
-### `rotate-frame`
-### `flip-frame`
-### `flop-frame`
-## `window-prefix-map` (built-in)
-### `split-root-window-right`と`split-root-window-below`
-### `tab-window-detach`と`tear-off-window`
-## `other-window-prefix` (built-in)
-### イライラその１
-### イライラその２
-### イライラその３
-## ウィンドウ構成の保存とリストア
-## "oops"オプション
-# 深堀り                                                                                        ## back-and-forth手法
-## `other-window`の改善
-### 一石二鳥
-### `switchy-window`
-### `other-window-alternating`                                                                  ## `ace-window`のディスパッチによるウィンドウマジック
-### Emacsウィンドウにとっての`completing-read`に匹敵するもの: `aw-select`
-### `tear-off-window`と`tab-window-detach`
-### `ace-window-one-command`: 任意のコマンドをace-windowで                                      ### `ace-window`用のwindow-prefixコマンド
-# ウィンドウを切り替える必要があるのか?
-## 切り替えて留まる: ウィンドウ切り替え機能としてのAvy
-## 切り替えて戻る: 別のウィンドウでのアクション
-## `scroll-other-window` (built-in)
-## `isearch-other-window`
-## 次のウィンドウでのバッファーの切り替え
-## `master-mode` and `scroll-all-mode`
-## `with-other-window`: elispヘルパー
-# たくさんのウィンドウは必要か?
-## ウィンドウが作られたら無視する
-## ウィンドウの世話をしなくてよいようにウィンドウを取り扱う
-## Popper、Popwin、shell-pop、vterm-toggle
-# 未解決事項
-## window-tree
-## タイル式ウィンドウマネージャー統合
-# ここからの眺め
--->
-
-
-
-
 **これはKarthik Chikmagalurさんによって記述された記事を日本語に翻訳した記事であり、記事の所有権と著作権はKarthik Chikmagalurさんに帰属します。**
 
 元の記事: [The Emacs Window Management Almanac | Karthinks](https://karthinks.com/software/emacs-window-management-almanac/)
 
 - - -
 
-* ["ウィンドウ管理"ってどんな意味だろう](#ウィンドウ管理ってどんな意味だろう)
+["ウィンドウ管理"ってどんな意味だろう](#ウィンドウ管理ってどんな意味だろう)
 * [この記事で説明しないことは…](#この記事で説明しないことは)
 * [ウォーミングアップ](#ウォーミングアップ)
-* [other-windowと"次のウィンドウ(next window)" (built-in)](#other-windowと次のウィンドウnext_window_built-in)
-
+   * [other-windowと"次のウィンドウ(next window)" (built-in)](#other-windowと次のウィンドウnext-window-built-in)
+   * [windmove (built-in)](#windmove-built-in)
    * [frames-only-mode](#frames-only-mode)
    * [winum-mode](#winum-mode)
    * [ace-window](#ace-window)
    * [マウスであれこれ (built-in)](#マウスであれこれ-built-in)
+   * [transpose-frame (回転、フリップフロップ)](#transpose-frame-回転フリップフロップ)
       * [rotate-frame](#rotate-frame)
       * [flip-frame](#flip-frame)
       * [flop-frame](#flop-frame)
+   * [window-prefix-map (built-in)](#window-prefix-map-built-in)
+      * [split-root-window-rightとsplit-root-window-below](#split-root-window-rightとsplit-root-window-below)
+      * [tab-window-detachとtear-off-window](#tab-window-detachとtear-off-window)
+   * [other-window-prefix (built-in)](#other-window-prefix-built-in)
       * [イライラその１](#イライラその１)
       * [イライラその２](#イライラその２)
       * [イライラその３](#イライラその３)
@@ -71,18 +28,26 @@
    * ["oops"オプション](#oopsオプション)
 * [深堀り](#深堀り)
    * [back-and-forth手法](#back-and-forth手法)
+   * [other-windowの改善](#other-windowの改善)
       * [一石二鳥](#一石二鳥)
       * [switchy-window](#switchy-window)
       * [other-window-alternating](#other-window-alternating)
+   * [ace-windowのディスパッチによるウィンドウマジック](#ace-windowのディスパッチによるウィンド ウマジック)
       * [Emacsウィンドウにとってのcompleting-readに匹敵するもの: aw-select](#emacsウィンドウにとってのcompleting-readに匹敵するもの-aw-select)
+      * [tear-off-windowとtab-window-detach](#tear-off-windowとtab-window-detach)
+      * [ace-window-one-command: 任意のコマンドをace-windowで](#ace-window-one-command-任意のコ マンドをace-windowで)
+      * [ace-window用のwindow-prefixコマンド](#ace-window用のwindow-prefixコマンド)
 * [ウィンドウを切り替える必要があるのか?](#ウィンドウを切り替える必要があるのか)
-   * [切り替えて留まる: ウィンドウ切り替え機能としてのAvy](#切り替えて留まる-ウィンドウ切り替え機能としてのavy)
+   * [切り替えて留まる: ウィンドウ切り替え機能としてのAvy](#切り替えて留まる-ウィンドウ切り替え 機能としてのavy)
    * [切り替えて戻る: 別のウィンドウでのアクション](#切り替えて戻る-別のウィンドウでのアクション)
+   * [scroll-other-window (built-in)](#scroll-other-window-built-in)
    * [isearch-other-window](#isearch-other-window)
    * [次のウィンドウでのバッファーの切り替え](#次のウィンドウでのバッファーの切り替え)
+   * [master-modeとscroll-all-mode](#master-modeとscroll-all-mode)
+   * [with-other-window: elispヘルパー](#with-other-window-elispヘルパー)
 * [たくさんのウィンドウは必要か?](#たくさんのウィンドウは必要か)
    * [ウィンドウが作られたら無視する](#ウィンドウが作られたら無視する)
-   * [ウィンドウの世話をしなくてよいようにウィンドウを取り扱う](#ウィンドウの世話をしなくてよいようにウィンドウを取り扱う)
+   * [ウィンドウの世話をしなくてよいようにウィンドウを取り扱う](#ウィンドウの世話をしなくてよい ようにウィンドウを取り扱う)
    * [Popper、Popwin、shell-pop、vterm-toggle](#popperpopwinshell-popvterm-toggle)
 * [未解決事項](#未解決事項)
    * [window-tree](#window-tree)
@@ -360,7 +325,7 @@ other-windowのハッキング
 </div>
 </details>
 
-## `windmove` (built-in)
+## windmove (built-in)
 
 `windmove`が提供すること: ウィンドウの選択、ウィンドウのバッファーの切り替え、それらの削除
 
@@ -395,7 +360,7 @@ Windmoveにはまだまだ機能がある。たとえば`windmove-delete-*`を�
 </div>
 </details>
 
-## `frames-only-mode`
+## frames-only-mode
 
 [frames-only-mode](https://github.com/davidshepherd7/frames-only-mode)が提供すること: Emacsのウィンドウ処理をOSに任せる
 
@@ -411,7 +376,7 @@ Windmoveにはまだまだ機能がある。たとえば`windmove-delete-*`を�
 Linuxユーザーへ: コンポジット方式のWaylandでは、わたしは`frames-only-mode`を試したことがまだない。
 :::
 
-## `winum-mode`
+## winum-mode
 
 [winum](https://github.com/deb0ch/emacs-winum)が提供すること: ウィンドウの選択と削除
 
@@ -456,7 +421,7 @@ winumによるウィンドウアクセスの高速化
 
 ウィンドウにたいするウィンドウの切り替えや削除以外のアクションを追加するように`winum-mode`を拡張することもできるが、次に説明するパッケージのおかげでその必要はほとんどないだろう。
 
-## `ace-window`
+## ace-window
 
 提供すること: ウィンドウおよびバッファーの管理にたいするすべてのアクション
 
@@ -549,31 +514,31 @@ focus-follows-mouseの動作をオンにしたいと思ったら:
 (setq mouse-autoselect-window t)
 ```
 
-## `transpose-frame` (回転、フリップフロップ)
+## transpose-frame (回転、フリップフロップ)
 
 [transpose-frame](https://github.com/emacsorphanage/transpose-frame) が提供すること: ウィンドウレイアウトを簡単に変更できる
 
 transpose-frameはフレーム上のウィンドウの回転(rotate)、反転(mirror)を行うためのコマンドを提供します、というのがこのパッケージの謳い文句だ。`rotate-frame`、`flip-frame`、`flop-frame`を適切なキーにバインドするほど、わたしはこれを頻繁に使用している。皮肉なことに`transpose-frame`コマンド自体が役に立ったことはほとんどない。これはフレームの対角線を軸にウィンドウを転置するコマンドだ。
 
-### `rotate-frame`
+### rotate-frame
 
 ![rotate-frame-chart.png](https://karthinks.com/img/rotate-frame-chart.png)
 
-### `flip-frame`
+### flip-frame
 
 ![flop-frame-chart.png](https://karthinks.com/img/flop-frame-chart.png)
 
-### `flop-frame`
+### flop-frame
 
 ![flip-frame-chart.png](https://karthinks.com/img/flip-frame-chart.png)
 
-## `window-prefix-map` (built-in)
+## window-prefix-map (built-in)
 
 `window-prefix-map`が提供すること: 特別誂えのウィンドウ管理コマンド
 
 `window-prefix-map`(デフォルトでは`C-x w`にバインドされている)には、役に立ついくつかのウィンドウ管理コマンドが集められている。
 
-### `split-root-window-right`と`split-root-window-below`
+### split-root-window-rightとsplit-root-window-below
 
 フレームのルートウィンドウを分割する。説明を聞くより見たほうが早い :
 
@@ -596,7 +561,7 @@ transpose-frameはフレーム上のウィンドウの回転(rotate)、反転(mi
 
 ツリーの配置を理解することでよりキメの細かい制御が可能になる筈だが、それ用のツールはまだ登場していない。 [後述が提言](#xswindow-tree)を参照のこと。
 
-### `tab-window-detach`と`tear-off-window`
+### tab-window-detachとtear-off-window
 
 ウィンドウを新たなタブやフレームに手軽に移動できるコマンド。
 
@@ -611,7 +576,7 @@ transpose-frameはフレーム上のウィンドウの回転(rotate)、反転(mi
 (keymap-global-set "M-\<mouse-9>" 'tear-off-window)
 ```
 
-## `other-window-prefix` (built-in)
+## other-window-prefix (built-in)
 
 `other-window-prefix`が提供するのはバッファーの表示からウィンドウ選択を切り離して、ウィンドウにまつわる**3つ**のイライラの解決だ。
 
@@ -786,7 +751,7 @@ Emacsにイライラさせられるのには2つの段階があるように思�
 
 ウィンドウ間のback-and-forth、すなわち行き来においてつ目のウィンドウを選択する方法は重要ではない。[マウス](https://karthinks.com/software/emacs-window-management-almanac/#mousing-around--built-in)、[ace-window](https://karthinks.com/software/emacs-window-management-almanac/#ace-window)、[winum](https://karthinks.com/software/emacs-window-management-almanac/#winum-mode)、あるいは他の任意の手段を使ってもよい。その後は`other-window-mru`がサポートする。
 
-## `other-window`の改善
+## other-windowの改善
 
 `other-window`の基本的なアイデア(同じ循環順でフレーム上のウィンドウ間を移動)を維持しつつ、よりDWIM[^13]に合わせた順序に改善できる筈だ。
 
@@ -805,7 +770,7 @@ Emacsにイライラさせられるのには2つの段階があるように思�
               (when (one-window-p) (split-window-sensibly))))
 ```
 
-### `switchy-window`
+### switchy-window
 
 ![switchy-window-order.png](https://karthinks.com/img/switchy-window-order.png)
 
@@ -817,7 +782,7 @@ Emacsにイライラさせられるのには2つの段階があるように思�
 
 とは言ったものの、わたしが通常好んで使うのは[back-and-forth手法](https://karthinks.com/software/emacs-window-management-almanac/#the-back-and-forth-method)に記した、よりシンプルなバージョンだが。
 
-### `other-window-alternating`
+### other-window-alternating
 
 back-and-forthと言えば`other-window`にはもう1つバリエーションが考えられる。最初聞いたときは混乱するかもしれないが、結果的にはDWIMの好事例だということが判るだろう。`other-window`を連鎖させる場合を除き、呼び出しごとにウィンドウ切り替えの方向を反転させるのだ。ウィンドウが2つしかなければ違いは生じない。3つ以上ある場合には、たとえ循環順においてウィンドウが隣接していなくても、2つのウィンドウ間を自然に交互に行き来できるだろう。
 
@@ -839,13 +804,13 @@ back-and-forthと言えば`other-window`にはもう1つバリエーションが
 (keymap-set other-window-repeat-map "o" 'other-window-alternating)
 ```
 
-## `ace-window`のディスパッチによるウィンドウマジック
+## ace-windowのディスパッチによるウィンドウマジック
 
 ウィンドウにたいして`ace-window`は`completing-read`における文字列リスト、Avyにおいてはスクリーン上の文字に匹敵する。任意のウィンドウに任意のアクションを呼び出すための3ステッププロセス、その最初の2つのステップであるフィルター、選択としては理想的だ。
 
 ![emacs-window-selection-pattern.png](https://karthinks.com/img/emacs-window-selection-pattern.png)
 
-### Emacsウィンドウにとっての`completing-read`に匹敵するもの: `aw-select`
+### Emacsウィンドウにとってのcompleting-readに匹敵するもの: aw-select
 
 "ace-windowアクション"を定義して、`aw-dispatch-alist`[^14]にバインディングを追加するという方法により、ace-windowは拡張されるべくデザインされた。これはウィンドウを受け取り、そのウィンドウを用いて何か有用なことを行う関数だ。そのエントリーポイントとして機能するのが`ace-window`コマンドである。
 
@@ -865,7 +830,7 @@ back-and-forthと言えば`other-window`にはもう1つバリエーションが
 
 [^15]: `aw-select`の引数は選択プロセス中にモードラインにメッセージを追加するためだが、わたしたちにとっては十分ではない。
 
-### `tear-off-window`と`tab-window-detach`
+### tear-off-windowとtab-window-detach
 
 Emacsのインタラクティブ(対話的)なウィンドウコマンドは、すべてカレントウィンドウに作用する。
 
@@ -894,7 +859,7 @@ Emacsのインタラクティブ(対話的)なウィンドウコマンドは、�
 
 もちろんこれを行うためにアクションそれぞれにたいしてace-windowベースのコマンドを定義するのは、スケーラブルではないし役にも立たないだろう。ウィンドウ選択ステップをアクションステップから切り離して、後者に汎用性をもたせる方が望ましい。これを行うために別個に2つのアプローチを検討しよう。まずは…
 
-### `ace-window-one-command`: 任意のコマンドをace-windowで
+### ace-window-one-command: 任意のコマンドをace-windowで
 
 
 上記の汎用化の例は、`ace-window`パターンを反転させることで何がもたらされるかについて、非常に良い着眼点を与えてくれた。もっとも汎用性があり構成可能なバージョンは以下のようになるだろう:
@@ -955,7 +920,7 @@ Emacs(やace-window)のアクションして選択という通常のパラダイ
 </div>
 </details>
 
-### `ace-window`用のwindow-prefixコマンド
+### ace-window用のwindow-prefixコマンド
 
 [`other-window-prefix`システム](https://karthinks.com/software/emacs-window-management-almanac/#the-other-window-prefix--built-in)は`other-window`コマンドと同様に役に立つが、同じ問題点も抱えている: 
 
@@ -1134,7 +1099,7 @@ Avyがウィンドウやフレームを跨いで移動しない場合には、�
 
 まず最初は明白な点から: このダンスを繰り返し行っている自分に気づいたなら、キーボードマクロで自動化することが可能だ(読者の練習用に詳細は省く)。そのアクションがいつもあなたが行っているアクションである場合には、一歩進めて汎用目的のコマンドを記述できるだろう。上述した`ace-window-one-command`はこれを行う1つの方法だ。Emacsがわたしたちのために切り拓いてくれた道は…
 
-## `scroll-other-window` (built-in)
+## scroll-other-window (built-in)
 
 `scroll-other-window`と`scroll-other-window-down`が古くからEmacsの一部である理由は、Emacsのデフォルトセッティングである2-ウィンドウパラダイムに正しく準拠しているからだろう。あるウィンドウで編集する際にもう一方のウィンドウの内容をリファレンスとして使用するパラダイムのことだ。編集を行うウィンドウを離れずに、もう一方を上下にスクロールできる。これは任意の個数のウィンドウで機能することに注意。スクロールされるウィンドウは"[次のウィンドウ](https://karthinks.com/software/emacs-window-management-almanac/#other-window-and-the-next-window--built-in)"、すなわちカレントウィンドウから時計回りで次のウィンドウだ。以下の図では内枠線のあるウィンドウが選択されたウィンドウ、`scroll-other-window`がスクロールするウィンドウには矢印がついている:
 
@@ -1206,7 +1171,7 @@ Avyがウィンドウやフレームを跨いで移動しない場合には、�
 </div>
 </details>
 
-## `isearch-other-window`
+## isearch-other-window
 
 
 リファレンスとして別のウィンドウでバッファーを表示するというアイデアを推し進めれば、`scroll-other-window`を直接拡張して"次のウィンドウ"を検索させるという考えに行き着くだろう[^16]。上述の`scroll-other-window`でスクロールするよう設定したウィンドウと同じウィンドウで検索すればよいことになる。
@@ -1352,7 +1317,7 @@ Emacsではバッファーなら幾らでももてるが、ウィンドウの方
 
 別ウィンドウでのバッファー表示に`b`を用いているのは、`ace-window`のディスパッチ版の動作と整合をとるためだ。
 
-## `master-mode` and `scroll-all-mode`
+## master-modeとscroll-all-mode
 
 少し脱線 : Emacsは`master-mode`を提供している。ウィンドウを離れずに別のウィンドウでアクション行うための特別誂えの解決策である。あるバッファーをカレントバッファー("master")の"slave"バッファーに指定できるのだ。このモードはカレントウィンドウを離れずにslaveバッファーをスクロールするためのキーマップをオープンする。上述した`other-window-scroll-default`の方が透明性に勝り、即効性のある解決策なので、このモード自体は候補としては劣っている。しかしコマンド`master-says`でこのキーマップを追加できる。これは伝声管のようなコマンドで、slaveバッファーで事前定義したアクションを行う助けになるだろう。たとえば以下はslaveバッファーを再センタリングするビルトインアクションだ:
 
@@ -1368,7 +1333,7 @@ Emacsではバッファーなら幾らでももてるが、ウィンドウの方
 
 スクロールに焦点を当てて考えると、`scroll-all-mode`ならフレーム上のすべてのウィンドウのスクロールアクションをで結びつけることができる。ときには2つ以上のウィンドウのビューの同期を保たせていたい場合もあるだろう。アクティブなウィンドウをスクロールしてから別のウィンドウをスクロールするより、こちらのモードの方が手軽ではないだろうか。
 
-## `with-other-window`: elispヘルパー
+## with-other-window: elispヘルパー
 
 切り替え→アクション→切り替えというバックダンサーを自動化する汎用目的のコマンドを記述するより優れた方法はないだろうか? 汎用目的コマンドを自動的に記述する汎用目的のマクロだ! マクロを使って切り替えからアクションを切り離してみよう:
 
