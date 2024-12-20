@@ -55,7 +55,7 @@
 * ["ウィンドウ管理"ってどんな意味だろう](#ウィンドウ管理ってどんな意味だろう)
 * [この記事で説明しないことは…](#この記事で説明しないことは)
 * [ウォーミングアップ](#ウォーミングアップ)
-* [other-windowと"次のウィンドウ(next window)" (built-in)](other-windowと次のウィンドウnext_window_built-in)
+* [other-windowと"次のウィンドウ(next window)" (built-in)](#other-windowと次のウィンドウnext_window_built-in)
 
    * [frames-only-mode](#frames-only-mode)
    * [winum-mode](#winum-mode)
