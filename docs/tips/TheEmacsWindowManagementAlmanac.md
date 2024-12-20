@@ -311,7 +311,7 @@ Emacsのウィンドウ動作にたいするパラダイム的な変更
 [^5]: これらのウィンドウマネージャーを何個か試した経験があれば、ここは飛ばしてしまっても大丈夫だ。[深堀り](#深堀り)へ進もう。
 
 
-## `other-window`と"次のウィンドウ(next window)" (built-in)
+## other-windowと"次のウィンドウ(next window)" (built-in)
 
 `other-window`が提供すること: ウィンドウの選択
 
