@@ -1,9 +1,4 @@
 <!--
-# "ウィンドウ管理"ってどんな意味だろう
-# This article is not about…
-# この記事で説明しないことは…
-# ウォーミングアップ
-## `other-window`と"次のウィンドウ(next window)" (built-in)
 ## `windmove` (built-in)
 ## `frames-only-mode`
 ## `winum-mode`
@@ -60,6 +55,8 @@
 * ["ウィンドウ管理"ってどんな意味だろう](#ウィンドウ管理ってどんな意味だろう)
 * [この記事で説明しないことは…](#この記事で説明しないことは)
 * [ウォーミングアップ](#ウォーミングアップ)
+* [other-windowと"次のウィンドウ(next window)" (built-in)](other-windowと次のウィンドウnext_window_built-in)
+
    * [frames-only-mode](#frames-only-mode)
    * [winum-mode](#winum-mode)
    * [ace-window](#ace-window)
@@ -658,7 +655,7 @@ Emacsの多くのコマンドは、バッファーとウィンドウという主
 
 1. issueの上で`RET`を押下する
 
-2.  カレントウィンドウでオープンされるので[リストとアイテムのパターン](https://karthinks.com/software/emacs-window-management-almanac/#the-back-and-forth-method) (完全なリストと選択したissueを同時に閲覧する)は拒絶される。
+2.  カレントウィンドウでオープンされるので[リストとアイテムのパターン](#back-and-forth手法) (完全なリストと選択したissueを同時に閲覧する)は拒絶される。
 
 </div>
 </details>
