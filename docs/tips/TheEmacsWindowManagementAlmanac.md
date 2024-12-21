@@ -442,7 +442,6 @@ Avyがスクリーンにたいして行うことを、ウィンドウにたい�
 [^8]: デザインが似ているのは偶然ではない。どちらも作者は[Oleh Krehel](https://oremacs.com/)だ。
 
 <img id="#org-target--ace-window-default-actions" src="https://karthinks.com/img/ace-dispatch-chart.png" alt="ace-dispatch-chart.png" />
-#![ace-dispatch-chart.png](https://karthinks.com/img/ace-dispatch-chart.png)
 
 ace-windowの使用時に`?`を押下すると、ディスパッチメニューが立ち上がる[^9]。
 
