@@ -815,7 +815,7 @@ back-and-forthと言えば`other-window`にはもう1つバリエーションが
 
 "ace-windowアクション"を定義して、`aw-dispatch-alist`[^14]にバインディングを追加するという方法により、ace-windowは拡張されるべくデザインされた。これはウィンドウを受け取り、そのウィンドウを用いて何か有用なことを行う関数だ。そのエントリーポイントとして機能するのが`ace-window`コマンドである。
 
-[^14]: [上記の図](https://karthinks.com/software/emacs-window-management-almanac/#org-target--ace-window-default-actions)のように事前定義されたいくつかのアクションとともに配布されている。
+[^14]: [上記の図](#org-target--ace-window-default-actions)のように事前定義されたいくつかのアクションとともに配布されている。
 
 ![emacs-window-selection-via-ace.png](https://karthinks.com/img/emacs-window-selection-via-ace.png)
 
