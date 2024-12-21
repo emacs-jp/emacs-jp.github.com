@@ -441,7 +441,8 @@ Avyがスクリーンにたいして行うことを、ウィンドウにたい�
 
 [^8]: デザインが似ているのは偶然ではない。どちらも作者は[Oleh Krehel](https://oremacs.com/)だ。
 
-![ace-dispatch-chart.png](https://karthinks.com/img/ace-dispatch-chart.png)
+<img id="#org-target--ace-window-default-actions" src="https://karthinks.com/img/ace-dispatch-chart.png" alt="ace-dispatch-chart.png" />
+#![ace-dispatch-chart.png](https://karthinks.com/img/ace-dispatch-chart.png)
 
 ace-windowの使用時に`?`を押下すると、ディスパッチメニューが立ち上がる[^9]。
 
@@ -705,7 +706,7 @@ Emacsを使用する目的に応じて3つのマイナーモードがある。�
 
 これらのオプションは前の配置に戻す前に選択されているウィンドウを一時的に最大化したい等の寄り道をしたい場合に役に立つだろう。
 
-たとえばEmacsが間違った場所へのウィンドウのポップアップしたり分割したウィンドウを勝手にリサイズするなどして、手作業で慎重に配置したウィンドウが目茶苦茶にされた際の応急処置としても、`winner-mode`とその仲間たちが推奨されることがよくある。これはアンチパターンのように思う。`winner-undo`(または同等機能)を使ってEmacsの振る舞いを毎回修正している自分に気づいたのなら、そもそもEmacsが間違った場所にバッファーを表示するのが問題であって、つまりそれは苛立たしいデフォルトが原因なのだ。[whack-a-mole problem](https://karthinks.com/software/emacs-window-management-almanac/#deal-with-windows-so-we-don-t-have-to-deal-with-windows)を参照して欲しい。
+たとえばEmacsが間違った場所へのウィンドウのポップアップしたり分割したウィンドウを勝手にリサイズするなどして、手作業で慎重に配置したウィンドウが目茶苦茶にされた際の応急処置としても、`winner-mode`とその仲間たちが推奨されることがよくある。これはアンチパターンのように思う。`winner-undo`(または同等機能)を使ってEmacsの振る舞いを毎回修正している自分に気づいたのなら、そもそもEmacsが間違った場所にバッファーを表示するのが問題であって、つまりそれは苛立たしいデフォルトが原因なのだ。[モグラ叩き問題](#ウィンドウの世話をしなくてよいようにウィンドウを取り扱う)を参照して欲しい。
 
 # 深堀り
 
@@ -749,7 +750,7 @@ Emacsにイライラさせられるのには2つの段階があるように思�
 (keymap-global-set "M-o" 'other-window-mru)
 ```
 
-ウィンドウ間のback-and-forth、すなわち行き来においてつ目のウィンドウを選択する方法は重要ではない。[マウス](https://karthinks.com/software/emacs-window-management-almanac/#mousing-around--built-in)、[ace-window](https://karthinks.com/software/emacs-window-management-almanac/#ace-window)、[winum](https://karthinks.com/software/emacs-window-management-almanac/#winum-mode)、あるいは他の任意の手段を使ってもよい。その後は`other-window-mru`がサポートする。
+ウィンドウ間のback-and-forth、すなわち行き来において2つ目のウィンドウを選択する方法は重要ではない。[マウス](#マウスであれこれ-built-in)、[ace-window](#ace-window)、[winum](#winum-mode)、あるいは他の任意の手段を使ってもよい。その後は`other-window-mru`がサポートする。
 
 ## other-windowの改善
 
@@ -780,7 +781,7 @@ Emacsにイライラさせられるのには2つの段階があるように思�
 
 ウィンドウを循環する際に、switchy-windowはウィンドウが選択されている状態を数秒間待機してから、そのウィンドウを使用済みとマークして、もっとも最近使用したウィンドウ用の最新リストを更新する。実際にこれは非常にシームレスに機能する。`switchy-window`を呼び出せば、移動する必要があったウィンドウに移動する場合がほとんどだ。
 
-とは言ったものの、わたしが通常好んで使うのは[back-and-forth手法](https://karthinks.com/software/emacs-window-management-almanac/#the-back-and-forth-method)に記した、よりシンプルなバージョンだが。
+とは言ったものの、わたしが通常好んで使うのは[back-and-forth手法](#back-and-forth手法)に記した、よりシンプルなバージョンだが。
 
 ### other-window-alternating
 
