@@ -634,8 +634,8 @@ Emacsの多くのコマンドは、バッファーとウィンドウという主
 
 ![other-window-prefix-with.mp4](https://karthinks.com/img/other-window-prefix-with.mp4)
 
-<details>
-<summary>
+<details open>
+<summary id="org-target--window-management-forge-video">
 ビデオ実況
 </summary>
 <div>
@@ -831,7 +831,7 @@ back-and-forthと言えば`other-window`にはもう1つバリエーションが
 
 基本的なパターンは極めてシンプル。`(aw-select nil)`[^15]呼び出しにより選択したウィンドウがリターンされる。このウィンドウをタスク用に使用できるのだ。
 
-`scroll-other-window`がスクロールする[ウィンドウのセット](https://karthinks.com/software/emacs-window-management-almanac/#scroll-other-window--built-in)は、このようなタスクの一例だ。他にもあるがまだ試さないで欲しい! 以下ではこのアイデアをさらに汎用化していこう。
+`scroll-other-window`がスクロールする[ウィンドウのセット](#scroll-other-window-built-in)は、このようなタスクの一例だ。他にもあるがまだ試さないで欲しい! 以下ではこのアイデアをさらに汎用化していこう。
 
 [^15]: `aw-select`の引数は選択プロセス中にモードラインにメッセージを追加するためだが、わたしたちにとっては十分ではない。
 
@@ -839,7 +839,7 @@ back-and-forthと言えば`other-window`にはもう1つバリエーションが
 
 Emacsのインタラクティブ(対話的)なウィンドウコマンドは、すべてカレントウィンドウに作用する。
 
-ここでは[`window-prefix-map` (`C-x w`)](https://karthinks.com/software/emacs-window-management-almanac/#the-window-prefix-map--built-in)に、任意のウィンドウにインタラクティブに何かを適用できるコマンドをいくつか作成しよう。
+ここでは[`window-prefix-map` (`C-x w`)](#window-prefix-map-built-in)に、任意のウィンドウにインタラクティブに何かを適用できるコマンドをいくつか作成しよう。
 
 ```lisp
 (defun ace-tear-off-window ()
@@ -912,7 +912,7 @@ Emacsのイベントループをシミュレートしてこれを行うことが
 </div>
 </details>
 
-`ace-window-one-command`は別のウィンドウで任意のコマンドを素早く実行するのに役に立つ。このアイデアについては[以降](https://karthinks.com/software/emacs-window-management-almanac/#switch-and-return-actions-in-other-windows)で検討しよう。
+`ace-window-one-command`は別のウィンドウで任意のコマンドを素早く実行するのに役に立つ。このアイデアについては[後](#切り替えて戻る-別のウィンドウでのアクション)で検討しよう。
 
 <details>
 <summary>
@@ -927,7 +927,7 @@ Emacs(やace-window)のアクションして選択という通常のパラダイ
 
 ### ace-window用のwindow-prefixコマンド
 
-[`other-window-prefix`システム](https://karthinks.com/software/emacs-window-management-almanac/#the-other-window-prefix--built-in)は`other-window`コマンドと同様に役に立つが、同じ問題点も抱えている: 
+[`other-window-prefix`システム](#other-window-prefix-built-in)は`other-window`コマンドと同様に役に立つが、同じ問題点も抱えている: 
 
 選択するウィンドウに厳格な循環順を強制する。一貫して期待できるのは、アクティブなウィンドウが次のコマンドに渡されないことだけだ。もっと上手い方法がある筈だ。
 
@@ -952,7 +952,7 @@ elispライブラリーのManは、実際にはどこに表示すべきかをカ
 </div>
 </details>
 
-以下の例は、たくさんのウィンドウがひしめくフレームでForgeリンクを閲覧する[上述の例](https://karthinks.com/software/emacs-window-management-almanac/#org-target--window-management-forge-video)を流用する。ランダムなウィンドウが選択される`other-window-prefix`、特定のウィンドウを選択できる`ace-window-prefix`、両者の違いを比較する。
+以下の例は、たくさんのウィンドウがひしめくフレームでForgeリンクを閲覧する[上述の例](#org-target--window-management-forge-video)を流用する。ランダムなウィンドウが選択される`other-window-prefix`、特定のウィンドウを選択できる`ace-window-prefix`、両者の違いを比較する。
 
 ![ace-window-prefix-demo.mp4](https://karthinks.com/img/ace-window-prefix-demo.mp4)
 
@@ -1076,7 +1076,7 @@ Emacsにおいてナビゲーションに関するすべての操作は最終的
 
 4. マッチの1つを選択すると再びAvyはジャンプする(3つ目のウィンドウ)
 
-5. `pop-global-mark` (`C-x C-SPC`)を呼び出して前の場所にジャンプして戻る([詳細は以下参照](https://karthinks.com/software/emacs-window-management-almanac/#org-target--pop-global-mark-advice))
+5. `pop-global-mark` (`C-x C-SPC`)を呼び出して前の場所にジャンプして戻る([詳細は以下参照](#org-target--pop-global-mark-advice))
 
 6. `pop-global-mark` (`C-x C-SPC`)をもう一度呼び出して前の場所にジャンプして戻る。
 
@@ -1106,7 +1106,7 @@ Avyがウィンドウやフレームを跨いで移動しない場合には、�
 
 ## scroll-other-window (built-in)
 
-`scroll-other-window`と`scroll-other-window-down`が古くからEmacsの一部である理由は、Emacsのデフォルトセッティングである2-ウィンドウパラダイムに正しく準拠しているからだろう。あるウィンドウで編集する際にもう一方のウィンドウの内容をリファレンスとして使用するパラダイムのことだ。編集を行うウィンドウを離れずに、もう一方を上下にスクロールできる。これは任意の個数のウィンドウで機能することに注意。スクロールされるウィンドウは"[次のウィンドウ](https://karthinks.com/software/emacs-window-management-almanac/#other-window-and-the-next-window--built-in)"、すなわちカレントウィンドウから時計回りで次のウィンドウだ。以下の図では内枠線のあるウィンドウが選択されたウィンドウ、`scroll-other-window`がスクロールするウィンドウには矢印がついている:
+`scroll-other-window`と`scroll-other-window-down`が古くからEmacsの一部である理由は、Emacsのデフォルトセッティングである2-ウィンドウパラダイムに正しく準拠しているからだろう。あるウィンドウで編集する際にもう一方のウィンドウの内容をリファレンスとして使用するパラダイムのことだ。編集を行うウィンドウを離れずに、もう一方を上下にスクロールできる。これは任意の個数のウィンドウで機能することに注意。スクロールされるウィンドウは"[次のウィンドウ](#other-windowと次のウィンドウnext-window-built-in)"、すなわちカレントウィンドウから時計回りで次のウィンドウだ。以下の図では内枠線のあるウィンドウが選択されたウィンドウ、`scroll-other-window`がスクロールするウィンドウには矢印がついている:
 
 ![scroll-other-window.png](https://karthinks.com/img/scroll-other-window.png)
 
@@ -1126,7 +1126,7 @@ Avyがウィンドウやフレームを跨いで移動しない場合には、�
             (next-window nil nil 'visible))))
 ```
 
-これは[back-and-forth手法](https://karthinks.com/software/emacs-window-management-almanac/#the-back-and-forth-method)において極めて良好に機能する。
+これは[back-and-forth手法](#back-and-forth手法)において極めて良好に機能する。
 
 <details>
 <summary>
@@ -1146,7 +1146,7 @@ Avyがウィンドウやフレームを跨いで移動しない場合には、�
     (setq-local other-window-scroll-buffer buf)))
 ```
 
-これが役に立つのは、この関連付けを永続化したい場合だけだろう。そうでないほとんどのケースにおいては、LRU/MRU手法こそあなたが必要とする手法だ。以下の[master-mode](https://karthinks.com/software/emacs-window-management-almanac/#master-mode-and-scroll-all-mode)も参照して欲しい。
+これが役に立つのは、この関連付けを永続化したい場合だけだろう。そうでないほとんどのケースにおいては、LRU/MRU手法こそあなたが必要とする手法だ。以下の[master-mode](#master-modeとscroll-all-mode)も参照して欲しい。
 </div></details>
 
 <details open>
@@ -1382,14 +1382,16 @@ Emacsではバッファーなら幾らでももてるが、ウィンドウの方
 
 ## ウィンドウが作られたら無視する
 
-[Window-agnostic jumping with Avy](https://karthinks.com/software/emacs-window-management-almanac/#switch-and-stay-avy-as-a-window-switcher)は汎用的なアイデアにおける特殊ケースだ。Emacsを使う際にわたしたちが主に関心をもつのはテキストである。テキストコンテナとして考えたとき、ウィンドウは不要な抽象化なのかもしれない。これが`xref-find-definitions`による定義へのジャンプのように、目標がスクリーンコンテンツ外部にあれば自然な枠組みと言えるだろう。
+[Window-agnostic jumping with Avy](#切り替えて留まる-ウィンドウ切り替え機能としてのavy)は汎用的なアイデアにおける特殊ケースだ。Emacsを使う際にわたしたちが主に関心をもつのはテキストである。テキストコンテナとして考えたとき、ウィンドウは不要な抽象化なのかもしれない。これが`xref-find-definitions`による定義へのジャンプのように、目標がスクリーンコンテンツ外部にあれば自然な枠組みと言えるだろう。
 
 
 しかし他にもこのウィンドウ不価値論を適用する方法がいくつか存在する。ジャンプ前の場所を追跡する`mark-ring`と`global-mark-ring`では、それぞれ`pop-to-mark-command` (`C-u C-SPC`)と`pop-global-mark` (`C-x C-SPC`)で元の場所にジャンプして戻ることができる。後者の方は必要に応じてウィンドウを跨いでジャンプしてくれるだろう。[dogears](https://github.com/alphapapa/dogears.el)のようなパッケージなら、優れたUIでステップの再トレースをよりきめ細かく制御してくれる筈だ。
 
-<details>
+<details open>
 
-<summary>pop-to-bufferでウィンドウを跨いでジャンプする</summary>
+<summary id="org-target--pop-global-mark-advice">
+pop-to-bufferでウィンドウを跨いでジャンプする
+</summary>
 
 <div>
 
