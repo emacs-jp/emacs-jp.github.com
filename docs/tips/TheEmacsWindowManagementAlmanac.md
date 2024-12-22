@@ -456,14 +456,18 @@ ace-windowの使用時に`?`を押下すると、ディスパッチメニュー�
 ![ace-dispatch-demo.mp4](https://karthinks.com/img/ace-dispatch-demo.mp4)
 -->
 
-[![ace-window dispatch demo](https://i.imgur.com/7OFRShA.mp4)](https://karthinks.com/img/ace-dispatch-demo.mp4)
 
-<!--
 <video preload="metadata" style="center" width="700" controls>
+
 <source src="https://i.imgur.com/7OFRShA.mp4" type="video/mp4">
-<a href="/img/ace-dispatch-demo.mp4">[VIDEO: ace-window dispatch demo]</a>
-</video>https://karthinks.com/img/ace-dispatch-demo.mp4
--->
+
+<a href="/img/ace-dispatch-demo.mp4">
+
+[VIDEO: ace-window dispatch demo]
+
+</a>
+
+</video>
 
 <details>
 <summary>
