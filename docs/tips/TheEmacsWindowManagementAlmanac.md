@@ -612,7 +612,7 @@ Emacsの多くのコマンドは、バッファーとウィンドウという主
 
 上述の例では、少なくとも`*command*`のかわりに`*command*-other-window`を呼び出すという選択肢が1つはあった。多すぎる。選択肢が1つでも存在するというのがラッキーなのだ。ほとんどの場合には選択肢など存在せず、望まぬ動作にただ翻弄されるがままだ。リンクのようなオブジェクトをアクティブにしたときなどが、典型的なケースだ。以下の例([Forge](https://github.com/magit/forge/)パッケージより)ではissueのタイトルで`RET`を押下すると、そのissueがカレントバッファーでオープンされる。
 
-[<img src="https://i.imgur.com/sKmFQh0.jpg">](https://karthinks.com/img/other-window-prefix-without.mp4)
+[<img src="https://i.imgur.com/sKmFQh0.gif">](https://karthinks.com/img/other-window-prefix-without.mp4)
 
 <details>
 <summary>
