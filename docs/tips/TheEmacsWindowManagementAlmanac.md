@@ -452,8 +452,11 @@ ace-windowの使用時に`?`を押下すると、ディスパッチメニュー�
 
 [^9]: このアイデアの詳細については、[Fifteen ways to use Embark](https://karthinks.com/software/fifteen-ways-to-use-embark/)を参照して欲しい。
 
-
+<!--
 ![ace-dispatch-demo.mp4](https://karthinks.com/img/ace-dispatch-demo.mp4)
+-->
+
+https://karthinks.com/img/ace-dispatch-demo.mp4
 
 <details>
 <summary>
