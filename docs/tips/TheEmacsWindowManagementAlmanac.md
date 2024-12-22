@@ -489,7 +489,7 @@ ace-windowの使用時に`?`を押下すると、ディスパッチメニュー�
 
 [^10]: `context-menu-mode`を調べて欲しい。話しをウィンドウ管理に限らなければ、Emacsのメニューバーを介した発見性は驚くほど良好である。
 
-[<img src="https://i.imgur.com/3G9Nk4p.mp4">](https://karthinks.com/img/strokes-window-handling.mp4)
+[<img src="https://i.imgur.com/3G9Nk4p.jpg">](https://karthinks.com/img/strokes-window-handling.mp4)
 
 <details>
 <summary>
