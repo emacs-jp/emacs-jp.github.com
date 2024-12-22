@@ -895,7 +895,7 @@ Emacsのイベントループをシミュレートしてこれを行うことが
 
 以下のデモでは、ウィンドウ選択の前にアクションを実行している点を除けば、`ace-window`と同じように見えるだろう。ここでの`win`はアクションである。シンプルなコマンドであれば何でも機能する筈だ。`aw-dispatch-alist`にアクションを事前に設定する必要はない。セットアップや記憶しておく必要もないのだ。デモでは`ace-window-run-command`を使って、`C-x -`(`shrink-window-if-larger-than-buffer`という何とも説明的な名前の関数)で選択されていないウィンドウを縮小している。
 
-[<img src="https://i.imgur.com/ov2rxst.jpg"(https://karthinks.com/img/ace-window-one-command-demo.mp4)
+[<img src="https://i.imgur.com/ov2rxst.jpg">](https://karthinks.com/img/ace-window-one-command-demo.mp4)
 
 <details>
 <summary>
