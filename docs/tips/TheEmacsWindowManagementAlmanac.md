@@ -456,7 +456,7 @@ ace-windowの使用時に`?`を押下すると、ディスパッチメニュー�
 ![ace-dispatch-demo.mp4](https://karthinks.com/img/ace-dispatch-demo.mp4)
 -->
 
-[![](https://i.imgur.com/7OFRShA.mp4)](https://karthinks.com/img/ace-dispatch-demo.mp4)
+[![ace-window dispatch demo](https://i.imgur.com/7OFRShA.mp4)](https://karthinks.com/img/ace-dispatch-demo.mp4)
 
 <!--
 <video preload="metadata" style="center" width="700" controls>
