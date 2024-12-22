@@ -612,7 +612,7 @@ Emacsの多くのコマンドは、バッファーとウィンドウという主
 
 上述の例では、少なくとも`*command*`のかわりに`*command*-other-window`を呼び出すという選択肢が1つはあった。多すぎる。選択肢が1つでも存在するというのがラッキーなのだ。ほとんどの場合には選択肢など存在せず、望まぬ動作にただ翻弄されるがままだ。リンクのようなオブジェクトをアクティブにしたときなどが、典型的なケースだ。以下の例([Forge](https://github.com/magit/forge/)パッケージより)ではissueのタイトルで`RET`を押下すると、そのissueがカレントバッファーでオープンされる。
 
-[<img src="https://i.imgur.com/sKmFQh0.gif">](https://karthinks.com/img/other-window-prefix-without.mp4)
+[<img src="https://i.imgur.com/sKmFQh0.jpg">](https://karthinks.com/img/other-window-prefix-without.mp4)
 
 <details>
 <summary>
@@ -632,7 +632,7 @@ Emacsの多くのコマンドは、バッファーとウィンドウという主
 
 この記事の執筆時点では、Forgeは別のウィンドウで"リンクをオープン"する手段を何も提供していない。`other-window-prefix`に助けてもらおう:
 
-![other-window-prefix-with.mp4](https://karthinks.com/img/other-window-prefix-with.mp4)
+[<img src="https://i.imgur.com/lz32LBD.jpg">](https://karthinks.com/img/other-window-prefix-with.mp4)
 
 <details open>
 <summary id="org-target--window-management-forge-video">
@@ -895,7 +895,7 @@ Emacsのイベントループをシミュレートしてこれを行うことが
 
 以下のデモでは、ウィンドウ選択の前にアクションを実行している点を除けば、`ace-window`と同じように見えるだろう。ここでの`win`はアクションである。シンプルなコマンドであれば何でも機能する筈だ。`aw-dispatch-alist`にアクションを事前に設定する必要はない。セットアップや記憶しておく必要もないのだ。デモでは`ace-window-run-command`を使って、`C-x -`(`shrink-window-if-larger-than-buffer`という何とも説明的な名前の関数)で選択されていないウィンドウを縮小している。
 
-![ace-window-one-command-demo.mp4](https://karthinks.com/img/ace-window-one-command-demo.mp4)
+[<img src="https://i.imgur.com/ov2rxst.jpg"(https://karthinks.com/img/ace-window-one-command-demo.mp4)
 
 <details>
 <summary>
@@ -933,7 +933,7 @@ Emacs(やace-window)のアクションして選択という通常のパラダイ
 
 より制御に優れた特別仕立ての解決策を与えてくれるのが`aw-select`だ。次のコマンドがウィンドウへのバッファー表示を伴うのなら、わたしたちが選択するウィンドウを使う筈だ。以下の例ではmanページを表示するウィンドウを明示的に選択している。"次のウィンドウ"の位置が望ましくないからだ:
 
-![ace-window-prefix-demo-alt.mp4](https://karthinks.com/img/ace-window-prefix-demo-alt.mp4)
+[<img src="https://i.imgur.com/2dHJZAP.jpg">](https://karthinks.com/img/ace-window-prefix-demo-alt.mp4)
 
 <details>
 <summary>
@@ -954,7 +954,7 @@ elispライブラリーのManは、実際にはどこに表示すべきかをカ
 
 以下の例は、たくさんのウィンドウがひしめくフレームでForgeリンクを閲覧する[上述の例](#org-target--window-management-forge-video)を流用する。ランダムなウィンドウが選択される`other-window-prefix`、特定のウィンドウを選択できる`ace-window-prefix`、両者の違いを比較する。
 
-![ace-window-prefix-demo.mp4](https://karthinks.com/img/ace-window-prefix-demo.mp4)
+[<img src="https://i.imgur.com/BBa6AJu.jpg">](https://karthinks.com/img/ace-window-prefix-demo.mp4)
 
 <details>
 <summary>
@@ -979,7 +979,7 @@ elispライブラリーのManは、実際にはどこに表示すべきかをカ
 
 `ace-window`は可視なフレームを跨いで使用できるので、スクリーン上の任意のEmacsウィンドウを選択できる。さらに素晴らしいのは、オンザフライでウィンドウを新たに作成して、そのウィンドウを使うこともできることだ。以下では次のコマンドが使用するウィンドウの作成に`ace-window`を使用している:
 
-![ace-window-prefix-demo-2.mp4](https://karthinks.com/img/ace-window-prefix-demo-2.mp4)
+[<img src="https://i.imgur.com/DFNqQyC.jpg">](https://karthinks.com/img/ace-window-prefix-demo-2.mp4)
 
 <details>
 <summary>
@@ -1042,7 +1042,7 @@ Orgモードのリンクをオープンすると、普通だとOrgの設定次�
 
 Emacsにおいてナビゲーションに関するすべての操作は最終的には[Avyへと行きつく](https://karthinks.com/software/avy-can-do-anything/)。テキストの編集(や選択)のためにウィンドウを切り替える場合には、スクリーン上の特定のポイントに移動することになる。そこにカーソルを移動するためにはウィンドウの切り替え、カーソルの正しい位置への移動という、2つのステップからなるプロセスが必要になる。このプロセスを単一のアクションに短縮するのがAvyだ。Avyはフレームをジャンプする位置からなる単一のプールとみなす。スクリーン上の任意の位置にジャンプする際には、ウィンドウを横断してシームレスな移動を行うのだ:
 
-![avy-basic-demo.mp4](https://karthinks.com/img/avy-basic-demo.mp4)
+[<img src="https://i.imgur.com/6DP2Rnx.jpg">](https://karthinks.com/img/avy-basic-demo.mp4)
 
 <details>
 <summary>
@@ -1060,7 +1060,7 @@ Emacsにおいてナビゲーションに関するすべての操作は最終的
 
 少し考え方を切り替えれば、少なくともナビゲーションという目的においては、ウィンドウを別個のオブジェクトと考えることを完全に止めることができるだろう。(Emacsの可視なウィンドウとフレームを飛び越えて)すべての目的に、任意の文字を数回のキー入力すれば到達できるのだ。これがウィンドウを跨いでジャンプする唯一の方法という訳ではない。たとえば`pop-global-mark`で(処理中に切り替えたウィンドウを横断して)スタート位置に戻ることができる。
 
-![avy-jump-back-demo-2.mp4](https://karthinks.com/img/avy-jump-back-demo-2.mp4)
+[<img src="https://i.imgur.com/W4uUzso.jpg">](https://karthinks.com/img/avy-jump-back-demo-2.mp4)
 
 <details>
 <summary>
@@ -1171,7 +1171,7 @@ Avyがウィンドウやフレームを跨いで移動しない場合には、�
 
 別の例として`pixel-scroll-precision-mode`を通じて通常のページングコマンドをリバインドすれば、`scroll-other-window`に別のウィンドウをスムーズにスクロールさせることができる:
 
-![scroll-other-window-precision-demo.mp4](https://karthinks.com/img/scroll-other-window-precision-demo.mp4)
+[<img src="https://i.imgur.com/24MKcsv.jpg">](https://karthinks.com/img/scroll-other-window-precision-demo.mp4)
 
 </div>
 </details>
@@ -1200,7 +1200,7 @@ Avyがウィンドウやフレームを跨いで移動しない場合には、�
 
 以下はシェルとドキュメントでの`isearch-other-window`の動作例だ:
 
-![isearch-other-window-demo.mp4](https://karthinks.com/img/isearch-other-window-demo.mp4)
+[<img src="https://i.imgur.com/5BDYIsk.jpg">](https://karthinks.com/img/isearch-other-window-demo.mp4)
 
 <details>
 <summary>
@@ -1300,7 +1300,7 @@ Emacsではバッファーなら幾らでももてるが、ウィンドウの方
 
 キーマップを頑張って、右上にキー説明も表示されるようにした。
 
-![next-buffer-with-repeat.mp4](https://karthinks.com/img/next-buffer-with-repeat.mp4)
+[<img src="https://i.imgur.com/kfZiyqZ.jpg">](https://karthinks.com/img/next-buffer-with-repeat.mp4)
 
 <details open>
 <summary>
