@@ -4,7 +4,7 @@ author: zonuexe
 title: "Emacsのバージョン"
 description: "今日にEmacsと呼ばれるGNU Emacsのバージョン表記とリリースの種類、過去の更新履歴についてまとめます。"
 date: 2019-01-13
-last_modified: 2024-09-17
+last_modified: 2025-03-20
 ---
 {% include JB/setup %}
 
@@ -12,11 +12,12 @@ last_modified: 2024-09-17
 
 歴史的には多様なEmacsがありますが、今日においてEmacsと呼ばれるのは、もっぱら**[GNU Emacs]**です。
 
-<ins datetime="2024-01-18T23:30:00+0900">**GNU Emacs**の最新安定版は **`29.4`** (<time datetime="2024-06-22T09:15:14-0700">2024年6月22日</time>リリース)です。<br>
-次期安定版のプレテスト版として<time datetime="2024-10-26T09:35:06-0400">2024年10月26日</time>に**`30.0.92`**がリリースされました。<br>
+<ins datetime="2025-03-20T14:00:00+0900">**GNU Emacs**の最新安定版は **`30.1`** (<time datetime="2025-02-23T17:41:38+0000">2025年2月23日</time>リリース)です。<br>
+<!-- 次期安定版のプレテスト版として<time datetime="2024-10-26T09:35:06-0400">2024年10月26日</time>に**`30.0.92`**がリリースされました。<br> -->
 <!-- 次期安定版のリリース候補版として<time datetime="2023-07-23T11:55:44+0300">2023年7月23日</time>に**`29.1-rc1`**がリリースされました。<br> -->
 <!-- GNU Emacsの新しい安定版である**`27.1`**が<time datetime="2020-08-06">2020年8月6日</time>にリリースされることが予告されています。<br> -->
-<!-- masterブランチでは次のメジャーバージョンとなる **`31.0`** 系統の開発が進行しています。</ins> -->
+masterブランチでは次のメジャーバージョンとなる **`31.0`** 系統の開発が進行しています。
+</ins>
 
 [GNU Emacs]: https://ja.wikipedia.org/wiki/GNU_Emacs
 
@@ -97,9 +98,9 @@ macOSでのEmacsのインストール方法には、ソースコードからビ�
    * `brew install --cask emacs`でインストールできるビルド済みのEmacsパッケージです
    * Doom Emacsを利用する場合は[互換性に問題があるため利用しない](https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org)ことを推奨しています
 
-| パッケージ名 | 最新安定版(29.x) | ビルド済み安定版(cask)   | 開発版(30.50) | window-system |
+| パッケージ名 | 最新安定版(30.x) | ビルド済み安定版(cask)   | 開発版(31.0.50) | window-system |
 |--------------|:----------------:|:------------------------:|:-------------:|---------------|
-| emacs-mac    | ○               | [homebrew-emacsmacport]  | ×            | `'mac`        |
+| emacs-mac    | ×               | [homebrew-emacsmacport]  | ×            | `'mac`        |
 | emacs-plus   | ○               | ×                       | ○            | `'ns`         |
 | emacs        | CLIのみ          | ×                       | ○            |               |
 | emacs (cask) | ○               | [GNU Emacs For Mac OS X] | ×            | `'ns`         |
@@ -238,6 +239,20 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
   <td></td>
   <td></td>
 </tr>
+<tr><th scope="row">2025</th>
+  <td></td>
+  <td><span class="badge badge-pill badge-primary">30.1</span></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
 </tbody></table>
 </div>
 
@@ -247,6 +262,7 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
 
 <table class="table"><thead><tr><th scope="col">バージョン</th><th scope="col">リリース日</th></tr></thead>
 <tbody>
+<tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2025-02/msg00997.html">Emacs 30.1</a></th><td><time datetime="2024-06-22">2025年2月23日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2024-06/msg00695.html">Emacs 29.4</a></th><td><time datetime="2024-06-22">2024年6月22日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2024-03/msg00611.html">Emacs 29.3</a></th><td><time datetime="2024-03-24">2024年3月24日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2024-01/msg00666.html">Emacs 29.2</a></th><td><time datetime="2024-01-18">2024年1月18日</time></td></tr>
