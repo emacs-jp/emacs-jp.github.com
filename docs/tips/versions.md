@@ -4,7 +4,7 @@ author: zonuexe
 title: "Emacsのバージョン"
 description: "今日にEmacsと呼ばれるGNU Emacsのバージョン表記とリリースの種類、過去の更新履歴についてまとめます。"
 date: 2019-01-13
-last_modified: 2025-03-20
+last_modified: 2025-04-14
 ---
 {% include JB/setup %}
 
@@ -237,6 +237,20 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
   <td><span class="badge badge-pill badge-secondary">30.0.91</span></td>
   <td><span class="badge badge-pill badge-secondary">30.0.92</span></td>
   <td></td>
+  <td><span class="badge badge-pill badge-secondary">30.0.93</span></td>
+</tr>
+<tr><th scope="row">2025</th>
+  <td></td>
+  <td><span class="badge badge-pill badge-primary">30.1</span></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
   <td></td>
 </tr>
 <tr><th scope="row">2025</th>
@@ -262,7 +276,7 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
 
 <table class="table"><thead><tr><th scope="col">バージョン</th><th scope="col">リリース日</th></tr></thead>
 <tbody>
-<tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2025-02/msg00997.html">Emacs 30.1</a></th><td><time datetime="2024-06-22">2025年2月23日</time></td></tr>
+<tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2025-02/msg00997.html">Emacs 30.1</a></th><td><time datetime="2025-02-23">2025年2月23日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2024-06/msg00695.html">Emacs 29.4</a></th><td><time datetime="2024-06-22">2024年6月22日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2024-03/msg00611.html">Emacs 29.3</a></th><td><time datetime="2024-03-24">2024年3月24日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2024-01/msg00666.html">Emacs 29.2</a></th><td><time datetime="2024-01-18">2024年1月18日</time></td></tr>
