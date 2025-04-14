@@ -1,15 +1,11 @@
 # Honoka
-
-[![Build Status by Travis CI](https://travis-ci.org/windyakin/Honoka.svg?branch=master)](https://travis-ci.org/windyakin/Honoka)
-[![Build status by AppVeyor](https://ci.appveyor.com/api/projects/status/6j4y6bugti7f1aff/branch/master?svg=true)](https://ci.appveyor.com/project/windyakin/honoka/branch/master)
-[![devDependency Status](https://david-dm.org/windyakin/Honoka/dev-status.svg)](https://david-dm.org/windyakin/Honoka?type=dev)
 [![The MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![npm](https://img.shields.io/npm/v/bootstrap-honoka.svg)](https://www.npmjs.com/package/bootstrap-honoka)
-[![Join the chat at https://gitter.im/bootstrap-honoka/Lobby](https://badges.gitter.im/bootstrap-honoka/Lobby.svg)](https://gitter.im/bootstrap-honoka/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-[http://honokak.osaka/](http://honokak.osaka/)
 
-[![Honoka](docs/assets/img/sample.png)](http://honokak.osaka/)
+<https://honokak.osaka/>
+
+[![Honoka](https://raw.githubusercontent.com/windyakin/Honoka/master/docs/assets/img/sample.png)](https://honokak.osaka/)
 
 "Honoka" は日本語も美しく表示できる Bootstrap テーマです。
 
@@ -19,8 +15,8 @@
 
 ## Live Demo
 
-* [http://honokak.osaka/bootstrap-ja.html](http://honokak.osaka/bootstrap-ja.html) (日本語レイアウト)
-* [http://honokak.osaka/bootstrap.html](http://honokak.osaka/bootstrap.html) (英語レイアウト)
+* <https://honokak.osaka/bootstrap-ja.html (日本語レイアウト)
+* <https://honokak.osaka/bootstrap.html> (英語レイアウト)
 
 ## Getting Started
 
