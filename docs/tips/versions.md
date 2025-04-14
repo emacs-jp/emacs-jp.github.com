@@ -253,20 +253,6 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
   <td></td>
   <td></td>
 </tr>
-<tr><th scope="row">2025</th>
-  <td></td>
-  <td><span class="badge badge-pill badge-primary">30.1</span></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
 </tbody></table>
 </div>
 
