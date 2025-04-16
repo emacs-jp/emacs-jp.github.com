@@ -49,14 +49,14 @@ release-date: 2025-04-12
  * 2\. [Emacs Lispを評価する](#h:evaluate-emacs-lisp)
  * 3\. [副作用と戻り値](#h:side-effect-and-return-value)
  * 4\. [データ構造としてのバッファ](#h:buffers-as-data-structures)
- * 5\. [テキストはそれぞれプロパティを持つ](#h:text-has-its-own-properties)
+ * 5\. [テキストが持つプロパティ](#h:text-has-its-own-properties)
  * 6\. [シンボル、バランスのとれた式、そしてクオート](#h:symbols-balanced-expressions-and-quoting)
- * 7\. [リスト内の部分評価](#h:partial-evaluation-inside-of-a-list)
- * 8\. [マクロまたはスペシャルフォーム内での評価](#h:evaluation-inside-of-a-macro-or-special-form)
- * 9\. [リストの要素へのマッピング](#h:mapping-through-a-list-of-elements)
+ * 7\. [リスト内部の部分評価](#h:partial-evaluation-inside-of-a-list)
+ * 8\. [マクロやスペシャルフォーム内での評価](#h:evaluation-inside-of-a-macro-or-special-form)
+ * 9\. [リストの要素のマッピング](#h:mapping-through-a-list-of-elements)
  * 10\. [検索結果のマッチデータ](#h:the-match-data-of-the-last-search)
  * 11\. [別のバッファ、ウィンドウ、あるいは狭められた状態に切り替える](#h:switching-to-another-buffer-window-or-narrowed-state)
- * 12\. [`if`, `cond`などを使用した基本的な制御フロー](#h:basic-control-flow-with-if-cond-and-others)
+ * 12\. [`if`, `cond`などによる基本的な制御フロー](#h:basic-control-flow-with-if-cond-and-others)
  * 13\. [`if-let*`の仲間を使用してフローを制御する](#h:control-flow-with-if-let-and-friends)
  * 14\. [`pcase`によるパターンマッチ](#h:pattern-match-with-pcase-and-related)
  * 15\. [コードを実行するか、他のコードにフォールバックする](#h:run-some-code-or-fall-back-to-some-other-code)
@@ -73,7 +73,7 @@ release-date: 2025-04-12
 #+toc: headlines 8 insert TOC here, with eight headline levels
 -->
 
-## Emacs Lisp入門 {#h:getting-started-with-emacs-lisp}
+## 1. Emacs Lisp入門 {#h:getting-started-with-emacs-lisp}
 
 この本の目的は、**Emacs Lisp**（別名：Elisp）の全体像を掴んでもらうことです。Emacs Lispは、Emacsを拡張するためのプログラミング言語です。Emacsはプログラム可能なテキストエディタであり、Emacs Lispを解釈して、それに応じた動作をします。Emacsには数多くの機能が組み込まれているので、一行もコードを書かずに使うことができます。また、自分で書いたElispや、パッケージなどの形で他の人から入手したElispを「評価」（≒実行）することで、いつでも思い通りの動作をするようにプログラムできます。
 
@@ -89,7 +89,7 @@ Emacsをいじくり回すことは、それ自体が体験の一部です。そ
 
 それでは、幸運を祈ります。どうぞ楽しんで！
 
-## Emacs Lispを評価する {#h:evaluate-emacs-lisp}
+## 2. Emacs Lispを評価する {#h:evaluate-emacs-lisp}
 
 Emacsで行う操作はすべて、何らかの関数を呼び出しています。これは Emacs Lispコードを評価し、その戻り値を受け取ったり、副作用を引き起こしたりするということです（[副作用と戻り値](#h:side-effect-and-return-value)参照）。
 
@@ -161,17 +161,19 @@ EmacsはどこからでもElispコードを評価できます。バッファ内�
 
 Emacsが「**自己文書化されている**（self-documenting）」というのは、自身の状態を報告するからです。ヘルプバッファを明示的に更新する必要はありません。これは、関連するコードが評価されることによって自動的に行われます。つまりEmacsは、あなたが扱っている対象が何であれ、その最新の値を効果的に表示してくれるのです。
 
-## 副作用と戻り値 {#h:side-effect-and-return-value}
+## 3. 副作用と戻り値 {#h:side-effect-and-return-value}
 
-Emacs Lisp has functions. They take inputs and produce outputs. In its purest form, a function is a computation that only returns a value: it does not change anything in its environment. The return value of a function is used as input for another function, in what effectively is a chain of computations. You can thus rely on a function's return value to express something like "if this works, then also do this other thing, otherwise do something else or even nothing."
+Emacs Lispには関数があります。関数は入力を受け取り、出力を生成します。その最も純粋な形式では、関数は値を返すだけの計算です。純粋な関数は周囲の状態（環境）を何も変更しません。ある関数の戻り値が別の関数の入力となり、処理が連鎖していくのです。この仕組みがあるからこそ、「もしこの処理が成功したら、次にこの処理を行い、失敗したら別の処理をする（あるいは何もしない）」といった条件に応じた流れを組み立てられます。
 
-Elisp is the language that extends and controls Emacs. This means that it also affects the state of the editor. When you run a function, it can make permanent changes, such as to insert some text at the point of the cursor, delete a buffer, create a new window, and so on. These changes will have an impact on future function calls. For example, if the previous function deleted a certain buffer, the next function which was supposed to write to that same buffer can no longer do its job: the buffer is gone!
+ElispはEmacsを拡張し、制御するための言語です。そのため、Elispの処理はエディタ自身の状態にも影響を及ぼします。関数を実行すると、カーソル位置へのテキスト挿入、バッファの削除、ウィンドウの新規作成といった、永続的な変化（副作用）を引き起こすことがあります。こうした変化は、後続の関数呼び出しに影響を与える可能性があります。例えば、ある関数が特定のバッファを削除してしまえば、その後に同じバッファへ書き込もうとしていた別の関数は、対象のバッファが存在しないため、もはや処理を実行できません。
 
-When you write Elisp, you have to account for both the return value and the side effects. If you are sloppy, you will get unintended results caused by all those ill-considered changes to the environment. But if you use side effects meticulously, you are empowered to take Elisp to its full potential. For instance, imagine you define a function that follows the logic of "create a buffer, go there, write some text, save the buffer to a file at my preferred location, and then come back where I was before I called this function, while leaving the created buffer open." All these are side effects and they are all useful. Your function may have some meaningful return value as well that you can employ as the input of another function. For example, your function would return the buffer object it generated, so that the next function can do something there like display that buffer in a separate frame and make its text larger.
+Elispのコードを書く際には、関数の「戻り値」と「副作用」の両方を考慮する必要があります。副作用への配慮が足りないと、環境への意図しない変更が原因で、予期せぬ結果を招くことになります。しかし、副作用を注意深く、意図的に活用すれば、Elispの持つ力を最大限に引き出すことができます。たとえば、「新しいバッファを作り、そのバッファに移動し、テキストを書き込み、好みの場所にファイルとして保存し、元の場所に戻ってくる。ただし、作成したバッファは開いたままにしておく」といった一連の動作を行う関数を考えてみましょう。これらはすべて副作用ですが、非常に便利なものです。さらに、この関数が意味のある戻り値（例えば、作成したバッファそのもの）を返すようにすれば、後続の関数がその戻り値を使って、別のフレームでそのバッファを表示したり、中のテキストを大きくしたりといった、さらなる操作を行うことも可能です。
 
-The idea is to manipulate the state of the editor, to make Emacs do what you envision. Sometimes this means your code has side effects. At other times, side effects are useless or even run counter to your intended results. You will keep refining your intuition about what needs to be done as you gain more experience and expand the array of your skills ([[#h:symbols-balanced-expressions-and-quoting][Symbols, balanced expressions, and quoting]]). No problem; no stress!
+あなたがElispを書くとき、戻り値と副作用の両方を考慮に入れなければなりません。もしあなたが不注意であれば、環境への考慮不足の変更すべてによって引き起こされる意図しない結果を得るでしょう。しかし、もしあなたが副作用を細心の注意を払って使用するなら、あなたはElispをその完全な可能性へと引き出す力を与えられます。例えば、あなたが「バッファを作成し、そこへ行き、テキストを書き、そのバッファを私の好む場所のファイルに保存し、そしてこの関数を呼び出す前にいた場所に戻り、作成したバッファは開いたままにする」という論理に従う関数を定義すると想像してください。これらはすべて副作用であり、それらはすべて有用です。あなたの関数はまた、別の関数の入力としてあなたが利用できる、何らかの意味のある戻り値を持つかもしれません。例えば、あなたの関数はそれが生成したバッファオブジェクトを返すでしょう。そうすれば、次の関数はそこで何か、例えばそのバッファを別のフレームに表示し、そのテキストを大きくする、といったことができます。
 
-## データ構造としてのバッファ {#h:buffers-as-data-structures}
+要するに、エディタの状態を操作し、Emacsを自分の思い描いた通りに動かすことが目標です。そのためには、コードが副作用を持つことが必要な場合もあります。一方で、副作用が全く不要であったり、むしろ意図した結果の邪魔になったりすることもあります。何が必要で何が不要か、その見極めは、経験を積み、スキル（[シンボル、バランスの取れた式、クォーティング](#h:symbols-balanced-expressions-and-quoting)参照）の幅を広げていく中で、自然と磨かれていく直感のようなものです。心配はいりません、気楽にいきましょう！
+
+## 4. データ構造としてのバッファ {#h:buffers-as-data-structures}
 
 <!--
 #+findex: point
@@ -181,9 +183,9 @@ The idea is to manipulate the state of the editor, to make Emacs do what you env
 #+findex: re-search-forward
 -->
 
-A buffer holds data as a sequence of characters. For example, this data is the text you are looking at when you open a file. Each character exists at a given position, which is a number. The function ~point~ gives you the position at the point you are on, which typically corresponds to where the cursor is ([[#h:evaluate-emacs-lisp][Evaluate Emacs Lisp]]). At the beginning of a buffer, ~point~ returns the value of =1= ([[#h:side-effect-and-return-value][Side effect and return value]]). There are plenty of functions that return a buffer position, such as ~point-min~, ~point-max~, ~line-beginning-position~, and ~re-search-forward~. Some of those will have side effects, like ~re-search-forward~ which moves the cursor to the given match.
+Emacsのバッファは、データを文字の連なり（シーケンス）として保持しています。ファイルを開いたときに画面に表示されるテキストなどがこれにあたります。各文字は特定の位置に存在し、その位置は数値で表されます。関数`point`は現在のポイント（通常はカーソルがある場所）の位置を数値で返します（[Emacs Lispを評価する](#h:evaluate-emacs-lisp)参照）。バッファの先頭位置では、`point`は`1`を返します（[副作用と戻り値](#h:side-effect-and-return-value)参照）。バッファ内の位置を返す関数は他にも`point-min`（先頭位置）、`point-max`（末尾位置）、`line-beginning-position`（行頭位置）、`re-search-forward`（前方検索）など多数存在します。これらの関数の中には、例えば`re-search-forward`がカーソルを検索に一致した箇所へ移動させるように、副作用を持つものもあります。
 
-When you program in Emacs Lisp, you frequently rely on buffers to do some of the following:
+Emacs Lisp でプログラミングを行う際、バッファはしばしば以下のような目的で利用されます：
 
 <!--
 #+findex: buffer-string
@@ -191,7 +193,7 @@ When you program in Emacs Lisp, you frequently rely on buffers to do some of the
 #+findex: buffer-substring-no-properties
 -->
 
-- Extract file contents as a string :: Think of the buffer as a large string. You can get the entirety of its contents as one potentially massive string by using the function ~buffer-string~. You may also get a substring between two buffer positions, such as with the ~buffer-substring~ function or its ~buffer-substring-no-properties~ counterpart ([[#h:text-has-its-own-properties][Text has its own properties]]). Imagine you do this as part of a wider operation that (i) opens a file, (ii) goes to a certain position, (iii) copies the text it found, (iv) switches to another buffer, and (v) writes what it found to this new buffer.
+ * **ファイル内容を文字列として取り出す**： バッファを一つの大きな文字列のように扱うことができます。`buffer-string`関数を使えば、バッファの内容全体を一つの（ときには非常に大きな）文字列として取得できます。また、`buffer-substring`や、テキストプロパティを含まない`buffer-substring-no-properties`といった関数を使えば、指定した二つの位置の間にある部分文字列だけを取り出すことも可能です（[テキストが持つプロパティ](#h:text-has-its-own-properties)参照）。<br />たとえば、「(1) あるファイルを開き」「(2) 特定の位置に移動し」「(3) そこにあるテキストをコピーし」「(4) 別のバッファに切り替えて」「(5) コピーしたテキストをその新しいバッファに書き込む」といった一連の操作の一部として、これらの関数が使われる場面を想像できるでしょう。
 
 <!--
 #+findex: get-buffer-create
@@ -203,7 +205,7 @@ When you program in Emacs Lisp, you frequently rely on buffers to do some of the
 #+findex: pop-to-buffer
 -->
 
-- Present the results of some operation :: You may have a function that shows upcoming holidays. Your code does the computations behind the scenes and ultimately writes some text to a buffer. The end product is on display. Depending on how you go about it, you will want to evaluate the function ~get-buffer-create~ or its more strict ~get-buffer~ alternative. If you need to clear the contents of an existing buffer, you might use the ~with-current-buffer~ macro to temporarily switch to the buffer you are targetting and then either call the function ~erase-buffer~ to delete everything or limit the deletion to the range betweeen two buffer positions with ~delete-region~. Finally, the functions ~display-buffer~ or ~pop-to-buffer~ will place the buffer in an Emacs window.
+ * **何らかの処理結果を表示する**： たとえば、今後の祝日一覧を表示するような関数を考えてみましょう。コードは内部的に必要な計算を行い、最終的にその結果をテキストとして特定のバッファに書き込みます。そして、そのバッファがユーザーに表示されるわけです。この実現方法にもよりますが、まず結果を表示するためのバッファを取得（なければ作成）する`get-buffer-create`や、既存のバッファのみを取得する`get-buffer`といった関数が必要になるでしょう。もし既存のバッファの内容を一旦消去したい場合は、`with-current-buffer`マクロを使って一時的に対象バッファに切り替え、`erase-buffer`関数で全内容を削除するか、`delete-region`で指定範囲のみを削除することができます。最終的に、`display-buffer`や`pop-to-buffer`といった関数が、その結果の入ったバッファをEmacsのウィンドウに表示させます。
 
 <!--
 #+vindex: buffer-file-name
@@ -213,7 +215,7 @@ When you program in Emacs Lisp, you frequently rely on buffers to do some of the
 #+findex: setq-local
 -->
 
-- Associate variables with a given buffer :: In Emacs Lisp, variables can take a buffer-local value which differs from its global counterpart. Some variables are even declared to always be buffer-local, such as the ~buffer-file-name~, ~fill-column~, and ~default-directory~. Suppose you are doing something like returning a list of buffers that visit files in a given directory. You would iterate through the return value of the ~buffer-list~ function to filter the results accordingly by testing for a certain value of ~buffer-file-name~ ([[#h:basic-control-flow-with-if-cond-and-others][Basic control flow with ~if~, ~cond~, and others]]). This specific variable is always available, though you can always use the ~setq-local~ macro to assign a value to a variable in the current buffer.
+ * **特定のバッファに変数を関連付ける**： Emacs Lispでは、変数はグローバルな値とは別に、バッファごとに固有の値（バッファローカル値）を持つことができます。`buffer-file-name`、`fill-column`、`default-directory`のように、常にバッファローカルであると定義されている変数もあります。たとえば、特定のディレクトリにあるファイルを開いているバッファのリストを取得したい場合を考えてみましょう。`buffer-list`関数で全バッファのリストを取得し、各バッファの`buffer-file-name`の値をチェックすることで、目的のバッファだけを絞り込む（フィルタリングする）ことができます（[`if`, `cond`などによる基本的な制御フロー](#h:basic-control-flow-with-if-cond-and-others)参照）。`buffer-file-name`のような変数はバッファごとに自動的に設定されていますが、`setq-local`マクロを使えば、任意の変数に現在のバッファ限定の値を設定することも可能です。
 
 <!--
 #+findex: seq-filter
@@ -221,39 +223,39 @@ When you program in Emacs Lisp, you frequently rely on buffers to do some of the
 #+cindex: Hidden buffers
 -->
 
-The latter point is perhaps the most open-ended one. Buffers are like a bundle of variables, which includes their contents, the major mode they are running, and all the buffer-local values they have. In the following code block, I am using the ~seq-filter~ function to iterate through the return value of the function ~buffer-list~ ([[#h:symbols-balanced-expressions-and-quoting][Symbols, balanced expressions, and quoting]]).
+最後に触れたバッファローカル変数は、おそらく最も応用範囲の広い考え方でしょう。バッファとは、その内容、実行中のメジャーモード、そして設定されているすべてのバッファローカル変数などを含む、いわば「変数の束」のようなものなのです。以下のコード例では、`seq-filter`関数を使って`buffer-list`関数が返すバッファのリストを処理（反復処理）しています（[シンボル、バランスのとれた式、そしてクオート](#h:symbols-balanced-expressions-and-quoting)参照）。
 
 ```emacs-lisp
 (seq-filter
  (lambda (buffer)
    "Return BUFFER if it is visible and its major mode derives from `text-mode'."
    (with-current-buffer buffer
-     ;; The convention for buffers which are not meant to be seen by
-     ;; the user is to start their name with an empty space.  We are
-     ;; not interested in those right now.
+     ;; ユーザーに見られることを意図していないバッファは、バッファ名の先頭をスペースから始める慣習です。
+     ;; 今回はそのようなバッファには興味がないので無視します。
      (and (not (string-prefix-p " " (buffer-name buffer)))
           (derived-mode-p 'text-mode))))
  (buffer-list))
 ```
 
-This will return a list of buffer objects that pass the test of (i) being "visible" to the user and (ii) their major mode is either ~text-mode~ or derived therefrom. The above may also be written thus ([[#h:when-to-use-a-named-function-or-a-lambda-function][When to use a named function or a lambda function]]):
+
+このコードは「(1) ユーザーに「可視」であり（慣習的に名前がスペースで始まらない）」かつ「 (ii) メジャーモードが`text-mode`またはその派生モードである」、という条件を満たすバッファオブジェクトのリストを返します。この処理は、以下のように名前付き関数を使って書くこともできます（[名前付き関数とラムダ関数の使い分け ](#h:when-to-use-a-named-function-or-a-lambda-function)参照）：
 
 ```emacs-lisp
 (defun my-buffer-visble-and-text-p (buffer)
   "Return BUFFER if it is visible and its major mode derives from `text-mode'."
   (with-current-buffer buffer
-    ;; The convention for buffers which are not meant to be seen by
-    ;; the user is to start their name with an empty space.  We are
-    ;; not interested in those right now.
+    ;; ユーザーに見られることを意図していないバッファは、バッファ名の先頭をスペースから始める慣習です。
+    ;; 今回はそのようなバッファには興味がないので無視します。
     (and (not (string-prefix-p " " (buffer-name buffer)))
          (derived-mode-p 'text-mode))))
 
 (seq-filter #'my-buffer-visble-and-text-p (buffer-list))
 ```
 
-As with buffers, Emacs windows and frames have their own parameters. I will not cover those as their utility is more specialised and the concepts are the same. Just know that they are data structures that you may use to your advantage, including by iterating through them ([[#h:mapping-through-a-list-of-elements][Mapping through a list of elements]]).
 
-## テキストはそれぞれプロパティを持つ {#h:text-has-its-own-properties}
+バッファと同様に、Emacsのウィンドウやフレームもそれぞれ固有のパラメータを持っています。これらもデータ構造の一種ですが、バッファほど頻繁には扱われず、より専門的な用途になるため、本書では詳しく触れません。概念自体はバッファと同じです。重要なのは、ウィンドウやフレームもまた、プログラムで操作したり、リストとして繰り返し処理したり（[リスト要素のマッピング](#h:mapping-through-a-list-of-elements)参照）できるデータ構造である、ということを知っておくことです。
+
+## 5. テキストが持つプロパティ {#h:text-has-its-own-properties}
 
 <!--
 #+cindex: Propertise text
@@ -262,19 +264,21 @@ As with buffers, Emacs windows and frames have their own parameters. I will not 
 #+findex: describe-char
 -->
 
-Just as with buffers that work like data structures ([[#h:buffers-as-data-structures][Buffers as data structures]]), any text may also have properties associated with it. This is metadata that you inspect using Emacs Lisp. For example, when you see syntax highlighting in some programming buffer, this is the effect of text properties. Some function takes care to "propertise" or to "fontify" the relevant text and decides to apply to it an object known as "face". Faces are constructs that bundle together typographic and colour attributes, such as the font family and weight, as well as foreground and background hues. To get a Help buffer with information about the text properties at the point of the cursor, type {{{kbd(M-x)}}} (~execute-extended-command~) and then invoke the command ~describe-char~. It will tell you about the character it sees, what font it is rendered with, which code point it is, and what its text properties are.
 
-Suppose you are writings your own major mode. At the early stage of experimentation, you want to manually add text properties to all instances of the phrase =I have properties= in a buffer whose major mode is ~fundamental-mode~, so you do something like this ([[#h:the-match-data-of-the-last-search][The match data of the last search]]):
+データ構造のように扱えるバッファ（[データ構造としてのバッファ](#h:buffers-as-data-structures)参照）と同じように、どんなテキストにもプロパティ（属性情報）を関連付けることができます。これはEmacs Lispを使って参照できるメタデータ（付加情報）です。例えば、プログラミング用バッファで表示されるシンタックスハイライト（構文の強調表示）は、このテキストプロパティの効果によるものです。何らかの関数が、対象となるテキストに「プロパティを付与（propertise）」したり「装飾（fontify）」したりする処理を担当し、「フェイス（face）」と呼ばれるオブジェクトを適用します。フェイスとは、フォントの種類や太さ、文字色や背景色といった、文字の体裁や色に関する属性をまとめたものです。カーソル位置の文字のテキストプロパティに関する情報をヘルプバッファで確認するには、<kbd>M-x</kbd>（`execute-extended-command`）に続けて`describe-char`コマンドを実行します。すると、カーソル下の文字、表示に使われているフォント、文字コード、そしてその文字が持つテキストプロパティが表示されます。
+
+例えば、あなたが独自のメジャーモードを作成しているとしましょう。実験の初期段階として、`fundamental-mode`のバッファ内で、「`I have properties`」というフレーズが現れるすべての箇所に、手動でテキストプロパティを追加したいと考え、次のようなコードを書くかもしれません（[検索結果のマッチデータ](#h:the-match-data-of-the-last-search)参照）：
 
 ```emacs-lisp
 (defun my-add-properties ()
-  "Add properties to the text \"I have properties\" across the current buffer."
+  "現在のバッファ全体でテキスト \"I have properties\" にプロパティを追加する."
   (goto-char (point-min))
   (while (re-search-forward "I have properties" nil t)
     (add-text-properties (match-beginning 0) (match-end 0) '(face error))))
 ```
 
-Actually try this. Use {{{kbd(C-x b)}}} (~switch-to-buffer~), type in some random characters that do not match an existing buffer, and then hit {{{kbd(RET)}}} to visit that new buffer. It runs ~fundamental-mode~, meaning that there is no "fontification" happening and, thus, ~my-add-properties~ will work as intented. Now paste the following:
+
+実際にこれを試してみましょう。まず<kbd>C-x b</kbd>（`switch-to-buffer`）を実行し、既存のバッファ名と重複しない適当な名前（例：`test-props`）を入力して<kbd>RET</kbd>を押します。すると、その名前で新しいバッファが開きます。このバッファは`fundamental-mode`で動作するため、自動的なテキスト装飾（fontification）は行われず、`my-add-properties`が意図通りに動作するのを確認できます。では、以下のテキストをその新しいバッファに貼り付けてください：
 
 ```
 This is some sample text. Will the phrase "I have properties" use the `bold' face?
@@ -282,26 +286,29 @@ This is some sample text. Will the phrase "I have properties" use the `bold' fac
 What does it even mean for I have properties to be bold?
 ```
 
-Continue with {{{kbd(M-:)}}} (~eval-expression~) and call the function ~my-add-properties~. Did it work? The face it is applying is called ~error~. Ignore the semantics of that word: I picked it simply because it typically is styled in a fairly intense and obvious way (though your current theme may do things differently).
+続けて<kbd>M-:</kbd>（`eval-expression`）を実行し、プロンプトに対して`(my-add-properties)`と入力して<kbd>RET</kbd> を押し、先ほど定義した関数を呼び出します。どうでしょうか？ バッファ内の「`I have properties`」の部分の見た目が変わりましたか？ このコードが適用しているフェイスは`error`という名前のものです。この単語の意味（エラー）はここでは無視してください。通常、`error`フェイスは非常に目立つスタイル（例えば赤文字など）で定義されていることが多いため、プロパティが適用されたことが分かりやすいだろうという理由だけで、このフェイスを選びました。ただし、色などのスタイル現在使用しているテーマによっては表示が異なります。
+
 
 <!--
 #+findex: shortdoc
 #+cindex: Shortdoc for text properties
 -->
 
-There are functions which find the properties at a given buffer position and others which can search forward and backward for a given property. The specifics do not matter right now. All I want you to remember is that the text can be more than just its constituent characters. For more details, type {{{kbd(M-x)}}} (~execute-extended-command~) to call the command ~shortdoc~. It will ask you for a documentation group. Pick =text-properties= to learn more. Well, use ~shortdoc~ for everything listed there. I do it all the time.
+Emacs Lispには、指定した位置のテキストプロパティを取得する関数や、特定のプロパティを持つ箇所を前方または後方に検索する関数なども用意されています。個々の関数の詳細は今は重要ではありません。ここで覚えておいてほしいのは、テキストは単なる文字の集まり以上の情報（プロパティ）を持ちうるということです。テキストプロパティについてさらに詳しく知りたければ、<kbd>M-x</kbd>（`execute-extended-command`）で`shortdoc`コマンドを呼び出してみてください。ドキュメントのグループ名を尋ねられるので、`text-properties`を選択すると関連情報が表示されます。`shortdoc`はそこにリストされているどの項目についても使える便利なコマンドなので、私はいつも活用しています。
 
-## シンボル、バランスのとれた式、そしてクオート {#h:symbols-balanced-expressions-and-quoting}
+## 6. シンボル、バランスのとれた式、そしてクオート {#h:symbols-balanced-expressions-and-quoting}
 
 <!--
 #+cindex: Define a simple function
 -->
 
-To someone not familiar with Emacs Lisp, it is a language that has so many parentheses! Here is a simple function definition:
+
+馴染みがない人にとって、Emacs Lispはとにかく括弧だらけの言語に見えることでしょう！ まずは、簡単な関数定義を見てみましょう：
 
 ```emacs-lisp
 (defun my-greet-person (name)
   "Say hello to the person with NAME."
+  ;; NAME を呼んで挨拶する.
   (message "Hello %s" name))
 ```
 
@@ -310,44 +317,45 @@ To someone not familiar with Emacs Lisp, it is a language that has so many paren
 #+findex: view-echo-area-messages
 -->
 
-I just defined the function with the name ~my-greet-person~. It has a list of parameters, specifically, a list of one parameter, called =name=. Then is the optional documentation string, which is for users to make sense of the code and/or understand the intent of the function. ~my-greet-person~ takes =name= and passes it to the function ~message~ as an argument to ultimately print a greeting. The ~message~ function logs the text in the =*Messages*= buffer, which you can visit directly with {{{kbd(C-h e)}}} (~view-echo-area-messages~). At any rate, this is how you call ~my-greet-person~ with the one argument it expects:
+
+ここで`my-greet-person`という名前の関数を定義しました。この関数はパラメータ（仮引数）のリストを持ちます（この場合は`name`という一つのパラメータだけです）。その次には、必須ではありませんがドキュメンテーション文字列（docstring）があります。これは、他の人がコードの意味を理解したり、関数の目的を把握したりするのに役立ちます。`my-greet-person`関数は、受け取った`name`を`message`関数に引数として渡し、最終的に挨拶文を表示します。`message`関数が使われると、そのテキストは`*Messages*`バッファに記録されます（このバッファは<kbd>C-h e</kbd> (`view-echo-area-messages`) ですぐに確認できます）。さて、この`my-greet-person`関数を、期待されている一つの引数を指定して呼び出すには、次のようにします：
 
 ```emacs-lisp
 (my-greet-person "Protesilaos")
 ```
 
-Now do the same with more than one parameters:
+では、複数のパラメータを持つ関数で同じようにやってみましょう：
 
 ```emacs-lisp
 (defun my-greet-person-from-country (name country)
   "Say hello to the person with NAME who lives in COUNTRY."
+  ;; NAME と住んでいる COUNTRY を呼んで挨拶する.
   (message "Hello %s of %s" name country))
 ```
 
-And call it thus:
+そしてそれをこのように呼び出します：
 
 ```emacs-lisp
 (my-greet-person-from-country "Protesilaos" "Cyprus")
 ```
 
-Even for the most basic tasks, you have lots of parentheses. But fear not! These actually make it simpler to have a structural understanding of your code. If it does not feel this way right now, it is because you are not used to it yet. Once you do, there is no going back.
+このように、最も基本的な処理であっても、たくさんの括弧が出てきます。でも、心配はいりません！ 実はこの括弧があるおかげで、コードの構造がむしろ理解しやすくなるのです。もし今そう感じられないとしても、それは単にまだ慣れていないだけです。一度この感覚に慣れてしまえば、もう括弧のない世界には戻れなくなるでしょう。
 
 <!--
 #+cindex: Lisp languages are all about lists
 -->
 
-The basic idea of any dialect of Lisp, Emacs Lisp being one of them, is that you have parentheses which delimit lists. A list consists of elements. Lists are either evaluated to produce the results of some computation or returned as they are for use in some other evaluation ([[#h:side-effect-and-return-value][Side effect and return value]]):
+Emacs Lispを含むあらゆるLisp方言の基本的な考え方は、括弧`()`が「リスト」の区切りを表す、という点にあります。リストは複数の「要素」から構成されます。リストは、大きく分けて二通りの扱われ方をします。一つは、何らかの計算を実行するために「評価」される場合、もう一つは、後で別の評価（計算）に使うためにデータとして「そのまま」返される場合です（[副作用と戻り値](#h:side-effect-and-return-value)参照）。
 
-- The list as a function call :: When a list is evaluated, the first element is the name of the function and the remaining elements are the arguments passed to it. You already saw this play out above with how I called ~my-greet-person~ with ="Protesilaos"= as its argument. Same principle for ~my-greet-person-from-country~, with ="Protesilaos"= and ="Cyprus"= as its arguments.
-
-- The list as data :: When a list is not evaluated, then none of its elements has any special meaning at the outset. They are all returned as a list without further changes. When you do not want your list to be evaluated, you prefix it with a single quote character. For example, ='("Protesilaos" "Prot" "Cyprus")= is a list of three elements that should be returned as-is.
+ * **関数呼び出しとしてのリスト**：リストが「評価」される場合、リストの先頭にある要素は実行すべき「関数名」とみなされ、それ以降の要素はその関数に渡される「引数」として扱われます。先ほど`my-greet-person`をその引数として`"Protesilaos"`で呼び出すことで、そのように展開されました。`my-greet-person-from-country`についても同じ原則で、`"Protesilaos"`と`"Cyprus"`がその引数です。
+ * **データとしてのリスト**：リストが「評価」されない場合、その中の要素は特別な意味を持ちません。リスト全体がそのまま、変更されることなくデータとして返されます。リストを評価させずにデータとして扱いたい場合は、リストの前にシングルクォート`'`を付けます。例えば、`'("Protesilaos" "Prot" "Cyprus")`と書くと、これは3つの文字列要素からなるリストとして、そのまま返されます。
 
 <!--
 #+findex: car
 #+findex: cdr
 -->
 
-Consider the latter case, which you have not seen yet. You have a list of elements and you want to get some data out of it. At the most basic level, the functions ~car~ and ~cdr~ return the first element and the list of all remaining elements, respectively:
+では、後者の「データとしてのリスト」のケースを考えてみましょう。まだ例を見ていませんでしたね。手元に要素のリストがあり、そこから特定のデータを取り出したいとします。最も基本的な操作として、関数`car`はリストの「最初の要素」を返し、`cdr`は「最初の要素を除いた残りの要素からなるリスト」を返します：
 
 ```emacs-lisp
 (car '("Protesilaos" "Prot" "Cyprus"))
@@ -357,36 +365,36 @@ Consider the latter case, which you have not seen yet. You have a list of elemen
 ;; => ("Prot" "Cyprus")
 ```
 
-The single quote here is critical, because it instructs Emacs to not evaluate the list. Otherwise, the evaluation of this list would treat the first element, namely ="Protesilaos"=, as the name of a function and the remainder of the list as the arguments to that function. As you do not have the definition of such a function, you get an error.
+ここでのシングルクォート`'`は極めて重要です。これがEmacsに対して「このリストを評価しないでください」と指示しているからです。もしクォートがなければ、Emacsはこのリストを評価しようとし、最初の要素である文字列`"Protesilaos"`を関数名として扱おうとします。しかし、そんな名前の関数は定義されていないため、エラーが発生してしまうのです。
 
 <!--
 #+findex: list
 #+cindex: Self-evaluating objects
 -->
 
-Certain data types in Emacs Lisp are "self-evaluating". This means that if you evaluate them, their return value is what you are already seeing. For example, the return value of the string of characters ="Protesilaos"= is ="Protesilaos"=. This is true for strings, numbers, keywords, symbols, and the special ~nil~ or ~t~. Here is a list with a sample of each of these, which you construct by calling the function ~list~:
+
+Emacs Lispのデータ型の中には、「自己評価（self-evaluating）」するものがあります。これは、それらを評価しても、見た目通りのそれ自身がそのまま値として返ってくる、という意味です。例えば、文字列`"Protesilaos"`を評価すると、結果は`"Protesilaos"`です。これは文字列の他に、数値、キーワード（`:hello`のようなコロンで始まるもの）、シンボル、そして特別な値である`nil`や`t`にも当てはまります。以下は、これらのデータ型のサンプルを関数`list`を使ってリストにした例です：
 
 ```emacs-lisp
 (list "Protesilaos" 1 :hello 'my-greet-person-from-country nil t)
 ;; => ("Protesilaos" 1 :hello 'my-greet-person-from-country nil t)
 ```
 
-The ~list~ function evaluates the arguments passed to it, unless they are quoted. The reason you get the return value without any apparent changes is because of self-evaluation. Notice that ~my-greet-person-from-country~ is quoted the same way we quote a list we do not want to evaluate. Without it, ~my-greet-person-from-country~ would be evaluated, which would return an error unless that was also defined as a variable.
+
+`list`関数は、渡された引数を（クオートされていなければ）評価します。上の例で、戻り値のリストが元の引数とほとんど変わらないように見えるのは、多くの引数（文字列、数値、キーワード、`nil`, `t`）が自己評価するからです。ここで、`my-greet-person-from-country`が、評価されたくないリストをクオートしたのと同じように、シングルクォート`'`でクオートされている点に注目してください。もしクオートがなければ、`my-greet-person-from-country`は評価されようとします。これは通常、変数としての評価を試みるため、（この名前の変数が定義されていなければ）エラーになります。
 
 <!--
 #+cindex: Quote to avoid evaluation
 -->
 
-Think of the single quote as an unambiguous instruction: "do not evaluate the following." More specifically, it is an instruction to not perform evaluation if it would have normally happened in that context ([[#h:partial-evaluation-inside-of-a-list][Partial evaluation inside of a list]]). In other words, you do not want to quote something inside of a quoted list, because that is the same as quoting it twice:
+シングルクォート`'`は、「次に続くものを評価しないでください」という明確な指示だと考えてください。もう少し正確に言うと、その文脈で通常なら評価が起こるはずの場面で、その評価を抑制する指示です（[リスト内部の部分評価](#h:partial-evaluation-inside-of-a-list)参照）。したがって、既にクオートされているリストの中で、さらに要素をクオートする必要はありません。それは二重にクオートするのと同じになってしまいます：
 
 ```emacs-lisp
-;; This is the correct way:
+;; これが正しい方法:
 '(1 :hello my-greet-person-from-country)
 
-;; It is wrong to quote `my-greet-person-from-country' because the
-;; entire list would not have been evaluated anyway.  The mistake here
-;; is that you are quoting what is already quoted, like doing
-;; ''my-greet-person-from-country.
+;; そもそもリスト全体が評価されないので、`my-greet-person-from-country' をクオートするのは間違いです。
+;; ここでの間違いは、既にクオートされているものを ''my-greet-person-from-country のように二重にクオートしていることです。
 '(1 :hello 'my-greet-person-from-country)
 ```
 
@@ -395,30 +403,33 @@ Think of the single quote as an unambiguous instruction: "do not evaluate the fo
 #+cindex: Unquoted symbols are evaluated
 -->
 
-Now you may be wondering why did we quote ~my-greet-person-from-country~ but nothing else? The reason is that everything else you saw there is effectively "self-quoting", i.e. the flip-side of self-evaluation. Whereas ~my-greet-person-from-country~ is a symbol. A "symbol" is a reference to something other than itself: it either represents some computation---a function---or the value of a variable. If you write a symbol without quoting it, you are effectively telling Emacs "give me the value this symbol represents." In the case of ~my-greet-person-from-country~, you will get an error if you try that because this symbol is not a variable and thus trying to get a value out of it is not going to work.
+では、なぜ`my-greet-person-from-country`はクオートしたのに、他の要素（数値やキーワードなど）はクオートしなかったのでしょうか？ その理由は、リスト内でクオートされなかった他の要素は、実質的に「自己クオート（self-quoting）」する、つまり評価されてもクオートされているかのように振る舞う（自己評価の裏返し）からです。一方で`my-greet-person-from-country`は「シンボル」です。シンボルとは、それ自身ではなく、何か別のものを指し示す参照のようなものです。具体的には、何らかの計算（関数）を表すか、あるいは変数の値を表します。シンボルをクオートせずに書くと、それはEmacsに対して「このシンボルが指し示している値を持ってきてください」と指示することになります。`my-greet-person-from-country`の場合、これは関数を指していますが、変数ではありません。そのため、クオートなしで評価して値を取り出そうとすると、（変数値がないため）エラーになります。
 
 <!--
 #+concept: Elisp Macros
 -->
 
-Keep in mind that Emacs Lisp has a concept of "macro", which basically is a templating system to write code that actually expands into some other code which is then evaluated. Inside of a macro, you control how quoting is done, meaning that the aforementioned may not apply to calls that involve the macro, even if they are still used inside of the macro's expanded form ([[#h:evaluation-inside-of-a-macro-or-special-form][Evaluation inside of a macro or special form]]).
+Keep in mind that Emacs Lisp has a concept of "macro", which basically is a templating system to write code that actually expands into some other code which is then evaluated. Inside of a macro, you control how quoting is done, meaning that the aforementioned may not apply to calls that involve the macro, even if they are still used inside of the macro's expanded form ([Evaluation inside of a macro or special form](#h:evaluation-inside-of-a-macro-or-special-form)).
+
+
+ただし、Emacs Lispには「マクロ」という概念があることに注意してください。マクロは基本的に、コードを生成するためのテンプレートのようなもので、マクロ自身が評価されるのではなく、まず別のコードに「展開」され、その展開されたコードが評価されます。マクロの定義内では、引数の評価やクオートの扱いを細かく制御できます。そのため、マクロ呼び出しの際には、これまで説明したクオートのルールがそのまま当てはまらない場合があります。たとえ展開後のコード内では通常のルールが適用されるとしてもです（[マクロやスペシャルフォーム内での評価](#h:evaluation-inside-of-a-macro-or-special-form)参照）。
 
 <!--
 #+findex: quote
 #+findex: function
 -->
 
-As you expose yourself to more Emacs Lisp code, you will encounter quotes that are preceded by the hash sign, like =#'some-symbol=. This "sharp quote", as it is called, is the same as the regular quote with the added semantics of referring to a function in particular. The programmer can thus better articulate the intent of a given expression, while the byte compiler may internally perform the requisite checks and optimisations. In this light, read about the functions ~quote~ and ~function~ which correspond to the quote and sharp quote, respectively.
+Emacs Lispのコードを読み進めると、`#'some-symbol`のように、ハッシュ記号`#`が付いたクオートを目にすることがあるでしょう。これは「シャープクオート」と呼ばれ、通常のシングルクォート`'`と同様に評価を抑制しますが、特に「関数」を参照している、という明確な意味合いが加わります。これを使うことで、プログラマは式の意図（これは関数である）をより明確に表現でき、またバイトコンパイラ（コードをより効率的な形式に変換するプログラム）が内部的なチェックや最適化を行いやすくなる可能性があります。このシャープクオートに関連して、通常のクオート`'`に対応する`quote`関数と、シャープクオート`#'`に対応する`function`関数についても調べてみると良いでしょう。
 
-## リスト内の部分評価 {#h:partial-evaluation-inside-of-a-list}
+## 7. リスト内部の部分評価 {#h:partial-evaluation-inside-of-a-list}
 
-You already have an idea of how Emacs Lisp code looks like ([[#h:symbols-balanced-expressions-and-quoting][Symbols, balanced expressions, and quoting]]). You have a list that is either evaluated or taken as-is. There is another case where a list should be partially evaluated or, more specifically, where it should be treated as data instead of a function call with some elements inside of it still subject to evaluation.
+You already have an idea of how Emacs Lisp code looks like ([Symbols, balanced expressions, and quoting](#h:symbols-balanced-expressions-and-quoting)). You have a list that is either evaluated or taken as-is. There is another case where a list should be partially evaluated or, more specifically, where it should be treated as data instead of a function call with some elements inside of it still subject to evaluation.
 
 <!--
 #+cindex: Declare a variable
 -->
 
-In the following code block, I am defining a variable called ~my-greeting-in-greek~, which is a common phrase in Greek that literally means "health to you" and is pronounced as "yah sou". Why Greek? Well, you got the ~lambda~ that engendered this whole business with Lisp, so you might as well get all the rest ([[#h:when-to-use-a-named-function-or-a-lambda-function][When to use a named function or a lambda function]])!
+In the following code block, I am defining a variable called ~my-greeting-in-greek~, which is a common phrase in Greek that literally means "health to you" and is pronounced as "yah sou". Why Greek? Well, you got the ~lambda~ that engendered this whole business with Lisp, so you might as well get all the rest ([When to use a named function or a lambda function](#h:when-to-use-a-named-function-or-a-lambda-function))!
 
 ```emacs-lisp
 (defvar my-greeting-in-greek "Γεια σου"
@@ -464,15 +475,15 @@ Bear in mind that you would get an error if you were not quoting this list at al
 #+cindex: Splicing in general
 -->
 
-Other than the comma operator, there is the =,@= (how is this even pronounced? "comma at", perhaps?), which is notation for "splicing". This is jargon in lieu of saying "the return value is a list and I want you to remove the outermost parentheses of it." In effect, the code that would normally return ='(one two three)= now returns =one two three=. This difference may not make much sense in a vacuum, though it does once you consider those elements as expressions that should work in their own right, rather than simply be elements of a quoted list. I will not elaborate on an example here, as I think this is best covered in the context of defining macros ([[#h:evaluation-inside-of-a-macro-or-special-form][Evaluation inside of a macro or special form]]).
+Other than the comma operator, there is the =,@= (how is this even pronounced? "comma at", perhaps?), which is notation for "splicing". This is jargon in lieu of saying "the return value is a list and I want you to remove the outermost parentheses of it." In effect, the code that would normally return ='(one two three)= now returns =one two three=. This difference may not make much sense in a vacuum, though it does once you consider those elements as expressions that should work in their own right, rather than simply be elements of a quoted list. I will not elaborate on an example here, as I think this is best covered in the context of defining macros ([Evaluation inside of a macro or special form](#h:evaluation-inside-of-a-macro-or-special-form)).
 
 Chances are you will not need to use the knowledge of partial evaluation. It is more common in macros, though can be applied anywhere. Be aware of it regardless, as there are scenaria where you will, at the very least, want to understand what some code you depend on is doing.
 
 Lastly, since I introduced you to some Greek words, I am now considering you my friend. Here is a joke from when I was a kid. I was trying to explain some event to my English instructor. As I lacked the vocabulary to express myself, I started using Greek words. My instructor had a strict policy of only responding to English, so she said "It is all Greek to me." Not knowing that her answer is an idiom for "I do not understand you", I blithely replied, "Yes, Greek madame; me no speak England very best." I was not actually a beginner at the time, though I would not pass on the opportunity to make fun of the situation. Just how you should remember to enjoy the time spent tinkering with Emacs. But enough of that! Back to reading this book.
 
-## マクロまたはスペシャルフォーム内での評価 {#h:evaluation-inside-of-a-macro-or-special-form}
+## 8. マクロやスペシャルフォーム内での評価 {#h:evaluation-inside-of-a-macro-or-special-form}
 
-In the most basic case of Emacs Lisp code, you have lists that are either evaluated or not ([[#h:symbols-balanced-expressions-and-quoting][Symbols, balanced expressions, and quoting]]). If you get a little more fancy, you have lists that are only partially evaluated ([[#h:partial-evaluation-inside-of-a-list][Partial evaluation inside of a list]]). Sometimes though, you look at a piece of code and cannot understand why the normal rules of quoting and evaluation do not apply. Before you see this in action, inspect a typical function call that also involves the evaluation of a variable:
+In the most basic case of Emacs Lisp code, you have lists that are either evaluated or not ([Partial evaluation inside of a list](#h:symbols-balanced-expressions-and-quoting][Symbols, balanced expressions, and quoting]]). If you get a little more fancy, you have lists that are only partially evaluated ([[#h:partial-evaluation-inside-of-a-list)). Sometimes though, you look at a piece of code and cannot understand why the normal rules of quoting and evaluation do not apply. Before you see this in action, inspect a typical function call that also involves the evaluation of a variable:
 
 ```emacs-lisp
 (concat my-greeting-in-greek " " "Πρωτεσίλαε")
@@ -539,7 +550,7 @@ If the normal rules of evaluation applied, then the list of parametes should be 
 #+findex: let
 -->
 
-Another common scenario is with ~let~ ([[#h:control-flow-with-if-let-and-friends][Control flow with ~if-let*~ and friends]]). Its general form is as follows:
+Another common scenario is with ~let~ ([Control flow with ~if-let*~ and friends](#h:control-flow-with-if-let-and-friends)). Its general form is as follows:
 
 ```emacs-lisp
 ;; This is pseudo-code
@@ -577,7 +588,7 @@ To learn what a given macro actually expands to, place the cursor at the end of 
 #+cindex: Splicing within a macro
 -->
 
-With those granted, it is time to write a macro. This is like a template, which empowers you to not repeat yourself. Syntactically, a macro will most probably depend on the use of the quasi-quote, the comma operator, and the mechanics of splicing ([[#h:partial-evaluation-inside-of-a-list][Partial evaluation inside of a list]]). Here is a simple scenario where we want to run some code in a temporary buffer while setting the ~default-directory~ to the user's home directory.
+With those granted, it is time to write a macro. This is like a template, which empowers you to not repeat yourself. Syntactically, a macro will most probably depend on the use of the quasi-quote, the comma operator, and the mechanics of splicing ([Partial evaluation inside of a list](#h:partial-evaluation-inside-of-a-list)). Here is a simple scenario where we want to run some code in a temporary buffer while setting the ~default-directory~ to the user's home directory.
 
 ```emacs-lisp
 (defmacro my-work-in-temp-buffer-from-home (&rest expressions)
@@ -625,7 +636,7 @@ Piecing it together with the rest of the code in its context, I arrive at this:
 
 With this example in mind, consider Elisp macros to be a way of saying "this little thing here helps me express this larger procedure more succinctly, while the actual code that runs is still that of the latter."
 
-The above macro I wrote has its body start with a quasi-quote, so you do not get to appreciate the nuances of evaluation within it. Let me show you this other approach, instead, where I write a macro that lets me define several almost identical interactive functions ([[#h:make-your-interactive-function-also-work-from-lisp-calls][Make your interactive function also work from Lisp calls]]).
+The above macro I wrote has its body start with a quasi-quote, so you do not get to appreciate the nuances of evaluation within it. Let me show you this other approach, instead, where I write a macro that lets me define several almost identical interactive functions ([Make your interactive function also work from Lisp calls](#h:make-your-interactive-function-also-work-from-lisp-calls)).
 
 ```emacs-lisp
 (defmacro my-define-command (name &rest expressions)
@@ -679,7 +690,7 @@ The ~my-define-command~ can be broadly divided into two parts: (i) what gets eva
 
 Do you need macros? Not always, though there will be cases where a well-defined macro makes your code more elegant. What matters is that you have a sense of how evaluation works so that you do not get confused by all those parentheses. Otherwise you might expect something different to happen than what you actually get.
 
-## リストの要素へのマッピング {#h:mapping-through-a-list-of-elements}
+## 9. リストの要素のマッピング {#h:mapping-through-a-list-of-elements}
 
 <!--
 #+findex: while
@@ -690,14 +701,14 @@ Do you need macros? Not always, though there will be cases where a well-defined 
 #+findex: seq-remove
 -->
 
-A common routine in programming is to work through a list of items and perform some computation on each of them. Emacs Lisp has the generic ~while~ loop, as well as a whole range of more specialised functions to map over a list of elements, such as ~mapcar~, ~mapc~, ~dolist~, ~seq-filter~, ~seq-remove~, and many more. Depending on what you are doing, you map through elements with the intent to produce some side effect and/or to test for a return value ([[#h:side-effect-and-return-value][Side effect and return value]]). I will show you some examples and let you decide which is the most appropriate tool for the task at hand.
+プログラミングにおける一般的な作業の一つに、リスト（データの集まり）に含まれる項目（要素）を一つずつ順番に処理し、それぞれに対して何らかの計算を行う、というものがあります。Emacs Lispには、汎用的な`while`ループはもちろん、リストの要素を処理するために特化した様々な関数群、たとえば`mapcar`、`mapc`、`dolist`、`seq-filter`、`seq-remove`などが用意されています。目的によって、何らかの副作用（状態の変化）を起こすため、あるいは戻り値（処理結果の値）を得るために、これらの関数を使ってリストの要素を処理します（[副作用と戻り値](#h:side-effect-and-return-value)参照）。ここではいくつかの例を示し、皆さんが当面の作業に最も適したツールを選べるようにしましょう。
 
 <!--
 #+findex: mapcar
 #+cindex: Accumulating results of a map
 -->
 
-Starting with ~mapcar~, it applies a function to each element of a list. It then takes the return value at each iteration and collects it into a new list. This is the return value of ~mapcar~ as a whole. In the following code block, I use ~mapcar~ over a list of numbers to increment them by =10= and return a new list of the incremented numbers.
+まずは`mapcar`です。これはリストの各要素に関数を適用します。そして、各要素に対する関数の戻り値を集めて、新しいリストを作成します。これが`mapcar`全体としての戻り値になります。以下のコード例では、数値のリストに対して mapcar を使い、各数値を`10`ずつ増やして、その結果からなる新しいリストを返しています。
 
 ```emacs-lisp
 (mapcar
@@ -707,7 +718,9 @@ Starting with ~mapcar~, it applies a function to each element of a list. It then
 ;; => (11 12 13 14 15)
 ```
 
-In the code block above, I am using a ~lambda~, else an anonymous function ([[#h:when-to-use-a-named-function-or-a-lambda-function][When to use a named function or a lambda function]]). Here is the same code, but with an eponymous function, i.e. a named function:
+In the code block above, I am using a ~lambda~, else an anonymous function ([When to use a named function or a lambda function]()). Here is the same code, but with an eponymous function, i.e. a named function:
+
+上記のコードブロックでは**無名関数**（anonymous function）とも呼ばれる`lambda`を使用しています（[名前付き関数とラムダ関数の使い分け](#h:when-to-use-a-named-function-or-a-lambda-function)参照）。以下は、同じコードですが、**名前付き関数**（eponymous function）を使用しています。
 
 ```emacs-lisp
 (defun my-increment-by-ten (number)
@@ -718,7 +731,7 @@ In the code block above, I am using a ~lambda~, else an anonymous function ([[#h
 ;; => (11 12 13 14 15)
 ```
 
-Notice that here we quote the eponymous function ([[#h:symbols-balanced-expressions-and-quoting][Symbols, balanced expressions, and quoting]]).
+ここでは名前付き関数をクオート（`#'`）している点に注意してください（[シンボル、バランスの取れた式、クォート](#h:symbols-balanced-expressions-and-quoting)参照）。
 
 <!--
 #+findex: mapcar
@@ -726,7 +739,7 @@ Notice that here we quote the eponymous function ([[#h:symbols-balanced-expressi
 #+cindex: Mapping only for side effects
 -->
 
-The ~mapcar~ collects the return values into a new list. Sometimes this is useless. Suppose you want to evaluate a function that saves all unsaved buffers which visit a file. In this scenario, you do not care about accumulating the results: you just want the side effect of saving the buffer outright. To this end, you may use ~mapc~, which always returns the list it operated on:
+`mapcar`は戻り値を集めて新しいリストを作りましたが、時にはこれが無駄なこともあります。例えば、ファイルに関連付けられていて、かつ未保存のバッファをすべて保存する関数を評価したいとしましょう。このシナリオでは、結果を集めることには関心がなく、単にバッファを直接保存するという副作用だけが欲しいのです。この目的のためには`mapc`を使うことができます。`mapc`は常に、操作対象となった元のリストを返します。
 
 ```emacs-lisp
 (mapc
@@ -741,7 +754,7 @@ The ~mapcar~ collects the return values into a new list. Sometimes this is usele
 #+findex: dolist
 -->
 
-An alternative to the above is ~dolist~, which is used for side effects but always returns ~nil~:
+上記と同様の処理を行う別の方法として`dolist`があります。これも副作用のために使われますが、常に`nil`を返します：
 
 ```emacs-lisp
 (dolist (buffer (buffer-list))
@@ -750,46 +763,45 @@ An alternative to the above is ~dolist~, which is used for side effects but alwa
     (save-buffer)))
 ```
 
-You will notice that the ~dolist~ is a macro, so some parts of it seem to behave differently than with basic lists and the evaluation rules that apply to them ([[#h:evaluation-inside-of-a-macro-or-special-form][Evaluation inside of a macro or special form]]). This is a matter of getting used to how the code is expressed.
+`dolist`はマクロなので、普通のリストやそれらに適用される評価ルールとは少し異なる振る舞いをする部分があることに気づくでしょう（[マクロやスペシャルフォーム内での評価](#h:evaluation-inside-of-a-macro-or-special-form)参照）。これはコードがどのように表現されるかの慣れの問題です。
 
 <!--
 #+findex: dolist
 #+findex: mapc
 -->
 
-When to use a ~dolist~ as opposed to a ~mapc~ is a matter of style. If you are using a named function, a ~mapc~ looks cleaner to my eyes. Otherwise a ~dolist~ is easier to read. Here is my approach with some pseudo-code:
+`dolist`と`mapc`のどちらを使うかは、スタイルの問題です。もし名前付き関数を使うなら、私の目には`mapc`の方がすっきりして見えます。そうでなければ`dolist`の方が読みやすいでしょう。以下に私の考え方を疑似コードで示します：
 
 ```emacs-lisp
-;; I like this:
+;; 私はこう書くのが好き:
 (mapc #'NAMED-FUNCTION LIST)
 
-;; I also like a `dolist' instead of a `mapc' with a `lambda':
+;; `mapc' + `lambda' の組み合わせよりは `dolist' が好み:
 (dolist (element LIST)
   (OPERATE-ON element))
 
-;; I do not like this:
+;; これは好きではない:
 (mapc
  (lambda (element)
    (OPERATE-ON element))
  LIST)
 ```
 
-While ~dolist~ and ~mapc~ are for side effects, you can still employ them in the service of accumulating results, with the help of ~let~ and related forms ([[#h:control-flow-with-if-let-and-friends][Control flow with ~if-let*~ and friends]]). Depending on the specifics, this approach may make more sense than relying on a ~mapcar~. Here is an annotated sketch:
+`dolist`や`mapc`は副作用のためのものですが、`let`や関連する形式（[`if-let*`の仲間を使用してフローを制御する](#h:control-flow-with-if-let-and-friends)参照）の助けを借りれば、結果を蓄積するためにも使えます。詳細によっては、このアプローチの方が`mapcar`に頼るよりも理にかなっている場合があります。以下に注釈付きのスケッチを示します。
 
 ```emacs-lisp
-;; Start with an empty list of `found-strings'.
+;; まず空のリスト `found-strings' を準備
 (let ((found-strings nil))
-  ;; Use `dolist' to test each element of the list '("Protesilaos" 1 2 3 "Cyprus").
+  ;; リスト '("Protesilaos" 1 2 3 "Cyprus") の各要素を `dolist' でテスト
   (dolist (element '("Protesilaos" 1 2 3 "Cyprus"))
-    ;; If the element is a string, then `push' it to the `found-strings', else skip it.
+    ;; 要素が文字列なら `found-strings' に `push' し、そうでなければスキップ
     (when (stringp element)
       (push element found-strings)))
-  ;; Now that we are done with the `dolist', return the new value of `found-strings'.
+  ;; `dolist' が終わったら `found-strings' の新しい値を返す
   found-strings)
 ;; => ("Cyprus" "Protesilaos")
 
-
-;; As above but reverse the return value, which makes more sense:
+;; 上のコードと同じだが、戻り値を反転させる(こちらの方が理に適っている):
 (let ((found-strings nil))
   (dolist (element '("Protesilaos" 1 2 3 "Cyprus"))
     (when (stringp element)
@@ -798,7 +810,7 @@ While ~dolist~ and ~mapc~ are for side effects, you can still employ them in the
 ;; => ("Protesilaos" "Cyprus")
 ```
 
-For completeness, the previous example would have to be done as follows with the use of ~mapcar~:
+完全を期すために、先の例を`mapcar`を使って行うと以下のようになります。
 
 ```emacs-lisp
 (mapcar
@@ -818,22 +830,21 @@ For completeness, the previous example would have to be done as follows with the
 ;; => ("Protesilaos" "Cyprus")
 ```
 
-Because ~mapcar~ happily accumulates all the return values, it returns a list that includes ~nil~. If you wanted that, you would probably not even bother with the ~when~ clause there. The ~delq~ is thus applied to the return value of the ~mapcar~ to delete all the instances of ~nil~. Now compare this busy work to ~seq-filter~:
+`mapcar`はすべての戻り値を素直に集めるため、`nil`を含むリストが返ってきます。もし`nil`が欲しかったなら、そもそも`when`節を使う必要もなかったでしょう。そのため、`mapcar`の戻り値に対して`delq`を適用し、すべての`nil`を削除しています。さて、この手間のかかる作業を`seq-filter`と比べてみてください。
 
 ```emacs-lisp
 (seq-filter #'stringp '("Protesilaos" 1 2 3 "Cyprus"))
 ;; => ("Protesilaos" "Cyprus")
 ```
 
-The ~seq-filter~ is the best tool when all you need is to test if the element satisfies a predicate function and then return that element. But you cannot return something else. Whereas ~mapcar~ will take any return value without complaints, such as the following:
+`seq-filter`は、要素が**述語関数**（条件をチェックする関数）を満たすかどうかをテストし、満たす要素だけを返す必要がある場合に最適なツールです。ただし、要素そのものを返すことしかできません。一方、`mapcar`は以下のように、どんな戻り値でも文句なく受け取ります：
 
 ```emacs-lisp
 (delq nil
       (mapcar
        (lambda (element)
          (when (stringp element)
-           ;; `mapcar' accumulates any return value, so we can change
-           ;; the element to generate the results we need.
+           ;; mapcar はどんな戻り値でも収集するので、要素をどんな結果に変換することもできる
            (upcase element)))
        '("Protesilaos" 1 2 3 "Cyprus")))
 ;; => ("PROTESILAOS" "CYPRUS")
@@ -841,9 +852,8 @@ The ~seq-filter~ is the best tool when all you need is to test if the element sa
 (seq-filter
  (lambda (element)
    (when (stringp element)
-     ;; `seq-filter' only returns elements that have a non-nil return
-     ;; value here, but it returns the elements, not what we return
-     ;; here.  In other words, this `lambda' does unnecessary work.
+     ;; `seq-filter' はここで nil ではない値が返された場合のみ値を返すが、返されるのは要素そのもの。
+     ;; この `upcase' は、条件判定 (nil 以外が返るか) には使われるが、最終的な結果には反映されず無意味。
      (upcase element)))
  '("Protesilaos" 1 2 3 "Cyprus"))
 ;; => ("Protesilaos" "Cyprus")
@@ -858,9 +868,9 @@ The ~seq-filter~ is the best tool when all you need is to test if the element sa
 #+cindex: Shortdoc for lists and sequences
 -->
 
-How you go about mapping over a list of elements will depend on what you are trying to do. There is no one single function that does everything for you. Understand the nuances and you are good to go. Oh, and do look into the built-in ~seq~ library (use {{{kbd(M-x)}}} (~execute-extended-command~), invoke ~find-library~, and then search for ~seq~). You are now looking at the source code of =seq.el=: it defines plenty of functions like ~seq-take~, ~seq-find~, ~seq-union~. Another way is to invoke the command ~shortdoc~ and read about the documentation groups =list= as well as =sequence=.
+リストの要素をどのように処理（マッピング）するかは、何をしようとしているかによります。すべてをこなしてくれる単一の万能関数はありません。それぞれの関数のニュアンス（細かい違いや特性）を理解すれば、うまく使いこなせるでしょう。ああ、それと、組み込みの`seq`ライブラリもぜひ調べてみてください。<kbd>M-x</kbd>（`execute-extended-command`）で`find-library`を呼び出し、`seq`を検索すると`seq.el`のソースコードを見ることができます。そこには`seq-take`、`seq-find`、`seq-union`のような多くの関数が定義されています。別の方法としては、`shortdoc`コマンドを呼び出して、ドキュメントグループ`list`や`sequence`について読むこともできます。
 
-## 検索結果のマッチデータ {#h:the-match-data-of-the-last-search}
+## 10. 検索結果のマッチデータ {#h:the-match-data-of-the-last-search}
 
 <!--
 #+findex: match-data
@@ -871,9 +881,9 @@ How you go about mapping over a list of elements will depend on what you are try
 #+findex: string-match
 -->
 
-As you work with Emacs Lisp, you will encounter the concept of "match data" and the concomitant functions ~match-data~, ~match-beginning~, ~match-string~, and so on. These refer to the results of the last search, which is typically performed by the functions ~re-search-forward~, ~looking-at~, ~string-match~, and related. Each time you perform a search, the match data gets updated. Be mindful of this common side effect ([[#h:side-effect-and-return-value][Side effect and return value]]). If you forget about it, chances are your code will not do the right thing.
+As you work with Emacs Lisp, you will encounter the concept of "match data" and the concomitant functions ~match-data~, ~match-beginning~, ~match-string~, and so on. These refer to the results of the last search, which is typically performed by the functions ~re-search-forward~, ~looking-at~, ~string-match~, and related. Each time you perform a search, the match data gets updated. Be mindful of this common side effect ([Side effect and return value](#h:side-effect-and-return-value)). If you forget about it, chances are your code will not do the right thing.
 
-In the following code block, I define a function that performs a search in the current buffer and returns a list of match data without text properties, where relevant ([[#h:text-has-its-own-properties][Text has its own properties]]).
+In the following code block, I define a function that performs a search in the current buffer and returns a list of match data without text properties, where relevant ([Text has its own properties](#h:text-has-its-own-properties)).
 
 ```emacs-lisp
 (defun my-get-match-data (regexp)
@@ -904,7 +914,7 @@ Place the cursor before that text and use {{{kbd(M-:)}}} (~eval-expression~) to 
 #+findex: point
 -->
 
-The way ~my-get-match-data~ is written, it does two things: (i) it has the side effect of moving the cursor to the end of the text it found and (ii) it returns a list with the match data I specified. There are many scenaria where you do not want the aforementioned side effect: the cursor should stay where it is. As such, you can wrap your code in a ~save-excursion~ ([[#h:switching-to-another-buffer-window-or-narrowed-state][Switching to another buffer, window, or narrowed state]]): it will do what it must and finally restore the ~point~ ([[#h:run-some-code-or-fall-back-to-some-other-code][Run some code or fall back to some other code]]):
+The way ~my-get-match-data~ is written, it does two things: (i) it has the side effect of moving the cursor to the end of the text it found and (ii) it returns a list with the match data I specified. There are many scenaria where you do not want the aforementioned side effect: the cursor should stay where it is. As such, you can wrap your code in a ~save-excursion~ ([Run some code or fall back to some other code](#h:switching-to-another-buffer-window-or-narrowed-state][Switching to another buffer, window, or narrowed state]]): it will do what it must and finally restore the ~point~ ([[#h:run-some-code-or-fall-back-to-some-other-code)):
 
 ```emacs-lisp
 (defun my-get-match-data (regexp)
@@ -956,9 +966,9 @@ Evaluate the function ~my-get-match-data-with-extra-check~ and then call with {{
 ;; Protesilaos lives in the mountains of Cyprus.
 ```
 
-## 別のバッファ、ウィンドウ、あるいは狭められた状態に切り替える {#h:switching-to-another-buffer-window-or-narrowed-state}
+## 11. 別のバッファ、ウィンドウ、あるいは狭められた状態に切り替える {#h:switching-to-another-buffer-window-or-narrowed-state}
 
-As you use Emacs Lisp to do things programmatically, you encounter cases where you need to move away from where you are. You may have to switch to another buffer, change to the window of a given buffer, or even modify what is visible in the buffer you are editing. At all times, this involves one or more side effects which, most probably, should be undone when your function finishes its job ([[#h:side-effect-and-return-value][Side effect and return value]]).
+As you use Emacs Lisp to do things programmatically, you encounter cases where you need to move away from where you are. You may have to switch to another buffer, change to the window of a given buffer, or even modify what is visible in the buffer you are editing. At all times, this involves one or more side effects which, most probably, should be undone when your function finishes its job ([Side effect and return value](#h:side-effect-and-return-value)).
 
 <!--
 #+findex: point
@@ -966,7 +976,7 @@ As you use Emacs Lisp to do things programmatically, you encounter cases where y
 #+cindex: Restore the point
 -->
 
-Perhaps the most common case is to restore the ~point~. You have some code that moves back or forth in the buffer to perform a match for a given piece of text. But then, you need to leave the cursor where it originally was, otherwise the user will lose their orientation. Wrap your code in a ~save-excursion~ and you are good to go, as I show elsewhere ([[#h:the-match-data-of-the-last-search][The match data of the last search]]):
+Perhaps the most common case is to restore the ~point~. You have some code that moves back or forth in the buffer to perform a match for a given piece of text. But then, you need to leave the cursor where it originally was, otherwise the user will lose their orientation. Wrap your code in a ~save-excursion~ and you are good to go, as I show elsewhere ([The match data of the last search](#h:the-match-data-of-the-last-search)):
 
 ```emacs-lisp
 (save-excursion ; restore the `point' after you are done
@@ -1006,9 +1016,9 @@ The ~save-restriction~ allows you to restore the current narrowing state of the 
   (buffer-string))
 ```
 
-Depending on the specifics, you will want to combine the aforementioned. Beware that the documentation of ~save-restriction~ tells you to use ~save-excursion~ as the outermost call. Other than that, you will also find cases that require a different approach to perform some conditional behaviour ([[#h:run-some-code-or-fall-back-to-some-other-code][Run some code or fall back to some other code]]).
+Depending on the specifics, you will want to combine the aforementioned. Beware that the documentation of ~save-restriction~ tells you to use ~save-excursion~ as the outermost call. Other than that, you will also find cases that require a different approach to perform some conditional behaviour ([Run some code or fall back to some other code](#h:run-some-code-or-fall-back-to-some-other-code)).
 
-## `if`, `cond`などを使用した基本的な制御フロー {#h:basic-control-flow-with-if-cond-and-others}
+## 12. `if`, `cond`などによる基本的な制御フロー {#h:basic-control-flow-with-if-cond-and-others}
 
 <!--
 #+findex: defun
@@ -1043,7 +1053,7 @@ The ~my-15-lines-down~ is about as simple as it gets: it wraps around a basic fu
 #+cindex: Predicate functions
 -->
 
-How about you make your ~my-15-lines-down~ a bit smarter? When it is at the absolute end of the buffer, have it move 15 lines up. Why? Because this is a demonstration, so why not? The predicate function that tests if the point is at the end of the buffer is ~eobp~. A "predicate" is a function that returns true, technically non-~nil~, when its condition is met, else it returns ~nil~ ([[#h:side-effect-and-return-value][Side effect and return value]]). As for the weird name, the convention in Emacs Lisp is to end predicate functions with the =p= suffix: if the name of the function consists of multiple words, typically separated by dashes, then the predicate function is named =NAME-p=, like ~string-match-p~, otherwise it is =NAMEp=, like ~stringp~.
+How about you make your ~my-15-lines-down~ a bit smarter? When it is at the absolute end of the buffer, have it move 15 lines up. Why? Because this is a demonstration, so why not? The predicate function that tests if the point is at the end of the buffer is ~eobp~. A "predicate" is a function that returns true, technically non-~nil~, when its condition is met, else it returns ~nil~ ([Side effect and return value](#h:side-effect-and-return-value)). As for the weird name, the convention in Emacs Lisp is to end predicate functions with the =p= suffix: if the name of the function consists of multiple words, typically separated by dashes, then the predicate function is named =NAME-p=, like ~string-match-p~, otherwise it is =NAMEp=, like ~stringp~.
 
 ```emacs-lisp
 (defun my-15-lines-down-or-up ()
@@ -1069,7 +1079,7 @@ Evaluate this function, then type {{{kbd(M-x)}}} (~execute-extended-command~) an
 #+cindex: Indentation in Emacs Lisp
 -->
 
-A quirk of Emacs Lisp, which may be a feature all along, is how indentation is done. Just mark the code you have written and type {{{kbd(TAB)}}}: Emacs will take care to indent it the way it should be done. In the case of the ~if~ statement, the "then" part is further in than the "else" part of the logic. There is no special meaning to this indentation: you could write everything on a single line like =(if COND THIS ELSE)=, which looks like your typical list, by the way ([[#h:symbols-balanced-expressions-and-quoting][Symbols, balanced expressions, and quoting]]). What the indentation does is help you identify imbalances in your parentheses. If the different expressions all line up in a way that looks odd, then you are most probably missing a parentheses or have too many of them. Generally, expressions at the same level will all line up the same way. Those deeper in will have more indentation, and so on. Experience will allow you to spot mistakes with mismatching parentheses. But even if you do not identify them, you will get an error eventually. Rest assured!
+A quirk of Emacs Lisp, which may be a feature all along, is how indentation is done. Just mark the code you have written and type {{{kbd(TAB)}}}: Emacs will take care to indent it the way it should be done. In the case of the ~if~ statement, the "then" part is further in than the "else" part of the logic. There is no special meaning to this indentation: you could write everything on a single line like =(if COND THIS ELSE)=, which looks like your typical list, by the way ([Symbols, balanced expressions, and quoting](#h:symbols-balanced-expressions-and-quoting)). What the indentation does is help you identify imbalances in your parentheses. If the different expressions all line up in a way that looks odd, then you are most probably missing a parentheses or have too many of them. Generally, expressions at the same level will all line up the same way. Those deeper in will have more indentation, and so on. Experience will allow you to spot mistakes with mismatching parentheses. But even if you do not identify them, you will get an error eventually. Rest assured!
 
 The way ~if~ is written is like a function that takes two or more arguments. The "or more" all counts as part of the "else" logic. As such, =(if COND THIS)= has no "else" consequence, while =(if COND THIS ELSE1 ELSE2 ELSE3)= will run =ELSE1=, =ELSE2=, and =ELSE3= in order as part of the "else" branch. Here is how this looks once you factor in proper indentation:
 
@@ -1150,7 +1160,7 @@ When the condition you are testing for has multiple parts, you can rely on ~and~
 #+findex: cond
 -->
 
-Depending on the specifics of the case, the combination of multiple ~if~, ~when~, ~or~, ~and~ will look awkward. You can break down the logic to distinct conditions, which are tested in order from top to bottom, using ~cond~. The way ~cond~ is written is as a list of lists, which do not need quoting ([[#h:evaluation-inside-of-a-macro-or-special-form][Evaluation inside of a macro or special form]]). In abstract, it looks like this:
+Depending on the specifics of the case, the combination of multiple ~if~, ~when~, ~or~, ~and~ will look awkward. You can break down the logic to distinct conditions, which are tested in order from top to bottom, using ~cond~. The way ~cond~ is written is as a list of lists, which do not need quoting ([Evaluation inside of a macro or special form](#h:evaluation-inside-of-a-macro-or-special-form)). In abstract, it looks like this:
 
 ```emacs-lisp
 (cond
@@ -1189,7 +1199,7 @@ Each of the consequences can be any number of expressions, like you saw above wi
     (message "I have no idea what type of thing your argument `%s' is" argument))))
 ```
 
-I want you to evaluate it and pass it different arguments to test what it does ([[#h:evaluate-emacs-lisp][Evaluate Emacs Lisp]]). Here are two examples:
+I want you to evaluate it and pass it different arguments to test what it does ([Evaluate Emacs Lisp](#h:evaluate-emacs-lisp)). Here are two examples:
 
 ```emacs-lisp
 (my-toy-cond "")
@@ -1199,9 +1209,9 @@ I want you to evaluate it and pass it different arguments to test what it does (
 ;; => "Oh, I see you are in the flow of using lists!"
 ```
 
-All of the above are common in Emacs Lisp. Another powerful macro is ~pcase~, which we will consider separately due to its particularities ([[#h:pattern-match-with-pcase-and-related][Pattern match with ~pcase~ and related]]).
+All of the above are common in Emacs Lisp. Another powerful macro is ~pcase~, which we will consider separately due to its particularities ([Pattern match with ~pcase~ and related](#h:pattern-match-with-pcase-and-related)).
 
-## `if-let*`の仲間を使用してフローを制御する {#h:control-flow-with-if-let-and-friends}
+## 13. `if-let*`の仲間を使用してフローを制御する {#h:control-flow-with-if-let-and-friends}
 
 <!--
 #+findex: let
@@ -1220,7 +1230,7 @@ The ~let~ and ~let*~ declare variables that are available only within the curren
   BODY)
 ```
 
-The =BINDINGS= is a list of lists, which does not need to be quoted ([[#h:evaluation-inside-of-a-macro-or-special-form][Evaluation inside of a macro or special form]]). While =BODY= consists of one or more expressions, which I have also named =EXPRESSIONS= elsewhere in this book. The difference between ~let~ and ~let*~ (pronounced "let star") is that the latter makes earlier bindings available to later bindings. Like this:
+The =BINDINGS= is a list of lists, which does not need to be quoted ([Evaluation inside of a macro or special form](#h:evaluation-inside-of-a-macro-or-special-form)). While =BODY= consists of one or more expressions, which I have also named =EXPRESSIONS= elsewhere in this book. The difference between ~let~ and ~let*~ (pronounced "let star") is that the latter makes earlier bindings available to later bindings. Like this:
 
 ```emacs-lisp
 ;; This works because `greeting' can access `name' and `country',
@@ -1237,7 +1247,7 @@ The =BINDINGS= is a list of lists, which does not need to be quoted ([[#h:evalua
   (DO-STUFF-WITH greeting))
 ```
 
-Sometimes what you want to do is create those bindings if---and only if---they are all non-~nil~. If their value is ~nil~, then they are useless to you, in which case you do something else ([[#h:basic-control-flow-with-if-cond-and-others][Basic control flow with ~if~, ~cond~, and others]]). Values may or may not be ~nil~ when you are creating a binding with the return value of a function call or some other variable. You could always write code like this:
+Sometimes what you want to do is create those bindings if---and only if---they are all non-~nil~. If their value is ~nil~, then they are useless to you, in which case you do something else ([Basic control flow with ~if~, ~cond~, and others](#h:basic-control-flow-with-if-cond-and-others)). Values may or may not be ~nil~ when you are creating a binding with the return value of a function call or some other variable. You could always write code like this:
 
 ```emacs-lisp
 (let ((variable1 (SOME-FUNCTION SOME-ARGUMENT))
@@ -1285,14 +1295,14 @@ As you dig dipper into the Emacs Lisp ecosystem, you will come across uses of ~i
 
 There is no inherently superior way of doing things. It is a matter of using the right tool for the task at hand. Sometimes you want the bindings to be created, even if their value is ~nil~. Choose what makes sense.
 
-## `pcase`によるパターンマッチ {#h:pattern-match-with-pcase-and-related}
+## 14. `pcase`によるパターンマッチ {#h:pattern-match-with-pcase-and-related}
 
 <!--
 #+findex: pcase
 #+vindex: major-mode
 -->
 
-Once you get in the flow of expressing your thoughts with Emacs Lisp, you will be fluent in the use of ~if~, ~cond~, and the like ([[#h:basic-control-flow-with-if-cond-and-others][Basic control flow with ~if~, ~cond~, and others]]). You might even get more fancy if ~if-let*~ ([[#h:control-flow-with-if-let-and-friends][Control flow with ~if-let*~ and friends]]). However you go about it, there are some cases that arguably benefit from more succinct expressions. This is where ~pcase~ comes in. At its more basic formulation, it is like ~cond~, in that it tests the return value of a given expression against a list of conditions. Here is an example that compared the buffer-local value of the variable ~major-mode~ for equality against a couple of known symbols:
+Once you get in the flow of expressing your thoughts with Emacs Lisp, you will be fluent in the use of ~if~, ~cond~, and the like ([Control flow with ~if-let*~ and friends](#h:basic-control-flow-with-if-cond-and-others][Basic control flow with ~if~, ~cond~, and others]]). You might even get more fancy if ~if-let*~ ([[#h:control-flow-with-if-let-and-friends)). However you go about it, there are some cases that arguably benefit from more succinct expressions. This is where ~pcase~ comes in. At its more basic formulation, it is like ~cond~, in that it tests the return value of a given expression against a list of conditions. Here is an example that compared the buffer-local value of the variable ~major-mode~ for equality against a couple of known symbols:
 
 ```emacs-lisp
 (pcase major-mode
@@ -1334,7 +1344,7 @@ Same idea for ~if~, ~when~, and the rest.
 #+cindex: Domain-Specific Language (DSL)
 -->
 
-Back to the topic of what ~pcase~ does differently. If you read its documentation, you will realise that it has its own mini language, or "domain-specific language" (DSL). This is common for macros ([[#h:evaluation-inside-of-a-macro-or-special-form][Evaluation inside of a macro or special form]]). They define how evaluation is done and what sort of expressions are treated specially. Let me then gift you this toy function that illustrates some of the main features of the DSL now under consideration:
+Back to the topic of what ~pcase~ does differently. If you read its documentation, you will realise that it has its own mini language, or "domain-specific language" (DSL). This is common for macros ([Evaluation inside of a macro or special form](#h:evaluation-inside-of-a-macro-or-special-form)). They define how evaluation is done and what sort of expressions are treated specially. Let me then gift you this toy function that illustrates some of the main features of the DSL now under consideration:
 
 ```emacs-lisp
 (defun my-toy-pcase (argument)
@@ -1351,7 +1361,7 @@ Back to the topic of what ~pcase~ does differently. If you read its documentatio
     (_ (message "This is the fallback"))))
 ```
 
-Go ahead and evaluate that function and then try it out ([[#h:evaluate-emacs-lisp][Evaluate Emacs Lisp]]). Below are a couple of examples:
+Go ahead and evaluate that function and then try it out ([Evaluate Emacs Lisp](#h:evaluate-emacs-lisp)). Below are a couple of examples:
 
 ```emacs-lisp
 (my-toy-pcase '("Protesilaos" "of" "Cyprus"))
@@ -1373,7 +1383,7 @@ Go ahead and evaluate that function and then try it out ([[#h:evaluate-emacs-lis
 #+cindex: Destructuring
 -->
 
-Some of those clauses are a different way to express ~cond~. Arguably better, but not a clear winner in my opinion. What is impressive and a true paradigm shift is the concept of "destructuring", else the pattern matching done to the expression that effectively ~let~ binds elements of a list or cons cell to their corresponding index. The syntax used for this destructuring is arcane, until you relate it to the quasi-quote and the comma which are used for partial evaluation ([[#h:partial-evaluation-inside-of-a-list][Partial evaluation inside of a list]]). With this in mind, consider ~pcase-let~, ~pcase-let*~, ~pcase-lambda~, and ~pcase-dolist~, as variations of the plain ~let~, ~let*~, ~lambda~, and ~dolist~ with the added feature of supporting destructuring. They are not doing any of the extras of ~pcase~ though---just destructuring on top of their familiar behaviour! This is especially useful when you are working with the return value of a function which comes as a list. I will not elaborate at length, as this is an advanced use-case. If you are already at that level, you do not need me to tell you what to write. For the rest of us who, like me, typically work with simpler code, the ~pcase-let~ serves as a sufficient illustration of the principle:
+Some of those clauses are a different way to express ~cond~. Arguably better, but not a clear winner in my opinion. What is impressive and a true paradigm shift is the concept of "destructuring", else the pattern matching done to the expression that effectively ~let~ binds elements of a list or cons cell to their corresponding index. The syntax used for this destructuring is arcane, until you relate it to the quasi-quote and the comma which are used for partial evaluation ([Partial evaluation inside of a list](#h:partial-evaluation-inside-of-a-list)). With this in mind, consider ~pcase-let~, ~pcase-let*~, ~pcase-lambda~, and ~pcase-dolist~, as variations of the plain ~let~, ~let*~, ~lambda~, and ~dolist~ with the added feature of supporting destructuring. They are not doing any of the extras of ~pcase~ though---just destructuring on top of their familiar behaviour! This is especially useful when you are working with the return value of a function which comes as a list. I will not elaborate at length, as this is an advanced use-case. If you are already at that level, you do not need me to tell you what to write. For the rest of us who, like me, typically work with simpler code, the ~pcase-let~ serves as a sufficient illustration of the principle:
 
 ```emacs-lisp
 (defun my-split-string-at-space (string)
@@ -1387,14 +1397,14 @@ Some of those clauses are a different way to express ~cond~. Arguably better, bu
 
 Whether you use ~pcase~ and destructuring in general is up to you. You do not require them to write high quality code. Though you might agree with those who consider them inherently more elegant and opt to use them for this very reason to have code that is succinct yet highly expressive.
 
-## コードを実行するか、他のコードにフォールバックする {#h:run-some-code-or-fall-back-to-some-other-code}
+## 15. コードを実行するか、ほかのコードにフォールバックする {#h:run-some-code-or-fall-back-to-some-other-code}
 
 <!--
 #+findex: unwind-protect
 #+cindex: Unwinding
 -->
 
-Your typical code will rely on ~if~, ~cond~, and the like for control flow ([[#h:basic-control-flow-with-if-cond-and-others][Basic control flow with ~if~, ~cond~, and others]]). Depending on your specific needs or stylistic considerations, it may even include ~pcase~ ([[#h:pattern-match-with-pcase-and-related][Pattern match with ~pcase~ and related]]) as well as ~if-let*~ ([[#h:control-flow-with-if-let-and-friends][Control flow with ~if-let*~ and friends]]). There are some cases, nonetheless, that make it imperative you run additional code after your primary operation concludes or exits. The idea is to clean up whatever intermediate state you created. The logic is "do this with all the necessary side effects, then whatever happens to it do that now to, inter alia, undo the side effects." This is the concept of "unwinding", which is implemented via ~unwind-protect~.
+Your typical code will rely on ~if~, ~cond~, and the like for control flow ([Control flow with ~if-let*~ and friends](#h:basic-control-flow-with-if-cond-and-others][Basic control flow with ~if~, ~cond~, and others]]). Depending on your specific needs or stylistic considerations, it may even include ~pcase~ ([Pattern match with ~pcase~ and related](#h:pattern-match-with-pcase-and-related)) as well as ~if-let*~ ([[#h:control-flow-with-if-let-and-friends)). There are some cases, nonetheless, that make it imperative you run additional code after your primary operation concludes or exits. The idea is to clean up whatever intermediate state you created. The logic is "do this with all the necessary side effects, then whatever happens to it do that now to, inter alia, undo the side effects." This is the concept of "unwinding", which is implemented via ~unwind-protect~.
 
 <!--
 #+findex: y-or-n-p
@@ -1441,7 +1451,7 @@ Try the above in your Emacs to get a feel for it. While the "yes or no" prompt i
 #+findex: error
 -->
 
-Taking a step back, you will figure out how ~unwind-protect~ is a more general form of specialists like ~save-excursion~ and ~save-restriction~ ([[#h:switching-to-another-buffer-window-or-narrowed-state][Switching to another buffer, window, or narrowed state]]), while it underpins the ~save-match-data~ ([[#h:the-match-data-of-the-last-search][The match data of the last search]]) among many other functions/macros, such as ~with-temp-buffer~ and ~save-window-excursion~. What ~unwind-protect~ does not do is respond specially to signals, such as those coming from the ~error~ function: it will allow the error to happen, meaning that a backtrace will be displayed and your code will exit right there (but the unwinding will still work, as I already explained, once you dismiss the backtrace). To make your code treat signals in a more controlled fashion, you must rely on ~condition-case~.
+Taking a step back, you will figure out how ~unwind-protect~ is a more general form of specialists like ~save-excursion~ and ~save-restriction~ ([The match data of the last search](#h:switching-to-another-buffer-window-or-narrowed-state][Switching to another buffer, window, or narrowed state]]), while it underpins the ~save-match-data~ ([[#h:the-match-data-of-the-last-search)) among many other functions/macros, such as ~with-temp-buffer~ and ~save-window-excursion~. What ~unwind-protect~ does not do is respond specially to signals, such as those coming from the ~error~ function: it will allow the error to happen, meaning that a backtrace will be displayed and your code will exit right there (but the unwinding will still work, as I already explained, once you dismiss the backtrace). To make your code treat signals in a more controlled fashion, you must rely on ~condition-case~.
 
 <!--
 #+findex: condition-case
@@ -1450,7 +1460,7 @@ Taking a step back, you will figure out how ~unwind-protect~ is a more general f
 #+findex: signal
 -->
 
-With ~condition-case~ you assume full control over the behaviour of your code, including how it should deal with errors. Put differently, your Elisp will express the intent of "I want to do this, but if I get an error I want to do that instead." There are many signals to consider, all of which come from the ~signal~ function. These include the symbols ~error~, ~user-error~, ~args-out-of-range~, ~wrong-type-argument~, ~wrong-length-argument~, and ~quit~, in addition to anything else the programmer may consider necessary. In the following code blocks, I show you how ~condition-case~ looks like. Remember that sometimes you do not do quoting the usual way because of how the underlying form is implemented ([[#h:evaluation-inside-of-a-macro-or-special-form][Evaluation inside of a macro or special form]]). The example I am using is the same I had for ~unwind-protect~.
+With ~condition-case~ you assume full control over the behaviour of your code, including how it should deal with errors. Put differently, your Elisp will express the intent of "I want to do this, but if I get an error I want to do that instead." There are many signals to consider, all of which come from the ~signal~ function. These include the symbols ~error~, ~user-error~, ~args-out-of-range~, ~wrong-type-argument~, ~wrong-length-argument~, and ~quit~, in addition to anything else the programmer may consider necessary. In the following code blocks, I show you how ~condition-case~ looks like. Remember that sometimes you do not do quoting the usual way because of how the underlying form is implemented ([Evaluation inside of a macro or special form](#h:evaluation-inside-of-a-macro-or-special-form)). The example I am using is the same I had for ~unwind-protect~.
 
 ```emacs-lisp
 (defun my-prompt-with-temporary-highlight-and-signal-checks ()
@@ -1519,16 +1529,16 @@ What I have not covered yet, is the aspect of ~condition-case~ that is like the 
 
 There will be times when ~unwind-protect~ and ~condition-case~ are the right tools for the job. My hope is that these examples have given you the big picture view and you are now ready to write your own programs in Emacs Lisp.
 
-## 名前付き関数とラムダ関数の使い分け {#h:when-to-use-a-named-function-or-a-lambda-function}
+## 16. 名前付き関数とラムダ関数の使い分け {#h:when-to-use-a-named-function-or-a-lambda-function}
 
 <!--
 #+findex: lambda
 #+cindex: Anonymous and eponymous functions
 -->
 
-The ~lambda~ is an anonymous function. It stands in juxtaposition to ~defun~, which defines a function with a given name. When to use one or the other is largely a matter of style. Though there are some cases where a certain approach is more appropriate. The rule of thumb is this: if you need to use the function more than once, then give it a name and then call it by its name. Otherwise, you will effectively be redefining it each time, which makes it hard for you to rewrite your program. By contrast, if the function is only relevant ad-hoc, then a ~lambda~ is fine.
+`lambda`は名前を持たない「無名関数」です。これは、`defun`で定義される「名前付き関数」と対になるものです。どちらを使うかは、多くの場合スタイルの問題といえます。ただし、状況によってはどちらか一方がより適している場合もあります。経験則としては、その関数を複数箇所で使う必要があるなら、`defun`で定義して名前で呼び出すべきです。そうしないと、実質的に使うたびに関数を再定義することになり、後でプログラムを修正するのが難しくなります。逆に、関数がその場限りで必要になるだけなら、`lambda`で十分でしょう。
 
-In some cases, you will have a named function that employs a ~lambda~ internally. To modify one of the examples you will find in this book ([[#h:mapping-through-a-list-of-elements][Mapping through a list of elements]]):
+場合によっては、名前付き関数の内部で`lambda`が使われることもあります。本書の他の例（[リスト要素へのマッピング](#h:mapping-through-a-list-of-elements)参照）を少し変更してみましょう。
 
 ```emacs-lisp
 (defun my-increment-numbers-by-ten (numbers)
@@ -1542,12 +1552,12 @@ In some cases, you will have a named function that employs a ~lambda~ internally
 ;; => (11 12 13)
 ```
 
-A ~lambda~ inside of a named function may also be used to do something over and over again, with the help of ~let~. You may, for instance, have a function that needs to greet a list of people as a side effect with ~mapc~ and you do not want to define the same function more than once:
+名前付き関数の中で`lambda`を定義し、`let`を使ってそれを繰り返し利用する、という使い方も考えられます。例えば、`mapc`を使って副作用としてリスト内の人々に挨拶する関数が必要で、その挨拶処理自体を何度も`defun`で定義したくない、といった場合です：
 
 ```emacs-lisp
 (defun my-greet-teams (&rest teams)
-  "Say hello to each person in TEAMS and return list with all persons per team.
-Each member of TEAMS is a list of strings."
+  "TEAMS 内の各人に挨拶し、チームごとの全人物を含むリストを返す.
+TEAMS の各メンバーは文字列のリストである."
   (let* ((greet-name (lambda (name)
                        (message "Hello %s" name)))
          (greet-team-and-names (lambda (team)
@@ -1573,9 +1583,9 @@ Each member of TEAMS is a list of strings."
 #+cindex: View the echo area messages
 -->
 
-The greetings are a side effect in this case and are available in the =*Messages*= buffer. You can quickly access that buffer with {{{kbd(C-h e)}}} (~view-echo-area-messages~). It does not really matter what ~my-greet-teams~ is doing. Focus on the combination of a named function and anonymous functions inside of it.
+この例での挨拶メッセージは副作用であり、`*Messages*`バッファに出力されます。このバッファは<kbd>C-h e</kbd> （`view-echo-area-messages`）で素早く確認できます。`my-greet-teams`が具体的に何をしているかは、ここでは本質ではありません。注目すべきは、**名前付き関数の中で無名関数（`lambda`）を組み合わせて利用している点**です。
 
-## インタラクティブ関数をLisp呼び出しからも動作させる {#h:make-your-interactive-function-also-work-from-lisp-calls}
+## 17. インタラクティブ関数をLisp呼び出しからも動作させる {#h:make-your-interactive-function-also-work-from-lisp-calls}
 
 <!--
 #+findex: interactive
@@ -1612,7 +1622,10 @@ When called from Lisp, NAME is a string."
   (message "Hello %s" name))
 ```
 
+<!--
 #+findex: defun
+-->
+
 The documentation I wrote there tells you exactly what is happening. Though let me explain ~interactive~ in further detail: it takes an argument, which is a list that corresponds to the argument list of the current ~defun~. In this case, the ~defun~ has a list of arguments that includes a single element, the =NAME=. Thus, ~interactive~ also has a list with one element, whose value corresponds to =NAME=. If the parameters were more than one, then the ~interactive~ would have to be written accordingly: each of its elements would correspond to the parameter at the same index on the list.
 
 This list of expressions you pass to ~interactive~ essentially is the preparatory work that binds values to the parameters. When you call the above function interactively, you practically tell Emacs that in this case =NAME= is the return value of the call to ~read-string~. For more parameters, you get the same principle but I write it down just to be clear:
