@@ -409,9 +409,6 @@ Emacs Lispのデータ型の中には、「自己評価（self-evaluating）」�
 #+concept: Elisp Macros
 -->
 
-Keep in mind that Emacs Lisp has a concept of "macro", which basically is a templating system to write code that actually expands into some other code which is then evaluated. Inside of a macro, you control how quoting is done, meaning that the aforementioned may not apply to calls that involve the macro, even if they are still used inside of the macro's expanded form ([Evaluation inside of a macro or special form](#h:evaluation-inside-of-a-macro-or-special-form)).
-
-
 ただし、Emacs Lispには「マクロ」という概念があることに注意してください。マクロは基本的に、コードを生成するためのテンプレートのようなもので、マクロ自身が評価されるのではなく、まず別のコードに「展開」され、その展開されたコードが評価されます。マクロの定義内では、引数の評価やクオートの扱いを細かく制御できます。そのため、マクロ呼び出しの際には、これまで説明したクオートのルールがそのまま当てはまらない場合があります。たとえ展開後のコード内では通常のルールが適用されるとしてもです（[マクロやスペシャルフォーム内での評価](#h:evaluation-inside-of-a-macro-or-special-form)参照）。
 
 <!--
@@ -423,33 +420,33 @@ Emacs Lispのコードを読み進めると、`#'some-symbol`のように、ハ�
 
 ## 7. リスト内部の部分評価 {#h:partial-evaluation-inside-of-a-list}
 
-You already have an idea of how Emacs Lisp code looks like ([Symbols, balanced expressions, and quoting](#h:symbols-balanced-expressions-and-quoting)). You have a list that is either evaluated or taken as-is. There is another case where a list should be partially evaluated or, more specifically, where it should be treated as data instead of a function call with some elements inside of it still subject to evaluation.
+Emacs Lispのコードがどのような見た目か、基本的な考え方はもう掴めているはずです（[シンボル、バランスのとれた式、そしてクオート](#h:symbols-balanced-expressions-and-quoting)参照）。リストは、評価されて関数呼び出しとして実行されるか、クオートされてデータとしてそのまま扱われるかのどちらかでした。しかし、もう一つ別のケースがあります。それは、リスト全体としてはデータとして扱いたいけれど、そのリストの内部にある特定の要素だけは評価したい、という場合、つまり「部分評価」を行いたい場合です。
 
 <!--
 #+cindex: Declare a variable
 -->
 
-In the following code block, I am defining a variable called ~my-greeting-in-greek~, which is a common phrase in Greek that literally means "health to you" and is pronounced as "yah sou". Why Greek? Well, you got the ~lambda~ that engendered this whole business with Lisp, so you might as well get all the rest ([When to use a named function or a lambda function](#h:when-to-use-a-named-function-or-a-lambda-function))!
+次のコードブロックでは、`my-greeting-in-greek`という名前の変数を定義しています。これはギリシャ語で一般的な挨拶で、文字通りの意味は「あなたに健康を」、発音は「ヤー・スゥ」です。なぜギリシャ語かって？ Lispの世界をもたらした`lambda`（ラムダ）という文字がギリシャ文字なのですから、他のギリシャ由来のものが出てきてもいいでしょう、というわけです（[名前付き関数とラムダ関数の使い分け](#h:when-to-use-a-named-function-or-a-lambda-function)参照）！
 
 ```emacs-lisp
 (defvar my-greeting-in-greek "Γεια σου"
-  "Basic greeting in Greek to wish health to somebody.")
+  "誰かの健康を願うギリシャ語での基本的な挨拶.")
 ```
 
 <!--
 #+findex: message
 -->
 
-Now I want to experiment with the ~message~ function to better understand how evaluation works. Let me start with the scenario of quoting the list, thus taking it as-is:
+では、評価の仕組みをより深く理解するために、`message`関数を使って実験してみましょう。まずは、リスト全体をシングルクォート`'`でクオートし、データとしてそのまま扱う場合から始めます。
 
 ```emacs-lisp
 (message "%S" '(one two my-greeting-in-greek four))
 ;;=> "(one two my-greeting-in-greek four)"
 ```
 
-You will notice that the variable ~my-greeting-in-greek~ is not evaluated. I get the symbol, the actual ~my-greeting-in-greek~, but not the value it represents. This is the expected result, because the entire list is quoted and, ipso facto, everything inside of it is not evaluated.
+結果を見ると、変数`my-greeting-in-greek`が評価されていないことがわかります。表示されているのは、その変数が指す値ではなく、`my-greeting-in-greek`というシンボルそのものです。これは期待通りの動作です。なぜなら、リスト全体がシングルクォートでクオートされているため、その中のすべての要素は評価されないからです。
 
-Now check the next code block to understand how I can tell Emacs that I want the entire list to still be quoted but for ~my-greeting-in-greek~ in particular to be evaluated, so it is replaced by its value:
+では次に、リスト全体はクオートしつつ、その中の`my-greeting-in-greek`という特定の要素だけは評価して、その値で置き換えたい場合にどうすればよいか、以下のコードブロックで見てみましょう：
 
 ```emacs-lisp
 (message "%S" `(one two ,my-greeting-in-greek four))
@@ -462,28 +459,28 @@ Now check the next code block to understand how I can tell Emacs that I want the
 #+cindex: Comma operator
 -->
 
-Pay close attention to the syntax here. Instead of a single quote, I am using the backtick or back quote, which is also known as a "quasi quote" in our case. This behaves like the single quote except for anything that is preceded by a comma. The comma is an instruction to "evaluate the thing that follows" and only works inside of a quasi-quoted list. The "thing" that follows is either a symbol or a list. The list can, of course, be a function call. Let me then use ~concat~ to greet a certain person all while returning everything as a list:
+ここでの構文に注目してください。シングルクォート`'`の代わりに、バッククォート`` ` ``（「**準クォート**（quasi quote）」とも呼ばれます）を使っています。このバッククォートは、基本的にはシングルクォートと同じようにリスト全体の評価を抑制しますが、カンマ`,`が前に付いた要素だけは特別扱いします。カンマ`,`は、「次に続くものを評価しなさい」という指示であり、バッククォートで囲まれたリストの中でのみ有効です。カンマの後に続く「もの」は、シンボル（変数名など）でも、リスト（関数呼び出しを含む）でも構いません。では、`concat`関数を使って、特定の人への挨拶文を生成しつつ、リスト全体をデータとして返す例を見てみましょう：
 
 ```emacs-lisp
 (message "%S" `(one two ,(concat my-greeting-in-greek " " "Πρωτεσίλαε") four))
 ;; => "(one two \"Γεια σου Πρωτεσίλαε\" four)"
 ```
 
-Bear in mind that you would get an error if you were not quoting this list at all, because the first element ~one~ would be treated as the symbol a function, which would be called with all other elements as its arguments. Chances are that ~one~ is not defined as a function in your current Emacs session or those arguments are not meaningful to it, anyway. Plus, ~two~ and ~four~ would then be treated as variables, since they are not quoted, in which case those would have to be defined as well, else more errors would ensue.
+念のため、もしこのリストをバッククォートもシングルクォートも使わずに`(one two ...)`のように書いてしまうと、エラーになることにも気をつけておきましょう。なぜなら、最初の要素`one`が関数名として扱われ、続く`two`や`my-greeting-in-greek`などが引数として評価されようとするからです。通常、`one`という名前の関数は定義されていませんし、`two`や`four`といったシンボルもクオートされていないため変数として評価されようとしますが、これらも定義されていなければエラーの原因となります。
 
 <!--
 #+cindex: Splicing in general
 -->
 
-Other than the comma operator, there is the =,@= (how is this even pronounced? "comma at", perhaps?), which is notation for "splicing". This is jargon in lieu of saying "the return value is a list and I want you to remove the outermost parentheses of it." In effect, the code that would normally return ='(one two three)= now returns =one two three=. This difference may not make much sense in a vacuum, though it does once you consider those elements as expressions that should work in their own right, rather than simply be elements of a quoted list. I will not elaborate on an example here, as I think this is best covered in the context of defining macros ([Evaluation inside of a macro or special form](#h:evaluation-inside-of-a-macro-or-special-form)).
 
-Chances are you will not need to use the knowledge of partial evaluation. It is more common in macros, though can be applied anywhere. Be aware of it regardless, as there are scenaria where you will, at the very least, want to understand what some code you depend on is doing.
+コンマ`,`演算子の他に、`,@`（*読み方は…「コンマ・アット」？*）という表記法もあります。これは「**スプライシング**（splicing）」と呼ばれる操作を行います。これは専門用語ですが、簡単に言えば「次に続く式を評価したら、結果はリストになるはずなので、そのリストの一番外側の括弧を取り除いて、中の要素だけをここに展開してください」という意味です。つまり、通常なら`'(one two three)`というリストが返されるようなコードが、`,@`を使うとその場所に`one two three`という要素の並びが直接挿入されるような効果があります。これだけ聞いてもピンとこないかもしれませんが、リストの要素が単なるデータではなく、それ自体が意味を持つ式として扱われるべき場合に意味を持ちます。ここでは詳しい例は省略します。というのも、この機能は主にマクロを定義する際（[マクロやスペシャルフォーム内での評価](#h:evaluation-inside-of-a-macro-or-special-form)参照）に重要になるからです。
 
-Lastly, since I introduced you to some Greek words, I am now considering you my friend. Here is a joke from when I was a kid. I was trying to explain some event to my English instructor. As I lacked the vocabulary to express myself, I started using Greek words. My instructor had a strict policy of only responding to English, so she said "It is all Greek to me." Not knowing that her answer is an idiom for "I do not understand you", I blithely replied, "Yes, Greek madame; me no speak England very best." I was not actually a beginner at the time, though I would not pass on the opportunity to make fun of the situation. Just how you should remember to enjoy the time spent tinkering with Emacs. But enough of that! Back to reading this book.
+おそらく、皆さんが自分でコードを書く上で、この部分評価（`` ` ``と`,`）の知識を頻繁に使う必要はないかもしれません。主にマクロの定義でよく使われるテクニックですが、原理的にはどこでも使えます。とはいえ、このような仕組みがあることは知っておいてください。なぜなら、他人の書いたコードやライブラリを利用する際に、そこで何が行われているかを理解するために、少なくともこの知識が必要になる場面があるかもしれないからです。
 
 ## 8. マクロやスペシャルフォーム内での評価 {#h:evaluation-inside-of-a-macro-or-special-form}
 
-In the most basic case of Emacs Lisp code, you have lists that are either evaluated or not ([Partial evaluation inside of a list](#h:symbols-balanced-expressions-and-quoting][Symbols, balanced expressions, and quoting]]). If you get a little more fancy, you have lists that are only partially evaluated ([[#h:partial-evaluation-inside-of-a-list)). Sometimes though, you look at a piece of code and cannot understand why the normal rules of quoting and evaluation do not apply. Before you see this in action, inspect a typical function call that also involves the evaluation of a variable:
+
+Emacs Lisp のコードにおける最も基本的なリストの扱いは、評価されるか、クオートされて評価されないかのどちらかでした（[シンボル、バランスのとれた式、そしてクオート](#h:symbols-balanced-expressions-and-quoting)参照）。もう少し複雑なケースとして、リストが部分的に評価される場合もありました（[リスト内部の部分評価](#h:partial-evaluation-inside-of-a-list)参照）。しかし、コードを読んでいると、時には通常のクオートや評価のルールが当てはまらないように見えることがあり、戸惑うかもしれません。そのような特殊なケースが実際にどのように動作するかを見る前に、まずは変数評価を含む典型的な関数呼び出しの動作をおさらいしてみましょう。
 
 ```emacs-lisp
 (concat my-greeting-in-greek " " "Πρωτεσίλαε")
@@ -494,20 +491,21 @@ In the most basic case of Emacs Lisp code, you have lists that are either evalua
 #+cindex: Evaluation inside of a function call
 -->
 
-You encountered this code in the section about partial evaluation. What you have here is a call to the function ~concat~, followed by three arguments. One of these arguments is a variable, the ~my-greeting-in-greek~. When this list is evaluated, what Emacs actually does is to first evaluate the arguments, including ~my-greeting-in-greek~, in order to get their respective values and only then to call ~concat~ with those values. You can think of the entire operation as follows:
+このコードは、部分評価のセクションで既に出てきましたね。これは`concat`関数を呼び出すコードで、その後に3つの引数が続いています。引数の一つ`my-greeting-in-greek`は変数です。このリストが評価される際、Emacsが実際に行っているのは、まず`my-greeting-in-greek`を含む各引数を評価してそれぞれの値を取得し、その後で、得られた値を使って`concat`関数を呼び出す、という手順です。この一連の動作は、以下のように分解して考えられます：
 
-- Here is a list.
-- It is not quoted.
-- So you should evaluate it.
-- The first element is the name of the function.
-- The remaining elements are arguments passed to that function.
-- Check what the arguments are.
-- Evaluate each of the arguments to resolve it to its actual value.
-- Strings are self-evaluating, while the ~my-greeting-in-greek~ is a variable.
-- You now have the value of each of the arguments, including the value of the symbol ~my-greeting-in-greek~.
-- Call ~concat~ with all the values you got.
 
-In other words, the following two yield the same results (assuming a constant ~my-greeting-in-greek~):
+ * リストがあります
+ * クオートされていません
+ * よって、評価が必要
+ * 最初の要素は関数名です
+ * 残りの要素は、その関数に渡される引数です
+ * 引数が何であるかを確認します
+ * 各引数を評価して、それを実際の値に解決します
+ * 文字列は自己評価的であり、一方`my-greeting-in-greek`は変数です
+ * シンボル`my-greeting-in-greek`の値を含め、各引数の値が揃いました
+ * あなたが得たすべての値で`concat`を呼び出します。
+
+言い換えると、（`my-greeting-in-greek`が定数だと仮定すれば）以下の二つの式は全く同じ結果になります：
 
 ```emacs-lisp
 (concat my-greeting-in-greek " " "Πρωτεσίλαε")
@@ -519,13 +517,13 @@ In other words, the following two yield the same results (assuming a constant ~m
 #+findex: setq
 -->
 
-This is predictable. It follows the basic logic of the single quote: if it is quoted, do not evaluate it and return it as-is, otherwise evaluate it and return its value. But you will find plenty of cases where this expected pattern is seemingly not followed. Consider this common case of using ~setq~ to bind a symbol to the given value:
+ここまでは想像通りですね。シングルクォートの基本的なルール「クオートされていれば評価せずそのまま返し、されていなければ評価して値を返す」に従っています。しかし、この期待されるパターンが、一見すると適用されていないように見えるケースも多く存在します。その代表例として、シンボルを値に束縛するためによく使われる`setq`を見てみましょう：
 
 ```emacs-lisp
 (setq my-test-symbol "Protesilaos of Cyprus")
 ```
 
-The above expression looks like a function call, meaning that (i) the list is not quoted, (ii) the first element is the name of a function, and (iii) the remaining elements are arguments passed to that function. In a way, this is all true. Though you would then expect the ~my-test-symbol~ to be treated as a variable, which would be evaluated in place to return its result which would, in turn, be the actual argument passed to the function. However, this is not how ~setq~ works. The reason is that it is a special case that internally does this:
+上記の式は関数呼び出しのように見えます、それは「(1) リストがクオートされておらず」「(2) 最初の要素が関数の名前であり」、そして「(3) 残りの要素がその関数に渡される引数である」ことを意味します。ある意味では、これはすべて真実です。しかし、あなたはその場合`my-test-symbol`が変数として扱われ、それがその場で評価されてその結果を返し、それが次に、関数に渡される実際の引数になることを期待するでしょう。しかし、これは`setq`が機能する方法ではありません。理由は、それが内部的にこれを行う特殊なケースだからです：
 
 ```emacs-lisp
 (set 'my-test-symbol "Protesilaos of Cyprus")
@@ -536,15 +534,16 @@ The above expression looks like a function call, meaning that (i) the list is no
 #+findex: defun
 -->
 
-This is where things are as expected. There is no magic happening behind the scenes. The ~setq~, then, is a convenience for the user to not quote the symbol each time. Yes, this makes it a bit more difficult to reason about it, though you get used to it and eventually it all makes sense. Hopefully, you will get used to such special forms, as you find them with ~setq~ but also with ~defun~, among many others. Here is a function you have already seen:
+このように内部動作を考えれば、動作は理解できます。舞台裏で魔法が起きているわけではありません。`setq`は、ユーザーがいちいちシンボル（変数名）をクオートしなくてもいいように用意された、便利な構文なのです。確かに、この特殊な動作は、最初は少し混乱するかもしれませんが、すぐに慣れて、最終的には自然に理解できるようになるでしょう。`setq`だけでなく、関数定義の`defun`など、多くのスペシャルフォームに慣れていくことを願っています。`defun`についても、既に出てきた例をもう一度見てみましょう：
 
 ```emacs-lisp
 (defun my-greet-person-from-country (name country)
   "Say hello to the person with NAME who lives in COUNTRY."
+  ;; COUNTRY に住む NAME を持つ人に挨拶する。
   (message "Hello %s of %s" name country))
 ```
 
-If the normal rules of evaluation applied, then the list of parametes should be quoted. Otherwise, you would expect =(name country)= to be interpreted as a function call with ~name~ as the symbol of the function and ~country~ as its argument which would also be a variable. But this is not what is happening because ~defun~ will internally treat that list of parameters as if it was quoted.
+もし通常の評価ルールが適用されるならば、パラメータのリストはクオートされなければいけませんでした。`(name country)`は、`name`が名前の関数のシンボルとしで、`country`はその引数（これもまた変数であろう）とする関数呼び出しとして解釈されてしまうように見えますが実際にはそうなりません。`defun`はパラメータのリストを、あたかもそれがクオートして記述されていたかのように扱うからです。
 
 <!--
 #+findex: let
