@@ -4,7 +4,7 @@ author: zonuexe
 title: "Emacsのバージョン"
 description: "今日にEmacsと呼ばれるGNU Emacsのバージョン表記とリリースの種類、過去の更新履歴についてまとめます。"
 date: 2019-01-13
-last_modified: 2025-04-14
+last_modified: 2026-08-25
 ---
 {% include JB/setup %}
 
@@ -12,11 +12,11 @@ last_modified: 2025-04-14
 
 歴史的には多様なEmacsがありますが、今日においてEmacsと呼ばれるのは、もっぱら**[GNU Emacs]**です。
 
-<ins datetime="2025-03-20T14:00:00+0900">**GNU Emacs**の最新安定版は **`30.1`** (<time datetime="2025-02-23T17:41:38+0000">2025年2月23日</time>リリース)です。<br>
+<ins datetime="2026-08-25T10:30:00+0900">**GNU Emacs**の最新安定版は **`31.1`** (<time datetime="2026-08-24T11:43:32+0100">2026年8月24日</time>リリース)です。<br>
 <!-- 次期安定版のプレテスト版として<time datetime="2024-10-26T09:35:06-0400">2024年10月26日</time>に**`30.0.92`**がリリースされました。<br> -->
 <!-- 次期安定版のリリース候補版として<time datetime="2023-07-23T11:55:44+0300">2023年7月23日</time>に**`29.1-rc1`**がリリースされました。<br> -->
 <!-- GNU Emacsの新しい安定版である**`27.1`**が<time datetime="2020-08-06">2020年8月6日</time>にリリースされることが予告されています。<br> -->
-masterブランチでは次のメジャーバージョンとなる **`31.0`** 系統の開発が進行しています。
+masterブランチでは次のメジャーバージョンとなる **`32.0`** 系統の開発が進行しています。
 </ins>
 
 [GNU Emacs]: https://ja.wikipedia.org/wiki/GNU_Emacs
@@ -247,7 +247,21 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
   <td></td>
   <td></td>
   <td></td>
+  <td><span class="badge badge-pill badge-primary">30.2</span></td>
   <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr><th scope="row">2026</th>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td><span class="badge badge-pill badge-secondary">31.0.90</span></td>
+  <td></td>
+  <td><span class="badge badge-pill badge-primary">31.0</span></td>
   <td></td>
   <td></td>
   <td></td>
@@ -262,6 +276,8 @@ Emacsマニュアルでは「アンチニュース」の形式でまとめられ
 
 <table class="table"><thead><tr><th scope="col">バージョン</th><th scope="col">リリース日</th></tr></thead>
 <tbody>
+<tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2026-08/msg00760.html">Emacs 31.0</a></th><td><time datetime="2025-02-23">2026年8月25日</time></td></tr>
+<tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2025-08/msg00493.html">Emacs 30.2</a></th><td><time datetime="2025-02-23">2025年8月14日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2025-02/msg00997.html">Emacs 30.1</a></th><td><time datetime="2025-02-23">2025年2月23日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2024-06/msg00695.html">Emacs 29.4</a></th><td><time datetime="2024-06-22">2024年6月22日</time></td></tr>
 <tr><th scope="row"><a href="https://lists.gnu.org/archive/html/emacs-devel/2024-03/msg00611.html">Emacs 29.3</a></th><td><time datetime="2024-03-24">2024年3月24日</time></td></tr>
