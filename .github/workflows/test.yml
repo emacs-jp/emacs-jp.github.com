@@ -3,10 +3,54 @@
 name: Main workflow
 on: [push, pull_request]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
 jobs:
   build:
+    name: Build and preview with GitHub Pages
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v6
-    - name: Build site
-      run: 'make build'
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
+        repository: actions/jekyll-build-pages
+        ref: v1
+        path: .pages-action
+    - name: Check image matches the managed Pages action
+      run: |
+        expected=$(sed -n "s/.*image: 'docker:\/\/\(.*\)'/\1/p" .pages-action/action.yml)
+        test -n "$expected"
+        test "$(docker compose config --images)" = "$expected"
+    - name: Build with the managed Pages image
+      env:
+        JEKYLL_GITHUB_TOKEN: ${{ github.token }}
+      run: |
+        make pull
+        make build
+        test -z "$(docker compose ps --status running -q)"
+    - name: Record dependency versions
+      run: make versions
+    - name: Build without local API credentials
+      run: JEKYLL_GITHUB_TOKEN= make build
+    - name: Build while preview is running
+      env:
+        JEKYLL_GITHUB_TOKEN: ${{ github.token }}
+      run: |
+        make up
+        curl --fail --retry 30 --retry-all-errors --retry-delay 1 --max-time 5 http://localhost:4000/ -o /tmp/preview-before.html
+        make build
+        curl --fail http://localhost:4000/ -o /tmp/preview-after.html
+        cmp /tmp/preview-before.html /tmp/preview-after.html
+    - name: Stop preview
+      if: always()
+      run: |
+        docker compose logs
+        make down

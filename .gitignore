@@ -1,6 +1,10 @@
 ## .gitignore
 
+# Ignore markers left by the previous Makefile in existing checkouts.
 .docker.lock
+
+# Bundler creates this for the optional system Ruby preview.
+/Gemfile.lock
 
 .rbenv-version
 .rvmrc

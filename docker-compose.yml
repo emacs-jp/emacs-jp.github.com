@@ -1,10 +1,17 @@
 ## docker-compose.yml
 services:
   main:
-    build: .
+    image: ghcr.io/actions/jekyll-build-pages:v1.0.13
+    platform: linux/amd64
+    environment:
+      JEKYLL_ENV: production
+      PAGES_REPO_NWO: emacs-jp/emacs-jp.github.com
+      PAGES_API_URL: https://api.github.com
+      JEKYLL_GITHUB_TOKEN: ${JEKYLL_GITHUB_TOKEN:-}
     volumes:
-      - ./docs:/docs
+      - ./docs:/workspace/docs:ro
+      - ./script/pages.sh:/pages.sh:ro
     ports:
       - ${PORT:-4000}:4000
-    working_dir: /docs
-    command: jekyll serve --host 0.0.0.0
+    entrypoint: /bin/bash
+    command: /pages.sh serve

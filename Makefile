@@ -1,33 +1,27 @@
-## Makefile
+.DEFAULT_GOAL := up
 
-all:
-
-DOCKERLOCK := .docker.lock
 PORT ?= 4000
+export PORT
 
-##############################
+.PHONY: all pull up serve log build versions down
 
-.PHONY: all
 all: up
 
-$(DOCKERLOCK):
-	PORT=${PORT} docker compose up -d
-	touch $@
+pull:
+	docker compose pull
 
-.PHONY: up serve
-up: $(DOCKERLOCK)
-serve: $(DOCKERLOCK)
+up serve:
+	docker compose up -d
 
-.PHONY: log
-log: $(DOCKERLOCK)
+log:
 	docker compose logs -f
 
-# -T option from https://github.com/docker/compose/issues/7306
-.PHONY: build
-build: $(DOCKERLOCK)
-	docker compose exec -T main jekyll build --trace
+build:
+	docker compose run --rm --no-deps -T main /pages.sh build
 
-.PHONY: down
+versions:
+	docker compose run --rm --no-deps -T --entrypoint ruby main \
+		-rgithub-pages -rjson -e 'puts RUBY_DESCRIPTION; puts "JSON #{JSON::VERSION}"; Gem.loaded_specs.sort.each { |name, spec| puts "#{name} #{spec.version}" }'
+
 down:
 	docker compose down
-	rm -rf $(DOCKERLOCK)
