@@ -8,5 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v6
-    - name: Build site
-      run: 'make build'
+    - name: Build with GitHub Pages
+      uses: actions/jekyll-build-pages@v1
+      with:
+        source: ./docs
+        destination: ./docs/_site
+        future: false
+        token: ${{ github.token }}

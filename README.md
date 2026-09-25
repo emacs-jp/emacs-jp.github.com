@@ -30,6 +30,8 @@ make log
 make down
 ```
 
+手元のDockerとシステムのRubyは、記事を書くためのプレビューです。公開ビルドはGitHub管理の[`actions/jekyll-build-pages`](https://github.com/actions/jekyll-build-pages)が行い、CIも同じActionで`docs/`をビルドします。`Gemfile.lock`はシステムのRubyで`bundle install`する版を固定するもので、公開環境の依存関係ではありません。
+
 ### システムのRuby
 
 RubyおよびBundlerが必要です。詳細は[Using Jekyll as a static site generator with GitHub Pages - GitHub Help](https://help.github.com/en/articles/using-jekyll-as-a-static-site-generator-with-github-pages)をお読みください。

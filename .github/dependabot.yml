@@ -1,0 +1,14 @@
+# Gemfile.lock pins gems for the system-Ruby preview. Publishing uses
+# actions/jekyll-build-pages and does not read this lockfile.
+# Group ordinary version bumps. Security updates stay separate.
+version: 2
+updates:
+  - package-ecosystem: bundler
+    directory: "/"
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 1
+    groups:
+      bundler:
+        patterns:
+          - "*"
